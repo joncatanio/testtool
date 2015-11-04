@@ -21,6 +21,7 @@ public class GenerateTestController extends TestController {
         requestModel.setNumQuestions(numQuestions.getText());
     }
 
+    /* Make sure only one radio button may be selected */
     public void easyDifficulty() {
         if (difficulty[1].isSelected()) {
             difficulty[1].setSelected(false);
@@ -31,7 +32,20 @@ public class GenerateTestController extends TestController {
     }
 
     public void mediumDifficulty() {
-
+        if (difficulty[0].isSelected()) {
+            difficulty[0].setSelected(false);
+        }
+        if (difficulty[2].isSelected()) {
+            difficulty[2].setSelected(false);
+        }
     }
 
+    public void hardDifficulty() {
+        if (difficulty[0].isSelected()) {
+            difficulty[0].setSelected(false);
+        }
+        if (difficulty[1].isSelected()) {
+            difficulty[1].setSelected(false);
+        }
+    }
 }
