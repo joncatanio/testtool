@@ -11,6 +11,7 @@ public class GenerateTestController extends TestController {
     public TextField name;
 
     // Difficulty fields
+    public ToggleGroup difficulty;
     public RadioButton easy; // 0 for easy
     public RadioButton medium; // 1 for medium
     public RadioButton hard; // 2 for hard
@@ -35,37 +36,6 @@ public class GenerateTestController extends TestController {
         }
         else if (hard.isSelected()) {
             requestModel.setDifficulty(2);
-        }
-    }
-
-    // Could not figure out ToggleGroup, so I manually did it.
-    public void easyDifficulty() {
-        System.out.println("In easy");
-        if (medium.isSelected()) {
-            medium.setSelected(false);
-        }
-        if (hard.isSelected()) {
-            hard.setSelected(false);
-        }
-    }
-
-    public void mediumDifficulty() {
-        System.out.println("In medium");
-        if (easy.isSelected()) {
-            easy.setSelected(false);
-        }
-        if (hard.isSelected()) {
-            hard.setSelected(false);
-        }
-    }
-
-    public void hardDifficulty() {
-        System.out.println("In hard");
-        if (easy.isSelected()) {
-            easy.setSelected(false);
-        }
-        if (medium.isSelected()) {
-            medium.setSelected(false);
         }
     }
 }
