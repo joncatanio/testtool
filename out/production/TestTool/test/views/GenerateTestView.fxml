@@ -37,9 +37,9 @@
                   <ChoiceBox layoutX="348.0" layoutY="246.0" prefWidth="150.0" />
                   <ChoiceBox layoutX="348.0" layoutY="304.0" prefWidth="150.0" />
                   <Button layoutX="227.5" layoutY="381.0" mnemonicParsing="false" onAction="#generate" prefHeight="42.0" prefWidth="245.0" text="Generate" />
-                  <TextField fx:id="numQuestions" layoutX="345.0" layoutY="66.0" onAction="#addNumQuestions" onKeyReleased="#addNumQuestions" prefHeight="27.0" prefWidth="43.0" />
+                  <TextField fx:id="numQuestions" layoutX="345.0" layoutY="66.0" prefHeight="27.0" prefWidth="43.0" />
                   <Label layoutX="200.0" layoutY="10.0" text="Name:" />
-                  <TextField fx:id="name" layoutX="345.0" layoutY="6.0" onAction="#getName" />
+                  <TextField fx:id="name" layoutX="345.0" layoutY="6.0" />
                </children></AnchorPane>
             </items>
         </SplitPane>

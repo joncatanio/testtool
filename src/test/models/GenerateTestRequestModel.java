@@ -19,10 +19,17 @@ public class GenerateTestRequestModel {
     public int getNumQuestions() {
         return this.numQuestions;
     }
-    public void setNumQuestions(int num) {
-        if (num > 0 && num < MAX_QUESTION_NUMBER) {
-            System.out.println("In setNumQuestions num is: " + num + " which is valid.");
-            this.numQuestions = num;
+    public void setNumQuestions(String number) {
+        try {
+            int num = Integer.parseInt(number);
+
+            if (num > 0 && num < MAX_QUESTION_NUMBER) {
+                System.out.println("Number of Questions: " + num);
+                this.numQuestions = num;
+            }
+        }
+        catch(NumberFormatException nfe) {
+            System.out.println("Not a valid number.");
         }
     }
 
@@ -30,7 +37,7 @@ public class GenerateTestRequestModel {
         return this.name;
     }
     public void setName(String name){
-        System.out.println("Woo in set name. Name is " + name);
+        System.out.println("Name: " + name);
         this.name = name;
     }
 }
