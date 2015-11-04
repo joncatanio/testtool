@@ -31,6 +31,8 @@ public class PickQuestionTypeController {
     public RadioButton UMLButton = new RadioButton();
     public RadioButton MatchingButton = new RadioButton();
 
+    private QuestionModel questionModel = new QuestionModel();
+
     protected Stage currStage;
 
     public void populateInterface(Stage stage) {
@@ -80,22 +82,38 @@ public class PickQuestionTypeController {
     }
 
     public void  QuestionTypeChosen() throws IOException {
-        QuestionModel questionModel = new QuestionModel();
         SetQuestionType();
 
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
-        Parent nextSceneParent = parentLoader.load();
-        Scene nextScene = new Scene(nextSceneParent);
+        if (questionModel.getQuestionType() == "FreeResponse" ||
+                questionModel.getQuestionType() == "ShortAnswer" ||
+                questionModel.getQuestionType() == "LongAnswer" ||
+                questionModel.getQuestionType() == "Coding" ||
+                questionModel.getQuestionType() == "UML") {
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            Scene nextScene = new Scene(nextSceneParent);
 
-        QuestionController test = parentLoader.getController();
-        test.populateInterface(currStage);
+            QuestionController gqc = parentLoader.getController();
+            gqc.populateInterface(currStage);
 
-        currStage.setScene(nextScene);
-        currStage.show();
-        System.out.println("Question type was selected.");
+            currStage.setScene(nextScene);
+            currStage.show();
+            System.out.println("Question type " + questionModel.getQuestionType() + " was selected.");
+        }
+        else {
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            Scene nextScene = new Scene(nextSceneParent);
+
+            QuestionController test = parentLoader.getController();
+            test.populateInterface(currStage);
+
+            currStage.setScene(nextScene);
+            currStage.show();
+            System.out.println("Question type was selected.");
+        }
     }
     public void SetQuestionType() {
-        QuestionModel questionModel = new QuestionModel();
         if(FillInTheBlankButton.isSelected()){
             questionModel.setQuestionType("FillInTheBlank");
         }
