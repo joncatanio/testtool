@@ -40,4 +40,11 @@ public class GenerateTestRequestModel {
         System.out.println("Name: " + name);
         this.name = name;
     }
+
+    public int getDifficulty() { return this.difficulty; }
+    public void setDifficulty(int val) {
+        if (val >= 0 && val <= 2) {
+            this.difficulty = val;
+        }
+    }
 }
