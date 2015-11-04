@@ -6,3 +6,23 @@ Test tool for CPE 307
 I love this project
 
 #### I also loves this project
+
+#### What to do when committing
+We add all of our files to Intellij's src directory. When you are 
+committing new files we must track the src files by "git add"ing them. 
+One issue that must be dealt with is that when one compiles or runs our 
+project Intellij duplicates the executable version of your newly added 
+file(s) and puts it into the directory titled "out" ... you must also track
+these files. 
+
+Moral of the story, when you are going to add files to the git repo make 
+sure you compile the project then go ahead and add all the newly created
+files. 
+
+#### Help SceneBuilder won't load externally from right clicking on my .fxml file!
+This is fixable! If you are on a MacBook locate the SceneBuilder.app 
+(probably in Applications/SceneBuilder). Right click on SceneBuilder.app
+and open package contents. Change directories into the directory titled
+"MacOS" there you will see a SceneBuilder executable file. Copy this file
+in the same directory and name the copy "scenebuilder-launcher.sh" now
+you will be able to open SceneBuilder externally from Intellij.
