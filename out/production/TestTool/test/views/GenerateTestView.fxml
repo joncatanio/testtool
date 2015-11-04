@@ -30,9 +30,9 @@
                   <Label layoutX="200.0" layoutY="190.0" text="Question Types:" />
                   <Label layoutX="200.0" layoutY="250.0" text="Class:" />
                   <Label layoutX="200.0" layoutY="310.0" text="Class Subjects:" />
-                  <RadioButton layoutX="348.0" layoutY="130.0" mnemonicParsing="false" text="Easy" />
-                  <RadioButton layoutX="423.0" layoutY="130.0" mnemonicParsing="false" text="Medium" />
-                  <RadioButton layoutX="518.0" layoutY="130.0" mnemonicParsing="false" text="Hard" />
+                  <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" text="Easy" />
+                  <RadioButton fx:id="medium" layoutX="423.0" layoutY="130.0" mnemonicParsing="false" text="Medium" />
+                  <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" text="Hard" />
                   <ChoiceBox layoutX="348.0" layoutY="185.0" prefWidth="150.0" />
                   <ChoiceBox layoutX="348.0" layoutY="246.0" prefWidth="150.0" />
                   <ChoiceBox layoutX="348.0" layoutY="304.0" prefWidth="150.0" />
