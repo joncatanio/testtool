@@ -31,16 +31,20 @@
                   <Label layoutX="200.0" layoutY="250.0" text="Class:" />
                   <Label layoutX="200.0" layoutY="310.0" text="Class Subjects:" />
 
-                   <VBox>
-                    <fx:define>
-                        <ToggleGroup fx:id="difficulty"/>
-                    </fx:define>
+                   <HBox layoutX="348.0" layoutY="131.0">
                     <children>
-                       <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" text="Easy" />
-                       <RadioButton fx:id="medium" layoutX="423.0" layoutY="130.0" mnemonicParsing="false" text="Medium" />
-                       <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" text="Hard" />
+                       <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" onAction="#easyDifficulty" text="Easy">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding></RadioButton>
+                       <RadioButton fx:id="medium" layoutX="423.0" layoutY="130.0" mnemonicParsing="false" onAction="#mediumDifficulty" text="Medium">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding>
+                        </RadioButton>
+                       <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" onAction="#hardDifficulty" text="Hard" />
                     </children>
-                   </VBox>
+                   </HBox>
                    <ChoiceBox layoutX="348.0" layoutY="185.0" prefWidth="150.0" />
                   <ChoiceBox layoutX="348.0" layoutY="246.0" prefWidth="150.0" />
                   <ChoiceBox layoutX="348.0" layoutY="304.0" prefWidth="150.0" />
