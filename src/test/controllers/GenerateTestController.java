@@ -7,9 +7,29 @@ import test.models.GenerateTestRequestModel;
  * Created by JonCatanio on 11/1/15.
  */
 public class GenerateTestController extends TestController {
-    public TextField numQuestions = new TextField();
-    public TextField name = new TextField();
-    public RadioButton difficulty[] = new RadioButton[3];
+    public TextField numQuestions;
+    public TextField name;
+
+    // Difficulty fields
+    public ToggleGroup difficulty;
+    public RadioButton easy;
+    public RadioButton medium;
+    public RadioButton hard;
+
+    public GenerateTestController() {
+        // Initialize text fields.
+        this.numQuestions = new TextField();
+        this.name = new TextField();
+
+        // Initialize and add radio buttons to toggle group.
+        this.difficulty = new ToggleGroup();
+        this.easy = new RadioButton();
+        this.medium = new RadioButton();
+        this.hard = new RadioButton();
+        this.easy.setToggleGroup(this.difficulty);
+        this.medium.setToggleGroup(this.difficulty);
+        this.hard.setToggleGroup(this.difficulty);
+    }
 
     public void generate() {
         GenerateTestRequestModel requestModel = new GenerateTestRequestModel();
@@ -19,33 +39,5 @@ public class GenerateTestController extends TestController {
 
         requestModel.setName(name.getText());
         requestModel.setNumQuestions(numQuestions.getText());
-    }
-
-    /* Make sure only one radio button may be selected */
-    public void easyDifficulty() {
-        if (difficulty[1].isSelected()) {
-            difficulty[1].setSelected(false);
-        }
-        if (difficulty[2].isSelected()) {
-            difficulty[2].setSelected(false);
-        }
-    }
-
-    public void mediumDifficulty() {
-        if (difficulty[0].isSelected()) {
-            difficulty[0].setSelected(false);
-        }
-        if (difficulty[2].isSelected()) {
-            difficulty[2].setSelected(false);
-        }
-    }
-
-    public void hardDifficulty() {
-        if (difficulty[0].isSelected()) {
-            difficulty[0].setSelected(false);
-        }
-        if (difficulty[1].isSelected()) {
-            difficulty[1].setSelected(false);
-        }
     }
 }
