@@ -93,7 +93,10 @@ public class PickQuestionTypeController {
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
-            QuestionController gqc = parentLoader.getController();
+            //QuestionController gqc = parentLoader.getController();
+            //gqc.populateInterface(currStage);
+
+            GenericQuestionController gqc = new GenericQuestionController(questionModel);
             gqc.populateInterface(currStage);
 
             currStage.setScene(nextScene);
