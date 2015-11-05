@@ -22,12 +22,12 @@ public class GenericQuestionController extends QuestionController {
     public TextField questionName = new TextField();
     public ChoiceBox<String> subjects = new ChoiceBox<String>();
     public ChoiceBox<String> classes = new ChoiceBox<String>();
-    public TextField charLimit;
+    public TextField charLimit = new TextField();
     public ToggleGroup difficulty = new ToggleGroup();
     public RadioButton easy = new RadioButton(); // 0 for easy
     public RadioButton medium = new RadioButton(); // 1 for medium
     public RadioButton hard = new RadioButton(); // 2 for hard
-    public TextField points;
+    public TextField points = new TextField();
     public TextField image;
     public Button browse = new Button();
     public TextField hint = new TextField();
@@ -57,6 +57,9 @@ public class GenericQuestionController extends QuestionController {
         this.subjects.getSelectionModel().select(0);
         this.classes.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
         this.classes.getSelectionModel().select(0);
+
+        this.charLimit.setText(Integer.toString(questionModel.getCharLimit()));
+        this.points.setText(Integer.toString(questionModel.getPointsPossible()));
     }
 
     public void addQuestion() throws IOException {
