@@ -29,8 +29,10 @@ public class FillInTheBlankController extends QuestionController {
     public TextField points;
     public TextField image;
     public TextField hint;
-
-
+    public RadioButton easy;
+    public RadioButton medium;
+    public RadioButton hard;
+    public Button clear;
 
     public FillInTheBlankController(){
     }
@@ -47,28 +49,40 @@ public class FillInTheBlankController extends QuestionController {
                 if(subject.getValue() != null){
                     if(className.getValue() != null){
                         if(answer.getText() != null){
-                            if(points.getText() != null){
-                            questionModel.setQuestionName(questionName.getText());
-                            questionModel.setPointsPossible(Integer.parseInt(points.getText()));
-                            questionModel.setClassNumber(className.getValue().toString());
-                            questionModel.setSubject(subject.getValue().toString());
-                            questionModel.setQuestion(question.getText());
-                            questionModel.setAnswer(answer.getText());
-                            if(hint.getText() != null){
-                                questionModel.setHint(hint.getText());
-                            }
-                            if(image.getText() != null){
-                                questionModel.setImageFile(image.getText());
-                            }
-                                FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
-                                Parent nextSceneParent = parentLoader.load();
-                                Scene nextScene = new Scene(nextSceneParent);
+                            if(points.getText() != null) {
+                                if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
+                                    questionModel.setQuestionName(questionName.getText());
+                                    questionModel.setPointsPossible(Integer.parseInt(points.getText()));
+                                    questionModel.setClassNumber(className.getValue().toString());
+                                    questionModel.setSubject(subject.getValue().toString());
+                                    questionModel.setQuestion(question.getText());
+                                    questionModel.setAnswer(answer.getText());
+                                    if (hint.getText() != null) {
+                                        questionModel.setHint(hint.getText());
+                                    }
+                                    if (image.getText() != null) {
+                                        questionModel.setImageFile(image.getText());
+                                    }
+                                    if(easy.isSelected()){
+                                        questionModel.setDifficulty(1);
+                                    }
+                                    else if(medium.isSelected()){
+                                        questionModel.setDifficulty(2);
+                                    }
+                                    else if(hard.isSelected()){
+                                        questionModel.setDifficulty(3);
+                                    }
 
-                                QuestionController test = parentLoader.getController();
-                                test.populateInterface(currStage);
+                                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+                                    Parent nextSceneParent = parentLoader.load();
+                                    Scene nextScene = new Scene(nextSceneParent);
 
-                                currStage.setScene(nextScene);
-                                currStage.show();
+                                    QuestionController test = parentLoader.getController();
+                                    test.populateInterface(currStage);
+
+                                    currStage.setScene(nextScene);
+                                    currStage.show();
+                                }
                             }
                         }
                     }
@@ -77,5 +91,31 @@ public class FillInTheBlankController extends QuestionController {
 
         }
 
+    }
+
+    public void ClearAllThings(ActionEvent actionEvent) {
+        questionName.clear();
+        question.clear();
+        subject.setValue(0);
+        className.setValue(0);
+        answer.clear();
+        points.clear();
+        image.clear();
+        hint.clear();
+        easy.setSelected(false);
+        medium.setSelected(false);
+        hard.setSelected(false);
+    }
+
+    public void Cancel(ActionEvent actionEvent) throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        QuestionController test = parentLoader.getController();
+        test.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
     }
 }
