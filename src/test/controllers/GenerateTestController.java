@@ -1,6 +1,8 @@
 package test.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.scene.control.*;
+import question.models.QuestionModel;
 import test.models.GenerateTestRequestModel;
 
 /**
@@ -16,7 +18,11 @@ public class GenerateTestController extends TestController {
     public RadioButton medium; // 1 for medium
     public RadioButton hard; // 2 for hard
 
+    // ChoiceBoxes
+    public ComboBox<String> questionTypes;
+
     public GenerateTestController() {
+
     }
 
     public void generate() {
@@ -37,5 +43,11 @@ public class GenerateTestController extends TestController {
         else if (hard.isSelected()) {
             requestModel.setDifficulty(2);
         }
+    }
+
+    public void populateChoiceBoxes() {
+        questionTypes.setItems(FXCollections.observableArrayList("Select", "Free Response", "Multiple Choice",
+                "Multiple Select", "Free Response", "Short Answer", "Coding", "UML", "Matching"));
+        questionTypes.getSelectionModel().select(0);
     }
 }
