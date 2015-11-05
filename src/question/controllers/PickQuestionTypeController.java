@@ -15,6 +15,7 @@ import test.controllers.TestController;
 import user.controllers.UserController;
 
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class PickQuestionTypeController {
@@ -84,17 +85,18 @@ public class PickQuestionTypeController {
     public void  QuestionTypeChosen() throws IOException {
         SetQuestionType();
 
-        if (questionModel.getQuestionType() == "FreeResponse" ||
-                questionModel.getQuestionType() == "ShortAnswer" ||
-                questionModel.getQuestionType() == "LongAnswer" ||
-                questionModel.getQuestionType() == "Coding" ||
-                questionModel.getQuestionType() == "UML") {
+        if (questionModel.getQuestionType().equals("FreeResponse") ||
+                questionModel.getQuestionType().equals("ShortAnswer") ||
+                questionModel.getQuestionType().equals("LongAnswer") ||
+                questionModel.getQuestionType().equals("Coding") ||
+                questionModel.getQuestionType().equals("UML")) {
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
-            GenericQuestionController gqc = new GenericQuestionController(questionModel);
+            GenericQuestionController gqc = parentLoader.getController();
             gqc.populateInterface(currStage);
+            gqc.initiateQuestionModel(questionModel);
 
             currStage.setScene(nextScene);
             currStage.show();
