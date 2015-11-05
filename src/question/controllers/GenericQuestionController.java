@@ -19,7 +19,7 @@ import java.io.IOException;
 public class GenericQuestionController extends QuestionController {
 
     public Label questionType;
-    public TextField name = new TextField();
+    public TextField questionName = new TextField();
     public ChoiceBox<String> subjects;
     public ChoiceBox<String> classes;
     public TextField charLimit;
@@ -39,6 +39,10 @@ public class GenericQuestionController extends QuestionController {
     private QuestionModel questionModel;
     private QuestionModel initialQuestionModel;
 
+    public GenericQuestionController() {
+
+    }
+
     public GenericQuestionController(QuestionModel questionModel) {
         this.initialQuestionModel = this.questionModel = questionModel;
         this.questionType = new Label(questionModel.getQuestionType());
@@ -55,7 +59,12 @@ public class GenericQuestionController extends QuestionController {
         System.out.println("Add question!");
 
         // TODO: Add error handling
-        questionModel.setQuestionName(name.getText());
+
+        System.out.println(questionModel.getQuestionName());
+        questionModel.setQuestionName(questionName.getText());
+        System.out.println(questionModel.getQuestionName());
+
+        /*
         questionModel.setSubject(subjects.getValue());
 
         // TODO: Add event handler for selection of subject to allow selection of class
@@ -78,7 +87,7 @@ public class GenericQuestionController extends QuestionController {
         // TODO: Add logic for selecting image
 
         questionModel.setHint(hint.getText());
-        questionModel.setQuestion(questionText.getText());
+        questionModel.setQuestion(questionText.getText());*/
     }
 
     public void clearForm() {
