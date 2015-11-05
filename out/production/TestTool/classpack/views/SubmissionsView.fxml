@@ -17,6 +17,7 @@
             <items>
                 <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
             <Button fx:id="viewAssignedTestButton" mnemonicParsing="false" onAction="#viewAssignedTest" text="View Assigned Test" />
+            <Label text="Test Submissions" translateX="100.0" />
             </items></ToolBar>
         <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
             <items>
