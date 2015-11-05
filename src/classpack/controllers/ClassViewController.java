@@ -15,7 +15,6 @@ import java.io.IOException;
 
 public class ClassViewController extends ClassPackController{
 
-
     public void addClass(ActionEvent actionEvent) {
         System.out.println("Add Class");
     }
