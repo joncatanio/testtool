@@ -33,28 +33,32 @@
 
                    <HBox layoutX="348.0" layoutY="131.0">
                     <fx:define>
-                        <ToggleGroup fx:id="difficulty"/>
+                        <ToggleGroup fx:id="difficulty" />
                     </fx:define>
                     <children>
-                       <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" text="Easy" toggleGroup="$difficulty">
+                       <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" text="Easy">
                            <padding>
                               <Insets right="10.0" />
-                           </padding></RadioButton>
+                           </padding>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="difficulty" />
+                           </toggleGroup>
+                       </RadioButton>
                        <RadioButton fx:id="medium" layoutX="423.0" layoutY="130.0" mnemonicParsing="false" text="Medium" toggleGroup="$difficulty">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </RadioButton>
-                       <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficulty"/>
+                       <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficulty" />
                     </children>
                    </HBox>
-                   <ChoiceBox layoutX="348.0" layoutY="185.0" prefWidth="150.0" />
                   <ChoiceBox layoutX="348.0" layoutY="246.0" prefWidth="150.0" />
                   <ChoiceBox layoutX="348.0" layoutY="304.0" prefWidth="150.0" />
                   <Button layoutX="227.5" layoutY="381.0" mnemonicParsing="false" onAction="#generate" prefHeight="42.0" prefWidth="245.0" text="Generate" />
                   <TextField fx:id="numQuestions" layoutX="345.0" layoutY="66.0" prefHeight="27.0" prefWidth="43.0" />
                   <Label layoutX="200.0" layoutY="10.0" text="Name:" />
                   <TextField fx:id="name" layoutX="345.0" layoutY="6.0" />
+                  <ComboBox fx:id="questionTypes" layoutX="348.0" layoutY="185.0" prefWidth="150.0" />
                </children></AnchorPane>
             </items>
         </SplitPane>
