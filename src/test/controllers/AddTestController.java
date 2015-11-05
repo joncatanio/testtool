@@ -22,6 +22,7 @@ public class AddTestController extends TestController {
 
         GenerateTestController gtc = parentLoader.getController();
         gtc.populateInterface(currStage);
+        gtc.populateChoiceBoxes();
 
         currStage.setScene(nextScene);
         currStage.show();
