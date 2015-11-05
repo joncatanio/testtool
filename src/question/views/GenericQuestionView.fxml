@@ -17,12 +17,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="question.controllers.QuestionController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="question.controllers.GenericQuestionController">
     <children>
         <ToolBar minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
             <items>
                 <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
-            <Label text="Free Response / UML / Coding / Short Answer / Long Answer" textAlignment="CENTER">
+            <Label fx:id="questionType" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -35,30 +35,36 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                     <children>
                         <Label layoutX="45.0" layoutY="109.0" text="Difficulty:" />
-                        <RadioButton layoutX="117.0" layoutY="108.0" mnemonicParsing="false" text="Easy" />
-                        <RadioButton layoutX="190.0" layoutY="108.0" mnemonicParsing="false" text="Medium" />
-                        <RadioButton layoutX="283.0" layoutY="108.0" mnemonicParsing="false" text="Hard" />
+                        <fx:define>
+                            <ToggleGroup fx:id="myToggleGroup" />
+                        </fx:define>
+                        <RadioButton fx:id="easy" layoutX="117.0" layoutY="108.0" mnemonicParsing="false" text="Easy">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="myToggleGroup" />
+                     </toggleGroup></RadioButton>
+                        <RadioButton fx:id="medium" layoutX="190.0" layoutY="108.0" mnemonicParsing="false" text="Medium" toggleGroup="$myToggleGroup" />
+                        <RadioButton fx:id="hard" layoutX="283.0" layoutY="108.0" mnemonicParsing="false" text="Hard" toggleGroup="$myToggleGroup" />
                   <Label layoutX="45.0" layoutY="61.0" text="Subject:" />
                   <Label layoutX="45.0" layoutY="158.0" text="Points:" />
-                  <TextField layoutX="117.0" layoutY="153.0" prefHeight="26.0" prefWidth="42.0" />
+                  <TextField fx:id="points" layoutX="117.0" layoutY="153.0" prefHeight="26.0" prefWidth="42.0" />
                   <Label layoutX="48.0" layoutY="250.0" text="Question Text:" />
-                  <TextArea layoutX="95.0" layoutY="279.0" prefHeight="124.0" prefWidth="500.0" />
-                  <Button layoutX="212.0" layoutY="422.0" mnemonicParsing="false" text="Add Question" />
-                  <Button layoutX="321.0" layoutY="422.0" mnemonicParsing="false" text="Clear" />
-                  <Button layoutX="380.0" layoutY="422.0" mnemonicParsing="false" text="Cancel" />
+                  <TextArea fx:id="questionText" layoutX="95.0" layoutY="279.0" prefHeight="124.0" prefWidth="500.0" />
+                  <Button fx:id="addQuestion" layoutX="212.0" layoutY="422.0" mnemonicParsing="false" onAction="#addQuestion" text="Add Question" />
+                  <Button fx:id="clear" layoutX="321.0" layoutY="422.0" mnemonicParsing="false" onAction="#clearForm" text="Clear" />
+                  <Button fx:id="cancel" layoutX="380.0" layoutY="422.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
                   <Label layoutX="243.0" layoutY="62.0" text="Class:" />
                   <Accordion layoutX="43.0" layoutY="100.0" />
                   <Label layoutX="45.0" layoutY="17.0" text="Question Name:" />
-                  <TextField layoutX="171.0" layoutY="11.0" prefHeight="26.0" prefWidth="250.0" />
+                  <TextField fx:id="questionName" layoutX="171.0" layoutY="11.0" prefHeight="26.0" prefWidth="250.0" />
                   <Label layoutX="197.0" layoutY="158.0" prefWidth="41.0" text="Image:" />
-                  <TextField layoutX="252.0" layoutY="152.0" prefHeight="26.0" prefWidth="125.0" />
-                  <Button layoutX="384.0" layoutY="152.0" mnemonicParsing="false" text="Browse..." />
+                  <TextField fx:id="image" layoutX="252.0" layoutY="152.0" prefHeight="26.0" prefWidth="125.0" />
+                  <Button fx:id="browse" layoutX="384.0" layoutY="152.0" mnemonicParsing="false" text="Browse..." />
                   <Label layoutX="45.0" layoutY="211.0" text="Hint:" />
-                  <TextField layoutX="117.0" layoutY="206.0" prefHeight="26.0" prefWidth="345.0" />
+                  <TextField fx:id="hint" layoutX="117.0" layoutY="206.0" prefHeight="26.0" prefWidth="345.0" />
                   <Label layoutX="432.0" layoutY="62.0" text="Character Limit:" />
-                  <ChoiceBox layoutX="117.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" />
-                  <ChoiceBox disable="true" layoutX="312.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" />
-                  <TextField layoutX="549.0" layoutY="55.0" prefHeight="26.0" prefWidth="42.0" />
+                  <ChoiceBox fx:id="subjects" layoutX="117.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" />
+                  <ChoiceBox fx:id="classes" layoutX="312.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" />
+                  <TextField fx:id="charLimit" layoutX="549.0" layoutY="55.0" prefHeight="26.0" prefWidth="42.0" />
                     </children>
                 </AnchorPane>
             </items>
