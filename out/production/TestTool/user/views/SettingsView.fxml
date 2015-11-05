@@ -27,22 +27,58 @@
                   <Button layoutY="81.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Security" />
                </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
-                    <children>
                         <Label layoutX="314.0" layoutY="221.0" />
                   <Label layoutX="14.0" layoutY="14.0" text="Current Email" />
                   <TextField layoutX="44.0" layoutY="46.0" />
                   <Label layoutX="14.0" layoutY="89.0" text="Full Name" />
                   <TextField layoutX="44.0" layoutY="123.0" />
                   <Label layoutX="14.0" layoutY="173.0" text="Email Notification Setting" />
-                  <RadioButton layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting" />
-                  <RadioButton layoutX="56.0" layoutY="229.0" mnemonicParsing="false" text="Receive All Emails" />
-                  <RadioButton layoutX="56.0" layoutY="255.0" mnemonicParsing="false" text="Receive No Emails" />
-                  <Label layoutX="14.0" layoutY="297.0" text="Timer Notification Setting" />
-                  <RadioButton layoutX="56.0" layoutY="327.0" mnemonicParsing="false" text="Default to Individual Class Setting" />
-                  <RadioButton layoutX="56.0" layoutY="353.0" mnemonicParsing="false" text="Enable All Timers" />
-                  <RadioButton layoutX="56.0" layoutY="379.0" mnemonicParsing="false" text="Enable No Timers" />
-                  <Button layoutX="563.0" layoutY="418.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="113.0" text="Submit" />
+                  <VBox layoutX="49.0" layoutY="190.0" prefHeight="93.0" prefWidth="267.0">
+                        <fx:define>
+                            <ToggleGroup fx:id="email_settings" />
+                        </fx:define>
+                    <children>
+                        <RadioButton layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting">
+                        <padding>
+                           <Insets bottom="10.0" top="10.0" />
+                        </padding>
+                        <toggleGroup>
+                           <ToggleGroup fx:id="email_settings" />
+                        </toggleGroup></RadioButton>
+                        <RadioButton layoutX="56.0" layoutY="229.0" mnemonicParsing="false" text="Receive All Emails" toggleGroup="$email_settings">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding></RadioButton>
+                        <RadioButton layoutX="56.0" layoutY="255.0" mnemonicParsing="false" text="Receive No Emails" toggleGroup="$email_settings">
+                        <padding>
+                           <Insets bottom="10.0" />
+                        </padding></RadioButton>
                     </children>
+                  </VBox>
+                  <Label layoutX="14.0" layoutY="297.0" text="Timer Notification Setting" />
+                  <VBox layoutX="49.0" layoutY="314.0" prefHeight="0.0" prefWidth="267.0">
+                      <fx:define>
+                          <ToggleGroup fx:id="timer_settings" />
+                      </fx:define>
+                      <children>
+                          <RadioButton layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting">
+                              <padding>
+                                  <Insets bottom="10.0" top="10.0" />
+                              </padding>
+                        <toggleGroup>
+                           <ToggleGroup fx:id="timer_settings" />
+                        </toggleGroup></RadioButton>
+                          <RadioButton layoutX="56.0" layoutY="229.0" mnemonicParsing="false" text="Enable All Timers" toggleGroup="$timer_settings">
+                              <padding>
+                                  <Insets bottom="10.0" />
+                              </padding></RadioButton>
+                          <RadioButton layoutX="56.0" layoutY="255.0" mnemonicParsing="false" text="Enable No Timers" toggleGroup="$timer_settings">
+                              <padding>
+                                  <Insets bottom="10.0" />
+                              </padding></RadioButton>
+                      </children>
+                </VBox>
+                  <Button layoutX="563.0" layoutY="418.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="113.0" text="Submit" />
                 </AnchorPane>
             </items>
         </SplitPane>
