@@ -14,6 +14,7 @@ public class QuestionModel{
     private String ImageFile;
     private String hint;
     private String questionName;
+    private String answer;
     private int charLimit;
     private int difficulty;
     private int pointsPossible;
@@ -27,6 +28,7 @@ public class QuestionModel{
         this.question = null;
         this.ImageFile = null;
         this.hint = null;
+        this.answer = null;
         this.charLimit = 100;
         this.difficulty = 0;
         this.pointsPossible = 1;
@@ -74,6 +76,13 @@ public class QuestionModel{
         this.question = name;
     }
 
+    public String getAnswer() {
+        return this.answer;
+    }
+    public void setAnswer(String name){
+        System.out.println("Answer: " + name);
+        this.answer = name;
+    }
 
     public String getImageFile() {
         return this.ImageFile;
@@ -114,5 +123,6 @@ public class QuestionModel{
         System.out.println("PointsPossible: " + name);
         this.pointsPossible = name;
     }
+
 
 }
