@@ -58,7 +58,12 @@
                   <TextField fx:id="numQuestions" layoutX="345.0" layoutY="66.0" prefHeight="27.0" prefWidth="43.0" />
                   <Label layoutX="200.0" layoutY="10.0" text="Name:" />
                   <TextField fx:id="name" layoutX="345.0" layoutY="6.0" />
-                  <ComboBox fx:id="questionTypes" layoutX="348.0" layoutY="185.0" prefWidth="150.0" />
+                  <MenuButton fx:id="questionTypes" layoutX="348.0" layoutY="185.0" mnemonicParsing="false" prefWidth="150.0" text="Select">
+                    <items>
+                      <MenuItem mnemonicParsing="false" text="Action 1" />
+                      <MenuItem mnemonicParsing="false" text="Action 2" />
+                    </items>
+                  </MenuButton>
                </children></AnchorPane>
             </items>
         </SplitPane>
