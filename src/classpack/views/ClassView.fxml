@@ -16,13 +16,14 @@
         <ToolBar minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
             <items>
                 <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
+            <Button fx:id="viewAssignedTestsButton" mnemonicParsing="false" onAction="#viewAssignedTests" text="View Assigned Tests" />
             </items></ToolBar>
         <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
             <items>
                 <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="addClassButton" layoutY="419.0" mnemonicParsing="false" onAction="#addClass" prefHeight="40.0" prefWidth="199.0" text="Add Class" />
-                  <ListView fx:id="classList" prefHeight="418.0" prefWidth="200.0" />
+                  <Button fx:id="addClassButton" layoutY="432.0" mnemonicParsing="false" onAction="#addClass" prefHeight="27.0" prefWidth="199.0" text="Add Class" />
+                  <ListView fx:id="classList" prefHeight="432.0" prefWidth="200.0" />
                </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                     <children>
