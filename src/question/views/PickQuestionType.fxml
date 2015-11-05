@@ -34,14 +34,17 @@
                         <Text layoutX="143.0" layoutY="348.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matching" />
                         <Text layoutX="247.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please Select A Question Type" />
                         <Button fx:id="EnterQuestionTypeSelection" layoutX="314.0" layoutY="389.0" mnemonicParsing="false" onAction="#QuestionTypeChosen" text="Select" />
-                        <RadioButton fx:id="FillInTheBlankButton" layoutX="504.0" layoutY="71.0" mnemonicParsing="false" />
-                        <RadioButton fx:id="MultipleChoiceButton" layoutX="504.0" layoutY="260.0" mnemonicParsing="false" />
-                        <RadioButton fx:id="MultipleSelectButton" layoutX="502.0" layoutY="221.0" mnemonicParsing="false" />
-                        <RadioButton fx:id="FreeResponseButton" layoutX="504.0" layoutY="183.0" mnemonicParsing="false" />
-                        <RadioButton fx:id="ShortAnswerButton" layoutX="504.0" layoutY="146.0" mnemonicParsing="false" />
-                        <RadioButton fx:id="CodingButton" layoutX="504.0" layoutY="111.0" mnemonicParsing="false" />
-                        <RadioButton fx:id="UMLButton" layoutX="504.0" layoutY="343.0" mnemonicParsing="false" />
-                        <RadioButton fx:id="MatchingButton" layoutX="504.0" layoutY="298.0" mnemonicParsing="false" />
+                        <fx:define>
+                            <ToggleGroup fx:id="myToggleGroup"/>
+                        </fx:define>
+                        <RadioButton fx:id="FillInTheBlankButton" layoutX="504.0" layoutY="71.0" mnemonicParsing="false"  toggleGroup="$myToggleGroup"/>
+                        <RadioButton fx:id="MultipleChoiceButton" layoutX="504.0" layoutY="260.0" mnemonicParsing="false"  toggleGroup="$myToggleGroup"/>
+                        <RadioButton fx:id="MultipleSelectButton" layoutX="502.0" layoutY="221.0" mnemonicParsing="false"  toggleGroup="$myToggleGroup"/>
+                        <RadioButton fx:id="FreeResponseButton" layoutX="504.0" layoutY="183.0" mnemonicParsing="false"  toggleGroup="$myToggleGroup"/>
+                        <RadioButton fx:id="ShortAnswerButton" layoutX="504.0" layoutY="146.0" mnemonicParsing="false"  toggleGroup="$myToggleGroup"/>
+                        <RadioButton fx:id="CodingButton" layoutX="504.0" layoutY="111.0" mnemonicParsing="false" toggleGroup="$myToggleGroup"/>
+                        <RadioButton fx:id="UMLButton" layoutX="504.0" layoutY="343.0" mnemonicParsing="false" toggleGroup="$myToggleGroup"/>
+                        <RadioButton fx:id="MatchingButton" layoutX="504.0" layoutY="298.0" mnemonicParsing="false"  toggleGroup="$myToggleGroup"/>
                     </children>
                 </AnchorPane>
             </items>

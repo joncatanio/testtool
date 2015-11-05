@@ -32,17 +32,20 @@
                   <Label layoutX="200.0" layoutY="310.0" text="Class Subjects:" />
 
                    <HBox layoutX="348.0" layoutY="131.0">
+                    <fx:define>
+                        <ToggleGroup fx:id="difficulty"/>
+                    </fx:define>
                     <children>
-                       <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" onAction="#easyDifficulty" text="Easy">
+                       <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" text="Easy" toggleGroup="$difficulty">
                            <padding>
                               <Insets right="10.0" />
                            </padding></RadioButton>
-                       <RadioButton fx:id="medium" layoutX="423.0" layoutY="130.0" mnemonicParsing="false" onAction="#mediumDifficulty" text="Medium">
+                       <RadioButton fx:id="medium" layoutX="423.0" layoutY="130.0" mnemonicParsing="false" text="Medium" toggleGroup="$difficulty">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </RadioButton>
-                       <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" onAction="#hardDifficulty" text="Hard" />
+                       <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficulty"/>
                     </children>
                    </HBox>
                    <ChoiceBox layoutX="348.0" layoutY="185.0" prefWidth="150.0" />

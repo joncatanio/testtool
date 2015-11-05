@@ -10,6 +10,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
+import question.models.QuestionModel;
 import test.controllers.TestController;
 import user.controllers.UserController;
 
@@ -79,6 +80,9 @@ public class PickQuestionTypeController {
     }
 
     public void  QuestionTypeChosen() throws IOException {
+        QuestionModel questionModel = new QuestionModel();
+        SetQuestionType();
+
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
@@ -90,9 +94,33 @@ public class PickQuestionTypeController {
         currStage.show();
         System.out.println("Question type was selected.");
     }
-
-
-
+    public void SetQuestionType() {
+        QuestionModel questionModel = new QuestionModel();
+        if(FillInTheBlankButton.isSelected()){
+            questionModel.setQuestionType("FillInTheBlank");
+        }
+        else if(MultipleChoiceButton.isSelected()){
+            questionModel.setQuestionType("MultipleChoice");
+        }
+        else if(MultipleSelectButton.isSelected()){
+            questionModel.setQuestionType("MultipleSlect");
+        }
+        else if(FreeResponseButton.isSelected()){
+            questionModel.setQuestionType("FreeResponse");
+        }
+        else if(ShortAnswerButton.isSelected()){
+            questionModel.setQuestionType("ShortAnswer");
+        }
+        else if(CodingButton.isSelected()){
+            questionModel.setQuestionType("Coding");
+        }
+        else if(UMLButton.isSelected()){
+            questionModel.setQuestionType("UML");
+        }
+        else if(MatchingButton.isSelected()){
+            questionModel.setQuestionType("Matching");
+        }
+    }
 
 
 }
