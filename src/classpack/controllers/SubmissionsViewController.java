@@ -16,16 +16,22 @@ import classpack.models.*;
 public class SubmissionsViewController extends ClassTestsViewController{
 
     public Label classAverageLabel;
+
     public ListView submissionsList;
     public Button regradeButton;
+    public int currentTestBinId;
 
     // list of student submission objects goes here
     ArrayList<String> submissions = new ArrayList<String>();
 
-    public void populateSubmissionsList() {
+    public void populateSubmissionsList(int classId, int testBinId) {
 
-        ClassModel currClass = new ClassModel();
-        submissions = currClass.getSubmissionsFromBin(777);
+        currentTestBinId = testBinId;
+
+        ClassModel currClass = new ClassModel(); // = ClassDB.getClassById( classId );
+        submissions = currClass.getTestBin(testBinId).getSubmissions();
+
+        classAverageLabel.setText(Double.toString( currClass.getTestBin(testBinId).getAverage() ));
 
         for (int i = 0; i < submissions.size(); i++) {
             submissionsList.getItems().add(new CheckBox(submissions.get(i)));

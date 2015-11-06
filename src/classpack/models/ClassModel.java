@@ -4,14 +4,16 @@ import java.util.*;
 
 public class ClassModel {
 
-    //ArrayList<Bin> bins = new ArrayList<Bins>();
+    HashMap<Integer, TestBinModel> bins = new HashMap<Integer, TestBinModel>();
 
     public ClassModel() {
 
     }
 
-    public ArrayList<String> getSubmissionsFromBin(int testId) {
+    public TestBinModel getTestBin(int testBinId) {
 
-        return new ArrayList<String>(Arrays.asList("spongebob", "darth vader", "lord voldemort", "mike wazowski"));
+        //return bins.get(testBinId);
+        return new TestBinModel();
     }
+
 }
