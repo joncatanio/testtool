@@ -89,6 +89,17 @@ public class GenericQuestionController extends QuestionController {
 
         questionModel.setHint(hint.getText());
         questionModel.setQuestion(questionText.getText());
+
+        // return to Add Question scene
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/PickQuestionType.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        QuestionController q = parentLoader.getController();
+        q.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
     }
 
     // TODO: Doesn't actually clear woo
