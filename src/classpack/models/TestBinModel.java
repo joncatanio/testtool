@@ -2,6 +2,7 @@ package classpack.models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import test.models.*;
 
 public class TestBinModel {
 
@@ -20,10 +21,11 @@ public class TestBinModel {
         return id;
     }
 
-    public void regradeForSubmissions(int[] ids) {
+    public void regradeForSubmissions(ArrayList<Integer> ids) {
 
-        for(int i = 0; i < ids.length; i++) {
-            //regrade(ids[i]);
+        TestHandlerModel grader = new TestHandlerModel();
+        for(int i = 0; i < ids.size(); i++) {
+            grader.regrade(ids.get(i));
         }
     }
 

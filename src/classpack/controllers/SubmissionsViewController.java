@@ -1,5 +1,6 @@
 package classpack.controllers;
 
+import com.sun.tools.javac.comp.Check;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,16 +20,20 @@ public class SubmissionsViewController extends ClassTestsViewController{
 
     public ListView submissionsList;
     public Button regradeButton;
-    public int currentTestBinId;
+
+    private ClassModel currClass;
+    private int testBinId;
+    private int classId;
 
     // list of student submission objects goes here
     ArrayList<String> submissions = new ArrayList<String>();
 
     public void populateSubmissionsList(int classId, int testBinId) {
 
-        currentTestBinId = testBinId;
+        this.testBinId = testBinId;
+        this.classId = classId;
 
-        ClassModel currClass = new ClassModel(); // = ClassDB.getClassById( classId );
+        currClass = new ClassModel(); // = ClassDB.getClassById( classId );
         submissions = currClass.getTestBin(testBinId).getSubmissions();
 
         classAverageLabel.setText(Double.toString( currClass.getTestBin(testBinId).getAverage() ));
@@ -53,5 +58,18 @@ public class SubmissionsViewController extends ClassTestsViewController{
     }
 
     public void regradeSelectedSubmissions(ActionEvent actionEvent) {
+
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+
+        for ( int i = 0; i < submissionsList.getItems().size(); i++ ) {
+            CheckBox temp = (CheckBox) submissionsList.getItems().get(i);
+            if ( temp.isSelected()) {
+                //System.out.println(temp.getText() + " regraded");
+                ids.add(123);
+            }
+        }
+
+        currClass.getTestBin(testBinId).regradeForSubmissions(ids);
+
     }
 }
