@@ -9,9 +9,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage mainStage) throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreenView.fxml"));
         Parent root = loader.load();
-        QuestionController first = loader.getController();
+        LoginScreenController first = loader.getController();
         first.populateInterface(mainStage);
         mainStage.setTitle("Test Tool");
         mainStage.setMinWidth(900);
