@@ -1,15 +1,9 @@
 package question.controllers;
-import classpack.controllers.ClassPackController;
-import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 import question.models.QuestionModel;
-import test.controllers.TestController;
-import user.controllers.UserController;
 
 import java.io.IOException;
 
@@ -71,7 +65,7 @@ public class PickQuestionTypeController extends QuestionController {
 
             GenericQuestionController test = parentLoader.getController();
             test.populateInterface(currStage);
-            test.initiateQuestionModel(questionModel);
+            test.initializeQuestionModel(questionModel);
         }
         else if(ShortAnswerButton.isSelected()){
             questionModel.setQuestionType("ShortAnswer");
@@ -81,7 +75,7 @@ public class PickQuestionTypeController extends QuestionController {
 
             GenericQuestionController test = parentLoader.getController();
             test.populateInterface(currStage);
-            test.initiateQuestionModel(questionModel);
+            test.initializeQuestionModel(questionModel);
         }
         else if(CodingButton.isSelected()){
             questionModel.setQuestionType("Coding");
@@ -91,7 +85,7 @@ public class PickQuestionTypeController extends QuestionController {
 
             GenericQuestionController test = parentLoader.getController();
             test.populateInterface(currStage);
-            test.initiateQuestionModel(questionModel);
+            test.initializeQuestionModel(questionModel);
         }
         else if(UMLButton.isSelected()){
             questionModel.setQuestionType("UML");
@@ -101,7 +95,7 @@ public class PickQuestionTypeController extends QuestionController {
 
             GenericQuestionController test = parentLoader.getController();
             test.populateInterface(currStage);
-            test.initiateQuestionModel(questionModel);
+            test.initializeQuestionModel(questionModel);
         }
         else if(MatchingButton.isSelected()){
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/AddMatchingView.fxml"));
