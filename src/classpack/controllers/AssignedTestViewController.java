@@ -21,7 +21,7 @@ public class AssignedTestViewController extends ClassTestsViewController{
 
         SubmissionsViewController submissions = parentLoader.getController();
         submissions.populateInterface(currStage);
-
+        submissions.populateSubmissionsList();
         currStage.setScene(nextScene);
         currStage.show();
     }

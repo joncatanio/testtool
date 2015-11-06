@@ -57,12 +57,17 @@
                   <Label layoutX="200.0" layoutY="10.0" text="Name:" />
                   <TextField fx:id="name" layoutX="345.0" layoutY="6.0" />
 <<<<<<< HEAD
+<<<<<<< HEAD
                   <MenuButton fx:id="questionTypes" alignment="CENTER" layoutX="348.0" layoutY="185.0" mnemonicParsing="false" prefWidth="150.0" text="Select" textAlignment="CENTER">
+=======
+                  <MenuButton fx:id="questionTypes" layoutX="348.0" layoutY="185.0" mnemonicParsing="false" prefWidth="150.0" text="Select">
+>>>>>>> 775a6f8474f6ae414535e53921e8721cd95c591c
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
+<<<<<<< HEAD
                   <MenuButton alignment="CENTER" layoutX="348.0" layoutY="246.0" mnemonicParsing="false" prefWidth="150.0" text="Select" textAlignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
@@ -78,6 +83,8 @@
 =======
                   <ComboBox fx:id="questionTypes" layoutX="348.0" layoutY="185.0" prefWidth="150.0" />
 >>>>>>> 1fa5380e73aa15bf9b68dcfa5659b6f54b1a13b6
+=======
+>>>>>>> 775a6f8474f6ae414535e53921e8721cd95c591c
                </children></AnchorPane>
             </items>
         </SplitPane>
