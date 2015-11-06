@@ -26,6 +26,11 @@ public class GenerateTestController extends TestController {
     // ChoiceBoxes
     public MenuButton questionTypes;
     private ListView<String> selectedQuestionTypes;
+    public MenuButton classes;
+    private ListView<String> selectedClasses;
+    public MenuButton classSubjects;
+    private ListView<String> selectedSubjects;
+
 
     public GenerateTestController() {
 
@@ -78,6 +83,57 @@ public class GenerateTestController extends TestController {
                     selectedQuestionTypes.getItems().add(item.getText());
                 } else {
                     selectedQuestionTypes.getItems().remove(item.getText());
+                }
+            });
+        }
+
+        classes.getItems().remove(0);
+        classes.getItems().remove(0);
+        List<CheckMenuItem> classItems = Arrays.asList(
+                new CheckMenuItem("CPE 101"),
+                new CheckMenuItem("CPE 102"),
+                new CheckMenuItem("CPE 103"),
+                new CheckMenuItem("CSC 307"),
+                new CheckMenuItem("CPE 349"),
+                new CheckMenuItem("CPE 357"),
+                new CheckMenuItem("CSC 445")
+        );
+        classes.getItems().addAll(classItems);
+
+        // Subscribe to selected menu items.
+        selectedClasses = new ListView<>();
+        for (CheckMenuItem item : questionTypeItems) {
+            item.selectedProperty().addListener((observable, wasSelected, isSelected) -> {
+                if (isSelected) {
+                    selectedClasses.getItems().add(item.getText());
+                } else {
+                    selectedClasses.getItems().remove(item.getText());
+                }
+            });
+        }
+
+        classSubjects.getItems().remove(0);
+        classSubjects.getItems().remove(0);
+        List<CheckMenuItem> classSubjectItems = Arrays.asList(
+                new CheckMenuItem("CPE 101 - Strings/Arrays"),
+                new CheckMenuItem("CPE 101 - Pointers"),
+                new CheckMenuItem("CPE 349 - Graphs"),
+                new CheckMenuItem("CPE 357 - Advanced Pointers"),
+                new CheckMenuItem("CPE 357 - LZW"),
+                new CheckMenuItem("CPE 357 - IPC"),
+                new CheckMenuItem("CSC 445 - Turing Machines"),
+                new CheckMenuItem("CSC 445 - Undecidability")
+        );
+        classSubjects.getItems().addAll(classSubjectItems);
+
+        // Subscribe to selected menu items.
+        selectedSubjects = new ListView<>();
+        for (CheckMenuItem item : questionTypeItems) {
+            item.selectedProperty().addListener((observable, wasSelected, isSelected) -> {
+                if (isSelected) {
+                    selectedSubjects.getItems().add(item.getText());
+                } else {
+                    selectedSubjects.getItems().remove(item.getText());
                 }
             });
         }
