@@ -11,7 +11,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.controllers.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.controllers.UserController">
     <children>
         <ToolBar minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
             <items>
@@ -21,57 +21,19 @@
             <items>
                 <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0">
                     <children>
-                        <Button defaultButton="true" layoutY="1.0" mnemonicParsing="false" onAction="#switchGeneral" prefHeight="40.0" prefWidth="200.0" text="General" />
+                        <Button layoutY="1.0" mnemonicParsing="false" onAction="#switchGeneral" prefHeight="40.0" prefWidth="200.0" text="General" />
                         <Button layoutY="41.0" mnemonicParsing="false" onAction="#switchCustomization" prefHeight="40.0" prefWidth="200.0" text="Customization" />
-                        <Button layoutY="81.0" mnemonicParsing="false" onAction="#switchSecurity" prefHeight="40.0" prefWidth="200.0" text="Security" />
+                        <Button defaultButton="true" layoutY="81.0" mnemonicParsing="false" onAction="#switchSecurity" prefHeight="40.0" prefWidth="200.0" text="Security" />
                     </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                     <Label layoutX="314.0" layoutY="221.0" />
-                    <Label layoutX="14.0" layoutY="14.0" text="Current Email" />
-                    <TextField fx:id="email" layoutX="44.0" layoutY="46.0" />
-                    <Label layoutX="14.0" layoutY="89.0" text="Full Name" />
-                    <TextField fx:id="name" layoutX="44.0" layoutY="123.0" />
-                    <Label layoutX="14.0" layoutY="173.0" text="Email Notification Setting" />
-                    <VBox layoutX="49.0" layoutY="190.0" prefHeight="93.0" prefWidth="267.0">
-                        <children>
-                            <RadioButton fx:id="default_email" selected="true" layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting">
-                                <padding>
-                                    <Insets bottom="10.0" top="10.0" />
-                                </padding>
-                                <toggleGroup>
-                                    <ToggleGroup fx:id="email_settings" />
-                                </toggleGroup></RadioButton>
-                            <RadioButton fx:id="all_email" layoutX="56.0" layoutY="229.0" mnemonicParsing="false" text="Receive All Emails" toggleGroup="$email_settings">
-                                <padding>
-                                    <Insets bottom="10.0" />
-                                </padding></RadioButton>
-                            <RadioButton fx:id="no_email" layoutX="56.0" layoutY="255.0" mnemonicParsing="false" text="Receive No Emails" toggleGroup="$email_settings">
-                                <padding>
-                                    <Insets bottom="10.0" />
-                                </padding></RadioButton>
-                        </children>
-                    </VBox>
-                    <Label layoutX="14.0" layoutY="297.0" text="Timer Notification Setting" />
-                    <VBox layoutX="49.0" layoutY="314.0" prefHeight="0.0" prefWidth="267.0">
-                        <children>
-                            <RadioButton fx:id="default_timer" selected="true" layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting">
-                                <padding>
-                                    <Insets bottom="10.0" top="10.0" />
-                                </padding>
-                                <toggleGroup>
-                                    <ToggleGroup fx:id="timer_settings" />
-                                </toggleGroup></RadioButton>
-                            <RadioButton fx:id="all_timer" layoutX="56.0" layoutY="229.0" mnemonicParsing="false" text="Enable All Timers" toggleGroup="$timer_settings">
-                                <padding>
-                                    <Insets bottom="10.0" />
-                                </padding></RadioButton>
-                            <RadioButton fx:id="no_timer" layoutX="56.0" layoutY="255.0" mnemonicParsing="false" text="Enable No Timers" toggleGroup="$timer_settings">
-                                <padding>
-                                    <Insets bottom="10.0" />
-                                </padding></RadioButton>
-                        </children>
-                    </VBox>
-                    <Button layoutX="563.0" layoutY="418.0" mnemonicParsing="false" onAction="#updateGeneralSettings" prefHeight="17.0" prefWidth="113.0" text="Submit" />
+                    <Label layoutX="14.0" layoutY="14.0" text="Change Password" />
+                    <TextField fx:id="current_password" layoutX="44.0" layoutY="46.0" promptText="Current Password" />
+                    <TextField fx:id="new_password" layoutX="44.0" layoutY="84.0" promptText="New Password" />
+                    <TextField fx:id="confirm_password" layoutX="44.0" layoutY="123.0" promptText="Confirm Password" />
+                    <Label layoutX="14.0" layoutY="173.0" text="FERPA Setting" />
+                    <CheckBox fx:id="ferpa_setting" layoutX="44.0" layoutY="203.0" mnemonicParsing="false" text="Waive FERPA rights?" />
+                    <Button layoutX="563.0" layoutY="418.0" mnemonicParsing="false" onAction="#updateSecuritySettings" prefHeight="17.0" prefWidth="113.0" text="Submit" />
                 </AnchorPane>
             </items>
         </SplitPane>

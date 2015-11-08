@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 import user.models.*;
 
 public class UserController {
+    // General tab
     public TextField name;
     public TextField email;
 
@@ -29,6 +30,16 @@ public class UserController {
     public RadioButton default_timer;
     public RadioButton all_timer;
     public RadioButton no_timer;
+
+    // Customization tab
+    public ChoiceBox color_options = new ChoiceBox();
+
+    //Security tab
+    public TextField current_password;
+    public TextField new_password;
+    public TextField confirm_password;
+
+    public CheckBox ferpa_setting;
 
     public ChoiceBox selectSection = new ChoiceBox();
     protected Stage currStage;
@@ -149,6 +160,55 @@ public class UserController {
         }
         else if (no_timer.isSelected()) {
             currentSettings.setTimerSetting(2);
+        }
+
+        tempUser.getUserSettings();
+
+        System.out.println("...done updating!");
+    }
+
+    /**
+     * Called by the view when a user hits the "Submit" button within the customization tab of the settings section.
+     */
+    public void updateCustomizationSettings() {
+        UserModel tempUser = new UserModel("reed_test", "temp_pass");
+
+        System.out.println("Updating customization user settings...");
+
+        UserSettingsModel currentSettings = tempUser.getUserSettings();
+
+        currentSettings.setThemeColor(color_options.toString());
+
+        tempUser.getUserSettings();
+
+        System.out.println("...done updating!");
+    }
+
+    /**
+     * Called by the view when a user hits the "Submit" button within the security tab of the settings section.
+     */
+    public void updateSecuritySettings() {
+        UserModel tempUser = new UserModel("reed_test", "temp_pass");
+
+        System.out.println("Updating security user settings...");
+
+        UserSettingsModel currentSettings = tempUser.getUserSettings();
+
+        String currentPassword = current_password.getText();
+        String newPassword = new_password.getText();
+        String confirmPassword = confirm_password.getText();
+
+        if (newPassword.equals(confirmPassword)) {
+            System.out.println("New Password and Confirm Password fields match! Attempting password change...");
+            tempUser.setPassword(currentPassword, newPassword);
+        } else {
+            System.out.println("New Password and Confirm Password fields do not match.");
+        }
+
+        if (ferpa_setting.isSelected()) {
+            currentSettings.setFerpaStatus(true);
+        } else {
+            currentSettings.setFerpaStatus(false);
         }
 
         tempUser.getUserSettings();

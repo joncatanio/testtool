@@ -59,7 +59,7 @@ public class UserSettingsModel {
         email = "";
         emailSetting = 0;
         timerSetting = 0;
-        themeColor = "white";
+        themeColor = "White";
         ferpaStatus = false;
     }
 
@@ -166,7 +166,7 @@ public class UserSettingsModel {
      * Sets the current FERPA status for the user.
      * @param newFerpaStatus The user's new ferpa status.
      */
-    public void setFerpaWaived(boolean newFerpaStatus) {
+    public void setFerpaStatus(boolean newFerpaStatus) {
         System.out.println("newFerpaStatus= " + newFerpaStatus);
         ferpaStatus = newFerpaStatus;
     }
