@@ -22,9 +22,9 @@
             <items>
                 <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0">
                <children>
-                  <Button defaultButton="true" layoutY="1.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="General" />
-                  <Button layoutY="41.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Customization" />
-                  <Button layoutY="81.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="200.0" text="Security" />
+                  <Button defaultButton="true" layoutY="1.0" mnemonicParsing="false" onAction="#switchGeneral" prefHeight="40.0" prefWidth="200.0" text="General" />
+                  <Button layoutY="41.0" mnemonicParsing="false" onAction="#switchCustomization" prefHeight="40.0" prefWidth="200.0" text="Customization" />
+                  <Button layoutY="81.0" mnemonicParsing="false" onAction="#switchSecurity" prefHeight="40.0" prefWidth="200.0" text="Security" />
                </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                         <Label layoutX="314.0" layoutY="221.0" />
@@ -35,7 +35,7 @@
                   <Label layoutX="14.0" layoutY="173.0" text="Email Notification Setting" />
                   <VBox layoutX="49.0" layoutY="190.0" prefHeight="93.0" prefWidth="267.0">
                     <children>
-                        <RadioButton fx:id="default_email" layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting">
+                        <RadioButton fx:id="default_email" selected="true" layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting">
                         <padding>
                            <Insets bottom="10.0" top="10.0" />
                         </padding>
@@ -55,7 +55,7 @@
                   <Label layoutX="14.0" layoutY="297.0" text="Timer Notification Setting" />
                   <VBox layoutX="49.0" layoutY="314.0" prefHeight="0.0" prefWidth="267.0">
                       <children>
-                          <RadioButton fx:id="default_timer" layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting">
+                          <RadioButton fx:id="default_timer" selected="true" layoutX="56.0" layoutY="203.0" mnemonicParsing="false" text="Default to Individual Class Setting">
                               <padding>
                                   <Insets bottom="10.0" top="10.0" />
                               </padding>

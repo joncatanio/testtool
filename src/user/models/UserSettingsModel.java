@@ -181,6 +181,10 @@ public class UserSettingsModel {
 
     }
 
+    /**
+     * Returns a simple string listing the current state of all the fields
+     * @return A String of all the fields of the object.
+     */
     public String toString() {
         return "(name= " + name + " email= " + email + " emailSetting= " + emailSetting + " timerSetting= " +
                 timerSetting + " themeColor= " + themeColor + " ferpaStatus = " + ferpaStatus + ")";

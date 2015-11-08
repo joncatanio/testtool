@@ -37,6 +37,7 @@ public class UserController {
         currStage = stage;
         selectSection.setItems(FXCollections.observableArrayList("Questions", "Tests", "Classes", "Settings"));
         selectSection.getSelectionModel().select(3);
+        System.out.println("Opened Settings");
     }
 
     public void sectionChange(ActionEvent actionEvent) throws IOException{
@@ -75,6 +76,51 @@ public class UserController {
         }
     }
 
+    public void switchGeneral() throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/SettingsView.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        UserController user = parentLoader.getController();
+        user.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
+
+        System.out.println("Switched to the general settings tab");
+    }
+
+    public void switchCustomization() throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/CustomizationView.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        UserController user = parentLoader.getController();
+        user.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
+
+        System.out.println("Switched to the customization settings tab");
+    }
+
+    public void switchSecurity() throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/SecurityView.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        UserController user = parentLoader.getController();
+        user.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
+
+        System.out.println("Switched to the security settings tab");
+    }
+
+    /**
+     * Called by the view when a user hits the "Submit" button within the general tab of the settings section.
+     */
     public void updateGeneralSettings() {
         UserModel tempUser = new UserModel("reed_test", "temp_pass");
 
