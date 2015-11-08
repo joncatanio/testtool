@@ -40,6 +40,11 @@ public class UserModel {
      */
     private UserSettingsModel currentSettings;
 
+    /**
+     * Constructor for a new UserModel object.
+     * @param newUsername The username given by the user at sign-up.
+     * @param newPassword The password given by the user at sign-up.
+     */
     public UserModel (String newUsername, String newPassword) {
         id = UUID.randomUUID().toString();
         System.out.println("id = " + id);
@@ -59,6 +64,7 @@ public class UserModel {
      * @return This user's id.
      */
     public String getId() {
+        System.out.println("id= " + id);
         return id;
     }
 
@@ -67,6 +73,7 @@ public class UserModel {
      * @return This user's username.
      */
     public String getUsername() {
+        System.out.println("username= " + username);
         return username;
     }
 
@@ -76,8 +83,13 @@ public class UserModel {
      * @param newPassword The user's new password.
      */
     public void setPassword(String currentPassword, String newPassword) {
+        System.out.println("currentPassword= " + currentPassword);
+        System.out.println("newPassword= " + newPassword);
         if (currentPassword.equals(password)) {
+            System.out.println("Passwords match!");
             password = newPassword;
+        } else {
+            System.out.println("Passwords do not match...");
         }
     }
 
@@ -86,6 +98,7 @@ public class UserModel {
      * @return This user's current settings.
      */
     public UserSettingsModel getUserSettings() {
+        System.out.println("currentSettings= " + currentSettings);
         return currentSettings;
     }
 
@@ -94,6 +107,7 @@ public class UserModel {
      * @param newSettings  The user's new settings.
      */
     public void setUserSettings(UserSettingsModel newSettings) {
+        System.out.println("newSettings= " + newSettings);
         currentSettings = newSettings;
     }
 }

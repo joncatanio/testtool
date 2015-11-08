@@ -12,8 +12,24 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import question.controllers.QuestionController;
 import test.controllers.TestController;
+import javafx.scene.control.*;
+
+import user.models.*;
 
 public class UserController {
+    public TextField name;
+    public TextField email;
+
+    public ToggleGroup email_settings;
+    public RadioButton default_email;
+    public RadioButton all_email;
+    public RadioButton no_email;
+
+    public ToggleGroup timer_settings;
+    public RadioButton default_timer;
+    public RadioButton all_timer;
+    public RadioButton no_timer;
+
     public ChoiceBox selectSection = new ChoiceBox();
     protected Stage currStage;
 
@@ -57,5 +73,40 @@ public class UserController {
             currStage.setScene(nextScene);
             currStage.show();
         }
+    }
+
+    public void updateGeneralSettings() {
+        UserModel tempUser = new UserModel("reed_test", "temp_pass");
+
+        System.out.println("Updating general user settings...");
+
+        UserSettingsModel currentSettings = tempUser.getUserSettings();
+
+        currentSettings.setName(name.getText());
+        currentSettings.setEmail(email.getText());
+
+        if (default_email.isSelected()) {
+            currentSettings.setEmailSetting(0);
+        }
+        else if (all_email.isSelected()) {
+            currentSettings.setEmailSetting(1);
+        }
+        else if (no_email.isSelected()) {
+            currentSettings.setEmailSetting(2);
+        }
+
+        if (default_timer.isSelected()) {
+            currentSettings.setTimerSetting(0);
+        }
+        else if (all_timer.isSelected()) {
+            currentSettings.setTimerSetting(1);
+        }
+        else if (no_timer.isSelected()) {
+            currentSettings.setTimerSetting(2);
+        }
+
+        tempUser.getUserSettings();
+
+        System.out.println("...done updating!");
     }
 }

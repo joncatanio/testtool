@@ -22,6 +22,26 @@ public class UserSettingsModel {
     private String email;
 
     /**
+     * The global setting for email notifications.
+     * 0 = default to class setting
+     * 1 = all notifications
+     * 2 = no notifications
+     *
+     * Default is 0.
+     */
+    private int emailSetting;
+
+    /**
+     * The global setting for timers appearing in tests.
+     * 0 = default to class setting
+     * 1 = all timers
+     * 2 = no timers
+     *
+     * Default is 0.
+     */
+    private int timerSetting;
+
+    /**
      * The user's chosen color theme for the application.  Defaults to white.
      */
     private String themeColor;
@@ -30,6 +50,18 @@ public class UserSettingsModel {
      * Whether the user has waived their FERPA rights. Defaults to false.
      */
     private boolean ferpaStatus;
+
+    /**
+     * Constructor for a new UserSettingsModel object.
+     */
+    public UserSettingsModel() {
+        name = "";
+        email = "";
+        emailSetting = 0;
+        timerSetting = 0;
+        themeColor = "white";
+        ferpaStatus = false;
+    }
 
     /**
      * Gets the current name of the user.
@@ -65,6 +97,42 @@ public class UserSettingsModel {
     public void setEmail(String newEmail) {
         System.out.println("name= " + newEmail);
         email = newEmail;
+    }
+
+    /**
+     * Gets the current email notification setting of the user.
+     * @return This user's email notification setting.
+     */
+    public int getEmailSetting() {
+        System.out.println("emailSetting= " + emailSetting);
+        return emailSetting;
+    }
+
+    /**
+     * Sets the current email notification setting of the user.
+     * @param newEmailSetting The user's new email notification setting.
+     */
+    public void setEmailSetting(int newEmailSetting) {
+        System.out.println("newEmailSetting= " + newEmailSetting);
+        emailSetting = newEmailSetting;
+    }
+
+    /**
+     * Gets the current timer setting of the user.
+     * @return This user's timer setting.
+     */
+    public int getTimerSetting() {
+        System.out.println("timerSetting= " + timerSetting);
+        return timerSetting;
+    }
+
+    /**
+     * Sets the current timer setting of the user.
+     * @param newTimerSetting The user's new timer setting.
+     */
+    public void setTimerSetting(int newTimerSetting) {
+        System.out.println("newTimerSetting= " + newTimerSetting);
+        timerSetting = newTimerSetting;
     }
 
     /**
@@ -111,5 +179,10 @@ public class UserSettingsModel {
      */
     void updateUserSettings(UserModel u) {
 
+    }
+
+    public String toString() {
+        return "(name= " + name + " email= " + email + " emailSetting= " + emailSetting + " timerSetting= " +
+                timerSetting + " themeColor= " + themeColor + " ferpaStatus = " + ferpaStatus + ")";
     }
 }
