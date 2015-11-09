@@ -87,6 +87,10 @@ public class UserController {
         }
     }
 
+    /**
+     * Switches the active tab to the General tab in the Settings section.
+     * @throws IOException
+     */
     public void switchGeneral() throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/SettingsView.fxml"));
         Parent nextSceneParent = parentLoader.load();
@@ -101,6 +105,10 @@ public class UserController {
         System.out.println("Switched to the general settings tab");
     }
 
+    /**
+     * Switches the active tab to the Customization tab in the Settings section.
+     * @throws IOException
+     */
     public void switchCustomization() throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/CustomizationView.fxml"));
         Parent nextSceneParent = parentLoader.load();
@@ -115,6 +123,10 @@ public class UserController {
         System.out.println("Switched to the customization settings tab");
     }
 
+    /**
+     * Switches the active tab to the Security tab in the Settings section.
+     * @throws IOException
+     */
     public void switchSecurity() throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/SecurityView.fxml"));
         Parent nextSceneParent = parentLoader.load();
