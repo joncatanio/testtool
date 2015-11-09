@@ -1,11 +1,10 @@
 # testtool
 Test tool for CPE 307
 
-### Who Loves This Project
-
-I love this project
-
-#### I also loves this project
+#### Running TestTool
+Locate the shell script in the root directory called "Run-TestTool.sh" and simply
+execute the shell file with the command "./Run-TestTool.sh". Make sure you are 
+in the same directory as the file.
 
 #### What to do when committing
 We add all of our files to Intellij's src directory. When you are 
