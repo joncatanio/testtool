@@ -44,7 +44,7 @@ public class GenericQuestionController extends QuestionController {
 
     // TODO: only free response opens to my view :(
 
-    public void initiateQuestionModel(QuestionModel qm) {
+    public void initializeQuestionModel(QuestionModel qm) {
         this.initialQuestionModel = this.questionModel = qm;
 
         this.questionType = new Label(questionModel.getQuestionType());
@@ -58,13 +58,14 @@ public class GenericQuestionController extends QuestionController {
         this.classes.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
         this.classes.getSelectionModel().select(0);
 
+        // TODO: Fix this so they actually populate on load
         this.charLimit.setText(Integer.toString(questionModel.getCharLimit()));
         this.points.setText(Integer.toString(questionModel.getPointsPossible()));
     }
 
     public void addQuestion() throws IOException {
         // This will take all the fields and instantiate and object and pass it along to be created.
-        System.out.println("\nAdd question!");
+        System.out.println("\nAdding question!");
 
         // TODO: Add error handling
 
@@ -102,12 +103,25 @@ public class GenericQuestionController extends QuestionController {
         currStage.show();
     }
 
-    // TODO: Doesn't actually clear woo
-    public void clearForm() {
-        questionModel = initialQuestionModel;
+    // TODO: Actually clears but throws nullptrexc when adding question
+    public void clearForm() throws IOException {
+        System.out.println("\nClearing form!");
+
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        QuestionController q = parentLoader.getController();
+        q.populateInterface(currStage);
+        initializeQuestionModel(initialQuestionModel);
+
+        currStage.setScene(nextScene);
+        currStage.show();
     }
 
     public void cancel() throws IOException {
+        System.out.println("\nGetting out of here!");
+
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
