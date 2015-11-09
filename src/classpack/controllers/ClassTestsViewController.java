@@ -20,7 +20,7 @@ public class ClassTestsViewController extends ClassPackController{
 
     public void goBackToClasses(ActionEvent actionEvent) throws IOException {
 
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../classpack/views/ClassView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/ClassView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

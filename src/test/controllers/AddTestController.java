@@ -16,7 +16,7 @@ public class AddTestController extends TestController {
     }
 
     public void generateRandomTest() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenerateTestView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/GenerateTestView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

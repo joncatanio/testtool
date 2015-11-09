@@ -25,12 +25,14 @@
                     </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="700.0">
                <children>
-                  <Label layoutX="200.0" layoutY="70.0" text="Number of Questions:" />
+                   <Label layoutX="200.0" layoutY="10.0" text="Name:" />
+                   <Label layoutX="200.0" layoutY="70.0" text="Number of Questions:" />
                   <Label layoutX="200.0" layoutY="130.0" text="Difficulty:" />
                   <Label layoutX="200.0" layoutY="190.0" text="Question Types:" />
                   <Label layoutX="200.0" layoutY="250.0" text="Class:" />
                   <Label layoutX="200.0" layoutY="310.0" text="Class Subjects:" />
-
+                   <TextField fx:id="name" layoutX="345.0" layoutY="6.0" />
+                   <TextField fx:id="numQuestions" layoutX="345.0" layoutY="66.0" prefHeight="27.0" prefWidth="43.0" />
                    <HBox layoutX="348.0" layoutY="131.0">
                     <fx:define>
                         <ToggleGroup fx:id="difficulty" />
@@ -52,10 +54,6 @@
                        <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficulty" />
                     </children>
                    </HBox>
-                  <Button layoutX="227.5" layoutY="381.0" mnemonicParsing="false" onAction="#generate" prefHeight="42.0" prefWidth="245.0" text="Generate" />
-                  <TextField fx:id="numQuestions" layoutX="345.0" layoutY="66.0" prefHeight="27.0" prefWidth="43.0" />
-                  <Label layoutX="200.0" layoutY="10.0" text="Name:" />
-                  <TextField fx:id="name" layoutX="345.0" layoutY="6.0" />
                   <MenuButton fx:id="questionTypes" alignment="CENTER" layoutX="348.0" layoutY="185.0" mnemonicParsing="false" prefWidth="150.0" text="Select" textAlignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
@@ -74,6 +72,7 @@
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
+                   <Button layoutX="227.5" layoutY="381.0" mnemonicParsing="false" onAction="#generate" prefHeight="42.0" prefWidth="245.0" text="Generate" />
                </children></AnchorPane>
             </items>
         </SplitPane>
