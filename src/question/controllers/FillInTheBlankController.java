@@ -76,7 +76,7 @@ public class FillInTheBlankController extends QuestionController {
                                         questionModel.setDifficulty(3);
                                     }
 
-                                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+                                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
                                     Parent nextSceneParent = parentLoader.load();
                                     Scene nextScene = new Scene(nextSceneParent);
 
@@ -111,7 +111,7 @@ public class FillInTheBlankController extends QuestionController {
     }
 
     public void Cancel(ActionEvent actionEvent) throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

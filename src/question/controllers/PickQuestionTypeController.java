@@ -35,7 +35,7 @@ public class PickQuestionTypeController extends QuestionController {
         QuestionModel questionModel = new QuestionModel();
         if(FillInTheBlankButton.isSelected()){
             questionModel.setQuestionType("FillInTheBlank");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/FillInTheBlankQuestion.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/FillInTheBlankQuestion.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
 
@@ -45,7 +45,7 @@ public class PickQuestionTypeController extends QuestionController {
         }
         else if(MultipleChoiceButton.isSelected()){
             questionModel.setQuestionType("MultipleChoice");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/AddMultipleChoiceView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/AddMultipleChoiceView.fxml"));
             Parent nextSceneParent = parentLoader.load();
              nextScene = new Scene(nextSceneParent);
 
@@ -55,7 +55,7 @@ public class PickQuestionTypeController extends QuestionController {
         }
         else if(MultipleSelectButton.isSelected()){
             questionModel.setQuestionType("MultipleSlect");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/AddMultipleSelectView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/AddMultipleSelectView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
 
@@ -65,7 +65,7 @@ public class PickQuestionTypeController extends QuestionController {
         }
         else if(FreeResponseButton.isSelected()){
             questionModel.setQuestionType("FreeResponse");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
 
@@ -75,7 +75,7 @@ public class PickQuestionTypeController extends QuestionController {
         }
         else if(ShortAnswerButton.isSelected()){
             questionModel.setQuestionType("ShortAnswer");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
 
@@ -85,7 +85,7 @@ public class PickQuestionTypeController extends QuestionController {
         }
         else if(CodingButton.isSelected()){
             questionModel.setQuestionType("Coding");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
 
@@ -95,7 +95,7 @@ public class PickQuestionTypeController extends QuestionController {
         }
         else if(UMLButton.isSelected()){
             questionModel.setQuestionType("UML");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
 
@@ -104,7 +104,7 @@ public class PickQuestionTypeController extends QuestionController {
             test.initiateQuestionModel(questionModel);
         }
         else if(MatchingButton.isSelected()){
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/AddMatchingView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/AddMatchingView.fxml"));
             Parent nextSceneParent = parentLoader.load();
              nextScene = new Scene(nextSceneParent);
 
@@ -114,7 +114,7 @@ public class PickQuestionTypeController extends QuestionController {
             questionModel.setQuestionType("Matching");
         }
         else {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
 

@@ -19,6 +19,7 @@ public class LoginScreenController extends MainController {
 
     public void submit() throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/login/views/SplashPageView.fxml"));
+        System.out.println("/login/views/SplashPageView.fxml");
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

@@ -24,7 +24,7 @@ public class ClassViewController extends ClassPackController{
     }
 
     public void viewAssignedTests(ActionEvent actionEvent) throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../classpack/views/AssignedTestView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/AssignedTestView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

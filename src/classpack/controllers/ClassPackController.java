@@ -25,7 +25,7 @@ public class ClassPackController {
 
     public void sectionChange(ActionEvent actionEvent) throws IOException{
         if (selectSection.getValue() == "Questions") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../question/views/first.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
@@ -36,7 +36,7 @@ public class ClassPackController {
             currStage.show();
         }
         else if (selectSection.getValue() == "Tests") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../test/views/AddTestView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/AddTestView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
@@ -47,7 +47,7 @@ public class ClassPackController {
             currStage.show();
         }
         else if (selectSection.getValue() == "Settings") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../user/views/SettingsView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/user/views/SettingsView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 

@@ -91,7 +91,7 @@ public class GenericQuestionController extends QuestionController {
         questionModel.setQuestion(questionText.getText());
 
         // return to Add Question scene
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/PickQuestionType.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/PickQuestionType.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
@@ -108,7 +108,7 @@ public class GenericQuestionController extends QuestionController {
     }
 
     public void cancel() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

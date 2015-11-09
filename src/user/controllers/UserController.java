@@ -53,7 +53,7 @@ public class UserController {
 
     public void sectionChange(ActionEvent actionEvent) throws IOException{
         if (selectSection.getValue() == "Questions") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../question/views/first.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
@@ -64,7 +64,7 @@ public class UserController {
             currStage.show();
         }
         else if (selectSection.getValue() == "Tests") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../test/views/AddTestView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/AddTestView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
@@ -75,7 +75,7 @@ public class UserController {
             currStage.show();
         }
         else if (selectSection.getValue() == "Classes") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../classpack/views/ClassView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/ClassView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
@@ -92,7 +92,7 @@ public class UserController {
      * @throws IOException
      */
     public void switchGeneral() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/SettingsView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/user/views/SettingsView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
@@ -110,7 +110,7 @@ public class UserController {
      * @throws IOException
      */
     public void switchCustomization() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/CustomizationView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/user/views/CustomizationView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
@@ -128,7 +128,7 @@ public class UserController {
      * @throws IOException
      */
     public void switchSecurity() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/SecurityView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/user/views/SecurityView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

@@ -14,8 +14,7 @@ public class AssignedTestViewController extends ClassTestsViewController{
 
 
     public void viewSubmissions(ActionEvent actionEvent) throws IOException{
-
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../classpack/views/SubmissionsView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/SubmissionsView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
