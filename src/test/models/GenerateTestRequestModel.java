@@ -1,13 +1,22 @@
 package test.models;
 
+import utility.EQuestionTypes;
+import javafx.scene.control.ListView;
+
+import java.util.ArrayList;
+
 /**
  * Created by JonCatanio on 11/2/15.
  */
 public class GenerateTestRequestModel {
     private final int MAX_QUESTION_NUMBER = 500;
+
+    private String name;
     private int numQuestions;
     private int difficulty;
-    private String name;
+    private ArrayList<EQuestionTypes> selectedQuestionTypes;
+    private ArrayList<Integer> selectedClasses;
+    private ArrayList<Integer> selectedSubjects;
 
     public GenerateTestRequestModel() {
         this.numQuestions = 0;
@@ -47,5 +56,20 @@ public class GenerateTestRequestModel {
             System.out.println("Difficulty Value: " + val);
             this.difficulty = val;
         }
+    }
+
+    public ArrayList<EQuestionTypes> getSelectedQuestionTypes() { return this.selectedQuestionTypes; }
+    public void setSelectedQuestionTypes(ListView<String> selectedQuestionTypes) {
+        selectedQuestionTypes.getItems().forEach(System.out::println);
+    }
+
+    public ArrayList<Integer> getSelectedClasses() { return this.selectedClasses; }
+    public void setSelectedClasses(ListView<String> selectedClasses) {
+        selectedClasses.getItems().forEach(System.out::println);
+    }
+
+    public ArrayList<Integer> getSelectedSubjects() { return this.selectedSubjects; }
+    public void setSelectedSubjects(ListView<String> selectedSubjects) {
+        selectedSubjects.getItems().forEach(System.out::println);
     }
 }

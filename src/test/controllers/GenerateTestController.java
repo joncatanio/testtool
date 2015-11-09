@@ -55,8 +55,10 @@ public class GenerateTestController extends TestController {
             requestModel.setDifficulty(2);
         }
 
-        // Loop through each item and print it.
-        selectedQuestionTypes.getItems().forEach(System.out::println);
+        // Send selected choice drop downs to model.
+        requestModel.setSelectedQuestionTypes(selectedQuestionTypes);
+        requestModel.setSelectedClasses(selectedClasses);
+        requestModel.setSelectedSubjects(selectedSubjects);
     }
 
     public void populateSelectBoxes() {
@@ -102,7 +104,7 @@ public class GenerateTestController extends TestController {
 
         // Subscribe to selected menu items.
         selectedClasses = new ListView<>();
-        for (CheckMenuItem item : questionTypeItems) {
+        for (CheckMenuItem item : classItems) {
             item.selectedProperty().addListener((observable, wasSelected, isSelected) -> {
                 if (isSelected) {
                     selectedClasses.getItems().add(item.getText());
@@ -128,7 +130,7 @@ public class GenerateTestController extends TestController {
 
         // Subscribe to selected menu items.
         selectedSubjects = new ListView<>();
-        for (CheckMenuItem item : questionTypeItems) {
+        for (CheckMenuItem item : classSubjectItems) {
             item.selectedProperty().addListener((observable, wasSelected, isSelected) -> {
                 if (isSelected) {
                     selectedSubjects.getItems().add(item.getText());

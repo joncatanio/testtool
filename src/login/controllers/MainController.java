@@ -1,3 +1,5 @@
+package login.controllers;
+
 import java.io.IOException;
 
 import classpack.controllers.ClassPackController;
@@ -23,7 +25,7 @@ public class MainController {
 
     public void sectionChange(ActionEvent actionEvent) throws IOException {
         if (selectSection.getValue() == "Questions") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("question/views/first.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../question/views/first.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
@@ -33,7 +35,7 @@ public class MainController {
             currStage.setScene(nextScene);
             currStage.show();
         }else if(selectSection.getValue() == "Tests"){
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("test/views/first.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../test/views/AddTestView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
@@ -43,7 +45,7 @@ public class MainController {
             currStage.setScene(nextScene);
             currStage.show();
         }else if (selectSection.getValue() == "Classes") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("classpack/views/ClassView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../classpack/views/ClassView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 
@@ -53,7 +55,7 @@ public class MainController {
             currStage.setScene(nextScene);
             currStage.show();
         } else if (selectSection.getValue() == "Settings") {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("user/views/SettingsView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../user/views/SettingsView.fxml"));
             Parent nextSceneParent = parentLoader.load();
             Scene nextScene = new Scene(nextSceneParent);
 

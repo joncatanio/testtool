@@ -1,10 +1,10 @@
+package login.controllers;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import test.controllers.GenerateTestController;
-import test.controllers.TestController;
 
 import java.io.IOException;
 
@@ -18,7 +18,7 @@ public class LoginScreenController extends MainController {
     public LoginScreenController() {}
 
     public void submit() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("SplashPageView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/SplashPageView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

@@ -1,4 +1,4 @@
-import test.controllers.TestController;
+package login.controllers;
 
 /**
  * Created by JonCatanio on 11/5/15.
