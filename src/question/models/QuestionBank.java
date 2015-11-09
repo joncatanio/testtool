@@ -1,10 +1,12 @@
 package question.models;
 
+import java.util.*;
+
 /**
  * Created by kendall on 11/8/15.
  */
 abstract class QuestionBank {
-    Collection <Question> questions;
+    Collection <QuestionModel> questions;
     QuestionBank instance = null;
     int numberOfQuestions;
     /**
@@ -24,7 +26,7 @@ abstract class QuestionBank {
      *        data'.contains(ques) iff
      *           ques.equals(question) || data.contains(ques));
      * */
-    abstract void AddQuestion(Question question);
+    abstract void AddQuestion(QuestionModel question);
 
     /**
      *   DeleteQuestion removes a question from the "questions"
@@ -40,29 +42,29 @@ abstract class QuestionBank {
      *         !ques.equals(question) && data.contains(ques));
      *
      **/
-    abstract void DeleteQuestion(Question question);
+    abstract void DeleteQuestion(QuestionModel question);
     /**
      *   QuestionByDifficulty returns a list of questions that
      *   have the difficulty specified in the parameters
      **/
-    abstract Collection<Question> QuestionsByDifficulty(int num);
+    abstract Collection<QuestionModel> QuestionsByDifficulty(int num);
 
     /**
      *   QuestionByClass returns a list of questions that are from
      *   the specified class.
      **/
-    abstract Collection<Question> QuestionsByClass(String subject);
+    abstract Collection<QuestionModel> QuestionsByClass(String subject);
 
     /**
      *   QuestionByDateAdded returns a list of questions that were added
      *   on the specified date.
      **/
-    abstract Collection<Question> QuestionsByDateAdded(String date);
+    abstract Collection<QuestionModel> QuestionsByDateAdded(String date);
 
     /**
      *   QuestionByNumberOfUses returns a list of questions that have
      *   the same number of uses as specified.
      **/
-    abstract Collection<Question> QuestionsByNumberOfUses(int num);
+    abstract Collection<QuestionModel> QuestionsByNumberOfUses(int num);
 
 }
