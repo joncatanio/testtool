@@ -36,6 +36,13 @@ public class TestBinModel {
 
     /**
      * Return the TestBinModel's id
+     *
+     post:
+     //
+     // the returned id describes a test that is in the testbin
+     //
+     exists(TestModel test; test.id == id`)
+     *
      */
     public int getId() {
         return id;
@@ -84,6 +91,13 @@ public class TestBinModel {
 
     /**
      * Return the average score on the assigned exam
+     *
+     post:
+     //
+     // the returned value is between 0 and 100, inclusive
+     //
+        val` >= 0 && val` <=100
+     *
      */
     public double getAverage() {
         return average;
