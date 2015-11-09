@@ -67,4 +67,26 @@ abstract class QuestionBank {
      **/
     abstract Collection<QuestionModel> QuestionsByNumberOfUses(int num);
 
+    public class SE1 extends Exception {}
+    public class SE2 extends Exception {}
+
+    /**
+     * Find a question by unique question name;
+     *                                                                     <pre>
+     post:
+     //
+     // If there is a question with the given questionName in the QuestionBank, then the
+     // output question is equal to that question, otherwise the output question
+     // is null.
+     //
+     exists (Question ques ; data.contains(ques) ;
+     ques.name.equals(name) && ques.equals(return))
+     ||
+     !exists (Question ques ; data.contains(ques) ;
+     ques.name.equals(name)) && return == null;
+
+     *
+     */
+    abstract QuestionModel findByQuestionName(String name);
+
 }
