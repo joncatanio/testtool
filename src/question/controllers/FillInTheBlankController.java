@@ -38,8 +38,11 @@ public class FillInTheBlankController extends QuestionController {
     }
 
     public void populateChoiceBoxes() {
-        className.setItems(FXCollections.observableArrayList("Questions", "Tests", "Classes", "Settings"));
-        subject.setItems(FXCollections.observableArrayList("Questions", "Tests", "Classes", "Settings"));
+        className.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
+        subject.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
+        subject.getSelectionModel().select(0);
+        className.getSelectionModel().select(0);
+
     }
 
     public void AddQuestionToBank(ActionEvent actionEvent) throws IOException {
@@ -73,7 +76,7 @@ public class FillInTheBlankController extends QuestionController {
                                         questionModel.setDifficulty(3);
                                     }
 
-                                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+                                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
                                     Parent nextSceneParent = parentLoader.load();
                                     Scene nextScene = new Scene(nextSceneParent);
 
@@ -108,7 +111,7 @@ public class FillInTheBlankController extends QuestionController {
     }
 
     public void Cancel(ActionEvent actionEvent) throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/first.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 

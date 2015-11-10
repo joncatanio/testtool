@@ -1,13 +1,22 @@
 package test.models;
 
+import utility.EQuestionTypes;
+import javafx.scene.control.ListView;
+
+import java.util.ArrayList;
+
 /**
  * Created by JonCatanio on 11/2/15.
  */
 public class GenerateTestRequestModel {
     private final int MAX_QUESTION_NUMBER = 500;
+
+    private String name;
     private int numQuestions;
     private int difficulty;
-    private String name;
+    private ArrayList<EQuestionTypes> selectedQuestionTypes;
+    private ArrayList<Integer> selectedClasses;
+    private ArrayList<Integer> selectedSubjects;
 
     public GenerateTestRequestModel() {
         this.numQuestions = 0;
@@ -33,6 +42,14 @@ public class GenerateTestRequestModel {
         }
     }
 
+    /**
+     *
+     * @return the name of the test.
+     <pre>
+     post:
+        exist(name instanceof String)
+     </pre>
+     */
     public String getName() {
         return this.name;
     }
@@ -41,11 +58,44 @@ public class GenerateTestRequestModel {
         this.name = name;
     }
 
+    /**
+     *
+     * @return the difficulty of the test
+     <pre>
+     post:
+        exist(difficulty <= 2 &&
+        difficulty >= 0)
+     </pre>
+     */
     public int getDifficulty() { return this.difficulty; }
     public void setDifficulty(int val) {
         if (val >= 0 && val <= 2) {
             System.out.println("Difficulty Value: " + val);
             this.difficulty = val;
         }
+    }
+
+    /**
+     *
+     * @return the selectedQuestionTypes
+     *
+     <pre>
+        forall(ArrayList<EQuestionType> selectedQuestionTypes ;
+                selectedQuestionTypes instanceof EQuestionType)
+     </pre>
+     */
+    public ArrayList<EQuestionTypes> getSelectedQuestionTypes() { return this.selectedQuestionTypes; }
+    public void setSelectedQuestionTypes(ListView<String> selectedQuestionTypes) {
+        selectedQuestionTypes.getItems().forEach(System.out::println);
+    }
+
+    public ArrayList<Integer> getSelectedClasses() { return this.selectedClasses; }
+    public void setSelectedClasses(ListView<String> selectedClasses) {
+        selectedClasses.getItems().forEach(System.out::println);
+    }
+
+    public ArrayList<Integer> getSelectedSubjects() { return this.selectedSubjects; }
+    public void setSelectedSubjects(ListView<String> selectedSubjects) {
+        selectedSubjects.getItems().forEach(System.out::println);
     }
 }
