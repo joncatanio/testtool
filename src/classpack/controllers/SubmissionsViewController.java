@@ -1,6 +1,6 @@
 package classpack.controllers;
 
-import com.sun.tools.javac.comp.Check;
+//import com.sun.tools.javac.comp.Check;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
