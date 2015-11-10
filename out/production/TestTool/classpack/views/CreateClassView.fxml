@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DO NOT reference this .fxml file in our application.
+     Please copy everything below into every new .fxml file that needs our basic outline.
+     This will work as is but you must update the controller reference in the first AnchorPane tag.
+     -->
+
+<?import javafx.scene.shape.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classpack.controllers.CreateClassViewController">
+    <children>
+        <ToolBar minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
+            <items>
+                <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
+
+            </items></ToolBar>
+        <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
+            <items>
+                <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
+                    <children>
+                        <Label fx:id="testLabel" layoutX="191.0" layoutY="160.0" text="Class Name:" />
+                  <Label layoutX="196.0" layoutY="230.0" text="Class Code:" />
+                  <Label layoutX="224.0" layoutY="300.0" text="School:" />
+                  <TextField fx:id="className" layoutX="272.0" layoutY="155.0" />
+                  <TextField fx:id="classCode" layoutX="272.0" layoutY="225.0" />
+                  <TextField fx:id="school" layoutX="272.0" layoutY="295.0" />
+                  <Button fx:id="ok" layoutX="216.0" layoutY="380.0" mnemonicParsing="false" onAction="#ok" text="Ok" />
+                  <Button fx:id="cancel" layoutX="427.0" layoutY="380.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>
