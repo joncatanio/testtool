@@ -1,6 +1,6 @@
 package classpack.controllers;
 
-import com.sun.tools.javac.comp.Check;
+//import com.sun.tools.javac.comp.Check;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -46,7 +46,7 @@ public class SubmissionsViewController extends ClassTestsViewController{
 
     public void viewAssignedTest(ActionEvent actionEvent) throws IOException {
 
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../../classpack/views/AssignedTestView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/AssignedTestView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
