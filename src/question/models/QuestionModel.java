@@ -33,6 +33,7 @@ public class QuestionModel{
         this.difficulty = 0;
         this.pointsPossible = 1;
     }
+
     /**
      * getQuestionType returns the type of question
      * ex. FillInTheBlank
