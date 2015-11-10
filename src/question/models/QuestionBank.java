@@ -43,21 +43,49 @@ abstract class QuestionBank {
      *
      **/
     abstract void DeleteQuestion(QuestionModel question);
+
     /**
      *   QuestionByDifficulty returns a list of questions that
      *   have the difficulty specified in the parameters
+     *   pre:
+     *    //  The integer passed in is a valid value (easy - 0, medium - 1, hard - 2)
+     *      data.contains(num) iff:
+     *          num == 0 || num == 1 || num == 2;
+     *   post:
+     *    //  A Collection of all the QuestionModels that correspond to the input
+     *    //  difficulty is returned.
+     *      forall (QuestionModel qm;
+     *          data'.contains(qm) iff
+     *              qm.difficulty == num;
      **/
     abstract Collection<QuestionModel> QuestionsByDifficulty(int num);
 
     /**
      *   QuestionByClass returns a list of questions that are from
      *   the specified class.
+     *   post:
+     *    //  A Collection of all the QuestionModels that correspond to the input
+     *    //  subject is returned.
+     *      forall (QuestionModel qm;
+     *          data'.contains(qm) iff
+     *              qm.subject.equals(subject);
      **/
     abstract Collection<QuestionModel> QuestionsByClass(String subject);
 
     /**
      *   QuestionByDateAdded returns a list of questions that were added
      *   on the specified date.
+     *   pre:
+     *    //  The String passed in is a valid date
+     *      data.contains(subject) iff:
+     *          subject.day > 0 && subject.day <= 31 &&
+     *          subject.month > 0 && subject.month <= 12
+     *   post:
+     *    //  A Collection of all the QuestionModels that correspond to the input
+     *    //  date is returned.
+     *      forall (QuestionModel qm;
+     *          data'.contains(qm) iff
+     *              qm.date.equals(date);
      **/
     abstract Collection<QuestionModel> QuestionsByDateAdded(String date);
 
