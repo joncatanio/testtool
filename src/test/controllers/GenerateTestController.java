@@ -6,6 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.scene.control.*;
 import question.models.QuestionModel;
 import test.models.GenerateTestRequestModel;
+import test.models.TestHandlerModel;
+import test.models.TestModel;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +39,9 @@ public class GenerateTestController extends TestController {
     }
 
     public void generate() {
+        TestHandlerModel testHandler = TestHandlerModel.getInstance();
         GenerateTestRequestModel requestModel = new GenerateTestRequestModel();
+        TestModel generatedTest = null;
 
         // This will take all the fields and instantiate and object and pass it along to be created.
         System.out.println("Generate!");
@@ -59,6 +63,8 @@ public class GenerateTestController extends TestController {
         requestModel.setSelectedQuestionTypes(selectedQuestionTypes);
         requestModel.setSelectedClasses(selectedClasses);
         requestModel.setSelectedSubjects(selectedSubjects);
+
+        testHandler.generate(requestModel);
     }
 
     public void populateSelectBoxes() {

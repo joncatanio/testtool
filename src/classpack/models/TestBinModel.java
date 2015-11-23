@@ -53,7 +53,7 @@ public class TestBinModel {
      */
     public void regradeForSubmissions(ArrayList<Integer> ids) {
 
-        TestHandlerModel grader = new TestHandlerModel();
+        TestHandlerModel grader = TestHandlerModel.getInstance();
         for(int i = 0; i < ids.size(); i++) {
             grader.regrade(ids.get(i));
         }
