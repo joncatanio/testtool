@@ -9,13 +9,12 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 
 /**
- * Created by JonCatanio on 11/5/15.
+ * Created by JonCatanio on 11/22/15.
  */
-public class LoginScreenController extends MainController {
+public class SignUpController extends MainController {
     public TextField username;
     public PasswordField password;
-
-    public LoginScreenController() {}
+    public PasswordField confirmPassword;
 
     public void submit() throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/login/views/SplashPageView.fxml"));
@@ -28,16 +27,16 @@ public class LoginScreenController extends MainController {
 
         currStage.setScene(nextScene);
         currStage.show();
-        System.out.println("Username: " + username.getText() + " Password: " + password.getText());
+        System.out.println("Username: " + username.getText() + " Password: " + password.getText() + " Confirm: " + confirmPassword.getText());
     }
 
-    public void signUp() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/login/views/SignUpView.fxml"));
+    public void signIn() throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/login/views/LoginScreenView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
-        SignUpController suc = parentLoader.getController();
-        suc.populateInterface(currStage);
+        LoginScreenController lsc = parentLoader.getController();
+        lsc.populateInterface(currStage);
 
         currStage.setScene(nextScene);
         currStage.show();

@@ -45,7 +45,7 @@ public class TestHandlerModel {
     public TestModel generate(GenerateTestRequestModel request) {
         TestModel rtn = null;
 
-        System.out.println("YARRRRRRR");
+        System.out.println("Generate Test! Creating TestModel!");
         return rtn;
     }
 }
