@@ -34,10 +34,10 @@ public class ClassModel {
      *   setClassCode sets the classes code so students can specify a class to join, these are unique codes.
      *   pre:
      *    //  The given class code is not used by another class.
-     *      !data.contain(code);
+     *      !students.contains(code);
      *   post:
      *     //The given class code has length greater than 1.
-     *         code.length > 1;
+     *         code.length() > 1;
      **/
     public void setClassCode(String code){}
 

@@ -26,7 +26,7 @@ public class TestBinModel {
     private double averageTimeInMinutes;
 
     /** Collection of submitted test objects */
-    //private ArrayList<TestModel> submissions;
+    private ArrayList<TestModel> submissions;
 
     public TestBinModel() {
         id = 123467;
@@ -37,11 +37,13 @@ public class TestBinModel {
     /**
      * Return the TestBinModel's id
      *
+     <pre>
+     pre:
      post:
      //
      // the returned id describes a test that is in the testbin
      //
-     exists(TestModel test; test.id == id`)
+     id > 0
      *
      */
     public int getId() {
@@ -87,7 +89,7 @@ public class TestBinModel {
             test.studentId() != test2.studentId()));
      *
      */
-    //public addSubmission(TestModel testToAdd) {}
+    public void addSubmission(TestModel testToAdd) {}
 
     /**
      * Return the average score on the assigned exam

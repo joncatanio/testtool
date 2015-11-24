@@ -12,6 +12,11 @@ import java.util.ArrayList;
  */
 public class TestModel {
     /**
+     * The unique id of the test.
+     */
+    private int id;
+
+    /**
      * The name of the test.
      */
     private String name;
@@ -75,6 +80,21 @@ public class TestModel {
      * The collection of questions included on the test.
      */
     private ArrayList<QuestionModel> questions;
+
+    /**
+     * Gets the unique id of the test.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * Sets the unique id of the test.
+     */
+    public void setId(int id) {
+        //TODO: Validate
+        this.id = id;
+    }
 
     /**
      * Gets the name of the test.
