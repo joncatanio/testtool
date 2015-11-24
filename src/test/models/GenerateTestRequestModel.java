@@ -87,10 +87,6 @@ public class GenerateTestRequestModel {
      * Get the desired name for the test.
      *
      * @return the name of the test.
-     <pre>
-     post:
-        exist(name instanceof String)
-     </pre>
      */
     public String getName() {
         return this.name;
@@ -100,6 +96,12 @@ public class GenerateTestRequestModel {
      * Set the desired name of the test.
      *
      * @param name the requested name of the test.
+     *
+     *
+     <pre>
+     pre:
+     post:
+        exists (String s ; name.equals(s))
      */
     public void setName(String name){
         System.out.println("Name: " + name);
@@ -110,11 +112,6 @@ public class GenerateTestRequestModel {
      * Gets the desired difficulty of the test.
      *
      * @return the desired difficulty of the test
-     <pre>
-     post:
-        exist(difficulty <= 2 &&
-        difficulty >= 0)
-     </pre>
      */
     public int getDifficulty() { return this.difficulty; }
 
@@ -135,10 +132,6 @@ public class GenerateTestRequestModel {
      *
      * @return the selectedQuestionTypes
      *
-     <pre>
-        forall(ArrayList<EQuestionType> selectedQuestionTypes ;
-                selectedQuestionTypes instanceof EQuestionType)
-     </pre>
      */
     public ArrayList<EQuestionTypes> getSelectedQuestionTypes() { return this.selectedQuestionTypes; }
 
@@ -146,6 +139,7 @@ public class GenerateTestRequestModel {
      * Set the desired question types for the test.
      *
      * @param selectedQuestionTypes the requested question types for the test.
+     *
      */
     public void setSelectedQuestionTypes(ListView<String> selectedQuestionTypes) {
         selectedQuestionTypes.getItems().forEach(System.out::println);
