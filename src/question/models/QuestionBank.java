@@ -88,17 +88,15 @@ public class QuestionBank {
     /**
      *   QuestionByDateAdded returns a list of questions that were added
      *   on the specified date.
-      pre:
-        //  The String passed in is a valid date
-            questions.contains(subject) iff
-            subject.day > 0 && subject.day <= 31 &&
-            subject.month > 0 && subject.month <= 12
+
      post:
         //  A Collection of all the QuestionModels that correspond to the input
         //  date is returned.
-            forall (QuestionModel qm;
-                questions'.contains(qm) iff
-                qm.date.equals(date));
+            exists (QuestionModel ques ; questions.contains(ques);
+            ques.getDate().equals(date) && ques.equals(return))
+            ||
+            !exists (QuestionModel ques ; questions.contains(ques) ;
+            ques.getDate().equals(date)) && return == null;
      *
      **/
     public Collection<QuestionModel> QuestionsByDateAdded(String date){
