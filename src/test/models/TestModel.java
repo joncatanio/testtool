@@ -166,11 +166,29 @@ public class TestModel {
 
     /**
      * Adds a single question to the test.
+     *
+     <pre>
+     pre:
+     post:
+     forall (QuestionModel q ; !q.equals(question) ;
+        if (questions.contains(q))
+           ( questions'.contains(q))
+        else
+            (!questions'.contains(q)));
      */
     public void addQuestion(QuestionModel question) {}
 
     /**
      * Removes the specified question from the test if it is included in the test.
+     *
+     <pre>
+     pre:
+     post:
+     forall (QuestionModel q ; !q.equals(question) ;
+        if (questions.contains(q))
+            (!questions'.contains(q))
+        else
+            (!questions'.contains(q)));
      */
     public void removeQuestion(QuestionModel question) {}
 }

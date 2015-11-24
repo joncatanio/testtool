@@ -3,6 +3,7 @@ package classpack.models;
 import java.util.ArrayList;
 import java.util.Arrays;
 import test.models.*;
+import java.util.*;
 
 /****
  *
@@ -72,18 +73,16 @@ public class TestBinModel {
     /**
      * Adds a completed test to the bin of test submissions
      *
+     <pre>
      pre:
-     //
-     // All tests in the bin are completed versions of the test
-     // with the id that matches the bins' id.
-
-     forall (TestModel test ; submissions.contains(test) ;
-        test.id == tb.id);
-
      post:
-     //
-     // No two test submissions were submitted by the same student
-     //
+     forall (TestModel t ; !t.equals(testToAdd) ;
+        if (submissions.contains(t))
+            ( submissions'.contains(t))
+        else
+            (!submissions'.contains(t)))
+     &&
+
      forall (TestModel test ; submissions.contains(test) ;
         forall (TestModel test2 ; submissions.contains(test) ;
             test.studentId() != test2.studentId()));
@@ -94,11 +93,13 @@ public class TestBinModel {
     /**
      * Return the average score on the assigned exam
      *
+     pre: //none;
+
      post:
      //
      // the returned value is between 0 and 100, inclusive
      //
-        val` >= 0 && val` <=100
+        (average >= 0 && average <=100);
      *
      */
     public double getAverage() {
