@@ -16,7 +16,11 @@ public class QuestionBank {
      *   of QuestionBank return it if there is and creates
      *   a new one if there is not.
      **/
-    public QuestionBank GetInstance();
+    public QuestionBank GetInstance(){
+        QuestionBank rtn = null;
+
+        return rtn;
+    }
 
     /**
      *   AddQuestion adds a question to the "questions"
