@@ -1,8 +1,10 @@
 package question.controllers;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import question.models.QuestionModel;
 
 import java.io.IOException;
@@ -18,6 +20,7 @@ public class PickQuestionTypeController extends QuestionController {
     public RadioButton CodingButton  = new RadioButton();
     public RadioButton UMLButton = new RadioButton();
     public RadioButton MatchingButton = new RadioButton();
+
 
     public void  QuestionTypeChosen() throws IOException {
         QuestionModel questionModel = new QuestionModel();

@@ -1,15 +1,18 @@
 package question.models;
 
+import javafx.collections.ObservableList;
+
 import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 
 /**
  * Created by kendall on 11/8/15.
  */
 public class QuestionBank {
-    Collection <QuestionModel> questions;
-    QuestionBank instance = null;
-    int numberOfQuestions;
+    public Collection <QuestionModel> questions;
+    private QuestionBank instance = null;
+    private int numberOfQuestions;
 
     /**
      *   GetInstace checks to see if there is an instance
@@ -17,9 +20,9 @@ public class QuestionBank {
      *   a new one if there is not.
      **/
     public QuestionBank GetInstance(){
-        QuestionBank rtn = null;
-
-        return rtn;
+        if (instance == null)
+            instance = new QuestionBank();
+        return instance;
     }
 
     /**
@@ -35,7 +38,10 @@ public class QuestionBank {
                 (ques.equals(question) || questions.contains(ques)));
      *
      **/
-    public void addQuestion(QuestionModel question){
+    public void addQuestion(String questionType,String questionName, String classNumber, String subject, String newQuestion, String image, String  hint, String answer, int charlimit, int difficulty, int pointsPossible){
+        QuestionModel question = new QuestionModel(questionType, questionName, classNumber, subject, newQuestion, image, hint, answer, charlimit, difficulty, pointsPossible, numberOfQuestions);
+        questions.add(question);
+        numberOfQuestions++;
     }
 
     /**
@@ -138,4 +144,13 @@ public class QuestionBank {
         return new ArrayList<QuestionModel>();
     }
 
+    public QuestionModel getQuestion(int id){
+
+        for (QuestionModel question : questions) {
+            if(question.getId() == id)
+                return question;
+        }
+        return null;
+
+    }
 }

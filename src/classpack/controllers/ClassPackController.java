@@ -31,7 +31,7 @@ public class ClassPackController {
 
             QuestionController first = parentLoader.getController();
             first.populateInterface(currStage);
-
+            first.setUpTable();
             currStage.setScene(nextScene);
             currStage.show();
         }

@@ -1,7 +1,10 @@
 package question.models;
 
 import java.awt.*;
-
+import java.util.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  * Created by kendall on 11/3/15.
  */
@@ -15,9 +18,13 @@ public class QuestionModel{
     private String hint;
     private String questionName;
     private String answer;
+    private String date;
     private int charLimit;
     private int difficulty;
     private int pointsPossible;
+    private int id;
+
+
 
 
     public QuestionModel() {
@@ -29,11 +36,30 @@ public class QuestionModel{
         this.ImageFile = null;
         this.hint = null;
         this.answer = null;
+        this.date = null;
         this.charLimit = 100;
         this.difficulty = 0;
         this.pointsPossible = 1;
     }
 
+    public QuestionModel(String questionTy,String questionNa, String classNum, String sub, String ques, String image, String  hin, String ans, int charlim, int diff, int pp, int newId) {
+        this.questionType = questionTy;
+        this.questionName = questionNa;
+        this.classNumber = classNum;
+        this.subject = sub;
+        this.question = ques;
+        this.ImageFile = image;
+        this.hint = hin;
+        this.answer = ans;
+        this.charLimit = charlim;
+        this.difficulty = diff;
+        this.pointsPossible = pp;
+        this.id = newId;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        //get current date time with Date()
+        Date date = new Date();
+        this.date = dateFormat.format(date);
+    }
     /**
      * getQuestionType returns the type of question
      * ex. FillInTheBlank
@@ -229,6 +255,16 @@ public class QuestionModel{
         System.out.println("PointsPossible: " + name);
         this.pointsPossible = name;
     }
+
+    public int getId() {
+        return this.id;
+    }
+
+
+    public String getDate() {
+        return this.date;
+    }
+
 
 
 }

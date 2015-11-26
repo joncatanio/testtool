@@ -23,7 +23,7 @@ import java.io.IOException;
 public class FillInTheBlankController extends QuestionController {
     public TextField questionName;
     public TextArea  question;
-    public ChoiceBox subject;
+    public ChoiceBox subjects;
     public ChoiceBox className;
     public TextField answer;
     public TextField points;
@@ -37,10 +37,11 @@ public class FillInTheBlankController extends QuestionController {
     public FillInTheBlankController(){
     }
 
+
     public void populateChoiceBoxes() {
         className.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
-        subject.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
-        subject.getSelectionModel().select(0);
+        subjects.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
+        subjects.getSelectionModel().select(0);
         className.getSelectionModel().select(0);
 
     }
@@ -49,7 +50,7 @@ public class FillInTheBlankController extends QuestionController {
         QuestionModel questionModel = new QuestionModel();
         if(questionName.getText() != null){
             if(question.getText() != null){
-                if(subject.getValue() != null){
+                if(subjects.getValue() != null){
                     if(className.getValue() != null){
                         if(answer.getText() != null){
                             if(points.getText() != null) {
@@ -57,7 +58,7 @@ public class FillInTheBlankController extends QuestionController {
                                     questionModel.setQuestionName(questionName.getText());
                                     questionModel.setPointsPossible(Integer.parseInt(points.getText()));
                                     questionModel.setClassNumber(className.getValue().toString());
-                                    questionModel.setSubject(subject.getValue().toString());
+                                    questionModel.setSubject(subjects.getValue().toString());
                                     questionModel.setQuestion(question.getText());
                                     questionModel.setAnswer(answer.getText());
                                     if (hint.getText() != null) {
@@ -99,7 +100,7 @@ public class FillInTheBlankController extends QuestionController {
     public void ClearAllThings(ActionEvent actionEvent) {
         questionName.clear();
         question.clear();
-        subject.setValue(0);
+        subjects.setValue(0);
         className.setValue(0);
         answer.clear();
         points.clear();
@@ -117,6 +118,7 @@ public class FillInTheBlankController extends QuestionController {
 
         QuestionController test = parentLoader.getController();
         test.populateInterface(currStage);
+        test.setUpTable();
 
         currStage.setScene(nextScene);
         currStage.show();

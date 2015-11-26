@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import question.models.QuestionModel;
 import test.controllers.GenerateTestController;
 import test.controllers.TestController;
@@ -41,6 +42,7 @@ public class GenericQuestionController extends QuestionController {
 
     public GenericQuestionController() {
     }
+
 
     // TODO: only free response opens to my view :(
 
@@ -128,7 +130,7 @@ public class GenericQuestionController extends QuestionController {
 
         QuestionController q = parentLoader.getController();
         q.populateInterface(currStage);
-
+        q.setUpTable();
         currStage.setScene(nextScene);
         currStage.show();
     }

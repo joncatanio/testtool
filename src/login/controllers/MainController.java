@@ -30,7 +30,9 @@ public class MainController {
             Scene nextScene = new Scene(nextSceneParent);
 
             QuestionController first = parentLoader.getController();
+
             first.populateInterface(currStage);
+            first.setUpTable();
 
             currStage.setScene(nextScene);
             currStage.show();
