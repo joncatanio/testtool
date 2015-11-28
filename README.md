@@ -4,9 +4,11 @@ Test tool for CPE 307
 #### Login into the TestTool App
 There are two workflows for the application. A student workflow and a teacher workflow. Students are only allowed to take tests and teachers are allowed to design and create tests and questions.
 ##### Teacher Login
-Username: teacher Password: password
+Username: teacher 
+Password: password
 ##### Student Login
-Username: student Password: password
+Username: student 
+Password: password
 
 #### Running TestTool
 Locate the shell script in the root directory called "Run-TestTool.sh" and simply
