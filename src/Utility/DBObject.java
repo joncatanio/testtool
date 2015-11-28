@@ -21,7 +21,7 @@ public class DBObject implements Serializable {
      */
     private static DBObject instance = new DBObject();
     /** The filename for the serial file (database) */
-    private static String filename = "db.ser";
+    private static String filename = "/Utility/db.ser";
     /** The database object that may be written to and read from a flat file */
     private static DBObject db = null;
     /** A collection of TestModels that make up the test bank */
@@ -40,32 +40,44 @@ public class DBObject implements Serializable {
     public static DBObject getInstance() { return instance; }
 
     /**
-     * Getter for the current test bank
+     * Getter for the current test bank. Reads from the serial file.
      *
      * @return The current test bank
      */
-    public ArrayList<TestModel> getTestBank() { return this.testBank; }
+    public ArrayList<TestModel> getTestBank() {
+        this.db = deserialize();
+        return this.testBank;
+    }
 
     /**
-     * Getter for the current question bank
+     * Getter for the current question bank. Reads from the serial file.
      *
      * @return The current question bank
      */
-    public ArrayList<QuestionModel> getQuestionBank() { return this.questionBank; }
+    public ArrayList<QuestionModel> getQuestionBank() {
+        this.db = deserialize();
+        return this.questionBank;
+    }
 
     /**
-     * Setter for the test bank
+     * Setter for the test bank. Writes to the serial file.
      *
      * @param tb The new test bank
      */
-    public void setTestBank(ArrayList<TestModel> tb) { this.testBank = tb; }
+    public void setTestBank(ArrayList<TestModel> tb) {
+        this.testBank = tb;
+        serialize();
+    }
 
     /**
-     * Setter for the question bank
+     * Setter for the question bank. Writes to the serial file.
      *
      * @param qb The new question bank
      */
-    public void setQuestionBank(ArrayList<QuestionModel> qb) { this.questionBank = qb; }
+    public void setQuestionBank(ArrayList<QuestionModel> qb) {
+        this.questionBank = qb;
+        serialize();
+    }
 
     /**
      * Getter for the current DBObject without reading again from the db.ser file.
@@ -80,16 +92,15 @@ public class DBObject implements Serializable {
      * Reads the flat file db.ser that contains a DBObject representing the database
      * that contains the test and question banks.
      *
-     * @param filename name of the database serial file
      * @return The DBObject stored in the serial file
      */
-    public DBObject deserialize(String filename) {
+    private DBObject deserialize() {
         this.db = null;
         FileInputStream fis = null;
         ObjectInputStream in = null;
 
         try {
-            fis = new FileInputStream(filename);
+            fis = new FileInputStream(this.filename);
             in = new ObjectInputStream(fis);
             this.db = (DBObject)in.readObject();
             in.close();
@@ -106,17 +117,15 @@ public class DBObject implements Serializable {
 
     /**
      * Write the flat file db.ser that represents our database.
-     *
-     * @param db the DBObject to write to the file
      */
-    public void serialize(DBObject db) {
+    private void serialize() {
         FileOutputStream fos = null;
         ObjectOutputStream out = null;
 
         try {
             fos = new FileOutputStream(this.filename);
             out = new ObjectOutputStream(fos);
-            out.writeObject(db);
+            out.writeObject(this.db);
             out.close();
         }
         catch(IOException ex) {

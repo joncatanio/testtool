@@ -1,5 +1,6 @@
 package question.models;
 
+import Utility.DBObject;
 import javafx.collections.ObservableList;
 
 import java.util.*;
@@ -10,9 +11,10 @@ import java.util.concurrent.ArrayBlockingQueue;
  * Created by kendall on 11/8/15.
  */
 public class QuestionBank {
-    public Collection <QuestionModel> questions;
+    public ArrayList <QuestionModel> questions;
     private static QuestionBank instance = null;
     private int numberOfQuestions;
+    private DBObject db = DBObject.getInstance();
 
     /**
      *   GetInstace checks to see if there is an instance
@@ -42,6 +44,7 @@ public class QuestionBank {
         QuestionModel question = new QuestionModel(questionType, questionName, classNumber, subject, newQuestion, image, hint, answer, charlimit, difficulty, pointsPossible, numberOfQuestions);
         questions.add(question);
         numberOfQuestions++;
+        db.setQuestionBank(questions);
     }
 
     /**
@@ -58,7 +61,13 @@ public class QuestionBank {
                 !ques.equals(question) && questions.contains(ques));
      *
      **/
-    public void deleteQuestion(QuestionModel question){
+    public void deleteQuestion(QuestionModel question) {
+        // delete question if it exists
+        if (questions.contains(question))
+            questions.remove(question);
+
+        // update question bank
+        db.setQuestionBank(questions);
     }
 
     /**
