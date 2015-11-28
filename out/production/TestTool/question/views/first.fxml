@@ -44,7 +44,7 @@
                       </TitledPane>
                       <TitledPane animated="false" prefWidth="202.0" text="Difficulty ">
                         <content>
-                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="75.0" prefWidth="200.0">
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="80.0" prefWidth="200.0">
                                  <children>
                                     <ListView prefHeight="83.0" prefWidth="200.0" />
                                     <Button layoutX="-4.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="211.0" text="Easy" />

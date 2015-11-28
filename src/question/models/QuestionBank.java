@@ -11,7 +11,7 @@ import java.util.concurrent.ArrayBlockingQueue;
  */
 public class QuestionBank {
     public Collection <QuestionModel> questions;
-    private QuestionBank instance = null;
+    private static QuestionBank instance = null;
     private int numberOfQuestions;
 
     /**
