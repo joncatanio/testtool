@@ -45,6 +45,8 @@ public class TestHandlerModel {
     public TestModel generate(GenerateTestRequestModel request) {
         TestModel rtn = null;
 
+        rtn.setName(request.getName());
+
         System.out.println("Generate Test! Creating TestModel!");
         return rtn;
     }
