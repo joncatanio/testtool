@@ -16,6 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import question.models.QuestionBank;
 import question.models.QuestionModel;
 import test.controllers.TestController;
 import user.controllers.UserController;
@@ -110,6 +111,8 @@ public class QuestionController {
     }
 
     public ObservableList<QuestionModel> getQuestions(){
+        //DBObject 1 = deserialize(filename);
+        //1.questionBank
         ObservableList<QuestionModel> questionBank = FXCollections.observableArrayList();
         questionBank.add(new QuestionModel("FillInTheBlank", "52", "334", "CSC", "DOES this work?", "", "", "no", -1, 2, 100, 1));
         questionBank.add(new QuestionModel("MultipleChoice", "2", "34", "MATH", "DOES this work?", "", "", "yes", 5, 2, 600, 2));
@@ -119,7 +122,40 @@ public class QuestionController {
         return questionBank;
     }
 
+    public void filterBy(String filter, String filterType) throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
 
+        QuestionController first = parentLoader.getController();
+        first.populateInterface(currStage);
+
+        title.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("questionName"));
+        classType.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("classNumber"));
+        subject.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("subject"));
+        type.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("questionType"));
+        date.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("date"));
+        difficulty.setCellValueFactory(new PropertyValueFactory<QuestionModel, Integer>("difficulty"));
+
+        table.setItems(getFiltered(filter, filterType));
+
+        currStage.setScene(nextScene);
+        currStage.show();
+    }
+
+    public ObservableList<QuestionModel> getFiltered(String filter, String filterType){
+
+       if(filter.equals("Type")){
+           return (ObservableList<QuestionModel>) QuestionBank.getInstance().QuestionsByType(filterType);
+
+       }
+       else if(filter.equals("difficulty")){
+           return (ObservableList<QuestionModel>) QuestionBank.getInstance().QuestionsByDifficulty(Integer.parseInt(filterType));
+       }
+       else{
+           return (ObservableList<QuestionModel>) QuestionBank.getInstance().questions;
+       }
+    }
 
 
 }

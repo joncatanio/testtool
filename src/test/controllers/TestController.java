@@ -31,7 +31,6 @@ public class TestController {
 
             QuestionController first = parentLoader.getController();
             first.populateInterface(currStage);
-
             currStage.setScene(nextScene);
             currStage.show();
         }

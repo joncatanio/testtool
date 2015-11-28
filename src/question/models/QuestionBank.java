@@ -19,7 +19,7 @@ public class QuestionBank {
      *   of QuestionBank return it if there is and creates
      *   a new one if there is not.
      **/
-    public QuestionBank GetInstance(){
+    public static QuestionBank getInstance(){
         if (instance == null)
             instance = new QuestionBank();
         return instance;
@@ -81,17 +81,17 @@ public class QuestionBank {
     }
 
     /**
-     *   QuestionByClass returns a list of questions that are from
-     *   the specified class.
+     *   QuestionByType returns a list of questions that are from
+     *   the specified type.
         post:
          //  A Collection of all the QuestionModels that correspond to the input
-         //  subject is returned.
+         //  type is returned.
            forall (QuestionModel qm;
               questions'.contains(qm) iff
-                   qm.subject.equals(subject));
+                   qm.type.equals(type));
      *
      **/
-    public Collection<QuestionModel> QuestionsByClass(String subject){
+    public Collection<QuestionModel> QuestionsByType(String type){
         return new ArrayList<QuestionModel>();
     }
 
