@@ -12,6 +12,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import question.controllers.QuestionController;
 import test.controllers.TestController;
+import test.controllers.TestTakingController;
 import user.controllers.UserController;
 
 public class MainController {
