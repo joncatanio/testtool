@@ -1,5 +1,6 @@
 package question.controllers;
 
+import Utility.DBObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,7 @@ import test.controllers.GenerateTestController;
 import test.controllers.TestController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by cburwell on 11/4/15.
@@ -126,6 +128,7 @@ public class GenericQuestionController extends QuestionController {
     }
 
     private void updateFields(QuestionModel qm) {
+        ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
         qm.setQuestionType(questionType.getText() == null ? "None" : questionType.getText());
         qm.setQuestionName(questionName.getText() == null ? "" : questionName.getText());
         qm.setSubject(subjects.getValue() == null ? "None" : subjects.getValue());
@@ -152,5 +155,8 @@ public class GenericQuestionController extends QuestionController {
 
         qm.setHint(hint.getText() == null ? "" : hint.getText());
         qm.setQuestion(questionText.getText() == null ? "" : questionText.getText());
+
+        questionBank.add(qm);
+        DBObject.getInstance().setQuestionBank(questionBank);
     }
 }

@@ -3,6 +3,7 @@ package question.controllers;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
+import Utility.DBObject;
 import classpack.controllers.ClassPackController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
@@ -111,15 +112,13 @@ public class QuestionController {
     }
 
     public ObservableList<QuestionModel> getQuestions(){
-        //DBObject 1 = deserialize(filename);
-        //1.questionBank
-        ObservableList<QuestionModel> questionBank = FXCollections.observableArrayList();
-        questionBank.add(new QuestionModel("FillInTheBlank", "52", "334", "CSC", "DOES this work?", "", "", "no", -1, 2, 100, 1));
-        questionBank.add(new QuestionModel("MultipleChoice", "2", "34", "MATH", "DOES this work?", "", "", "yes", 5, 2, 600, 2));
-        questionBank.add(new QuestionModel("FillInTheBlank", "1", "222", "CSC", "DOES this work?", "", "", "no", -1, 2, 50, 3));
-        questionBank.add(new QuestionModel("ShortAnswer", "44", "229", "CSC", "DOES this work?", "", "", "no", -1, 6, 200, 4));
-        questionBank.add(new QuestionModel("FreeResponse", "22", "111", "CPE", "DOES this work?", "", "", "no", -1, 5, 300, 5));
+        ObservableList<QuestionModel> questionBank  = FXCollections.observableList(DBObject.getInstance().getQuestionBank());
         return questionBank;
+    }
+
+
+    public void FilterByFIllIn(ActionEvent actionEvent) throws IOException {
+        filterBy("Type", "Fill in The Blank");
     }
 
     public void filterBy(String filter, String filterType) throws IOException {
@@ -128,7 +127,7 @@ public class QuestionController {
         Scene nextScene = new Scene(nextSceneParent);
 
         QuestionController first = parentLoader.getController();
-        first.populateInterface(currStage);
+
 
         title.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("questionName"));
         classType.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("classNumber"));
@@ -138,7 +137,7 @@ public class QuestionController {
         difficulty.setCellValueFactory(new PropertyValueFactory<QuestionModel, Integer>("difficulty"));
 
         table.setItems(getFiltered(filter, filterType));
-
+        first.populateInterface(currStage);
         currStage.setScene(nextScene);
         currStage.show();
     }
@@ -146,14 +145,14 @@ public class QuestionController {
     public ObservableList<QuestionModel> getFiltered(String filter, String filterType){
 
        if(filter.equals("Type")){
-           return (ObservableList<QuestionModel>) QuestionBank.getInstance().QuestionsByType(filterType);
+           return FXCollections.observableList(DBObject.getInstance().QuestionsByType(filterType));
 
        }
        else if(filter.equals("difficulty")){
-           return (ObservableList<QuestionModel>) QuestionBank.getInstance().QuestionsByDifficulty(Integer.parseInt(filterType));
+           return FXCollections.observableList(DBObject.getInstance().QuestionsByDifficulty(Integer.parseInt(filterType)));
        }
        else{
-           return (ObservableList<QuestionModel>) QuestionBank.getInstance().questions;
+           return FXCollections.observableList(DBObject.getInstance().getQuestionBank());
        }
     }
 

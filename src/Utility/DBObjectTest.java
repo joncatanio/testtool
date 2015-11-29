@@ -1,7 +1,7 @@
 package Utility;
 
-import junit.framework.TestCase;
-import org.junit.Test;
+//import junit.framework.TestCase;
+//import org.junit.Test;
 import question.models.QuestionBank;
 import question.models.QuestionModel;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Created by cburwell on 11/27/15.
  */
-public class DBObjectTest extends TestCase {
+public class DBObjectTest {
     private QuestionBank qb = QuestionBank.getInstance();
     private ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
 

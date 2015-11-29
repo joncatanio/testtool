@@ -1,5 +1,7 @@
 package question.controllers;
+import Utility.DBObject;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -8,6 +10,7 @@ import javafx.stage.Stage;
 import question.models.QuestionModel;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 public class PickQuestionTypeController extends QuestionController {
@@ -119,6 +122,7 @@ public class PickQuestionTypeController extends QuestionController {
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
         }
+
         currStage.setScene(nextScene);
         currStage.show();
         System.out.println("Question type was selected.");

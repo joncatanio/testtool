@@ -40,6 +40,10 @@ public class QuestionModel{
         this.charLimit = 100;
         this.difficulty = 0;
         this.pointsPossible = 1;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        //get current date time with Date()
+        Date date = new Date();
+        this.date = dateFormat.format(date);
     }
 
     public QuestionModel(String questionTy,String questionNa, String classNum, String sub, String ques, String image, String  hin, String ans, int charlim, int diff, int pp, int newId) {
