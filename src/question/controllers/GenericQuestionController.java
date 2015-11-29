@@ -1,6 +1,6 @@
 package question.controllers;
 
-import Utility.DBObject;
+import utility.DBObject;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

@@ -1,6 +1,6 @@
 package question.controllers;
 
-import Utility.DBObject;
+import utility.DBObject;
 import classpack.controllers.ClassPackController;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;

@@ -1,4 +1,4 @@
-package Utility;
+package utility;
 
 //import junit.framework.TestCase;
 //import org.junit.Test;

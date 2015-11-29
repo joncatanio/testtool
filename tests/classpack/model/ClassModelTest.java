@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
-import testing.JavaTestUtility;
+import testing.JavaTestutility;
 import format.ClassNameFormat;
 import classpack.models.ClassModel;
 
@@ -18,7 +18,7 @@ import com.rits.cloning.Cloner;
 
 import java.util.*;
 
-import static testing.JavaTestUtility.getFieldValue;
+import static testing.JavaTestutility.getFieldValue;
 
 @RunWith(SpestRunner.class)
 public class ClassModelTest
@@ -26,7 +26,7 @@ public class ClassModelTest
     @Before
     public void setUp()
     {
-        testObj = (classpack.models.ClassModel)javaTestUtility.getSampleObject(clazz);
+        testObj = (classpack.models.ClassModel)javaTestutility.getSampleObject(clazz);
 
     }
 
@@ -36,7 +36,7 @@ public class ClassModelTest
     private Cloner cloner = new Cloner();
     private File rootDirectory = new File("/Users/JonCatanio/Programming Projects/TestTool");
     private File sourceFile = new File("/Users/JonCatanio/Programming Projects/TestTool/src/classpack/models/ClassModel.java");
-    private JavaTestUtility javaTestUtility = new JavaTestUtility(rootDirectory, sourceFile, false);
+    private JavaTestutility javaTestutility = new JavaTestutility(rootDirectory, sourceFile, false);
     private classpack.models.ClassModel testObj;
     @Test
     public void setClassCodeTest_0() throws Exception
@@ -44,7 +44,7 @@ public class ClassModelTest
         int testComboIndex;
 
         String methodId = "setClassCode_java.lang.String";
-        List<java.lang.String> testPoints_0 = javaTestUtility.getSampleObjects(testObj, methodId, "code", java.lang.String.class);
+        List<java.lang.String> testPoints_0 = javaTestutility.getSampleObjects(testObj, methodId, "code", java.lang.String.class);
         int[][] combinations = CombinationSupport.getCombinations(testPoints_0.size());
 
         java.lang.String param_0;

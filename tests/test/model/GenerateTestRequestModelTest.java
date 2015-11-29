@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
-import testing.JavaTestUtility;
+import testing.JavaTestutility;
 import format.ClassNameFormat;
 import test.models.GenerateTestRequestModel;
 
@@ -18,7 +18,7 @@ import com.rits.cloning.Cloner;
 
 import java.util.*;
 
-import static testing.JavaTestUtility.getFieldValue;
+import static testing.JavaTestutility.getFieldValue;
 
 @RunWith(SpestRunner.class)
 public class GenerateTestRequestModelTest
@@ -26,7 +26,7 @@ public class GenerateTestRequestModelTest
     @Before
     public void setUp()
     {
-        testObj = (test.models.GenerateTestRequestModel)javaTestUtility.getSampleObject(clazz);
+        testObj = (test.models.GenerateTestRequestModel)javaTestutility.getSampleObject(clazz);
 
     }
 
@@ -36,7 +36,7 @@ public class GenerateTestRequestModelTest
     private Cloner cloner = new Cloner();
     private File rootDirectory = new File("/Users/JonCatanio/Programming Projects/TestTool");
     private File sourceFile = new File("/Users/JonCatanio/Programming Projects/TestTool/src/test/models/GenerateTestRequestModel.java");
-    private JavaTestUtility javaTestUtility = new JavaTestUtility(rootDirectory, sourceFile, false);
+    private JavaTestutility javaTestutility = new JavaTestutility(rootDirectory, sourceFile, false);
     private test.models.GenerateTestRequestModel testObj;
     @Test
     public void setNameTest_0() throws Exception
@@ -46,11 +46,11 @@ public class GenerateTestRequestModelTest
         int testComboIndex;
 
         String methodId = "setName_java.lang.String";
-        List<java.lang.String> testPoints_0 = javaTestUtility.getSampleObjects(testObj, methodId, "name", java.lang.String.class);
+        List<java.lang.String> testPoints_0 = javaTestutility.getSampleObjects(testObj, methodId, "name", java.lang.String.class);
         int[][] combinations = CombinationSupport.getCombinations(testPoints_0.size());
 
         Class[] parameterClasses = {java.lang.String.class};
-        List<java.lang.String> ss_0 = javaTestUtility.getUniversalValues(testObj, methodId, 0);
+        List<java.lang.String> ss_0 = javaTestutility.getUniversalValues(testObj, methodId, 0);
         boolean exists_56 = false;
         java.lang.String param_0;
         for(testComboIndex = 0; testComboIndex < combinations.length; testComboIndex++)
