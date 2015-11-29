@@ -265,6 +265,22 @@ public class QuestionModel{
         return this.date;
     }
 
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.questionType);
+        sb.append("," + this.questionName);
+        sb.append("," + this.classNumber);
+        sb.append("," + this.subject);
+        sb.append("," + this.question);
+        sb.append("," + this.ImageFile);
+        sb.append("," + this.hint);
+        sb.append("," + this.answer);
+        sb.append("," + this.date);
+        sb.append("," + this.charLimit);
+        sb.append("," + this.difficulty);
+        sb.append("," + this.pointsPossible);
 
+        return sb.toString();
+    }
 
 }

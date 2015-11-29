@@ -1,5 +1,6 @@
 package question.models;
 
+import Utility.DBObject;
 import javafx.collections.ObservableList;
 
 import java.util.*;
@@ -10,9 +11,10 @@ import java.util.concurrent.ArrayBlockingQueue;
  * Created by kendall on 11/8/15.
  */
 public class QuestionBank {
-    public Collection <QuestionModel> questions;
-    private static QuestionBank instance = null;
+    public ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
+    private static QuestionBank instance = new QuestionBank();
     private int numberOfQuestions;
+    private DBObject db = DBObject.getInstance();
 
     /**
      *   GetInstace checks to see if there is an instance
@@ -20,8 +22,6 @@ public class QuestionBank {
      *   a new one if there is not.
      **/
     public static QuestionBank getInstance(){
-        if (instance == null)
-            instance = new QuestionBank();
         return instance;
     }
 
@@ -38,10 +38,11 @@ public class QuestionBank {
                 (ques.equals(question) || questions.contains(ques)));
      *
      **/
-    public void addQuestion(String questionType,String questionName, String classNumber, String subject, String newQuestion, String image, String  hint, String answer, int charlimit, int difficulty, int pointsPossible){
-        QuestionModel question = new QuestionModel(questionType, questionName, classNumber, subject, newQuestion, image, hint, answer, charlimit, difficulty, pointsPossible, numberOfQuestions);
+    public void addQuestion(QuestionModel question) {
         questions.add(question);
         numberOfQuestions++;
+
+        db.setQuestionBank(questions);
     }
 
     /**
@@ -58,7 +59,17 @@ public class QuestionBank {
                 !ques.equals(question) && questions.contains(ques));
      *
      **/
-    public void deleteQuestion(QuestionModel question){
+    public void deleteQuestion(QuestionModel question) {
+        // delete question if it exists
+        if (questions.contains(question))
+            questions.remove(question);
+
+        // update question bank
+        db.setQuestionBank(questions);
+    }
+
+    public void restoreBankFromFile() {
+        questions = DBObject.getInstance().getQuestionBank();
     }
 
     /**
