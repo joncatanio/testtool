@@ -37,22 +37,17 @@ public class GenericQuestionController extends QuestionController {
     public Button clear = new Button();
     public Button cancel = new Button();
 
-    private QuestionModel questionModel;
-    private QuestionModel initialQuestionModel;
+    private QuestionModel questionModel = new QuestionModel();
+    private QuestionModel initialQuestionModel = new QuestionModel();
 
     public GenericQuestionController() {
     }
 
-
-    // TODO: only free response opens to my view :(
-
     public void initializeQuestionModel(QuestionModel qm) {
-        this.initialQuestionModel = this.questionModel = qm;
+        this.questionType = new Label(qm.getQuestionType());
 
-        this.questionType = new Label(questionModel.getQuestionType());
-
-        this.charLimit = new TextField(Integer.toString(questionModel.getCharLimit()));
-        this.points = new TextField(Integer.toString(questionModel.getPointsPossible()));
+        this.charLimit = new TextField(Integer.toString(qm.getCharLimit()));
+        this.points = new TextField(Integer.toString(qm.getPointsPossible()));
 
         // Initialize choiceboxes
         this.subjects.setItems(FXCollections.observableArrayList("Select", "computers", "not-computers", "subjects"));
@@ -61,37 +56,18 @@ public class GenericQuestionController extends QuestionController {
         this.classes.getSelectionModel().select(0);
 
         // TODO: Fix this so they actually populate on load
-        this.charLimit.setText(Integer.toString(questionModel.getCharLimit()));
-        this.points.setText(Integer.toString(questionModel.getPointsPossible()));
+        this.charLimit.setText(Integer.toString(qm.getCharLimit()));
+        this.points.setText(Integer.toString(qm.getPointsPossible()));
+
+        updateFields(this.initialQuestionModel);
+        updateFields(this.questionModel);
     }
 
     public void addQuestion() throws IOException {
         // This will take all the fields and instantiate and object and pass it along to be created.
         System.out.println("\nAdding question!");
 
-        // TODO: Add error handling
-
-        questionModel.setQuestionName(questionName.getText());
-        questionModel.setSubject(subjects.getValue());
-        questionModel.setClassNumber(classes.getValue());
-        questionModel.setCharLimit(Integer.parseInt(charLimit.getText()));
-
-        if (easy.isSelected()) {
-            questionModel.setDifficulty(0);
-        }
-        else if (medium.isSelected()) {
-            questionModel.setDifficulty(1);
-        }
-        else if (hard.isSelected()) {
-            questionModel.setDifficulty(2);
-        }
-
-        questionModel.setPointsPossible(Integer.parseInt(points.getText()));
-
-        // TODO: Add logic for selecting image
-
-        questionModel.setHint(hint.getText());
-        questionModel.setQuestion(questionText.getText());
+        updateFields(this.questionModel);
 
         // return to Add Question scene
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/PickQuestionType.fxml"));
@@ -105,20 +81,31 @@ public class GenericQuestionController extends QuestionController {
         currStage.show();
     }
 
-    // TODO: Actually clears but throws nullptrexc when adding question
+    // TODO: Doesn't actually clear
+    // TODO: FFS I think it's shallow copy
     public void clearForm() throws IOException {
+        // Set all the fields to their inputs
+        updateFields(this.questionModel);
+
+        if ((this.initialQuestionModel == null && this.questionModel == null) ||
+                this.initialQuestionModel.equals(this.questionModel)) {
+            System.out.println("\nThey're the same, silly");
+            System.out.println(this.initialQuestionModel.getQuestionName() + " : " + this.questionModel.getQuestionName());
+            return;
+        }
+
         System.out.println("\nClearing form!");
 
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
-        QuestionController q = parentLoader.getController();
-        q.populateInterface(currStage);
-        initializeQuestionModel(initialQuestionModel);
+        GenericQuestionController q = parentLoader.getController();
+        q.populateInterface(this.currStage);
+        initializeQuestionModel(this.initialQuestionModel);
 
-        currStage.setScene(nextScene);
-        currStage.show();
+        this.currStage.setScene(nextScene);
+        this.currStage.show();
     }
 
     public void cancel() throws IOException {
@@ -133,5 +120,36 @@ public class GenericQuestionController extends QuestionController {
         q.setUpTable();
         currStage.setScene(nextScene);
         currStage.show();
+    }
+
+    private void updateFields(QuestionModel qm) {
+        // TODO: Error handling
+        qm.setQuestionType(questionType.getText() == null ? "None" : questionType.getText());
+        qm.setClassNumber(qm.getClassNumber() == null ? "" : qm.getClassNumber());
+
+        qm.setQuestionName(questionName.getText() == null ? "" : questionName.getText());
+        qm.setSubject(subjects.getValue() == null ? "None" : subjects.getValue());
+        qm.setClassNumber(classes.getValue() == null ? "0" : classes.getValue());
+        qm.setCharLimit(charLimit.getText() == null || charLimit.getText().equals("") ? 0 : Integer.parseInt(charLimit.getText()));
+
+        if (easy.isSelected()) {
+            qm.setDifficulty(0);
+        }
+        else if (medium.isSelected()) {
+            qm.setDifficulty(1);
+        }
+        else if (hard.isSelected()) {
+            qm.setDifficulty(2);
+        }
+        else {
+            qm.setDifficulty(0);
+        }
+
+        qm.setPointsPossible(points.getText().equals("") ? 0 : Integer.parseInt(points.getText()));
+
+        // TODO: Add logic for selecting image
+
+        qm.setHint(hint.getText() == null ? "" : hint.getText());
+        qm.setQuestion(questionText.getText() == null ? "" : questionText.getText());
     }
 }

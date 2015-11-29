@@ -28,15 +28,15 @@ public class QuestionModel{
 
 
     public QuestionModel() {
-        this.questionType = null;
-        this.questionName = null;
-        this.classNumber = null;
-        this.subject = null;
-        this.question = null;
-        this.ImageFile = null;
-        this.hint = null;
-        this.answer = null;
-        this.date = null;
+        this.questionType = "";
+        this.questionName = "";
+        this.classNumber = "";
+        this.subject = "";
+        this.question = "";
+        this.ImageFile = "";
+        this.hint = "";
+        this.answer = "";
+        this.date = "";
         this.charLimit = 100;
         this.difficulty = 0;
         this.pointsPossible = 1;
@@ -283,4 +283,18 @@ public class QuestionModel{
         return sb.toString();
     }
 
+    public boolean equals(QuestionModel qm) {
+        return (this.questionType.equals(qm.questionType) &&
+                this.questionName.equals(qm.questionName) &&
+                this.classNumber.equals(qm.classNumber) &&
+                this.subject.equals(qm.subject) &&
+                this.question.equals(qm.question) &&
+                this.ImageFile.equals(qm.ImageFile) &&
+                this.hint.equals(qm.hint) &&
+                this.answer.equals(qm.answer) &&
+                this.date.equals(qm.date) &&
+                this.charLimit == qm.charLimit &&
+                this.difficulty == qm.difficulty &&
+                this.pointsPossible == qm.pointsPossible);
+    }
 }
