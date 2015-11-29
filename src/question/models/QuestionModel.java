@@ -19,12 +19,18 @@ public class QuestionModel{
     private String questionName;
     private String answer;
     private String date;
+    private String a;
+    private String b;
+    private String c;
+    private String d;
+    private boolean aCheck;
+    private boolean bCheck;
+    private boolean cCheck;
+    private boolean dCheck;
     private int charLimit;
     private int difficulty;
     private int pointsPossible;
     private int id;
-
-
 
 
     public QuestionModel() {
@@ -40,6 +46,10 @@ public class QuestionModel{
         this.charLimit = 100;
         this.difficulty = 0;
         this.pointsPossible = 1;
+        this.aCheck = false;
+        this.bCheck = false;
+        this.cCheck = false;
+        this.dCheck = false;
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
@@ -203,6 +213,56 @@ public class QuestionModel{
         System.out.println("Hint: " + name);
         this.hint = name;
     }
+    public String getA() {
+        return this.a;
+    }
+
+    /**
+     * setA changes the question's a value which relates to multiple choice questions
+     *
+     **/
+    public void setA(String name){
+        System.out.println("A: " + name);
+        this.a = name;
+    }
+
+
+    public String getB() {
+        return this.b;
+    }
+
+    /**
+     * setB changes the question's b value which relates to multiple choice questions
+     *
+     **/
+    public void setB(String name){
+        System.out.println("b: " + name);
+        this.b = name;
+    }
+    public String getC() {
+        return this.c;
+    }
+
+    /**
+     * setC changes the question's c value which relates to multiple choice questions
+     *
+     **/
+    public void setC(String name){
+        System.out.println("c: " + name);
+        this.c = name;
+    }
+    public String getD() {
+        return this.d;
+    }
+
+    /**
+     * setD changes the question's d value which relates to multiple choice questions
+     *
+     **/
+    public void setD(String name){
+        System.out.println("D: " + name);
+        this.d = name;
+    }
 
     /**
      * getCharLimit returns the question's char limit which
@@ -259,6 +319,66 @@ public class QuestionModel{
         System.out.println("PointsPossible: " + name);
         this.pointsPossible = name;
     }
+
+    public boolean getACheck() {
+        return this.aCheck;
+    }
+
+    /**
+     * setA changes the boolean bCheck
+     * to notify if A is an answer in MultipleSelect
+     *
+     **/
+    public void setACheck(boolean name){
+        System.out.println("A Check: " + name);
+        this.aCheck = name;
+    }
+
+    public boolean getBCheck() {
+        return this.bCheck;
+    }
+
+
+    /**
+     * setB changes the boolean bCheck
+     * to notify if b is an answer in MultipleSelect
+     *
+     **/
+    public void setBCheck(boolean name){
+        System.out.println("B Check: " + name);
+        this.bCheck = name;
+    }
+
+    public boolean getCCheck() {
+        return this.cCheck;
+    }
+
+
+    /**
+     * setC changes the boolean cCheck
+     * to notify if c is an answer in MultipleSelect
+     *
+     **/
+    public void setCCheck(boolean name){
+        System.out.println("C Check: " + name);
+        this.cCheck = name;
+    }
+
+    public boolean getDCheck() {
+        return this.dCheck;
+    }
+
+
+    /**
+     * setd changes the boolean dCheck
+     * to notify if d is an answer in MultipleSelect
+     *
+     **/
+    public void setDCheck(boolean name){
+        System.out.println("D Check: " + name);
+        this.dCheck = name;
+    }
+
 
     public int getId() {
         return this.id;
