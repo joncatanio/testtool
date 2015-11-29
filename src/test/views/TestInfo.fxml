@@ -43,7 +43,7 @@
                         <Label layoutX="10.0" layoutY="225.0" prefHeight="51.0" prefWidth="324.0" text="Description: A cummulative test of your knowledge" />
                         <Label layoutX="10.0" layoutY="297.0" prefHeight="55.0" prefWidth="324.0" text="Teacher notes: Good luck!" />
                         <Label layoutX="10.0" layoutY="261.0" prefHeight="54.0" prefWidth="324.0" />
-                        <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="325.0" text="Take Test" />
+                        <Button mnemonicParsing="false" onAction="#takeTest" prefHeight="35.0" prefWidth="325.0" text="Take Test" />
                      </children>
                   </VBox>
                     </children></AnchorPane>
