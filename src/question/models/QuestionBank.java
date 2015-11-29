@@ -11,8 +11,8 @@ import java.util.concurrent.ArrayBlockingQueue;
  * Created by kendall on 11/8/15.
  */
 public class QuestionBank {
-    public ArrayList<QuestionModel> questions;
-    private static QuestionBank instance = null;
+    public ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
+    private static QuestionBank instance = new QuestionBank();
     private int numberOfQuestions;
     private DBObject db = DBObject.getInstance();
 
@@ -22,8 +22,6 @@ public class QuestionBank {
      *   a new one if there is not.
      **/
     public static QuestionBank getInstance(){
-        if (instance == null)
-            instance = new QuestionBank();
         return instance;
     }
 

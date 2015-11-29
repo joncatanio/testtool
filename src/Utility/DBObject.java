@@ -21,7 +21,7 @@ public class DBObject implements Serializable {
      */
     private static DBObject instance = new DBObject();
     /** The filename for the serial file (database) */
-    private static String filename = "/Utility/db.ser";
+    private static String filename = "src/Utility/db.ser";
     /** The database object that may be written to and read from a flat file */
     private static DBObject db = null;
     /** A collection of TestModels that make up the test bank */

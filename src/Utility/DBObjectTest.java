@@ -14,8 +14,7 @@ public class DBObjectTest extends TestCase {
     private QuestionBank qb = QuestionBank.getInstance();
     private ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
 
-    @Test
-    public void IntegrationTest() {
+    public void testAll() {
         System.out.println("Filling list");
         fillQuestionList();
         System.out.println("Adding questions");
@@ -29,6 +28,9 @@ public class DBObjectTest extends TestCase {
         printAll();
         System.out.println("Deleting questions");
         deleteQuestions();
+        printAll();
+        System.out.println("Reading again, should only be 3");
+        readQuestions();
         printAll();
     }
 
@@ -66,27 +68,27 @@ public class DBObjectTest extends TestCase {
         System.out.println("\n");
     }
 
-    public void testGetInstance() throws Exception {
-
-    }
-
-    public void testGetTestBank() throws Exception {
-
-    }
-
-    public void testGetQuestionBank() throws Exception {
-
-    }
-
-    public void testSetTestBank() throws Exception {
-
-    }
-
-    public void testSetQuestionBank() throws Exception {
-
-    }
-
-    public void testGetDb() throws Exception {
-
-    }
+//    public void testGetInstance() throws Exception {
+//
+//    }
+//
+//    public void testGetTestBank() throws Exception {
+//
+//    }
+//
+//    public void testGetQuestionBank() throws Exception {
+//
+//    }
+//
+//    public void testSetTestBank() throws Exception {
+//
+//    }
+//
+//    public void testSetQuestionBank() throws Exception {
+//
+//    }
+//
+//    public void testGetDb() throws Exception {
+//
+//    }
 }
