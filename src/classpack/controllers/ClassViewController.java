@@ -22,6 +22,8 @@ public class ClassViewController extends ClassPackController{
     public Button createClass = new Button();
     public Button editClasses = new Button();
 
+    public int highlightedClassId;
+
 
     public void joinClass(ActionEvent event) throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/JoinClassView.fxml"));
@@ -72,7 +74,7 @@ public class ClassViewController extends ClassPackController{
         Scene nextScene = new Scene(nextSceneParent);
 
         AssignedTestViewController assigned = parentLoader.getController();
-        assigned.populateInterface(currStage);
+        assigned.populateInterface(currStage, highlightedClassId);
 
         currStage.setScene(nextScene);
         currStage.show();
