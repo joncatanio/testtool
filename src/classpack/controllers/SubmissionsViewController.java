@@ -1,6 +1,7 @@
 package classpack.controllers;
 
 //import com.sun.tools.javac.comp.Check;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ import javafx.scene.control.ListView;
 import java.io.IOException;
 import java.util.*;
 import classpack.models.*;
+import javafx.stage.Stage;
 
 public class SubmissionsViewController extends ClassTestsViewController{
 
@@ -20,6 +22,7 @@ public class SubmissionsViewController extends ClassTestsViewController{
 
     public ListView submissionsList;
     public Button regradeButton;
+    public ListView testList;
 
     private ClassModel currClass;
     private int testBinId;
@@ -27,6 +30,12 @@ public class SubmissionsViewController extends ClassTestsViewController{
 
     // list of student submission objects goes here
     ArrayList<String> submissions = new ArrayList<String>();
+
+    public void populateInterface(Stage stage, int classId) {
+        super.populateInterface(stage);
+        populateSubmissionsList(classId, 12345);
+        populateTestList(classId);
+    }
 
     public void populateSubmissionsList(int classId, int testBinId) {
 
@@ -51,7 +60,7 @@ public class SubmissionsViewController extends ClassTestsViewController{
         Scene nextScene = new Scene(nextSceneParent);
 
         AssignedTestViewController assigned = parentLoader.getController();
-        assigned.populateInterface(currStage);
+        assigned.populateInterface(currStage, 1231);
 
         currStage.setScene(nextScene);
         currStage.show();
@@ -71,5 +80,10 @@ public class SubmissionsViewController extends ClassTestsViewController{
 
         currClass.getTestBin(testBinId).regradeForSubmissions(ids);
 
+    }
+
+    public void populateTestList(int classId) {
+        //class db . getClass( classId ) . getTests();
+        testList.setItems(FXCollections.observableArrayList("test A", "test B", "test C", "test D"));
     }
 }
