@@ -46,18 +46,16 @@ public class GenericQuestionController extends QuestionController {
     public void initializeQuestionModel(QuestionModel qm) {
         this.questionType = new Label(qm.getQuestionType());
 
-        this.charLimit = new TextField(Integer.toString(qm.getCharLimit()));
-        this.points = new TextField(Integer.toString(qm.getPointsPossible()));
-
         // Initialize choiceboxes
         this.subjects.setItems(FXCollections.observableArrayList("Select", "computers", "not-computers", "subjects"));
         this.subjects.getSelectionModel().select(0);
         this.classes.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
         this.classes.getSelectionModel().select(0);
 
-        // TODO: Fix this so they actually populate on load
-        this.charLimit.setText(Integer.toString(qm.getCharLimit()));
-        this.points.setText(Integer.toString(qm.getPointsPossible()));
+        this.charLimit.setPromptText(Integer.toString(qm.getCharLimit()));
+        this.points.setPromptText(Integer.toString(qm.getPointsPossible()));
+
+        System.out.println(this.charLimit.getText() + " : " + this.points.getText());
 
         updateFields(this.initialQuestionModel);
         updateFields(this.questionModel);
@@ -81,8 +79,6 @@ public class GenericQuestionController extends QuestionController {
         currStage.show();
     }
 
-    // TODO: Doesn't actually clear
-    // TODO: FFS I think it's shallow copy
     public void clearForm() throws IOException {
         // Set all the fields to their inputs
         updateFields(this.questionModel);
@@ -90,7 +86,6 @@ public class GenericQuestionController extends QuestionController {
         if ((this.initialQuestionModel == null && this.questionModel == null) ||
                 this.initialQuestionModel.equals(this.questionModel)) {
             System.out.println("\nThey're the same, silly");
-            System.out.println(this.initialQuestionModel.getQuestionName() + " : " + this.questionModel.getQuestionName());
             return;
         }
 
@@ -122,15 +117,15 @@ public class GenericQuestionController extends QuestionController {
         currStage.show();
     }
 
-    private void updateFields(QuestionModel qm) {
-        // TODO: Error handling
-        qm.setQuestionType(questionType.getText() == null ? "None" : questionType.getText());
-        qm.setClassNumber(qm.getClassNumber() == null ? "" : qm.getClassNumber());
+    public void updateFieldHandler() {
+        updateFields(this.questionModel);
+    }
 
+    private void updateFields(QuestionModel qm) {
+        qm.setQuestionType(questionType.getText() == null ? "None" : questionType.getText());
         qm.setQuestionName(questionName.getText() == null ? "" : questionName.getText());
         qm.setSubject(subjects.getValue() == null ? "None" : subjects.getValue());
         qm.setClassNumber(classes.getValue() == null ? "0" : classes.getValue());
-        qm.setCharLimit(charLimit.getText() == null || charLimit.getText().equals("") ? 0 : Integer.parseInt(charLimit.getText()));
 
         if (easy.isSelected()) {
             qm.setDifficulty(0);
@@ -145,6 +140,8 @@ public class GenericQuestionController extends QuestionController {
             qm.setDifficulty(0);
         }
 
+        // TODO: CharLimit and PointsPossible not working properly
+        qm.setCharLimit(charLimit.getText() == null || charLimit.getText().equals("") ? 0 : Integer.parseInt(charLimit.getText()));
         qm.setPointsPossible(points.getText().equals("") ? 0 : Integer.parseInt(points.getText()));
 
         // TODO: Add logic for selecting image
