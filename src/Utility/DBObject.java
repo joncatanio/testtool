@@ -5,6 +5,7 @@ import test.models.TestModel;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Created by cburwell on 11/27/15.
@@ -27,7 +28,7 @@ public class DBObject implements Serializable {
     /** A collection of TestModels that make up the test bank */
     private ArrayList<TestModel> testBank;
     /** A collection of QuestionModels that make up the question bank */
-    private ArrayList<QuestionModel> questionBank;
+    private ArrayList<QuestionModel> questionBank = new ArrayList<QuestionModel>();
 
     /** DBObject constructor, private to avoid instantiation */
     protected DBObject() {}
@@ -132,4 +133,30 @@ public class DBObject implements Serializable {
             ex.printStackTrace();
         }
     }
+
+    public ArrayList<QuestionModel> QuestionsByType(String type) {
+        ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
+        this.db = deserialize();
+
+        for(QuestionModel question : this.questionBank){
+            if(question.getQuestionType().equals(type)){
+                questions.add(question);
+            }
+        }
+        return questions;
+    }
+
+    public ArrayList<QuestionModel> QuestionsByDifficulty(int difficulty) {
+        ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
+        this.db = deserialize();
+
+        for(QuestionModel question : this.questionBank){
+            if(question.getDifficulty() == difficulty){
+                questions.add(question);
+            }
+        }
+        return questions;
+    }
+
+
 }

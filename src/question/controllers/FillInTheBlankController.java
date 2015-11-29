@@ -1,5 +1,6 @@
 package question.controllers;
 
+import Utility.DBObject;
 import classpack.controllers.ClassPackController;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import test.controllers.TestController;
 import user.controllers.UserController;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by kendall on 11/4/15.
@@ -48,6 +50,7 @@ public class FillInTheBlankController extends QuestionController {
 
     public void AddQuestionToBank(ActionEvent actionEvent) throws IOException {
         QuestionModel questionModel = new QuestionModel();
+        ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
         if(questionName.getText() != null){
             if(question.getText() != null){
                 if(subjects.getValue() != null){
@@ -76,6 +79,9 @@ public class FillInTheBlankController extends QuestionController {
                                     else if(hard.isSelected()){
                                         questionModel.setDifficulty(3);
                                     }
+                                    questionModel.setQuestionType("Fill in The Blank");
+                                    questionBank.add(questionModel);
+                                    DBObject.getInstance().setQuestionBank(questionBank);
 
                                     FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
                                     Parent nextSceneParent = parentLoader.load();
@@ -83,6 +89,7 @@ public class FillInTheBlankController extends QuestionController {
 
                                     QuestionController test = parentLoader.getController();
                                     test.populateInterface(currStage);
+                                    test.setUpTable();
 
                                     currStage.setScene(nextScene);
                                     currStage.show();
