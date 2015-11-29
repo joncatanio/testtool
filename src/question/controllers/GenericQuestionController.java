@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import question.models.QuestionBank;
 import question.models.QuestionModel;
 import test.controllers.GenerateTestController;
 import test.controllers.TestController;
@@ -37,22 +38,14 @@ public class GenericQuestionController extends QuestionController {
     public Button clear = new Button();
     public Button cancel = new Button();
 
-    private QuestionModel questionModel;
-    private QuestionModel initialQuestionModel;
+    private QuestionModel questionModel = new QuestionModel();
+    private QuestionModel initialQuestionModel = new QuestionModel();
 
     public GenericQuestionController() {
     }
 
-
-    // TODO: only free response opens to my view :(
-
     public void initializeQuestionModel(QuestionModel qm) {
-        this.initialQuestionModel = this.questionModel = qm;
-
-        this.questionType = new Label(questionModel.getQuestionType());
-
-        this.charLimit = new TextField(Integer.toString(questionModel.getCharLimit()));
-        this.points = new TextField(Integer.toString(questionModel.getPointsPossible()));
+        this.questionType = new Label(qm.getQuestionType());
 
         // Initialize choiceboxes
         this.subjects.setItems(FXCollections.observableArrayList("Select", "computers", "not-computers", "subjects"));
@@ -60,38 +53,23 @@ public class GenericQuestionController extends QuestionController {
         this.classes.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
         this.classes.getSelectionModel().select(0);
 
-        // TODO: Fix this so they actually populate on load
-        this.charLimit.setText(Integer.toString(questionModel.getCharLimit()));
-        this.points.setText(Integer.toString(questionModel.getPointsPossible()));
+        this.charLimit.setPromptText(Integer.toString(qm.getCharLimit()));
+        this.points.setPromptText(Integer.toString(qm.getPointsPossible()));
+
+        System.out.println(this.charLimit.getText() + " : " + this.points.getText());
+
+        updateFields(this.initialQuestionModel);
+        updateFields(this.questionModel);
     }
 
     public void addQuestion() throws IOException {
         // This will take all the fields and instantiate and object and pass it along to be created.
         System.out.println("\nAdding question!");
 
-        // TODO: Add error handling
-
-        questionModel.setQuestionName(questionName.getText());
-        questionModel.setSubject(subjects.getValue());
-        questionModel.setClassNumber(classes.getValue());
-        questionModel.setCharLimit(Integer.parseInt(charLimit.getText()));
-
-        if (easy.isSelected()) {
-            questionModel.setDifficulty(0);
-        }
-        else if (medium.isSelected()) {
-            questionModel.setDifficulty(1);
-        }
-        else if (hard.isSelected()) {
-            questionModel.setDifficulty(2);
-        }
-
-        questionModel.setPointsPossible(Integer.parseInt(points.getText()));
-
-        // TODO: Add logic for selecting image
-
-        questionModel.setHint(hint.getText());
-        questionModel.setQuestion(questionText.getText());
+        // Make sure the question is up-to-date
+        updateFields(this.questionModel);
+        // Ship it off to QuestionBank
+        QuestionBank.getInstance().addQuestion(this.questionModel);
 
         // return to Add Question scene
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/PickQuestionType.fxml"));
@@ -105,20 +83,28 @@ public class GenericQuestionController extends QuestionController {
         currStage.show();
     }
 
-    // TODO: Actually clears but throws nullptrexc when adding question
     public void clearForm() throws IOException {
+        // Set all the fields to their inputs
+        updateFields(this.questionModel);
+
+        if ((this.initialQuestionModel == null && this.questionModel == null) ||
+                this.initialQuestionModel.equals(this.questionModel)) {
+            System.out.println("\nThey're the same, silly");
+            return;
+        }
+
         System.out.println("\nClearing form!");
 
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("../views/GenericQuestionView.fxml"));
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
-        QuestionController q = parentLoader.getController();
-        q.populateInterface(currStage);
-        initializeQuestionModel(initialQuestionModel);
+        GenericQuestionController q = parentLoader.getController();
+        q.populateInterface(this.currStage);
+        initializeQuestionModel(this.initialQuestionModel);
 
-        currStage.setScene(nextScene);
-        currStage.show();
+        this.currStage.setScene(nextScene);
+        this.currStage.show();
     }
 
     public void cancel() throws IOException {
@@ -133,5 +119,38 @@ public class GenericQuestionController extends QuestionController {
         q.setUpTable();
         currStage.setScene(nextScene);
         currStage.show();
+    }
+
+    public void updateFieldHandler() {
+        updateFields(this.questionModel);
+    }
+
+    private void updateFields(QuestionModel qm) {
+        qm.setQuestionType(questionType.getText() == null ? "None" : questionType.getText());
+        qm.setQuestionName(questionName.getText() == null ? "" : questionName.getText());
+        qm.setSubject(subjects.getValue() == null ? "None" : subjects.getValue());
+        qm.setClassNumber(classes.getValue() == null ? "0" : classes.getValue());
+
+        if (easy.isSelected()) {
+            qm.setDifficulty(0);
+        }
+        else if (medium.isSelected()) {
+            qm.setDifficulty(1);
+        }
+        else if (hard.isSelected()) {
+            qm.setDifficulty(2);
+        }
+        else {
+            qm.setDifficulty(0);
+        }
+
+        // TODO: CharLimit and PointsPossible not working properly
+        qm.setCharLimit(charLimit.getText() == null || charLimit.getText().equals("") ? 0 : Integer.parseInt(charLimit.getText()));
+        qm.setPointsPossible(points.getText().equals("") ? 0 : Integer.parseInt(points.getText()));
+
+        // TODO: Add logic for selecting image
+
+        qm.setHint(hint.getText() == null ? "" : hint.getText());
+        qm.setQuestion(questionText.getText() == null ? "" : questionText.getText());
     }
 }

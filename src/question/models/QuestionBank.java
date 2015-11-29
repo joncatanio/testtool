@@ -42,6 +42,8 @@ public class QuestionBank {
         questions.add(question);
         numberOfQuestions++;
 
+        System.out.println("Adding question to QuestionBank!");
+        System.out.println(question.toString());
         db.setQuestionBank(questions);
     }
 
