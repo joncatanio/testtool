@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import question.models.QuestionBank;
 import question.models.QuestionModel;
 import test.controllers.GenerateTestController;
 import test.controllers.TestController;
@@ -65,7 +66,10 @@ public class GenericQuestionController extends QuestionController {
         // This will take all the fields and instantiate and object and pass it along to be created.
         System.out.println("\nAdding question!");
 
+        // Make sure the question is up-to-date
         updateFields(this.questionModel);
+        // Ship it off to QuestionBank
+        QuestionBank.getInstance().addQuestion(this.questionModel);
 
         // return to Add Question scene
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/PickQuestionType.fxml"));
