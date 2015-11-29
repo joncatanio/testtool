@@ -37,7 +37,24 @@ public class TestTakingController {
 
             currStage.setScene(nextScene);
             currStage.show();
+
+            System.out.println("Switched to viewing the take test tab");
         }
+    }
+
+    public void selectTestToView() throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/TestInfo.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        TestTakingController testView = parentLoader.getController();
+        testView.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
+
+        System.out.println("Switched to viewing a test");
+
     }
 
     public void getScheduledTests() {

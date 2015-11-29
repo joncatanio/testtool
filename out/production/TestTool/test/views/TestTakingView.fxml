@@ -25,15 +25,15 @@
                   <VBox prefHeight="459.0" prefWidth="199.0">
                      <children>
                         <Label prefHeight="49.0" prefWidth="207.0" text="                 Scheduled" />
-                         <ListView fx:id="scheduledTests" prefHeight="200.0" prefWidth="200.0" />
+                         <ListView fx:id="scheduledTests" onMouseClicked="#selectTestToView" prefHeight="200.0" prefWidth="200.0" />
                         <Label layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="207.0" text="                 Completed" />
-                         <ListView fx:id="completedTests" prefHeight="200.0" prefWidth="200.0" />
+                         <ListView fx:id="completedTests" onMouseClicked="#selectTestToView" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </VBox>
                </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                <children>
-                  <Label layoutX="232.0" layoutY="221.0" text="Choose a test from the list to the left" />
+                  <Label layoutX="232.0" layoutY="221.0" text="Choose a test from the lists to the left" />
                </children></AnchorPane>
             </items>
         </SplitPane>
