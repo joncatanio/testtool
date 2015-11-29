@@ -3,7 +3,7 @@ package question.controllers;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
-import Utility.DBObject;
+import utility.DBObject;
 import classpack.controllers.ClassPackController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;

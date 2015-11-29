@@ -1,6 +1,6 @@
 package question.models;
 
-import Utility.DBObject;
+import utility.DBObject;
 import javafx.collections.ObservableList;
 
 import java.util.*;

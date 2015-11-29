@@ -9,7 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
-import testing.JavaTestUtility;
+import testing.JavaTestutility;
 import format.ClassNameFormat;
 import classpack.models.TestBinModel;
 
@@ -18,7 +18,7 @@ import com.rits.cloning.Cloner;
 
 import java.util.*;
 
-import static testing.JavaTestUtility.getFieldValue;
+import static testing.JavaTestutility.getFieldValue;
 
 @RunWith(SpestRunner.class)
 public class TestBinModelTest
@@ -26,7 +26,7 @@ public class TestBinModelTest
     @Before
     public void setUp()
     {
-        testObj = (classpack.models.TestBinModel)javaTestUtility.getSampleObject(clazz);
+        testObj = (classpack.models.TestBinModel)javaTestutility.getSampleObject(clazz);
 
     }
 
@@ -36,7 +36,7 @@ public class TestBinModelTest
     private Cloner cloner = new Cloner();
     private File rootDirectory = new File("/Users/JonCatanio/Programming Projects/TestTool");
     private File sourceFile = new File("/Users/JonCatanio/Programming Projects/TestTool/src/classpack/models/TestBinModel.java");
-    private JavaTestUtility javaTestUtility = new JavaTestUtility(rootDirectory, sourceFile, false);
+    private JavaTestutility javaTestutility = new JavaTestutility(rootDirectory, sourceFile, false);
     private classpack.models.TestBinModel testObj;
     @Test
     public void getIdTest_0() throws Exception
@@ -59,15 +59,15 @@ public class TestBinModelTest
         int testComboIndex;
 
         String methodId = "addSubmission_test.models.TestModel";
-        List<test.models.TestModel> testPoints_0 = javaTestUtility.getSampleObjects(testObj, methodId, "testToAdd", test.models.TestModel.class);
+        List<test.models.TestModel> testPoints_0 = javaTestutility.getSampleObjects(testObj, methodId, "testToAdd", test.models.TestModel.class);
         int[][] combinations = CombinationSupport.getCombinations(testPoints_0.size());
 
         Class[] parameterClasses = {test.models.TestModel.class};
-        List<test.models.TestModel> ts_0 = javaTestUtility.getUniversalValues(testObj, methodId, 0);
+        List<test.models.TestModel> ts_0 = javaTestutility.getUniversalValues(testObj, methodId, 0);
         boolean forall_65 = true;
-        List<test.models.TestModel> tests_1 = javaTestUtility.getUniversalValues(testObj, methodId, 1);
+        List<test.models.TestModel> tests_1 = javaTestutility.getUniversalValues(testObj, methodId, 1);
         boolean forall_66 = true;
-        List<test.models.TestModel> test2s_1 = javaTestUtility.getUniversalValues(testObj, methodId, 1);
+        List<test.models.TestModel> test2s_1 = javaTestutility.getUniversalValues(testObj, methodId, 1);
         boolean forall_67 = true;
         test.models.TestModel param_0;
         for(testComboIndex = 0; testComboIndex < combinations.length; testComboIndex++)
@@ -80,11 +80,11 @@ public class TestBinModelTest
                 forall_65 = forall_65 && (!(t.equals(testToAdd)));
                 if(submissions.contains(t))
                 {
-                    Assert.assertTrue(javaTestUtility.getFieldValue(testObj, "submissions", java.util.ArrayList.class).contains(t));
+                    Assert.assertTrue(javaTestutility.getFieldValue(testObj, "submissions", java.util.ArrayList.class).contains(t));
                 }
                 else
                 {
-                    Assert.assertTrue(!(javaTestUtility.getFieldValue(testObj, "submissions", java.util.ArrayList.class).contains(t)));
+                    Assert.assertTrue(!(javaTestutility.getFieldValue(testObj, "submissions", java.util.ArrayList.class).contains(t)));
                 }
             }
             Assert.assertTrue(forall_65);
