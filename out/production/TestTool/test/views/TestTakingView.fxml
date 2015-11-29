@@ -25,9 +25,9 @@
                   <VBox prefHeight="459.0" prefWidth="199.0">
                      <children>
                         <Label prefHeight="49.0" prefWidth="207.0" text="                 Scheduled" />
-                         <ListView prefHeight="200.0" prefWidth="200.0" />
+                         <ListView fx:id="scheduledTests" prefHeight="200.0" prefWidth="200.0" />
                         <Label layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="207.0" text="                 Completed" />
-                         <ListView prefHeight="200.0" prefWidth="200.0" />
+                         <ListView fx:id="completedTests" prefHeight="200.0" prefWidth="200.0" />
                      </children>
                   </VBox>
                </children></AnchorPane>
