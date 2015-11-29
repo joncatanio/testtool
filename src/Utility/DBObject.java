@@ -136,7 +136,7 @@ public class DBObject implements Serializable {
 
     public ArrayList<QuestionModel> QuestionsByType(String type) {
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
-        this.db = deserialize();
+        this.questionBank = getQuestionBank();
 
         for(QuestionModel question : this.questionBank){
             if(question.getQuestionType().equals(type)){
@@ -148,7 +148,7 @@ public class DBObject implements Serializable {
 
     public ArrayList<QuestionModel> QuestionsByDifficulty(int difficulty) {
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
-        this.db = deserialize();
+        this.questionBank = getQuestionBank();
 
         for(QuestionModel question : this.questionBank){
             if(question.getDifficulty() == difficulty){

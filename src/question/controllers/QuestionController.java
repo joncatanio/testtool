@@ -128,7 +128,8 @@ public class QuestionController {
 
         QuestionController first = parentLoader.getController();
 
-
+        first.populateInterface(currStage);
+        
         title.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("questionName"));
         classType.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("classNumber"));
         subject.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("subject"));
@@ -137,7 +138,6 @@ public class QuestionController {
         difficulty.setCellValueFactory(new PropertyValueFactory<QuestionModel, Integer>("difficulty"));
 
         table.setItems(getFiltered(filter, filterType));
-        first.populateInterface(currStage);
         currStage.setScene(nextScene);
         currStage.show();
     }
