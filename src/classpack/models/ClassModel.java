@@ -20,6 +20,8 @@ import java.util.*;
  * a class.
  */
 public class ClassModel {
+
+    private int classId;
     private String classCode;
     private String className;
     private String schoolName;
@@ -29,6 +31,20 @@ public class ClassModel {
      */
     private HashMap<Integer, TestBinModel> bins = new HashMap<Integer, TestBinModel>();
     private GradeBook grades;
+
+    /**
+     * Gets the class id
+     */
+    public int getClassId() {
+        return classId;
+    }
+
+    /**
+     * Sets the class id
+     */
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
 
     /**
      *   setClassCode sets the classes code so students can specify a class to join, these are unique codes.
@@ -95,5 +111,13 @@ public class ClassModel {
 
         //return bins.get(testBinId);
         return new TestBinModel();
+    }
+
+    /**
+     * return all of the bins for this class
+     */
+    public ArrayList<TestBinModel> getTestBins() {
+
+        return new ArrayList<TestBinModel>(bins.values());
     }
 }

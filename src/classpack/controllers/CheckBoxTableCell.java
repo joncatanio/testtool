@@ -13,7 +13,7 @@ import javafx.beans.property.BooleanProperty;
  */
 
 //CheckBoxTableCell for creating a CheckBox in a table cell
-public static class CheckBoxTableCell<S, T> extends TableCell<S, T> {
+public class CheckBoxTableCell<S, T> extends TableCell<S, T> {
     private final CheckBox checkBox;
     private ObservableValue<T> ov;
 

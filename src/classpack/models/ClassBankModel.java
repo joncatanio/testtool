@@ -19,9 +19,12 @@ public class ClassBankModel {
 
     public ClassModel getClassById(int id) {
         for( int i = 0; i < classes.size(); i++ ) {
-            if( classes.get(i).getClassCode() == id) {
+            if( classes.get(i).getClassId() == id) {
                 return classes.get(i);
             }
         }
+
+        //TODO: should throw an exception instead
+        return new ClassModel();
     }
 }

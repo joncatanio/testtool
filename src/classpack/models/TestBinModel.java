@@ -2,6 +2,8 @@ package classpack.models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import org.testng.annotations.Test;
 import test.models.*;
 import java.util.*;
 
@@ -36,6 +38,7 @@ public class TestBinModel {
         average = 87.5;
         averageTimeInMinutes = 43.17;
         name = "sample test";
+        submissions = new ArrayList<TestModel>();
     }
 
     public String getName(){

@@ -83,10 +83,10 @@ public class SubmissionsViewController extends ClassTestsViewController{
         classAverageTimeLabel.setText(Double.toString( currClass.getTestBin(testBinId).getAverageTimeInMinutes() ));
 
         //populate the tests sidebar
-        ArrayList<TestModel> sidebarTests = ClassBank.getInstance().getClass(classId).getTests();
+        ArrayList<TestBinModel> sidebarTests = ClassBankModel.getInstance().getClassById(classId).getTestBins();
         ArrayList<String> testNames = new ArrayList<String>();
-        for( TestModel test: sidebarTests) {
-            testNames.add(test.getName());
+        for( TestBinModel testBin: sidebarTests) {
+            testNames.add(testBin.getName());
         }
 
         testList.setItems(FXCollections.observableArrayList(testNames));
