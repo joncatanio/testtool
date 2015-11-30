@@ -2,6 +2,8 @@ package classpack.models;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import org.testng.annotations.Test;
 import test.models.*;
 import java.util.*;
 
@@ -20,6 +22,8 @@ public class TestBinModel {
     /** Id of corresponding test */
     private int id;
 
+    private String name;
+
     /** Average score of graded test submissions */
     private double average;
 
@@ -33,8 +37,17 @@ public class TestBinModel {
         id = 123467;
         average = 87.5;
         averageTimeInMinutes = 43.17;
+        name = "sample test";
+        submissions = new ArrayList<TestModel>();
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     /**
      * Return the TestBinModel's id
      *
@@ -54,20 +67,19 @@ public class TestBinModel {
     /**
      * Regrade a defined set of submitted tests.
      */
-    public void regradeForSubmissions(ArrayList<Integer> ids) {
+    public void regradeSubmission(int toRegrade) {
 
         TestHandlerModel grader = TestHandlerModel.getInstance();
-        for(int i = 0; i < ids.size(); i++) {
-            grader.regrade(ids.get(i));
-        }
+        grader.regrade(toRegrade);
+
     }
 
     /**
-     * Return the collection of submitted test.
+     * Return the collection of submitted tests.
      */
-    public ArrayList<String> getSubmissions() {
+    public ArrayList<TestModel> getSubmissions() {
 
-        return new ArrayList<String>(Arrays.asList("spongebob", "darth vader", "lord voldemort", "mike wazowski"));
+        return submissions;
     }
 
     /**
@@ -109,7 +121,7 @@ public class TestBinModel {
     /**
      * Return the average elapsed time in minutes, for a student to take the exam
      */
-    private double getAverageTimeInMinutes() {
+    public double getAverageTimeInMinutes() {
         return averageTimeInMinutes;
     }
 }
