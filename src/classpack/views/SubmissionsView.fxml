@@ -18,7 +18,7 @@
             <items>
                 <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
                 <Button fx:id="viewAssignedTestButton" mnemonicParsing="false" onAction="#viewAssignedTest" text="View Assigned Test" />
-                <Label text="Test Submissions" translateX="100.0" />
+                <Label fx:id="currentTestLabel" text="Test Submissions" translateX="100.0" />
                 <Button fx:id="regradeButton" mnemonicParsing="false" onAction="#regradeSelectedSubmissions" text="regrade" translateX="350.0" />
             </items></ToolBar>
         <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
@@ -31,9 +31,19 @@
                     </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                     <children>
-                        <ListView fx:id="submissionsList" layoutY="37.0" prefHeight="424.0" prefWidth="690.0" />
                         <Label layoutX="68.0" layoutY="10.0" text="Average:" />
                         <Label fx:id="classAverageLabel" layoutX="141.0" layoutY="10.0" text="\%value" />
+                        <Label layoutX="300.0" layoutY="10.0" text="Average Time:" />
+                        <Label fx:id="classAverageTimeLabel" layoutX="403.0" layoutY="10.0" text="\%value" />
+                  <TableView fx:id="submissionsList" layoutX="-1.0" layoutY="36.0" prefHeight="423.0" prefWidth="691.0">
+                    <columns>
+                        <TableColumn fx:id="checkboxCol" minWidth="0.0" prefWidth="48.0" />
+                        <TableColumn fx:id="nameCol" minWidth="0.0" prefWidth="436.0" text="Name" />
+                        <TableColumn fx:id="scoreCol" minWidth="0.0" prefWidth="71.0" text="Score" />
+                        <TableColumn fx:id="timeCol" prefWidth="64.0" text="Time" />
+                        <TableColumn fx:id="viewCol" prefWidth="71.0" text="&gt;&gt;&gt;" />
+                    </columns>
+                  </TableView>
                     </children></AnchorPane>
             </items>
         </SplitPane>
