@@ -1,3 +1,12 @@
+/****
+ *
+ * The QuestionBank Class is used as our questionBank.
+ * Here we store all of are questions. This file contains methods to filter
+ * the question bank.
+ *
+ * Kendall Gassner (kendall.gassner@yahoo.com)
+ *
+ */
 package question.models;
 
 import utility.DBObject;
