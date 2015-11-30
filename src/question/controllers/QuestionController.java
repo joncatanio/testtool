@@ -1,3 +1,15 @@
+/****
+ *
+ * The QuestionController Class is used to set up to populate QuestionBank table
+ * from the questions held in the Database object. It also provides methods
+ * that interact wtih the user such as when a user clickw on a question in the bank
+ * a new new page is loaded. FUnctions include adding a question and changing the workflow.
+ *
+ *
+ * Kendall Gassner (kendall.gassner@yahoo.com)
+ *
+ */
+
 package question.controllers;
 
 import java.io.IOException;
@@ -35,6 +47,11 @@ public class QuestionController {
 
     protected Stage currStage;
 
+    /*
+     * populateInterface is used to set the ArrayLists for dropdown menus and it calls getQuestions
+     * to get the Data bases stored questions
+     *
+     */
     public void populateInterface(Stage stage) {
         currStage = stage;
         selectSection.setItems(FXCollections.observableArrayList("Questions", "Tests", "Classes", "Settings"));
@@ -43,6 +60,13 @@ public class QuestionController {
         getQuestions();
     }
 
+    /*
+     * setUpTable sets the type and object each column will contain in the table
+     * and it fills the Question bank table with questions from the data base. A Listener is added
+     * to the table. If a question is clicked then the user will be prompted with an option
+     * to delete the question.
+     *
+     */
     public void setUpTable(){
         title.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("questionName"));
         classType.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("classNumber"));
@@ -77,6 +101,10 @@ public class QuestionController {
         table.setItems(tableContent);
     }
 
+    /*
+    * SectionChange is a function that loads a new workflow based on the users action
+    *
+    */
     public void sectionChange(ActionEvent actionEvent) throws IOException{
         if (selectSection.getValue() == "Tests") {
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/AddTestView.fxml"));
@@ -117,6 +145,11 @@ public class QuestionController {
         System.out.println("Selected");
     }
 
+    /*
+     * PickNewQuestion loads the a scene where the user will be able to pick the type
+     * of question he or she will want to add to the questionBank
+     *
+     */
     public void PickNewQuestion() throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/PickQuestionType.fxml"));
         Parent nextSceneParent = parentLoader.load();
@@ -130,20 +163,57 @@ public class QuestionController {
         System.out.println("Select a Question type.");
     }
 
+    /*
+     * getQuestion returns an observable list of questions stored in
+     * the DataBase.
+     *
+     */
     public void getQuestions(){
         tableContent = FXCollections.observableList(DBObject.getInstance().getQuestionBank());
     }
 
+    /*
+     * FilterByType is a function that filters the questionBank
+     * based on the type of question the user requests to filter by
+     *
+     */
+    public void FilterByType(ActionEvent actionEvent) throws IOException {
+        filterBy("Type", ((Button)actionEvent.getSource()).getText());
+    }
+
+    /*
+     * FilterByEasy is a function that filters the questionBank
+     * if the user selects "easy" in the filtering side bar
+     *
+     */
     public void FilterByEasy(ActionEvent actionEvent) throws IOException {
         filterBy("difficulty", "1");
     }
+
+    /*
+     * FilterByMedium is a function that filters the questionBank
+     * if the user selects "medium" in the filtering side bar
+     *
+     */
     public void FilterByMedium(ActionEvent actionEvent) throws IOException {
         filterBy("difficulty", "2");
     }
+
+    /*
+     * FilterByDifficult is a function that filters the questionBank
+     * if the user selects "hard" in the filtering side bar
+     *
+     */
     public void FilterByDifficult(ActionEvent actionEvent) throws IOException {
         filterBy("difficulty", "3");
     }
 
+    /*
+     * FilterBy is a function that reloads the Question workflow
+     * with an updated questionBank containing only the requested filtered
+     * questions
+     *
+     */
     public void filterBy(String filter, String filterType) throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
@@ -160,6 +230,10 @@ public class QuestionController {
         currStage.show();
     }
 
+    /*
+     * getFiltered returns an ObservableList of the filtered questions
+     *
+     */
     public ObservableList<QuestionModel> getFiltered(String filter, String filterType){
 
        if(filter.equals("Type")){
