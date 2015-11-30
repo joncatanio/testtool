@@ -31,7 +31,18 @@ public class TestTakingModel {
      */
     public String getTestName() {
         System.out.println("Current test name: " + curTest.getName());
+
         return curTest.getName();
+    }
+
+    /**
+     * Gets the test currently in use by the test taking model.  Used for grading.
+     * @return A reference to the test currently in use by the test taking model.
+     */
+    public TestModel getTest() {
+        System.out.println("Returning test with name: " + curTest.getName());
+
+        return curTest;
     }
 
     /**

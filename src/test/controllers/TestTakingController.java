@@ -32,6 +32,8 @@ public class TestTakingController {
 
     /* Test Taking */
     public ListView currentQuestionList = new ListView();
+    public Label currentQuestionName = new Label();
+    public Label currentQuestionInfo = new Label();
 
     public void populateInterface(Stage stage) {
         currStage = stage;
@@ -104,6 +106,24 @@ public class TestTakingController {
         currStage.show();
 
         System.out.println("Switched to test taking question view");
+    }
+
+    public void submitTest() throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/TestCompleteInfo.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        TestTakingController testView = parentLoader.getController();
+        testView.populateInterface(currStage);
+
+        curTest = new TestTakingModel();
+        updateTestInfo();
+
+        currStage.setScene(nextScene);
+        currStage.show();
+
+        TestHandlerModel.getInstance().grade(curTest.getTest());
+        System.out.println("Submitted test!");
     }
 
     public void updateTestInfo() {
