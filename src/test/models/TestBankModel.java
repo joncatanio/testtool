@@ -1,5 +1,7 @@
 package test.models;
 
+import question.models.QuestionModel;
+
 import java.util.ArrayList;
 
 /**
@@ -25,8 +27,14 @@ public class TestBankModel {
     private TestBankModel() {
         // TODO: Pull data from database on startup.
         tests = new ArrayList<TestModel>();
+        TestModel mockTest1 = new TestModel("CPE 349 - Final");
+        QuestionModel mockQuestion1 = new QuestionModel();
+
+        mockQuestion1.setQuestionName("Mock Question 1");
+        mockTest1.addQuestion(mockQuestion1);
+
+        tests.add(mockTest1);
         tests.add(new TestModel("CPE 349 - Midterm 1"));
-        tests.add(new TestModel("CPE 349 - Final"));
     }
 
     /**

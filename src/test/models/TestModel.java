@@ -80,7 +80,7 @@ public class TestModel {
     /**
      * The collection of questions included on the test.
      */
-    private ArrayList<QuestionModel> questions;
+    private ArrayList<QuestionModel> questions = new ArrayList<>();
 
     /**
      * Due to no users this is simply to show if anyone has taken the test already
@@ -192,13 +192,7 @@ public class TestModel {
      */
     public void addQuestion(QuestionModel question) {
         System.out.println("Add Question");
-        if (questions == null) {
-            questions = new ArrayList<QuestionModel>();
-            questions.add(question);
-        }
-        else {
-            questions.add(question);
-        }
+        questions.add(question);
     }
 
     /**
@@ -207,13 +201,25 @@ public class TestModel {
      <pre>
      pre:
      post:
-     forall (QuestionModel q ; !q.equals(question) ;
+     forall (QuestionModel q ; !q.equals(questions.get(index)) ;
         if (questions.contains(q))
             (!questions'.contains(q))
         else
             (!questions'.contains(q)));
      */
-    public void removeQuestion(QuestionModel question) {}
+    public void removeQuestion(int index) {
+        questions.remove(index);
+    }
+
+    /**
+     * Gets the question from the questions on this test.
+     *
+     * @param index The index of a question possibly contained on the test's list of questions.
+     * @return A question from the test given its index in the list of questions.
+     */
+    public QuestionModel getQuestion(int index) {
+        return questions.get(index);
+    }
 
     /**
      * Gets whether or not the test has already been taken.
