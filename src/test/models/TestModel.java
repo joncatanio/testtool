@@ -1,5 +1,6 @@
 package test.models;
 
+import com.sun.xml.internal.bind.annotation.OverrideAnnotationOf;
 import question.models.QuestionModel;
 import utility.EQuestionTypes;
 
@@ -24,7 +25,7 @@ public class TestModel {
     /**
      * The total points of the test.
      */
-    private int totalPoints;
+    private int totalPoints = 0;
 
     /**
      * The number of questions on the test.
@@ -80,6 +81,13 @@ public class TestModel {
      * The collection of questions included on the test.
      */
     private ArrayList<QuestionModel> questions;
+
+    /**
+     * Constructors for TestModel
+     */
+    public TestModel(String name) {
+        this.name = name;
+    }
 
     /**
      * Gets the unique id of the test.
@@ -191,4 +199,9 @@ public class TestModel {
             (!questions'.contains(q)));
      */
     public void removeQuestion(QuestionModel question) {}
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
