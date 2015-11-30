@@ -1,6 +1,7 @@
 package test.controllers;
 
 import javafx.scene.control.Label;
+import question.models.QuestionModel;
 import test.models.TestModel;
 
 /**
@@ -15,7 +16,8 @@ public class CustomEditTestController extends TestController {
     }
 
     public void addQuestion() {
-        System.out.println("Add question");
+        // TODO: Let the user pick a question from the question bank.
+        testInstance.addQuestion(new QuestionModel());
     }
 
     public void setTestInstance(TestModel testInstance) {

@@ -83,6 +83,12 @@ public class TestModel {
     private ArrayList<QuestionModel> questions;
 
     /**
+     * Due to no users this is simply to show if anyone has taken the test already
+     * one could always retake the test if needed.
+     */
+    private boolean taken = false;
+
+    /**
      * Constructors for TestModel
      */
     public TestModel(String name) {
@@ -184,7 +190,16 @@ public class TestModel {
         else
             (!questions'.contains(q)));
      */
-    public void addQuestion(QuestionModel question) {}
+    public void addQuestion(QuestionModel question) {
+        System.out.println("Add Question");
+        if (questions == null) {
+            questions = new ArrayList<QuestionModel>();
+            questions.add(question);
+        }
+        else {
+            questions.add(question);
+        }
+    }
 
     /**
      * Removes the specified question from the test if it is included in the test.
@@ -199,6 +214,24 @@ public class TestModel {
             (!questions'.contains(q)));
      */
     public void removeQuestion(QuestionModel question) {}
+
+    /**
+     * Gets whether or not the test has already been taken.
+     *
+     * @return True if the test has already been taken, false otherwise.
+     */
+    public boolean getTaken() {
+        return taken;
+    }
+
+    /**
+     * Sets the taken boolean.
+     *
+     * @param taken True if the test has been taken, false otherwise.
+     */
+    public void setTaken(boolean taken) {
+        this.taken = taken;
+    }
 
     @Override
     public String toString() {
