@@ -2,7 +2,9 @@ package question.controllers;
 
 import java.io.IOException;
 import java.util.ResourceBundle;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import utility.DBObject;
 import classpack.controllers.ClassPackController;
 import javafx.collections.FXCollections;
@@ -52,6 +54,30 @@ public class QuestionController {
         type.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("questionType"));
         date.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("date"));
         difficulty.setCellValueFactory(new PropertyValueFactory<QuestionModel, Integer>("difficulty"));
+
+        table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE); // just in case you didnt already set the selection model to multiple selection.
+        table.getSelectionModel().getSelectedIndices().addListener(new ListChangeListener<Integer>()
+        {
+            @Override
+            public void onChanged(Change<? extends Integer> change){
+                Scene nextScene;
+                FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/DeleteQuestion.fxml"));
+                Parent nextSceneParent = null;
+                try {
+                    nextSceneParent = parentLoader.load();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                nextScene = new Scene(nextSceneParent);
+
+                DeleteQuestionController test = parentLoader.getController();
+                test.deleteQuestion = table.getSelectionModel().getSelectedItem();
+                test.populateInterface(currStage);
+                currStage.setScene(nextScene);
+                currStage.show();
+            }
+
+        });
         table.setItems(tableContent);
     }
 
@@ -186,6 +212,8 @@ public class QuestionController {
            return FXCollections.observableList(DBObject.getInstance().getQuestionBank());
        }
     }
+
+
 
 
 }

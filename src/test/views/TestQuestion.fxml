@@ -25,7 +25,8 @@
                     <children>
                         <VBox prefHeight="459.0" prefWidth="199.0">
                             <children>
-                                <ListView fx:id="scheduledTests" prefHeight="460.0" prefWidth="199.0" />
+                                <ListView fx:id="currentQuestionList" prefHeight="512.0" prefWidth="199.0" />
+                        <Button mnemonicParsing="false" prefHeight="121.0" prefWidth="258.0" text="Submit" />
                             </children>
                         </VBox>
                     </children></AnchorPane>
