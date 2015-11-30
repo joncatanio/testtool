@@ -1,3 +1,13 @@
+/****
+ *
+ * The MultipleSelectController Class is used when a the user is creating a multiple select question.
+ * This controller will add a multiple select question to the database and to the table.
+ *
+ *
+ * Kendall Gassner (kendall.gassner@yahoo.com)
+ *
+ */
+
 package question.controllers;
 
 import utility.DBObject;
@@ -17,9 +27,6 @@ import user.controllers.UserController;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by kendall on 11/4/15.
- */
 
 
 public class MultipleSelectController extends QuestionController {
@@ -46,7 +53,11 @@ public class MultipleSelectController extends QuestionController {
     public MultipleSelectController(){
     }
 
-
+    /*
+     * populateChoiceBoxes is used to set the ArrayLists for dropdown menus and it calls getQuestions
+     * to get the Data bases stored questions
+     *
+     */
     public void populateChoiceBoxes() {
         className.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
         subjects.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
@@ -55,6 +66,12 @@ public class MultipleSelectController extends QuestionController {
 
     }
 
+    /*
+     * AddQuestionToBank will add the fill in the blank question only if the user has
+     * filled out the following fields: title, question, subject, class, answer
+     * points possible and difficulty. Points possible must be an integer.
+     *
+     */
     public void AddQuestionToBank(ActionEvent actionEvent) throws IOException {
         QuestionModel questionModel = new QuestionModel();
         ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
@@ -131,6 +148,10 @@ public class MultipleSelectController extends QuestionController {
 
     }
 
+    /*
+     * ClearAllThings clears all of the fields in the fill in the blank GUI.
+     *
+     */
     public void ClearAllThings(ActionEvent actionEvent) {
         questionName.clear();
         question.clear();
@@ -152,6 +173,11 @@ public class MultipleSelectController extends QuestionController {
         dCheck.setSelected(false);
     }
 
+    /*
+     * Cancel takes the user back to the question bank and does not add the question
+     * to the database.
+     *
+     */
     public void Cancel(ActionEvent actionEvent) throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();

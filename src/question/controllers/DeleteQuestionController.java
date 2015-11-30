@@ -1,8 +1,18 @@
+/****
+ *
+ * The DeleteQuestionController Class is used whena question in the question bank
+ * is clicked on. This controller will take care of removing a question from the bank
+ * on users request.
+ *
+ *
+ * Kendall Gassner (kendall.gassner@yahoo.com)
+ *
+ */
+
 package question.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import utility.DBObject;
 import javafx.event.ActionEvent;
@@ -21,6 +31,11 @@ public class DeleteQuestionController {
     public QuestionModel deleteQuestion;
     protected Stage currStage;
 
+    /*
+     * populateInterface is used to set the ArrayLists for dropdown menus and it calls getQuestions
+     * to get the Data bases stored questions
+     *
+     */
     public void populateInterface(Stage stage) {
         currStage = stage;
         selectSection.setItems(FXCollections.observableArrayList("Questions", "Tests", "Classes", "Settings"));
@@ -33,7 +48,12 @@ public class DeleteQuestionController {
         System.out.println("Selected");
     }
 
-
+    /*
+     * DeleteQuestion is a function that is called when a user presses the deleteQuestion button
+     * this function removes the question from the DataBase and removes the question from the table
+     * in the questionBank.
+     *
+     */
     public void DeleteQuestion(ActionEvent actionEvent) throws IOException {
         Scene nextScene;
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
@@ -56,6 +76,11 @@ public class DeleteQuestionController {
 
     }
 
+    /*
+     * GoBack is a function that allows a user to go back to the test bank without
+     * deleting the question that is selected.
+     *
+     */
     public void GoBack(ActionEvent actionEvent) throws IOException {
         Scene nextScene;
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
