@@ -87,11 +87,19 @@ public class CustomEditTestController extends TestController {
         currStage.show();
     }
 
+    /**
+     * Applies to the EditRemoveQuestionFromTest workflow. Redirects user to the
+     * edit question page.
+     */
     public void editActualQuestion() {
         // TODO: Pass off to Kendall's edit question.
         System.out.println("Edit actual question");
     }
 
+    /**
+     * Applies to the EditRemoveQuestionFromTest workflow. Removes the question from
+     * the test.
+     */
     public void removeQuestion() {
         // TODO: Remove the question from the test and redirect them back to the test.
         System.out.println("Remove the question from test.");
