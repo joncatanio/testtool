@@ -27,4 +27,22 @@ public class ClassBankModel {
         //TODO: should throw an exception instead
         return new ClassModel();
     }
+
+    public void removeClass(int id) {
+        for( int i = 0; i < classes.size(); i++ ) {
+            if( classes.get(i).getClassId() == id) {
+                classes.remove(i);
+            }
+        }
+        updateClassBankDB();
+    }
+
+    public void addClass(ClassModel classToAdd) {
+        classes.add(classToAdd);
+        updateClassBankDB();
+    }
+
+    public void updateClassBankDB() {
+        //update DB here
+    }
 }

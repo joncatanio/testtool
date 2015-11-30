@@ -101,7 +101,7 @@ public class SubmissionsViewController extends ClassTestsViewController{
         Scene nextScene = new Scene(nextSceneParent);
 
         AssignedTestViewController assigned = parentLoader.getController();
-        assigned.populateInterface(currStage, 1231);
+        assigned.populateInterface(currStage, 1231, 1231);
 
         currStage.setScene(nextScene);
         currStage.show();

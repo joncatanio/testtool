@@ -74,7 +74,7 @@ public class ClassViewController extends ClassPackController{
         Scene nextScene = new Scene(nextSceneParent);
 
         AssignedTestViewController assigned = parentLoader.getController();
-        assigned.populateInterface(currStage, highlightedClassId);
+        assigned.populateInterface(currStage, highlightedClassId,12452);
 
         currStage.setScene(nextScene);
         currStage.show();
