@@ -134,8 +134,6 @@ public class QuestionController {
         tableContent = FXCollections.observableList(DBObject.getInstance().getQuestionBank());
     }
 
-    }
-
     public void FilterByEasy(ActionEvent actionEvent) throws IOException {
         filterBy("difficulty", "1");
     }

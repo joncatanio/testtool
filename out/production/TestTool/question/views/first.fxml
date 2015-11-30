@@ -34,6 +34,7 @@
                                  <children>
                                     <ListView prefHeight="83.0" prefWidth="200.0" />
                                     <Button layoutX="-4.0" layoutY="-1.0" mnemonicParsing="false" onAction="#FilterByEasy" prefHeight="27.0" prefWidth="211.0" text="Easy" />
+                                    <Button layoutX="-6.0" layoutY="27.0" mnemonicParsing="false" onAction="#FilterByMedium" prefHeight="27.0" prefWidth="211.0" text="Medium" />
                                     <Button layoutX="-6.0" layoutY="55.0" mnemonicParsing="false" onAction="#FilterByDifficult" prefHeight="27.0" prefWidth="211.0" text="Hard" />
                                  </children>
                               </AnchorPane>
