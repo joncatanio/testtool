@@ -18,6 +18,7 @@ public class QuestionModel{
     private String hint;
     private String questionName;
     private String answer;
+    private String input;
     private String date;
     private String a;
     private String b;
@@ -27,11 +28,14 @@ public class QuestionModel{
     private boolean bCheck;
     private boolean cCheck;
     private boolean dCheck;
+    private boolean aChecked;
+    private boolean bChecked;
+    private boolean cChecked;
+    private boolean dChecked;
     private int charLimit;
     private int difficulty;
     private int pointsPossible;
     private int id;
-
 
     public QuestionModel() {
         this.questionType = "";
@@ -42,6 +46,7 @@ public class QuestionModel{
         this.ImageFile = "";
         this.hint = "";
         this.answer = "";
+        this.input = "";
         this.date = "";
         this.charLimit = 100;
         this.difficulty = 0;
@@ -50,6 +55,10 @@ public class QuestionModel{
         this.bCheck = false;
         this.cCheck = false;
         this.dCheck = false;
+        this.aChecked = false;
+        this.bChecked = false;
+        this.cChecked = false;
+        this.dChecked = false;
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
@@ -377,6 +386,46 @@ public class QuestionModel{
     public void setDCheck(boolean name){
         System.out.println("D Check: " + name);
         this.dCheck = name;
+    }
+
+    public boolean isaChecked() {
+        return aChecked;
+    }
+
+    public void setaChecked(boolean aChecked) {
+        this.aChecked = aChecked;
+    }
+
+    public boolean isbChecked() {
+        return bChecked;
+    }
+
+    public void setbChecked(boolean bChecked) {
+        this.bChecked = bChecked;
+    }
+
+    public boolean iscChecked() {
+        return cChecked;
+    }
+
+    public void setcChecked(boolean cChecked) {
+        this.cChecked = cChecked;
+    }
+
+    public boolean isdChecked() {
+        return dChecked;
+    }
+
+    public void setdChecked(boolean dChecked) {
+        this.dChecked = dChecked;
+    }
+
+    public String getInput() {
+        return input;
+    }
+
+    public void setInput(String input) {
+        this.input = input;
     }
 
 

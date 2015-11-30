@@ -1,5 +1,9 @@
 package test.models;
 
+import question.models.QuestionModel;
+
+import java.util.*;
+
 /**
  * The TestHandlerModel handles generating, grading, and creating tests.
  * It is the engine that handles and generic Test tasks that doesn't belong
@@ -28,6 +32,43 @@ public class TestHandlerModel {
      */
     public static TestHandlerModel getInstance() {
         return singleton;
+    }
+
+    /**
+     * Grades the given test.
+     *
+     * @param toGrade test to grade.
+     */
+    public void grade(TestModel toGrade) {
+        int points = 0;
+        for(QuestionModel question : toGrade.getQuestions()) {
+            //grade each question
+
+            switch(question.getQuestionType()) {
+                case "Fill in the Blank":
+                    if (question.getAnswer().equals( question.getInput() )) {
+                        points += question.getPointsPossible();
+                    }
+                    break;
+                case "Multiple Choice":
+                    if (question.getAnswer().equals( question.getInput() )) {
+                        points += question.getPointsPossible();
+                    }
+                    break;
+                case "Multiple Select":
+                    if (question.getACheck() == question.isaChecked() &&
+                            question.getBCheck() == question.isbChecked() &&
+                            question.getCCheck() == question.iscChecked() &&
+                            question.getDCheck() == question.isdChecked()) {
+                        points += question.getPointsPossible();
+                    }
+                    break;
+            }
+        }
+
+        toGrade.setTotalPoints(points);
+
+        System.out.println("Test " + toGrade.getId() + " has been graded.");
     }
 
     /**
