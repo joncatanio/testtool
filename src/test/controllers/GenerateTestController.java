@@ -3,12 +3,16 @@ package test.controllers;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import question.models.QuestionModel;
 import test.models.GenerateTestRequestModel;
 import test.models.TestHandlerModel;
 import test.models.TestModel;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -64,7 +68,32 @@ public class GenerateTestController extends TestController {
         requestModel.setSelectedClasses(selectedClasses);
         requestModel.setSelectedSubjects(selectedSubjects);
 
-        testHandler.generate(requestModel);
+        try {
+            pushToCustomWorkflow(testHandler.generate(requestModel));
+        }
+        catch (IOException io) {
+            System.out.println("Could not push generated test to custom workflow!");
+        }
+    }
+
+    public void pushToCustomWorkflow(TestModel newTest) throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/CustomEditTestView.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        CustomEditTestController cetc = parentLoader.getController();
+
+        /* Set the instance of the new test in the controller. */
+        cetc.setTestInstance(newTest);
+
+        /* Add the test to the ListView. */
+        testBank.addTest(newTest);
+
+        /* Populate the interface with the new test in the test bank sidebar. */
+        cetc.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
     }
 
     public void populateSelectBoxes() {

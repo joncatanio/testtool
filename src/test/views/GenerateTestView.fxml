@@ -15,14 +15,14 @@
     <children>
         <ToolBar maxHeight="40.0" minHeight="40.0" minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
             <items>
-                <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
+                <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" style="-fx-cursor: HAND;" />
             </items></ToolBar>
         <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
             <items>
                 <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0">
                     <children>
-                        <Button layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#addNewTest" prefHeight="41.0" prefWidth="202.0" text="+ Add a new test" />
-                  <ListView fx:id="testBankSidebar" prefHeight="420.0" prefWidth="200.0" />
+                        <Button layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#addNewTest" prefHeight="41.0" prefWidth="202.0" style="-fx-cursor: HAND;" text="+ Add a new test" />
+                  <ListView fx:id="testBankSidebar" prefHeight="420.0" prefWidth="200.0" style="-fx-cursor: HAND;" />
                     </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="700.0">
                <children>
@@ -39,7 +39,7 @@
                         <ToggleGroup fx:id="difficulty" />
                     </fx:define>
                     <children>
-                       <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" text="Easy">
+                       <RadioButton fx:id="easy" layoutX="348.0" layoutY="130.0" mnemonicParsing="false" style="-fx-cursor: HAND;" text="Easy">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
@@ -47,33 +47,33 @@
                               <ToggleGroup fx:id="difficulty" />
                            </toggleGroup>
                        </RadioButton>
-                       <RadioButton fx:id="medium" layoutX="423.0" layoutY="130.0" mnemonicParsing="false" text="Medium" toggleGroup="$difficulty">
+                       <RadioButton fx:id="medium" layoutX="423.0" layoutY="130.0" mnemonicParsing="false" style="-fx-cursor: HAND;" text="Medium" toggleGroup="$difficulty">
                            <padding>
                               <Insets right="10.0" />
                            </padding>
                         </RadioButton>
-                       <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" text="Hard" toggleGroup="$difficulty" />
+                       <RadioButton fx:id="hard" layoutX="518.0" layoutY="130.0" mnemonicParsing="false" style="-fx-cursor: HAND;" text="Hard" toggleGroup="$difficulty" />
                     </children>
                    </HBox>
-                  <MenuButton fx:id="questionTypes" alignment="CENTER" layoutX="348.0" layoutY="185.0" mnemonicParsing="false" prefWidth="150.0" text="Select" textAlignment="CENTER">
+                  <MenuButton fx:id="questionTypes" alignment="CENTER" layoutX="348.0" layoutY="185.0" mnemonicParsing="false" prefWidth="150.0" style="-fx-cursor: HAND;" text="Select" textAlignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
-                  <MenuButton fx:id="classes" alignment="CENTER" layoutX="348.0" layoutY="246.0" mnemonicParsing="false" prefWidth="150.0" text="Select" textAlignment="CENTER">
+                  <MenuButton fx:id="classes" alignment="CENTER" layoutX="348.0" layoutY="246.0" mnemonicParsing="false" prefWidth="150.0" style="-fx-cursor: HAND;" text="Select" textAlignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
-                  <MenuButton fx:id="classSubjects" alignment="CENTER" layoutX="348.0" layoutY="304.0" mnemonicParsing="false" prefWidth="150.0" text="Select" textAlignment="CENTER">
+                  <MenuButton fx:id="classSubjects" alignment="CENTER" layoutX="348.0" layoutY="304.0" mnemonicParsing="false" prefWidth="150.0" style="-fx-cursor: HAND;" text="Select" textAlignment="CENTER">
                     <items>
                       <MenuItem mnemonicParsing="false" text="Action 1" />
                       <MenuItem mnemonicParsing="false" text="Action 2" />
                     </items>
                   </MenuButton>
-                   <Button layoutX="227.5" layoutY="381.0" mnemonicParsing="false" onAction="#generate" prefHeight="42.0" prefWidth="245.0" text="Generate" />
+                   <Button layoutX="227.5" layoutY="381.0" mnemonicParsing="false" onAction="#generate" prefHeight="42.0" prefWidth="245.0" style="-fx-cursor: HAND;" text="Generate" />
                </children></AnchorPane>
             </items>
         </SplitPane>

@@ -14,12 +14,13 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import question.controllers.QuestionController;
+import test.models.TestBankModel;
 import test.models.TestModel;
 import user.controllers.UserController;
 
 public class TestController {
     public ListView testBankSidebar = new ListView();
-    private ArrayList<TestModel> testBank;
+    public TestBankModel testBank = TestBankModel.getInstance();
 
     public ChoiceBox selectSection = new ChoiceBox();
     protected Stage currStage;
@@ -82,12 +83,6 @@ public class TestController {
     }
 
     public void getTestBank() {
-        /* Pull ArrayList from the database */
-        testBank = new ArrayList<TestModel>();
-
-        testBank.add(new TestModel("CPE 349 - Midterm 1"));
-        testBank.add(new TestModel("CPE 349 - Final"));
-
         /* Create a new cell factory to pull the name of the test for the ListView */
         testBankSidebar.setCellFactory(lv -> new ListCell<TestModel>() {
             @Override
@@ -101,16 +96,15 @@ public class TestController {
                 }
             }
         });
-        testBankSidebar.setItems(FXCollections.observableArrayList(testBank));
+        testBankSidebar.setItems(FXCollections.observableArrayList(testBank.getAllTests()));
     }
 
     /**
      * On edit start event handler for the list view.
      */
     public void editTest() throws IOException {
-        TestModel editingTest = testBank.get(testBankSidebar.getEditingIndex());
-        System.out.println(editingTest.toString());
-        System.out.println("Woo bitch, test is: ");
+        TestModel editingTest = testBank.getTest(testBankSidebar.getEditingIndex());
+        System.out.println("Editing test: " + editingTest.toString());
 
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/CustomEditTestView.fxml"));
         Parent nextSceneParent = parentLoader.load();

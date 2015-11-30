@@ -15,19 +15,19 @@
     <children>
         <ToolBar maxHeight="40.0" minHeight="40.0" minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
             <items>
-                <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
+                <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" style="-fx-cursor: HAND;" />
             </items></ToolBar>
         <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
             <items>
                 <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0">
                <children>
-                  <Button layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#addNewTest" prefHeight="41.0" prefWidth="202.0" text="+ Add a new test" />
-                  <ListView fx:id="testBankSidebar" editable="true" onEditStart="#editTest" prefHeight="420.0" prefWidth="200.0" />
+                  <Button layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#addNewTest" prefHeight="41.0" prefWidth="202.0" style="-fx-cursor: HAND;" text="+ Add a new test" />
+                  <ListView fx:id="testBankSidebar" editable="true" onEditStart="#editTest" prefHeight="420.0" prefWidth="200.0" style="-fx-cursor: HAND;" />
                </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="460.0" prefWidth="700.0">
                <children>
-                  <Button layoutX="227.5" layoutY="159.0" mnemonicParsing="false" onAction="#createCustomTest" prefHeight="42.0" prefWidth="245.0" text="Create Custom Test" />
-                  <Button layoutX="227.5" layoutY="259.0" mnemonicParsing="false" onAction="#generateRandomTest" prefHeight="42.0" prefWidth="245.0" text="Generate Random Test" />
+                  <Button layoutX="227.5" layoutY="159.0" mnemonicParsing="false" onAction="#createCustomTest" prefHeight="42.0" prefWidth="245.0" style="-fx-cursor: HAND;" text="Create Custom Test" />
+                  <Button layoutX="227.5" layoutY="259.0" mnemonicParsing="false" onAction="#generateRandomTest" prefHeight="42.0" prefWidth="245.0" style="-fx-cursor: HAND;" text="Generate Random Test" />
                   <Label layoutX="343.5" layoutY="221.5" text="or" />
                </children></AnchorPane>
             </items>
