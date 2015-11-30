@@ -16,10 +16,10 @@
     <children>
         <ToolBar minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
             <items>
-                <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
+                <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" style="-fx-cursor: HAND;" />
             <Pane prefHeight="28.0" prefWidth="683.0">
                <children>
-                  <Button alignment="CENTER" layoutX="570.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#addQuestion" text="+ Add Question" />
+                  <Button alignment="CENTER" layoutX="570.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#addQuestion" style="-fx-cursor: HAND;" text="+ Add Question" />
                   <Label fx:id="testNameLabel" layoutX="14.0">
                      <font>
                         <Font size="22.0" />
@@ -27,6 +27,7 @@
                   </Label>
                   <Label layoutX="279.0" layoutY="6.0" text="Total Points:" />
                   <Label fx:id="totalPoints" layoutX="364.0" layoutY="6.0" />
+                  <TextField fx:id="testNameField" layoutY="1.0" onAction="#changeTestName" />
                </children>
             </Pane>
 
@@ -35,8 +36,8 @@
             <items>
                 <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0">
                 <children>
-                    <Button layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#addNewTest" prefHeight="41.0" prefWidth="202.0" text="+ Add a new test" />
-                    <ListView fx:id="testBankSidebar" editable="true" onEditStart="#editTest" prefHeight="420.0" prefWidth="200.0" />
+                    <Button layoutX="-1.0" layoutY="419.0" mnemonicParsing="false" onAction="#addNewTest" prefHeight="41.0" prefWidth="202.0" style="-fx-cursor: HAND;" text="+ Add a new test" />
+                    <ListView fx:id="testBankSidebar" editable="true" onEditStart="#editTest" prefHeight="420.0" prefWidth="200.0" style="-fx-cursor: HAND;" />
                 </children>
                 </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0" />
