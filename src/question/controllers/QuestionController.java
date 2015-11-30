@@ -1,14 +1,11 @@
 package question.controllers;
 
 import java.io.IOException;
-import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import utility.DBObject;
 import classpack.controllers.ClassPackController;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.Label;
@@ -45,7 +42,6 @@ public class QuestionController {
         selectQuestionType.setItems(FXCollections.observableArrayList("T/F", "Fill in the blank", "SA", "MC"));
         getQuestions();
     }
-
 
     public void setUpTable(){
         title.setCellValueFactory(new PropertyValueFactory<QuestionModel, String>("questionName"));
@@ -121,7 +117,6 @@ public class QuestionController {
         System.out.println("Selected");
     }
 
-
     public void PickNewQuestion() throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/PickQuestionType.fxml"));
         Parent nextSceneParent = parentLoader.load();
@@ -139,37 +134,6 @@ public class QuestionController {
         tableContent = FXCollections.observableList(DBObject.getInstance().getQuestionBank());
     }
 
-
-    public void FilterByFIllIn(ActionEvent actionEvent) throws IOException {
-        filterBy("Type", "Fill in The Blank");
-    }
-
-    public void FilterByShortAnswer(ActionEvent actionEvent) throws IOException {
-        filterBy("Type", "Short Answer");
-    }
-
-    public void FilterByFreeResponse(ActionEvent actionEvent) throws IOException {
-        filterBy("Type", "Free Response");
-    }
-
-    public void FilterByUML(ActionEvent actionEvent) throws IOException {
-        filterBy("Type", "UML");
-    }
-
-    public void FilterByMultipleChoice(ActionEvent actionEvent) throws IOException {
-        filterBy("Type", "Multiple Choice");
-    }
-
-    public void FilterByMultipleSelect(ActionEvent actionEvent) throws IOException {
-        filterBy("Type", "Multiple Select");
-    }
-
-    public void FilterByMatching(ActionEvent actionEvent) throws IOException {
-        filterBy("Type", "Matching");
-    }
-
-    public void FilterByCoding(ActionEvent actionEvent) throws IOException {
-        filterBy("Type", "Coding");
     }
 
     public void FilterByEasy(ActionEvent actionEvent) throws IOException {
@@ -201,7 +165,6 @@ public class QuestionController {
     public ObservableList<QuestionModel> getFiltered(String filter, String filterType){
 
        if(filter.equals("Type")){
-           System.out.println(DBObject.getInstance().QuestionsByType(filterType));
            return FXCollections.observableList(DBObject.getInstance().QuestionsByType(filterType));
 
        }

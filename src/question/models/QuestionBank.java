@@ -7,9 +7,6 @@ import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 
 
-/**
- * Created by kendall on 11/8/15.
- */
 public class QuestionBank {
     public ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
     private static QuestionBank instance = new QuestionBank();

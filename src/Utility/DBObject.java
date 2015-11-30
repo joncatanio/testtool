@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created by cburwell on 11/27/15.
+ * Created by cburwell on 11/27/15, Kendall Gassner (kendall.gassner@yahoo.com)
  *
  * Class representing a database object that can be written and retrieved from a
  * flat db.ser file. This behavior allows us to mock a database without bringing
@@ -134,6 +134,10 @@ public class DBObject implements Serializable {
         }
     }
 
+    /**
+     * QuestionByType is used to filter through the database questions
+     * and return the questions with the specified "type"
+     */
     public ArrayList<QuestionModel> QuestionsByType(String type) {
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
         this.questionBank = getQuestionBank();
@@ -146,6 +150,10 @@ public class DBObject implements Serializable {
         return questions;
     }
 
+    /**
+     * QuestionByDifficulty is used to filter through the database questions
+     * and return the questions with the specified "Difficulty"
+     */
     public ArrayList<QuestionModel> QuestionsByDifficulty(int difficulty) {
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
         this.questionBank = getQuestionBank();

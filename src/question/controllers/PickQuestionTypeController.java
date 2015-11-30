@@ -1,3 +1,13 @@
+/****
+ *
+ * The PickQuestionTypeController Class is used when a user wishes to add a question.
+ * This class is used to decide which question type the user will be adding.
+ *
+ *
+ * Kendall Gassner (kendall.gassner@yahoo.com)
+ *
+ */
+
 package question.controllers;
 import utility.DBObject;
 import javafx.collections.FXCollections;
@@ -25,11 +35,21 @@ public class PickQuestionTypeController extends QuestionController {
     public RadioButton MatchingButton = new RadioButton();
 
 
+    /*
+     * QuestionTypeChosen is called when a user selects a question type and presses
+     * enter.
+     *
+     */
     public void  QuestionTypeChosen() throws IOException {
         QuestionModel questionModel = new QuestionModel();
         SetQuestionType();
     }
 
+    /*
+     * SetQuestionType loads an editQuestion scene based on
+     * what type of question the user has selected/
+     *
+     */
     public void SetQuestionType() throws IOException {
         Scene nextScene;
         QuestionModel questionModel = new QuestionModel();
