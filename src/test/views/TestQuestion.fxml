@@ -17,7 +17,6 @@
             <items>
                 <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
                 <Label fx:id="testName" prefHeight="17.0" prefWidth="660.0" text="CPE 103 - Final" />
-
             </items></ToolBar>
         <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
             <items>
@@ -25,7 +24,8 @@
                     <children>
                         <VBox prefHeight="459.0" prefWidth="199.0">
                             <children>
-                                <ListView fx:id="scheduledTests" prefHeight="460.0" prefWidth="199.0" />
+                                <ListView fx:id="currentQuestionList" prefHeight="512.0" prefWidth="199.0" />
+                        <Button mnemonicParsing="false" prefHeight="121.0" prefWidth="258.0" text="Submit Test" />
                             </children>
                         </VBox>
                     </children></AnchorPane>

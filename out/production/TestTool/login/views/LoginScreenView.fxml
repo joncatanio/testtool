@@ -22,7 +22,7 @@
                </font>
             </Label>
             <TextField fx:id="username" layoutX="41.0" layoutY="132.0" promptText="Username" />
-            <PasswordField fx:id="password" layoutX="42.0" layoutY="182.0" promptText="Password" />
+            <PasswordField fx:id="password" layoutX="42.0" layoutY="182.0" onAction="#submit" promptText="Password" />
             <Button layoutX="93.0" layoutY="232.0" mnemonicParsing="false" onAction="#submit" style="-fx-cursor: HAND;" text="Submit" />
             <Label layoutX="162.0" layoutY="209.0" onMouseClicked="#signUp" style="-fx-cursor: HAND;" text="Sign up" textFill="#000000a6" />
          </children>

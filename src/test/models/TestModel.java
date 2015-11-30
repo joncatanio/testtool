@@ -80,7 +80,13 @@ public class TestModel {
     /**
      * The collection of questions included on the test.
      */
-    private ArrayList<QuestionModel> questions;
+    private ArrayList<QuestionModel> questions = new ArrayList<>();
+
+    /**
+     * Due to no users this is simply to show if anyone has taken the test already
+     * one could always retake the test if needed.
+     */
+    private boolean taken = false;
 
     /**
      * Constructors for TestModel
@@ -184,7 +190,10 @@ public class TestModel {
         else
             (!questions'.contains(q)));
      */
-    public void addQuestion(QuestionModel question) {}
+    public void addQuestion(QuestionModel question) {
+        System.out.println("Add Question");
+        questions.add(question);
+    }
 
     /**
      * Removes the specified question from the test if it is included in the test.
@@ -192,13 +201,43 @@ public class TestModel {
      <pre>
      pre:
      post:
-     forall (QuestionModel q ; !q.equals(question) ;
+     forall (QuestionModel q ; !q.equals(questions.get(index)) ;
         if (questions.contains(q))
             (!questions'.contains(q))
         else
             (!questions'.contains(q)));
      */
-    public void removeQuestion(QuestionModel question) {}
+    public void removeQuestion(int index) {
+        questions.remove(index);
+    }
+
+    /**
+     * Gets the question from the questions on this test.
+     *
+     * @param index The index of a question possibly contained on the test's list of questions.
+     * @return A question from the test given its index in the list of questions.
+     */
+    public QuestionModel getQuestion(int index) {
+        return questions.get(index);
+    }
+
+    /**
+     * Gets whether or not the test has already been taken.
+     *
+     * @return True if the test has already been taken, false otherwise.
+     */
+    public boolean getTaken() {
+        return taken;
+    }
+
+    /**
+     * Sets the taken boolean.
+     *
+     * @param taken True if the test has been taken, false otherwise.
+     */
+    public void setTaken(boolean taken) {
+        this.taken = taken;
+    }
 
     @Override
     public String toString() {

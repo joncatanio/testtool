@@ -1,5 +1,6 @@
 package test.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,8 +19,16 @@ public class AddTestController extends TestController {
         Scene nextScene = new Scene(nextSceneParent);
 
         CustomEditTestController cetc = parentLoader.getController();
+
+        /* Set the instance of the new test in the controller. */
+        TestModel customTest = new TestModel("New Test");
+        cetc.setTestInstance(customTest);
+
+        /* Add the test to the ListView. */
+        testBank.addTest(customTest);
+
+        /* Populate the interface with the new test in the test bank sidebar. */
         cetc.populateInterface(currStage);
-        cetc.setTestInstance(new TestModel("New Test"));
 
         currStage.setScene(nextScene);
         currStage.show();

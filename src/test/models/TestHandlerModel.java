@@ -43,11 +43,12 @@ public class TestHandlerModel {
      * Generates a random TestModel from a given GenerateTestRequestModel.
      */
     public TestModel generate(GenerateTestRequestModel request) {
-        TestModel rtn = null;
+        TestModel rtn = new TestModel(request.getName());
 
-        rtn.setName(request.getName());
+        rtn.setDifficulty(request.getDifficulty());
+        rtn.setId(1);
+        // TODO: Set the proper id and actual difficulty from pulled questions. This is gonna be a big method.
 
-        System.out.println("Generate Test! Creating TestModel!");
         return rtn;
     }
 }
