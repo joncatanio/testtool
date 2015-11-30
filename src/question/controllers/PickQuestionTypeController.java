@@ -45,21 +45,21 @@ public class PickQuestionTypeController extends QuestionController {
         }
         else if(MultipleChoiceButton.isSelected()){
             questionModel.setQuestionType("MultipleChoice");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/AddMultipleChoiceView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/MultipleChoice.fxml"));
             Parent nextSceneParent = parentLoader.load();
              nextScene = new Scene(nextSceneParent);
 
-            FillInTheBlankController test = parentLoader.getController();
+            MultipleChoiceController test = parentLoader.getController();
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
         }
         else if(MultipleSelectButton.isSelected()){
             questionModel.setQuestionType("MultipleSlect");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/AddMultipleSelectView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/MultipleSelect.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
 
-            FillInTheBlankController test = parentLoader.getController();
+            MultipleSelectController test = parentLoader.getController();
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
         }

@@ -8,15 +8,26 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
+import javafx.scene.control.Label;
 
 import java.io.IOException;
 
 public class TestTakingController {
+    /* Non-specific */
     public ListView scheduledTests = new ListView();
     public ListView completedTests = new ListView();
-
     public ChoiceBox selectSection = new ChoiceBox();
     protected Stage currStage;
+
+    /* Test Info */
+    public Label classNameLabel = new Label();
+    public Label testName = new Label();
+    public Label timeLabel = new Label();
+    public Label pointsLabel = new Label();
+    public Label dueDateLabel = new Label();
+    public Label testDescriptionLabel = new Label();
+    public Label testNotesLabel = new Label();
+
 
     public void populateInterface(Stage stage) {
         currStage = stage;
@@ -54,7 +65,34 @@ public class TestTakingController {
         currStage.show();
 
         System.out.println("Switched to viewing a test");
+    }
 
+    public void selectCompletedTestToView() throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/TestCompleteInfo.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        TestTakingController testView = parentLoader.getController();
+        testView.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
+
+        System.out.println("Switched to viewing a test");
+    }
+
+    public void takeTest() throws IOException {
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/TestQuestion.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        TestTakingController testView = parentLoader.getController();
+        testView.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
+
+        System.out.println("Switched to test taking question view");
     }
 
     public void getScheduledTests() {

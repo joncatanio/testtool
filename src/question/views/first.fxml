@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.effect.*?>
@@ -19,7 +20,7 @@
                 <Button fx:id="addQuestionButton" mnemonicParsing="false" onAction="#PickNewQuestion" prefHeight="27.0" prefWidth="162.0" text="+Add Question" />
 
             </items></ToolBar>
-        <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
+        <SplitPane dividerPositions="0.5" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
             <items>
                 <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0">
                <children>
@@ -31,13 +32,13 @@
                                  <children>
                                     <ListView prefHeight="209.0" prefWidth="200.0" />
                                     <Button layoutY="1.0" mnemonicParsing="false" onAction="#FilterByFIllIn" prefHeight="14.0" prefWidth="202.0" text="Fill in the Blank" />
-                                    <Button layoutY="28.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="202.0" text="Short Answer" />
-                                    <Button layoutX="-1.0" layoutY="55.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="202.0" text="Free Response" />
-                                    <Button layoutY="77.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="202.0" text="UML" />
-                                    <Button layoutY="100.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="202.0" text="Multiple Choice " />
-                                    <Button layoutY="127.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="202.0" text="Multiple Select" />
-                                    <Button layoutY="153.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="202.0" text="Matching" />
-                                    <Button layoutX="-4.0" layoutY="181.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="215.0" text="Coding" />
+                                    <Button layoutY="28.0" mnemonicParsing="false" onAction="#FilterByShortAnswer" prefHeight="27.0" prefWidth="202.0" text="Short Answer" />
+                                    <Button layoutX="-1.0" layoutY="55.0" mnemonicParsing="false" onAction="#FilterByFreeResponse" prefHeight="27.0" prefWidth="202.0" text="Free Response" />
+                                    <Button layoutY="77.0" mnemonicParsing="false" onAction="#FilterByUML" prefHeight="27.0" prefWidth="202.0" text="UML" />
+                                    <Button layoutY="100.0" mnemonicParsing="false" onAction="#FilterByMultipleChoice" prefHeight="27.0" prefWidth="202.0" text="Multiple Choice " />
+                                    <Button layoutY="127.0" mnemonicParsing="false" onAction="#FilterByMultipleSelect" prefHeight="27.0" prefWidth="202.0" text="Multiple Select" />
+                                    <Button layoutY="153.0" mnemonicParsing="false" onAction="#FilterByMatching" prefHeight="27.0" prefWidth="202.0" text="Matching" />
+                                    <Button layoutX="-4.0" layoutY="181.0" mnemonicParsing="false" onAction="#FilterByCoding" prefHeight="27.0" prefWidth="215.0" text="Coding" />
                                  </children>
                               </AnchorPane>
                         </content>
@@ -47,15 +48,16 @@
                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="80.0" prefWidth="200.0">
                                  <children>
                                     <ListView prefHeight="83.0" prefWidth="200.0" />
-                                    <Button layoutX="-4.0" layoutY="-1.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="211.0" text="Easy" />
-                                    <Button layoutX="-6.0" layoutY="27.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="211.0" text="Medium" />
-                                    <Button layoutX="-6.0" layoutY="55.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="211.0" text="Hard" />
+                                    <Button layoutX="-4.0" layoutY="-1.0" mnemonicParsing="false" onAction="#FilterByEasy" prefHeight="27.0" prefWidth="211.0" text="Easy" />
+                                    <Button layoutX="-6.0" layoutY="27.0" mnemonicParsing="false" onAction="#FilterByEasy" prefHeight="27.0" prefWidth="211.0" text="Medium" />
+                                    <Button layoutX="-6.0" layoutY="55.0" mnemonicParsing="false" onAction="#FilterByDifficult" prefHeight="27.0" prefWidth="211.0" text="Hard" />
                                  </children>
                               </AnchorPane>
                         </content>
                       </TitledPane>
                     </panes>
                   </Accordion>
+                  <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filter By:" wrappingWidth="108.21875" />
                </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                     <children>
