@@ -23,7 +23,6 @@ public class TestTakingController {
 
     /* Test Info */
     public TestTakingModel curTest = new TestTakingModel();
-    public Label classNameLabel = new Label();
     public Label testName = new Label();
     public Label timeLabel = new Label();
     public Label pointsLabel = new Label();
@@ -67,6 +66,7 @@ public class TestTakingController {
         testView.populateInterface(currStage);
 
         curTest = new TestTakingModel();
+        updateTestInfo();
 
         currStage.setScene(nextScene);
         currStage.show();
@@ -83,6 +83,7 @@ public class TestTakingController {
         testView.populateInterface(currStage);
 
         curTest = new TestTakingModel();
+        updateTestInfo();
 
         currStage.setScene(nextScene);
         currStage.show();
@@ -106,9 +107,8 @@ public class TestTakingController {
     }
 
     public void updateTestInfo() {
-        /*classNameLabel.setText(curTest.);
-        public Label testName = new Label();
-        public Label timeLabel = new Label();
+        testName.setText(curTest.getTestName());
+        /*public Label timeLabel = new Label();
         public Label pointsLabel = new Label();
         public Label dueDateLabel = new Label();
         public Label testDescriptionLabel = new Label();

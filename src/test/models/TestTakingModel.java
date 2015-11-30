@@ -4,8 +4,8 @@ import question.models.QuestionModel;
 import java.util.*;
 //import utility.EQuestionTypes;
 
-/**
- * Created by rgarmsen on 11/29/15.
+/****
+ * Representation of a test being viewed.  Also by extension used as a temporary holder while a user completes a test.
  */
 public class TestTakingModel {
     private TestModel curTest;
@@ -25,7 +25,12 @@ public class TestTakingModel {
         //this.curTest = TestDBModel.getByName(testName);
     }
 
+    /**
+     * Get the name of the currently viewed test.
+     * @return String of the name of the currently viewed test
+     */
     public String getTestName() {
+        System.out.println("Current test name: " + curTest.getName());
         return curTest.getName();
     }
 
@@ -39,6 +44,8 @@ public class TestTakingModel {
         scheduledTests.add("CPE 357 - Midterm 1");
         scheduledTests.add("CPE 357 - Midterm 2");
         scheduledTests.add("CPE 357 - Final");
+
+        System.out.println("List of scheduled tests: " + scheduledTests);
 
         return scheduledTests;
     }
@@ -55,6 +62,8 @@ public class TestTakingModel {
         completedTests.add("CSC 445 - Midterm");
         completedTests.add("CSC 101 - Midterm 2");
 
+        System.out.println("List of completed tests: " + completedTests);
+
         return completedTests;
     }
 
@@ -67,6 +76,8 @@ public class TestTakingModel {
         questionNames.add("Question 1");
         questionNames.add("Question 2");
         questionNames.add("Question 3");
+
+        System.out.println("Question list for test: " + questionNames.toString());
 
         return questionNames;
     }
