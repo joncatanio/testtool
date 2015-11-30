@@ -11,7 +11,7 @@ public class TestTakingModel {
     TestModel currentTest;
 
     public TestTakingModel() {
-        this.currentTest = new TestModel();
+        this.currentTest = new TestModel("Default Test");
     }
 
     public TestTakingModel(String testName) {
