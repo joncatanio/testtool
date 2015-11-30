@@ -1,6 +1,9 @@
 package test.controllers;
 
 import javafx.collections.FXCollections;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
@@ -8,6 +11,7 @@ import javafx.scene.control.TextField;
 import question.models.QuestionModel;
 import test.models.TestModel;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -62,9 +66,34 @@ public class CustomEditTestController extends TestController {
         getTestBank();
     }
 
-    public void editQuestion() {
+    /**
+     * When a user selects a question on the test, it will redirect them to a page allowing them
+     * to remove the question or edit the question.
+     *
+     * @throws IOException
+     */
+    public void editQuestion() throws IOException {
         QuestionModel editingQuestion = testInstance.getQuestion(questionList.getEditingIndex());
-
         System.out.println("Editing question: " + editingQuestion.getQuestionName());
+
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/EditRemoveQuestionFromTestView.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        CustomEditTestController cetc = parentLoader.getController();
+        cetc.populateInterface(currStage);
+
+        currStage.setScene(nextScene);
+        currStage.show();
+    }
+
+    public void editActualQuestion() {
+        // TODO: Pass off to Kendall's edit question.
+        System.out.println("Edit actual question");
+    }
+
+    public void removeQuestion() {
+        // TODO: Remove the question from the test and redirect them back to the test.
+        System.out.println("Remove the question from test.");
     }
 }
