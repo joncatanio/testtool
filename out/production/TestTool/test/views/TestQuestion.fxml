@@ -16,7 +16,7 @@
         <ToolBar minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
             <items>
                 <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
-                <Label prefHeight="17.0" prefWidth="660.0" text="CPE 103 - Final" />
+                <Label fx:id="testName" prefHeight="17.0" prefWidth="660.0" text="CPE 103 - Final" />
 
             </items></ToolBar>
         <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
