@@ -1,6 +1,7 @@
 package test.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import classpack.controllers.ClassPackController;
 import javafx.collections.FXCollections;
@@ -9,13 +10,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import question.controllers.QuestionController;
+import test.models.TestModel;
 import user.controllers.UserController;
 
 public class TestController {
-    public ListView testBank = new ListView();
+    public ListView testBankSidebar = new ListView();
+    private ArrayList<TestModel> testBank;
+
     public ChoiceBox selectSection = new ChoiceBox();
     protected Stage currStage;
 
@@ -77,13 +82,45 @@ public class TestController {
     }
 
     public void getTestBank() {
-        testBank.setItems(FXCollections.observableArrayList("CPE 349 - Final", "CSC 101 - Midterm 1", "CSC 445 - Midterm",
-                "CSC 101 - Midterm 2", "CSC 101 - Final", "CPE 102 - Midterm 1", "CPE 102 - Midterm 2", "CPE 102 - Final",
-                "CPE 103 - Midterm 1", "CPE 103 - Midterm 2", "CPE 103 - Final", "CPE 357 - Midterm 1", "CPE 357 - Midterm 2",
-                "CPE 357 - Midterm 3", "CPE 357 - Midterm 4", "CPE 357 - Midterm 5", "CPE 357 - Final", "CPE 123 - Midterm",
-                "CPE 123 - Final"));
-        // Go through Cameron's DB to pull all tests instead of make a TestBank class.
-        // TODO: Cameron's DB will give me an ArrayList, I'll have to convert it to an observableArrayList.
-        // To do that simply pass the ArrayList into observableArrayList.
+        /* Pull ArrayList from the database */
+        testBank = new ArrayList<TestModel>();
+
+        testBank.add(new TestModel("CPE 349 - Midterm 1"));
+        testBank.add(new TestModel("CPE 349 - Final"));
+
+        /* Create a new cell factory to pull the name of the test for the ListView */
+        testBankSidebar.setCellFactory(lv -> new ListCell<TestModel>() {
+            @Override
+            public void updateItem(TestModel item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    String text = item.getName();
+                    setText(text);
+                }
+            }
+        });
+        testBankSidebar.setItems(FXCollections.observableArrayList(testBank));
+    }
+
+    /**
+     * On edit start event handler for the list view.
+     */
+    public void editTest() throws IOException {
+        TestModel editingTest = testBank.get(testBankSidebar.getEditingIndex());
+        System.out.println(editingTest.toString());
+        System.out.println("Woo bitch, test is: ");
+
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/CustomEditTestView.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        CustomEditTestController cetc = parentLoader.getController();
+        cetc.populateInterface(currStage);
+        cetc.setTestInstance(editingTest);
+
+        currStage.setScene(nextScene);
+        currStage.show();
     }
 }
