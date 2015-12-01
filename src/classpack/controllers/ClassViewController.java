@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import question.controllers.QuestionController;
 import test.controllers.TestController;
@@ -21,6 +22,7 @@ public class ClassViewController extends ClassPackController{
     public Button joinClass = new Button();
     public Button createClass = new Button();
     public Button editClasses = new Button();
+
 
     public int highlightedClassId;
 
@@ -50,6 +52,8 @@ public class ClassViewController extends ClassPackController{
         currStage.show();
         System.out.println("Creating class");
     }
+
+
 
     public void editClasses(ActionEvent event) throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/EditClassesView.fxml"));

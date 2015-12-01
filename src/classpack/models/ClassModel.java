@@ -3,6 +3,7 @@ package classpack.models;
 import java.util.*;
 
 /****
+ * Created by agough on 11/20/15
  *
  * A ClassModel is an object representing a class that a teacher teaches, all of the
  * students in the class, all of the tests that have been assigned to the class, and
@@ -21,11 +22,26 @@ import java.util.*;
  */
 public class ClassModel {
 
+    /**
+     * classId is used by our backend to differentiate between different classes.
+     */
     private int classId;
+    /**
+     * classCode is used by students to enroll in a given class.
+     */
     private String classCode;
+    /**
+     * className is set by the teacher upon class creation.
+     */
     private String className;
+    /**
+     * schoolName is set by the teacher upon class creation to describe where the class is taught.
+     */
     private String schoolName;
-    private Collection<StudentModel> students;
+    /**
+     * students is a collection of students enrolled in the class.
+     */
+    private ArrayList<StudentModel> students;
     /** Collection of TestBinModels, each representing a collection of test submissions for
      * a particular assigned test.
      */
@@ -33,79 +49,98 @@ public class ClassModel {
     private GradeBook grades;
 
     /**
-     * Gets the class id
+     *  Gets the unique class ID.
+     * @return classId is used by our back end to differentiate between created classes.
      */
     public int getClassId() {
         return classId;
     }
 
     /**
-     * Sets the class id
+     * Sets the class id.
+     * @param classId is a unique integer.
      */
     public void setClassId(int classId) {
         this.classId = classId;
     }
 
     /**
-     *   setClassCode sets the classes code so students can specify a class to join, these are unique codes.
-     *   pre:
+     * setClassCode sets the classes code so students can specify a class to join, these are unique codes.
+     * pre:
      *    //  The given class code is not used by another class.
      *      !students.contains(code);
      *   post:
      *     //The given class code has length greater than 1.
      *         code.length() > 1;
-     **/
-    public void setClassCode(String code){}
+     * @param classCode is a unique string passed out to students so they can join the class.
+     */
+    public void setClassCode(String classCode){
+        this.classCode = classCode;
+    }
 
     /**
-     * Gets the class code
+     * getClassCode gets the class code.
+     * @return is a string of the class's code.
      */
     public String getClassCode(){
-        return null;
+        return classCode;
     }
 
     /**
      * Sets the class name
+     * @param name is a string that the class will be referred to in UI.
      */
-    public void setClassName(String name){}
+    public void setClassName(String name){ this.className = name;}
 
     /**
      * Gets the class name
+     * @return is a string of the class's name.
      */
     public String getClassName(){
-        return null;
+        return className;
     }
 
     /**
-     * Sets the school name
+     * Sets the class's school name.
+     * @param name is a string of the school in which the class is taught.
      */
-    public void setSchoolName(String name){}
+    public void setSchoolName(String name){ this.schoolName = name;}
 
     /**
-     * Gets the school name
+     * Gets the school name of the class.
+     * @return is a string of the school name in which the class is taught.
      */
     public String getSchoolName(){
-        return null;
+        return schoolName;
     }
 
     /**
-     * Given the students in the class, this method initializes the GradeBook
+     * THIS METHOD IS NO LONGER SUPPORTED, GRADING HAS BEEN REMOVED FROM CLASSMODEL.
      */
     public GradeBook initializeGradeBook(Collection<StudentModel> students){
         return null;
     }
 
     /**
-     * Given a test, this method publishes a test to students
+     * THIS METHOD IS NO LONGER SUPPORTED, GRADING HAS BEEN REMOVED FROM CLASSMODEL.
      */
     public void publishTest(TestModel test){}
 
+    /**
+     * Constructor will set everything to null, values get filled in by CreateClassController.
+     */
     public ClassModel() {
-
+        className = null;
+        classCode = null;
+        classId = 0;
+        schoolName = null;
+        students = new ArrayList<StudentModel>();
     }
 
     /**
-     * return the TestBinModel that matches a particular assigned test's id
+     * getTestBin would be used to pull an individual students test.
+     * @param testBinId is used to isolate the specific testBinModel.
+     * @return gives a specific testBinModel associated with the provided testBinId.
      */
     public TestBinModel getTestBin(int testBinId) {
 
@@ -114,7 +149,8 @@ public class ClassModel {
     }
 
     /**
-     * return all of the bins for this class
+     * getTestBins would be used to pull all the students tests for an individual class.
+     * @return an arrayList of testBinModels for the entire class.
      */
     public ArrayList<TestBinModel> getTestBins() {
 

@@ -1,7 +1,7 @@
 package classpack.models;
 
 /**
- * Created by andrewgough94 on 11/9/2015.
+ * Created by agough on 11/9/2015.
  */
 
 import test.*;
