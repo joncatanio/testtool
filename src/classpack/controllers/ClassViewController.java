@@ -22,6 +22,7 @@ public class ClassViewController extends ClassPackController{
     public Button joinClass = new Button();
     public Button createClass = new Button();
     public Button editClasses = new Button();
+    public Button publishTest = new Button();
 
 
     public int highlightedClassId;
@@ -82,5 +83,9 @@ public class ClassViewController extends ClassPackController{
 
         currStage.setScene(nextScene);
         currStage.show();
+    }
+
+    public void publishTest() {
+        System.out.println("Publishing test...");
     }
 }

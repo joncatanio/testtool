@@ -124,9 +124,12 @@ public class ClassModel {
     }
 
     /**
-     * THIS METHOD IS NO LONGER SUPPORTED, GRADING HAS BEEN REMOVED FROM CLASSMODEL.
+     * publishTest is called to publish a given test to all the students in a class.
+     * @param test is the chosen testModel from the testBank to distribute to students.
      */
-    public void publishTest(TestModel test){}
+    public void publishTest(TestModel test){
+        // TODO: Integrate with Reed's test taking abilities
+    }
 
     /**
      * Constructor will set everything to null, values get filled in by CreateClassController.

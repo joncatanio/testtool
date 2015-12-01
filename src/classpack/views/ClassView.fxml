@@ -11,7 +11,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classpack.controllers.ClassViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="classpack.controllers.ClassViewController">
     <children>
         <ToolBar minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
             <items>
@@ -28,8 +28,9 @@
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                     <children>
                   <Button fx:id="joinClass" layoutX="290.0" layoutY="100.0" mnemonicParsing="false" onAction="#joinClass" text="Join Class" />
-                  <Button fx:id="createClass" layoutX="282.0" layoutY="200.0" mnemonicParsing="false" onAction="#createClass" text="Create Class" />
-                  <Button fx:id="editClasses" layoutX="284.0" layoutY="300.0" mnemonicParsing="false" onAction="#editClasses" text="Edit Classes" />
+                  <Button fx:id="createClass" layoutX="282.0" layoutY="180.0" mnemonicParsing="false" onAction="#createClass" text="Create Class" />
+                  <Button fx:id="editClasses" layoutX="284.0" layoutY="260.0" mnemonicParsing="false" onAction="#editClasses" text="Edit Classes" />
+                  <Button fx:id="publishTest" layoutX="225.0" layoutY="340.0" mnemonicParsing="false" onAction="#publishTest" text="Publish Test(Subject to move)" />
                     </children>
                 </AnchorPane>
             </items>
