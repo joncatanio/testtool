@@ -5,16 +5,18 @@ import java.util.*;
 //import utility.EQuestionTypes;
 
 /****
- * Representation of a test being viewed.  Also by extension used as a temporary holder while a user completes a test.
+ * Representation of a test being viewed/taken.  Also by extension used as a temporary holder for scores while a student completes a test.
  */
 public class TestTakingModel {
     private TestModel curTest;
+    private int curQuestionIdx;
 
     /**
      * If no name is given for a test, use dummy data (good for debugging).
      */
     public TestTakingModel() {
         this.curTest = new TestModel("CPE 103 - Final");
+        this.curQuestionIdx = 0;
     }
 
     /**
@@ -22,7 +24,9 @@ public class TestTakingModel {
      * @param testName The name of the test to be used
      */
     public TestTakingModel(String testName) {
+        //TODO: Hook up the constructor to the testdb (name TBD) and have it construct properly.
         //this.curTest = TestDBModel.getByName(testName);
+        //this.curQuestionIdx = 0;
     }
 
     /**
@@ -43,6 +47,22 @@ public class TestTakingModel {
         System.out.println("Returning test with name: " + curTest.getName());
 
         return curTest;
+    }
+
+    /**
+     * Gets the currently selected question number.
+     * @return An integer representing the index + 1 of the current question in the test question array.
+     */
+    public int getQuestionNum() {
+        return this.curQuestionIdx + 1;
+    }
+
+    /**
+     * Sets the currently selected question for the test being taken.
+     * @param newQuestionNum The question number to be viewed.
+     */
+    public void setQuestionNum(int newQuestionNum) {
+        this.curQuestionIdx = newQuestionNum - 1;
     }
 
     /**

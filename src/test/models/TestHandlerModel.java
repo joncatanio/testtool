@@ -12,6 +12,7 @@ import java.util.*;
  * NOTE: This is a Singleton object and should not be instantiated twice.
  *
  * Created by JonCatanio on 11/5/15.
+ * grade function by Alex Greene
  */
 public class TestHandlerModel {
     /**

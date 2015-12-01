@@ -9,6 +9,8 @@ import java.util.*;
  * students in the class, all of the tests that have been assigned to the class, and
  * other data relevant to the class.
  *
+ * created by Alex Greene
+ *
  ****/
 
 import test.models.TestModel;

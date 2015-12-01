@@ -15,6 +15,8 @@ import java.util.*;
  * submitted tests. The averageTimeInMinutes is the average elapsed time for
  * a student to take the assigned test from start to finish.
  *
+ * Created by Alex Greene
+ * 
  ****/
 
 public class TestBinModel {
@@ -41,6 +43,9 @@ public class TestBinModel {
         submissions = new ArrayList<TestModel>();
     }
 
+    /**
+     * Return the name of the test this bin holds
+     */
     public String getName(){
         return name;
     }
