@@ -18,7 +18,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Created by cburwell on 11/4/15.
+ * Created by Cameron Burwell (cburwell@calpoly.edu) on 11/4/15.
  */
 public class GenericQuestionController extends QuestionController {
 

@@ -4,7 +4,7 @@
  * Here we store all of are questions. This file contains methods to filter
  * the question bank.
  *
- * Kendall Gassner (kendall.gassner@yahoo.com)
+ * Kendall Gassner (kendall.gassner@yahoo.com), Cameron Burwell (cburwell@calpoly.edu)
  *
  */
 package question.models;

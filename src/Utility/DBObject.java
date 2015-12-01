@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created by cburwell on 11/27/15, Kendall Gassner (kendall.gassner@yahoo.com)
+ * Created by Cameron Burwell (cburwell@calpoly.edu) on 11/27/15, Kendall Gassner (kendall.gassner@yahoo.com)
  *
  * Class representing a database object that can be written and retrieved from a
  * flat db.ser file. This behavior allows us to mock a database without bringing

@@ -6,7 +6,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 /**
- * Created by kendall on 11/3/15.
+ * Created by kendall, Cameron Burwell (cburwell@calpoly.edu) on 11/3/15.
  */
 public class QuestionModel{
 

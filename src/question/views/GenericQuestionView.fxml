@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- DO NOT reference this .fxml file in our application.
-     Please copy everything below into every new .fxml file that needs our basic outline.
-     This will work as is but you must update the controller reference in the first AnchorPane tag.
+<!-- Cameron Burwell (cburwell@calpoly.edu)
      -->
 
 <?import javafx.scene.text.*?>
