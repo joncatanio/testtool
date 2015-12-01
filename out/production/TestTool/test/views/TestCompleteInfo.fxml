@@ -28,7 +28,7 @@
                                 <Label prefHeight="49.0" prefWidth="207.0" text="                 Scheduled" />
                                 <ListView fx:id="scheduledTests" onMouseClicked="#selectTestToView" prefHeight="200.0" prefWidth="200.0" />
                                 <Label layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="207.0" text="                 Completed" />
-                                <ListView fx:id="completedTests" onMouseClicked="#selectTestToView" prefHeight="200.0" prefWidth="200.0" />
+                                <ListView fx:id="completedTests" onMouseClicked="#selectCompletedTestToView" prefHeight="200.0" prefWidth="200.0" />
                             </children>
                         </VBox>
                     </children></AnchorPane>

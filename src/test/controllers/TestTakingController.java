@@ -65,10 +65,10 @@ public class TestTakingController {
         Scene nextScene = new Scene(nextSceneParent);
 
         TestTakingController testView = parentLoader.getController();
-        testView.populateInterface(currStage);
 
         curTest = new TestTakingModel();
         updateTestInfo();
+        testView.populateInterface(currStage);
 
         currStage.setScene(nextScene);
         currStage.show();
@@ -82,10 +82,10 @@ public class TestTakingController {
         Scene nextScene = new Scene(nextSceneParent);
 
         TestTakingController testView = parentLoader.getController();
-        testView.populateInterface(currStage);
 
         curTest = new TestTakingModel();
         updateTestInfo();
+        testView.populateInterface(currStage);
 
         currStage.setScene(nextScene);
         currStage.show();
@@ -99,13 +99,29 @@ public class TestTakingController {
         Scene nextScene = new Scene(nextSceneParent);
 
         TestTakingController testView = parentLoader.getController();
+
+        currentQuestionName.setText("Question " + curTest.getQuestionNum());
+        currentQuestionInfo.setText("Submit the test for full credit!");
         testView.populateInterface(currStage);
         getQuestionList();
 
         currStage.setScene(nextScene);
         currStage.show();
 
+
         System.out.println("Switched to test taking question view");
+    }
+
+    public void nextQuestion() throws IOException {
+        System.out.println("Switch to next question in test");
+    }
+
+    public void prevQuestion() throws IOException {
+        System.out.println("Switch to previous question in test");
+    }
+
+    public void showHint() throws IOException {
+        System.out.println("Display current question hint pop-up");
     }
 
     public void submitTest() throws IOException {
@@ -114,10 +130,10 @@ public class TestTakingController {
         Scene nextScene = new Scene(nextSceneParent);
 
         TestTakingController testView = parentLoader.getController();
+        updateTestInfo();
         testView.populateInterface(currStage);
 
         curTest = new TestTakingModel();
-        updateTestInfo();
 
         currStage.setScene(nextScene);
         currStage.show();
@@ -128,12 +144,14 @@ public class TestTakingController {
 
     public void updateTestInfo() {
         testName.setText(curTest.getTestName());
-        /*public Label timeLabel = new Label();
-        public Label pointsLabel = new Label();
-        public Label dueDateLabel = new Label();
-        public Label testDescriptionLabel = new Label();
-        public Label testNotesLabel = new Label();
-        public ListView currentQuestionList = new ListView();*/
+        timeLabel.setText("Time Limit: 60 Minutes");
+        pointsLabel.setText("Total Points: " + curTest.getTest().getTotalPoints());
+        dueDateLabel.setText("Due: 10/3");
+        testDescriptionLabel.setText("Description: A cumulative test of your knowledge");
+        testNotesLabel.setText("Teacher notes: Good luck!!");
+
+        currentQuestionName.setText("Question " + curTest.getQuestionNum());
+        currentQuestionInfo.setText("Submit the test for full credit!");
     }
 
     public void getScheduledTests() {

@@ -36,21 +36,21 @@
                         <HBox layoutX="10.0" layoutY="39.0" prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Pane prefHeight="88.0" prefWidth="120.0" />
-                              <Label prefHeight="44.0" prefWidth="183.0" text="Question 1" />
+                              <Label fx:id="currentQuestionName" prefHeight="44.0" prefWidth="183.0" text="Question 1" />
                            </children>
                         </HBox>
                         <HBox prefHeight="294.0" prefWidth="690.0">
                            <children>
                               <Pane prefHeight="282.0" prefWidth="122.0" />
-                              <Label text="Question Info" />
+                              <Label fx:id="currentQuestionInfo" text="Question Info" />
                            </children>
                         </HBox>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
                               <Pane prefHeight="200.0" prefWidth="200.0" />
-                              <Button mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" text="Previous" />
-                              <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" text="Hint" />
-                              <Button layoutX="154.0" layoutY="10.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" text="Next" />
+                              <Button fx:id="prevQuestionBtn" onAction="#prevQuestion" mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" text="Previous" />
+                              <Button fx:id="questionHintBtn" onAction="#showHint" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" text="Hint" />
+                              <Button fx:id="nextQuestionBtn" onAction="#nextQuestion" layoutX="154.0" layoutY="10.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="144.0" text="Next" />
                               <Pane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" />
                            </children>
                         </HBox>
