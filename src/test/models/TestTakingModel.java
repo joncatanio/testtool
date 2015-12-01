@@ -5,7 +5,10 @@ import java.util.*;
 //import utility.EQuestionTypes;
 
 /****
- * Representation of a test being viewed/taken.  Also by extension used as a temporary holder for scores while a student completes a test.
+ * Class TestTakingModel is a representation of a test being viewed/taken.
+ * Also by extension used as a temporary holder for scores while a student completes a test.
+ *
+ * @author Reed Garmsen (rgarmsen@calpoly.edu)
  */
 public class TestTakingModel {
     private TestModel curTest;
