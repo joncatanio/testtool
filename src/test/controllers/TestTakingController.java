@@ -41,6 +41,10 @@ public class TestTakingController {
 
         getScheduledTests();
         getCompletedTests();
+
+        currentQuestionName.setText("Question " + curTest.getQuestionNum());
+        currentQuestionInfo.setText("Submit the test for full credit!");
+        getQuestionList();
     }
 
     public void sectionChange(ActionEvent actionEvent) throws IOException {
@@ -102,8 +106,8 @@ public class TestTakingController {
 
         currentQuestionName.setText("Question " + curTest.getQuestionNum());
         currentQuestionInfo.setText("Submit the test for full credit!");
-        testView.populateInterface(currStage);
         getQuestionList();
+        testView.populateInterface(currStage);
 
         currStage.setScene(nextScene);
         currStage.show();

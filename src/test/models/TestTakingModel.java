@@ -106,7 +106,7 @@ public class TestTakingModel {
      * @return An ArrayList of strings of question names for the current test
      */
     public ArrayList<String> getQuestionNameList() {
-        ArrayList<String> questionNames = new ArrayList<String>();
+        ArrayList<String> questionNames = new ArrayList<>();
         questionNames.add("Question 1");
         questionNames.add("Question 2");
         questionNames.add("Question 3");

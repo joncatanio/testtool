@@ -40,7 +40,7 @@
                                 <Label fx:id="pointsLabel" layoutX="10.0" layoutY="81.0" prefHeight="49.0" prefWidth="325.0" text="Score: 85/100" />
                                 <Label fx:id="dueDateLabel" layoutX="10.0" layoutY="153.0" prefHeight="50.0" prefWidth="325.0" text="Due: 10/3" />
                                 <Label fx:id="testDescriptionLabel" layoutX="10.0" layoutY="225.0" prefHeight="51.0" prefWidth="324.0" text="Description: A cumulative test of your knowledge" />
-                                <Label fx:id="testNotesLabel" layoutX="10.0" layoutY="297.0" prefHeight="55.0" prefWidth="324.0" text="Teacher feedback: Good luck!" />
+                                <Label fx:id="testNotesLabel" layoutX="10.0" layoutY="297.0" prefHeight="55.0" prefWidth="324.0" text="Teacher feedback: N/A" />
                                 <Label layoutX="10.0" layoutY="261.0" prefHeight="54.0" prefWidth="324.0" />
                                 <Button mnemonicParsing="false" onAction="#takeTest" prefHeight="35.0" prefWidth="325.0" text="Retake Test" />
                             </children>
