@@ -52,9 +52,7 @@ public class PickQuestionTypeController extends QuestionController {
      */
     public void SetQuestionType() throws IOException {
         Scene nextScene;
-        QuestionModel questionModel = new QuestionModel();
         if(FillInTheBlankButton.isSelected()){
-            questionModel.setQuestionType("FillInTheBlank");
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/FillInTheBlankQuestion.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
@@ -64,7 +62,6 @@ public class PickQuestionTypeController extends QuestionController {
             test.populateChoiceBoxes();
         }
         else if(MultipleChoiceButton.isSelected()){
-            questionModel.setQuestionType("MultipleChoice");
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/MultipleChoice.fxml"));
             Parent nextSceneParent = parentLoader.load();
              nextScene = new Scene(nextSceneParent);
@@ -74,7 +71,6 @@ public class PickQuestionTypeController extends QuestionController {
             test.populateChoiceBoxes();
         }
         else if(MultipleSelectButton.isSelected()){
-            questionModel.setQuestionType("MultipleSlect");
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/MultipleSelect.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);
@@ -83,46 +79,7 @@ public class PickQuestionTypeController extends QuestionController {
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
         }
-        else if(FreeResponseButton.isSelected()){
-            questionModel.setQuestionType("FreeResponse");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
-            Parent nextSceneParent = parentLoader.load();
-            nextScene = new Scene(nextSceneParent);
 
-            GenericQuestionController test = parentLoader.getController();
-            test.populateInterface(currStage);
-            test.initializeQuestionModel(questionModel);
-        }
-        else if(ShortAnswerButton.isSelected()){
-            questionModel.setQuestionType("ShortAnswer");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
-            Parent nextSceneParent = parentLoader.load();
-            nextScene = new Scene(nextSceneParent);
-
-            GenericQuestionController test = parentLoader.getController();
-            test.populateInterface(currStage);
-            test.initializeQuestionModel(questionModel);
-        }
-        else if(CodingButton.isSelected()){
-            questionModel.setQuestionType("Coding");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
-            Parent nextSceneParent = parentLoader.load();
-            nextScene = new Scene(nextSceneParent);
-
-            GenericQuestionController test = parentLoader.getController();
-            test.populateInterface(currStage);
-            test.initializeQuestionModel(questionModel);
-        }
-        else if(UMLButton.isSelected()){
-            questionModel.setQuestionType("UML");
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
-            Parent nextSceneParent = parentLoader.load();
-            nextScene = new Scene(nextSceneParent);
-
-            GenericQuestionController test = parentLoader.getController();
-            test.populateInterface(currStage);
-            test.initializeQuestionModel(questionModel);
-        }
         else if(MatchingButton.isSelected()){
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/Matching.fxml"));
             Parent nextSceneParent = parentLoader.load();
@@ -131,20 +88,52 @@ public class PickQuestionTypeController extends QuestionController {
             MatchingController test = parentLoader.getController();
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
-            questionModel.setQuestionType("Matching");
         }
         else {
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
-            Parent nextSceneParent = parentLoader.load();
-            nextScene = new Scene(nextSceneParent);
-
-            FillInTheBlankController test = parentLoader.getController();
-            test.populateInterface(currStage);
-            test.populateChoiceBoxes();
+            genericGenerator();
+            return;
         }
 
         currStage.setScene(nextScene);
         currStage.show();
-        System.out.println("Question type was selected.");
+    }
+
+    public void genericGenerator() throws IOException {
+        Scene nextScene;
+        QuestionModel questionModel = new QuestionModel();
+        if(CodingButton.isSelected()){
+            questionModel.setQuestionType("Coding");
+        }
+        else if(FreeResponseButton.isSelected()){
+            questionModel.setQuestionType("Free Response");
+        }
+        else if(ShortAnswerButton.isSelected()){
+            questionModel.setQuestionType("ShortAnswer");
+        }
+        else if(UMLButton.isSelected()){
+            questionModel.setQuestionType("UML");
+        }
+        else{
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            nextScene = new Scene(nextSceneParent);
+
+            QuestionController test = parentLoader.getController();
+            test.populateInterface(currStage);
+            test.setUpTable();
+            currStage.setScene(nextScene);
+            currStage.show();
+            return;
+        }
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        nextScene = new Scene(nextSceneParent);
+
+        GenericQuestionController test = parentLoader.getController();
+        test.populateInterface(currStage);
+        test.initializeQuestionModel(questionModel);
+        currStage.setScene(nextScene);
+        currStage.show();
+
     }
 }

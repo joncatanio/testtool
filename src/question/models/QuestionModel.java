@@ -14,7 +14,6 @@ public class QuestionModel{
     private String classNumber;
     private String subject;
     private String question;
-    private String ImageFile;
     private String hint;
     private String questionName;
     private String answer;
@@ -32,10 +31,6 @@ public class QuestionModel{
     private boolean bCheck;
     private boolean cCheck;
     private boolean dCheck;
-    private boolean aChecked;
-    private boolean bChecked;
-    private boolean cChecked;
-    private boolean dChecked;
     private int charLimit;
     private int difficulty;
     private int pointsPossible;
@@ -47,7 +42,6 @@ public class QuestionModel{
         this.classNumber = "";
         this.subject = "";
         this.question = "";
-        this.ImageFile = "";
         this.hint = "";
         this.answer = "";
         this.input = "";
@@ -59,10 +53,6 @@ public class QuestionModel{
         this.bCheck = false;
         this.cCheck = false;
         this.dCheck = false;
-        this.aChecked = false;
-        this.bChecked = false;
-        this.cChecked = false;
-        this.dChecked = false;
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
@@ -75,7 +65,6 @@ public class QuestionModel{
         this.classNumber = classNum;
         this.subject = sub;
         this.question = ques;
-        this.ImageFile = image;
         this.hint = hin;
         this.answer = ans;
         this.charLimit = charlim;
@@ -187,26 +176,9 @@ public class QuestionModel{
      * setAnswer changes the question's answer
      *
      **/
-    public void setAnswer(String name){
+    public void setAnswer(String name) {
         System.out.println("Answer: " + name);
         this.answer = name;
-    }
-
-    /**
-     * getImageFile returns the questions Image file
-     *
-     **/
-    public String getImageFile() {
-        return this.ImageFile;
-    }
-
-    /**
-     * setImageFile changes the questions Image file
-     *
-     **/
-    public void setImageFile(String name){
-        System.out.println("ImageFile: " + name);
-        this.ImageFile = name;
     }
 
     /**
@@ -332,13 +304,17 @@ public class QuestionModel{
         System.out.println("PointsPossible: " + name);
         this.pointsPossible = name;
     }
-
+    /**
+     * getACheck changes the returns the aCheck boolean value
+     * for multiple select
+     *
+     **/
     public boolean getACheck() {
         return this.aCheck;
     }
 
     /**
-     * setA changes the boolean bCheck
+     * setACheck changes the boolean bCheck
      * to notify if A is an answer in MultipleSelect
      *
      **/
@@ -347,13 +323,18 @@ public class QuestionModel{
         this.aCheck = name;
     }
 
+    /**
+     * getBCheck changes the returns the bCheck boolean value
+     * for multiple select
+     *
+     **/
     public boolean getBCheck() {
         return this.bCheck;
     }
 
 
     /**
-     * setB changes the boolean bCheck
+     * setBCheck changes the boolean bCheck
      * to notify if b is an answer in MultipleSelect
      *
      **/
@@ -362,13 +343,18 @@ public class QuestionModel{
         this.bCheck = name;
     }
 
+    /**
+     * getCCheck changes the returns the cCheck boolean value
+     * for multiple select
+     *
+     **/
     public boolean getCCheck() {
         return this.cCheck;
     }
 
 
     /**
-     * setC changes the boolean cCheck
+     * setCCheck changes the boolean cCheck
      * to notify if c is an answer in MultipleSelect
      *
      **/
@@ -377,13 +363,18 @@ public class QuestionModel{
         this.cCheck = name;
     }
 
+    /**
+     * getDCheck changes the returns the DCheck boolean value
+     * for multiple select
+     *
+     **/
     public boolean getDCheck() {
         return this.dCheck;
     }
 
 
     /**
-     * setd changes the boolean dCheck
+     * setDCheck changes the boolean dCheck
      * to notify if d is an answer in MultipleSelect
      *
      **/
@@ -392,37 +383,6 @@ public class QuestionModel{
         this.dCheck = name;
     }
 
-    public boolean isaChecked() {
-        return aChecked;
-    }
-
-    public void setaChecked(boolean aChecked) {
-        this.aChecked = aChecked;
-    }
-
-    public boolean isbChecked() {
-        return bChecked;
-    }
-
-    public void setbChecked(boolean bChecked) {
-        this.bChecked = bChecked;
-    }
-
-    public boolean iscChecked() {
-        return cChecked;
-    }
-
-    public void setcChecked(boolean cChecked) {
-        this.cChecked = cChecked;
-    }
-
-    public boolean isdChecked() {
-        return dChecked;
-    }
-
-    public void setdChecked(boolean dChecked) {
-        this.dChecked = dChecked;
-    }
 
     public String getInput() {
         return input;
@@ -475,7 +435,6 @@ public class QuestionModel{
         sb.append("," + this.classNumber);
         sb.append("," + this.subject);
         sb.append("," + this.question);
-        sb.append("," + this.ImageFile);
         sb.append("," + this.hint);
         sb.append("," + this.answer);
         sb.append("," + this.date);
@@ -492,7 +451,6 @@ public class QuestionModel{
                 this.classNumber.equals(qm.classNumber) &&
                 this.subject.equals(qm.subject) &&
                 this.question.equals(qm.question) &&
-                this.ImageFile.equals(qm.ImageFile) &&
                 this.hint.equals(qm.hint) &&
                 this.answer.equals(qm.answer) &&
                 this.date.equals(qm.date) &&

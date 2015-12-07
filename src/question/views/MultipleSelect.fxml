@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -45,9 +44,6 @@
                         <Accordion layoutX="43.0" layoutY="100.0" />
                         <Label layoutX="45.0" layoutY="17.0" text="Question Name:" />
                         <TextField fx:id="questionName" layoutX="171.0" layoutY="11.0" prefHeight="26.0" prefWidth="250.0" />
-                        <Label layoutX="197.0" layoutY="158.0" prefWidth="41.0" text="Image:" />
-                        <TextField fx:id="image" layoutX="252.0" layoutY="152.0" prefHeight="26.0" prefWidth="125.0" />
-                        <Button layoutX="384.0" layoutY="152.0" mnemonicParsing="false" text="Browse..." />
                         <Label layoutX="45.0" layoutY="211.0" text="Hint:" />
                         <TextField fx:id="hint" layoutX="117.0" layoutY="206.0" prefHeight="26.0" prefWidth="345.0" />
                         <Label layoutX="473.0" layoutY="16.0" prefHeight="17.0" prefWidth="176.0" text="Check the Correct Answers" />

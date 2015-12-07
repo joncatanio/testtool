@@ -32,7 +32,6 @@ public class GenericQuestionController extends QuestionController {
     public RadioButton medium = new RadioButton(); // 1 for medium
     public RadioButton hard = new RadioButton(); // 2 for hard
     public TextField points = new TextField();
-    public TextField image;
     public Button browse = new Button();
     public TextField hint = new TextField();
     public TextArea questionText = new TextArea();
