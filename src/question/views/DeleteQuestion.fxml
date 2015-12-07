@@ -18,10 +18,11 @@
                     </children></AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
                     <children>
-                  <AnchorPane layoutX="-6.0" prefHeight="463.0" prefWidth="698.0">
+                  <AnchorPane  layoutX="-4.0" layoutY="-2.0" prefHeight="463.0" prefWidth="698.0">
                      <children>
                         <Button layoutX="241.0" layoutY="236.0" mnemonicParsing="false" onAction="#DeleteQuestion" prefHeight="27.0" prefWidth="263.0" text="Delete Question" />
                         <Button layoutX="241.0" layoutY="297.0" mnemonicParsing="false" onAction="#GoBack" prefHeight="27.0" prefWidth="263.0" text="Go Back" />
+                        <Button layoutX="241.0" layoutY="178.0" mnemonicParsing="false" onAction="#EditQuestion" prefHeight="27.0" prefWidth="263.0" text="Edit Question" />
                      </children>
                   </AnchorPane>
                     </children>

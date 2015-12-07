@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="500.0" minWidth="900.0" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="question.controllers.MatchingController">
+    <children>
+        <ToolBar minWidth="900.0" prefHeight="40.0" prefWidth="900.0">
+            <items>
+                <ChoiceBox fx:id="selectSection" onAction="#sectionChange" prefHeight="27.0" prefWidth="199.0" />
+                <Label textAlignment="CENTER">
+                    <font>
+                        <Font name="System Bold" size="15.0" />
+                    </font>
+                </Label>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+
+            </items></ToolBar>
+        <SplitPane dividerPositions="0.29797979797979796" layoutY="40.0" prefHeight="461.0" prefWidth="900.0">
+            <items>
+                <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="160.0" prefWidth="200.0" />
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="395.0" prefWidth="626.0">
+                    <children>
+                        <Label layoutX="358.0" layoutY="50.0" text="Difficulty:" />
+                        <fx:define>
+                            <ToggleGroup fx:id="myToggleGroup" />
+                        </fx:define>
+                        <RadioButton fx:id="easy" layoutX="440.0" layoutY="50.0" mnemonicParsing="false" text="Easy">
+                            <toggleGroup>
+                                <ToggleGroup fx:id="myToggleGroup" />
+                            </toggleGroup></RadioButton>
+                        <RadioButton fx:id="medium" layoutX="516.0" layoutY="49.0" mnemonicParsing="false" text="Medium" toggleGroup="$myToggleGroup" />
+                        <RadioButton fx:id="hard" layoutX="604.0" layoutY="49.0" mnemonicParsing="false" text="Hard" toggleGroup="$myToggleGroup" />
+                        <Label layoutX="17.0" layoutY="61.0" text="Subject:" />
+                        <Label layoutX="21.0" layoutY="108.0" text="Points:" />
+                        <TextField fx:id="points" layoutX="86.0" layoutY="103.0" prefHeight="26.0" prefWidth="42.0" />
+                        <Label layoutX="17.0" layoutY="248.0" text="Question Text:" />
+                        <TextArea fx:id="question" layoutX="33.0" layoutY="279.0" prefHeight="124.0" prefWidth="355.0" />
+                        <Button layoutX="212.0" layoutY="422.0" mnemonicParsing="false" onAction="#AddQuestionToBank" text="Add Question" />
+                        <Button fx:id="clear" layoutX="321.0" layoutY="422.0" mnemonicParsing="false" onAction="#ClearAllThings" text="Clear" />
+                        <Button layoutX="380.0" layoutY="422.0" mnemonicParsing="false" onAction="#Cancel" text="Cancel" />
+                        <Label layoutX="193.0" layoutY="58.0" text="Class:" />
+                        <Accordion layoutX="43.0" layoutY="100.0" />
+                        <Label layoutX="17.0" layoutY="16.0" text="Question Name:" />
+                        <TextField fx:id="questionName" layoutX="127.0" layoutY="11.0" prefHeight="26.0" prefWidth="250.0" />
+                        <Label layoutX="396.0" layoutY="309.0" text="Hint:" />
+                        <TextField fx:id="hint" layoutX="441.0" layoutY="304.0" prefHeight="27.0" prefWidth="229.0" />
+                        <ChoiceBox fx:id="subjects" layoutX="75.0" layoutY="55.0" prefHeight="27.0" prefWidth="92.0" />
+                        <ChoiceBox fx:id="className" layoutX="244.0" layoutY="53.0" prefHeight="27.0" prefWidth="92.0" />
+                        <TextField fx:id="a" layoutX="197.0" layoutY="140.0" prefHeight="27.0" prefWidth="132.0" />
+                        <TextField fx:id="c" layoutX="197.0" layoutY="182.0" prefHeight="27.0" prefWidth="132.0" />
+                        <TextField fx:id="d" layoutX="197.0" layoutY="221.0" prefHeight="27.0" prefWidth="132.0" />
+                        <Text layoutX="466.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="b" layoutX="197.0" layoutY="103.0" prefHeight="27.0" prefWidth="132.0" />
+                  <TextField fx:id="aAnswer" layoutX="357.0" layoutY="103.0" prefHeight="27.0" prefWidth="312.0" />
+                  <TextField fx:id="bAnswer" layoutX="357.0" layoutY="140.0" prefHeight="27.0" prefWidth="312.0" />
+                  <TextField fx:id="cAnswer" layoutX="357.0" layoutY="182.0" prefHeight="27.0" prefWidth="312.0" />
+                  <TextField fx:id="dAnswer" layoutX="357.0" layoutY="221.0" prefHeight="27.0" prefWidth="312.0" />
+                  <Text layoutX="167.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A." />
+                  <Text layoutX="166.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="B." />
+                  <Text layoutX="166.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C." />
+                  <Text layoutX="166.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D." />
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</AnchorPane>

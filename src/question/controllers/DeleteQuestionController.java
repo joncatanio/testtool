@@ -96,4 +96,68 @@ public class DeleteQuestionController {
         currStage.show();
     }
 
+    public void EditQuestion(ActionEvent actionEvent) throws IOException {
+        DeleteQuestion(actionEvent);
+        SetQuestionType();
+    }
+
+
+    public void SetQuestionType() throws IOException {
+        Scene nextScene;
+        QuestionModel questionModel = new QuestionModel();
+        if(deleteQuestion.getQuestionType().equals("Fill in The Blank")){
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/FillInTheBlankQuestion.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            nextScene = new Scene(nextSceneParent);
+
+            FillInTheBlankController test = parentLoader.getController();
+            test.populateInterface(currStage);
+            test.populateChoiceBoxes();
+            test.SetUpQuestion(deleteQuestion);
+        }
+        else if(deleteQuestion.getQuestionType().equals("Multiple Choice")){
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/MultipleChoice.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            nextScene = new Scene(nextSceneParent);
+
+            MultipleChoiceController test = parentLoader.getController();
+            test.populateInterface(currStage);
+            test.populateChoiceBoxes();
+            test.SetUpQuestion(deleteQuestion);
+        }
+        else if(deleteQuestion.getQuestionType().equals("Multiple Select")){
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/MultipleSelect.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            nextScene = new Scene(nextSceneParent);
+
+            MultipleSelectController test = parentLoader.getController();
+            test.populateInterface(currStage);
+            test.populateChoiceBoxes();
+            test.SetUpQuestion(deleteQuestion);
+        }
+        else if(deleteQuestion.getQuestionType().equals("Matching")){
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/Matching.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            nextScene = new Scene(nextSceneParent);
+
+            MatchingController test = parentLoader.getController();
+            test.populateInterface(currStage);
+            test.populateChoiceBoxes();
+            test.SetUpQuestion(deleteQuestion);
+        }
+        else{
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            nextScene = new Scene(nextSceneParent);
+
+            GenericQuestionController test = parentLoader.getController();
+            test.populateInterface(currStage);
+            test.initializeQuestionModel(questionModel);
+            test.SetUpQuestion(deleteQuestion);
+        }
+        currStage.setScene(nextScene);
+        currStage.show();
+    }
+
+
 }
