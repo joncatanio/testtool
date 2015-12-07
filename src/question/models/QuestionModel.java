@@ -31,6 +31,10 @@ public class QuestionModel{
     private boolean bCheck;
     private boolean cCheck;
     private boolean dCheck;
+    private boolean aChecked;
+    private boolean bChecked;
+    private boolean cChecked;
+    private boolean dChecked;
     private int charLimit;
     private int difficulty;
     private int pointsPossible;
@@ -53,6 +57,10 @@ public class QuestionModel{
         this.bCheck = false;
         this.cCheck = false;
         this.dCheck = false;
+        this.aChecked = false;
+        this.bChecked = false;
+        this.cChecked = false;
+        this.dChecked = false;
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
@@ -392,30 +400,71 @@ public class QuestionModel{
         this.input = input;
     }
 
+
+    /**
+     * setBAnswer is used in matching to set what
+     * B should be matched too
+     *
+     **/
     public void setBAnswer(String name){
         System.out.println("bAnswer: " + name);
         this.bAnswer = name;
     }
+
+    /**
+     * getBAnswer returns the matching of B
+     *
+     **/
     public String getBAnswer() {
         return this.bAnswer;
     }
 
+
+    /**
+     * setCAnswer is used in matching to set what
+     * C should be matched too
+     *
+     **/
     public void setCAnswer(String name){
         System.out.println("CAnswer: " + name);
         this.cAnswer = name;
     }
+
+    /**
+     * getCAnswer returns the matching of C
+     *
+     **/
     public String getCAnswer() {return this.cAnswer;}
 
+    /**
+     * setDAnswer is used in matching to set what
+     * D should be matched too
+     *
+     **/
     public void setDAnswer(String name){
         System.out.println("DAnswer: " + name);
         this.dAnswer = name;
     }
+    /**
+     * getDAnswer returns the matching of d
+     *
+     **/
     public String getDAnswer() {return this.dAnswer;}
 
+    /**
+     * setAAnswer is used in matching to set what
+     * a should be matched too
+     *
+     **/
     public void setAAnswer(String name){
         System.out.println("aAnswer: " + name);
         this.aAnswer = name;
     }
+
+    /**
+     * getAAnswer returns the matching of A
+     *
+     **/
     public String getAAnswer() {return this.aAnswer;}
 
 
@@ -457,5 +506,37 @@ public class QuestionModel{
                 this.charLimit == qm.charLimit &&
                 this.difficulty == qm.difficulty &&
                 this.pointsPossible == qm.pointsPossible);
+    }
+
+    public boolean isaChecked() {
+        return aChecked;
+    }
+
+    public void setaChecked(boolean aChecked) {
+        this.aChecked = aChecked;
+    }
+
+    public boolean isbChecked() {
+        return bChecked;
+    }
+
+    public void setbChecked(boolean bChecked) {
+        this.bChecked = bChecked;
+    }
+
+    public boolean iscChecked() {
+        return cChecked;
+    }
+
+    public void setcChecked(boolean cChecked) {
+        this.cChecked = cChecked;
+    }
+
+    public boolean isdChecked() {
+        return dChecked;
+    }
+
+    public void setdChecked(boolean dChecked) {
+        this.dChecked = dChecked;
     }
 }
