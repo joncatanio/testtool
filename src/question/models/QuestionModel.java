@@ -5,8 +5,12 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-/**
- * Created by kendall, Cameron Burwell (cburwell@calpoly.edu) on 11/3/15.
+
+/****
+ *
+ * The QuestionModel Class is used to store all of the questions information.
+ *
+ * Created by Kendall Gassner (kgassner@calpoly.edu), Cameron Burwell (cburwell@calpoly.edu) on 11/3/15.
  */
 public class QuestionModel{
 
@@ -27,14 +31,7 @@ public class QuestionModel{
     private String bAnswer;
     private String cAnswer;
     private String dAnswer;
-    private boolean aCheck;
-    private boolean bCheck;
-    private boolean cCheck;
-    private boolean dCheck;
-    private boolean aChecked;
-    private boolean bChecked;
-    private boolean cChecked;
-    private boolean dChecked;
+    private MultipleSelectQuestion selectQuestion;
     private int charLimit;
     private int difficulty;
     private int pointsPossible;
@@ -53,14 +50,7 @@ public class QuestionModel{
         this.charLimit = 100;
         this.difficulty = 0;
         this.pointsPossible = 1;
-        this.aCheck = false;
-        this.bCheck = false;
-        this.cCheck = false;
-        this.dCheck = false;
-        this.aChecked = false;
-        this.bChecked = false;
-        this.cChecked = false;
-        this.dChecked = false;
+        this.selectQuestion = new MultipleSelectQuestion();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
@@ -312,84 +302,6 @@ public class QuestionModel{
         System.out.println("PointsPossible: " + name);
         this.pointsPossible = name;
     }
-    /**
-     * getACheck changes the returns the aCheck boolean value
-     * for multiple select
-     *
-     **/
-    public boolean getACheck() {
-        return this.aCheck;
-    }
-
-    /**
-     * setACheck changes the boolean bCheck
-     * to notify if A is an answer in MultipleSelect
-     *
-     **/
-    public void setACheck(boolean name){
-        System.out.println("A Check: " + name);
-        this.aCheck = name;
-    }
-
-    /**
-     * getBCheck changes the returns the bCheck boolean value
-     * for multiple select
-     *
-     **/
-    public boolean getBCheck() {
-        return this.bCheck;
-    }
-
-
-    /**
-     * setBCheck changes the boolean bCheck
-     * to notify if b is an answer in MultipleSelect
-     *
-     **/
-    public void setBCheck(boolean name){
-        System.out.println("B Check: " + name);
-        this.bCheck = name;
-    }
-
-    /**
-     * getCCheck changes the returns the cCheck boolean value
-     * for multiple select
-     *
-     **/
-    public boolean getCCheck() {
-        return this.cCheck;
-    }
-
-
-    /**
-     * setCCheck changes the boolean cCheck
-     * to notify if c is an answer in MultipleSelect
-     *
-     **/
-    public void setCCheck(boolean name){
-        System.out.println("C Check: " + name);
-        this.cCheck = name;
-    }
-
-    /**
-     * getDCheck changes the returns the DCheck boolean value
-     * for multiple select
-     *
-     **/
-    public boolean getDCheck() {
-        return this.dCheck;
-    }
-
-
-    /**
-     * setDCheck changes the boolean dCheck
-     * to notify if d is an answer in MultipleSelect
-     *
-     **/
-    public void setDCheck(boolean name){
-        System.out.println("D Check: " + name);
-        this.dCheck = name;
-    }
 
 
     public String getInput() {
@@ -508,35 +420,14 @@ public class QuestionModel{
                 this.pointsPossible == qm.pointsPossible);
     }
 
-    public boolean isaChecked() {
-        return aChecked;
+    /**
+     * This function returns an MultipleSelectQuestions
+     * class which contains all the extra information only
+     * multiple select needs
+     *
+     **/
+    public MultipleSelectQuestion getSelectQuestion() {
+        return selectQuestion;
     }
 
-    public void setaChecked(boolean aChecked) {
-        this.aChecked = aChecked;
-    }
-
-    public boolean isbChecked() {
-        return bChecked;
-    }
-
-    public void setbChecked(boolean bChecked) {
-        this.bChecked = bChecked;
-    }
-
-    public boolean iscChecked() {
-        return cChecked;
-    }
-
-    public void setcChecked(boolean cChecked) {
-        this.cChecked = cChecked;
-    }
-
-    public boolean isdChecked() {
-        return dChecked;
-    }
-
-    public void setdChecked(boolean dChecked) {
-        this.dChecked = dChecked;
-    }
 }

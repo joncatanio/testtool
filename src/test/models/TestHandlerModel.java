@@ -57,10 +57,10 @@ public class TestHandlerModel {
                     }
                     break;
                 case "Multiple Select":
-                    if (question.getACheck() == question.isaChecked() &&
-                            question.getBCheck() == question.isbChecked() &&
-                            question.getCCheck() == question.iscChecked() &&
-                            question.getDCheck() == question.isdChecked()) {
+                    if (question.getSelectQuestion().getACheck() == question.getSelectQuestion().isaChecked() &&
+                            question.getSelectQuestion().getBCheck() == question.getSelectQuestion().isbChecked() &&
+                            question.getSelectQuestion().getCCheck() == question.getSelectQuestion().iscChecked() &&
+                            question.getSelectQuestion().getDCheck() == question.getSelectQuestion().isdChecked()) {
                         points += question.getPointsPossible();
                     }
                     break;

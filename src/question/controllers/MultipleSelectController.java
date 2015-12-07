@@ -78,16 +78,16 @@ public class MultipleSelectController extends QuestionController {
         QuestionModel questionModel = new QuestionModel();
         ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
         if (aCheck.isSelected()){
-            questionModel.setACheck(true);
+            questionModel.getSelectQuestion().setACheck(true);
         }
         if (bCheck.isSelected()){
-            questionModel.setBCheck(true);
+            questionModel.getSelectQuestion().setBCheck(true);
         }
         if (cCheck.isSelected()){
-            questionModel.setCCheck(true);
+            questionModel.getSelectQuestion().setCCheck(true);
         }
         if (dCheck.isSelected()){
-            questionModel.setDCheck(true);
+            questionModel.getSelectQuestion().setDCheck(true);
         }
         if(questionName.getText() != null && question.getText() != null && subjects.getValue() != null && className.getValue() != null){
             if(points.getText() != null){
@@ -186,10 +186,10 @@ public class MultipleSelectController extends QuestionController {
         b.setText(questionMod.getB());
         c.setText(questionMod.getC());
         d.setText(questionMod.getD());
-        aCheck.setSelected(questionMod.getACheck());
-        bCheck.setSelected(questionMod.getBCheck());
-        cCheck.setSelected(questionMod.getCCheck());
-        dCheck.setSelected(questionMod.getDCheck());
+        aCheck.setSelected(questionMod.getSelectQuestion().getACheck());
+        bCheck.setSelected(questionMod.getSelectQuestion().getBCheck());
+        cCheck.setSelected(questionMod.getSelectQuestion().getCCheck());
+        dCheck.setSelected(questionMod.getSelectQuestion().getDCheck());
         points.setText(Integer.toString(questionMod.getPointsPossible()));
         hint.setText(questionMod.getHint());
         if(questionMod.getDifficulty() == 1)
