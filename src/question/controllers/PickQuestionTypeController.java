@@ -124,11 +124,11 @@ public class PickQuestionTypeController extends QuestionController {
             test.initializeQuestionModel(questionModel);
         }
         else if(MatchingButton.isSelected()){
-            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/AddMatchingView.fxml"));
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/Matching.fxml"));
             Parent nextSceneParent = parentLoader.load();
              nextScene = new Scene(nextSceneParent);
 
-            FillInTheBlankController test = parentLoader.getController();
+            MatchingController test = parentLoader.getController();
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
             questionModel.setQuestionType("Matching");

@@ -24,6 +24,10 @@ public class QuestionModel{
     private String b;
     private String c;
     private String d;
+    private String aAnswer;
+    private String bAnswer;
+    private String cAnswer;
+    private String dAnswer;
     private boolean aCheck;
     private boolean bCheck;
     private boolean cCheck;
@@ -427,6 +431,32 @@ public class QuestionModel{
     public void setInput(String input) {
         this.input = input;
     }
+
+    public void setBAnswer(String name){
+        System.out.println("bAnswer: " + name);
+        this.bAnswer = name;
+    }
+    public String getBAnswer() {
+        return this.bAnswer;
+    }
+
+    public void setCAnswer(String name){
+        System.out.println("CAnswer: " + name);
+        this.cAnswer = name;
+    }
+    public String getCAnswer() {return this.cAnswer;}
+
+    public void setDAnswer(String name){
+        System.out.println("DAnswer: " + name);
+        this.dAnswer = name;
+    }
+    public String getDAnswer() {return this.dAnswer;}
+
+    public void setAAnswer(String name){
+        System.out.println("aAnswer: " + name);
+        this.aAnswer = name;
+    }
+    public String getAAnswer() {return this.aAnswer;}
 
 
     public int getId() {

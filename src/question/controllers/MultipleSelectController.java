@@ -49,8 +49,11 @@ public class MultipleSelectController extends QuestionController {
     public RadioButton medium;
     public RadioButton hard;
     public Button clear;
+    public boolean check;
+    public QuestionModel unEditedQuestion;
 
     public MultipleSelectController(){
+        check = false;
     }
 
     /*
@@ -59,8 +62,8 @@ public class MultipleSelectController extends QuestionController {
      *
      */
     public void populateChoiceBoxes() {
-        className.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
-        subjects.setItems(FXCollections.observableArrayList("Select", "Questions", "Tests", "Classes", "Settings"));
+        className.setItems(FXCollections.observableArrayList("Select", "computers", "not-computers", "subjects"));
+        subjects.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
         subjects.getSelectionModel().select(0);
         className.getSelectionModel().select(0);
 
@@ -179,6 +182,10 @@ public class MultipleSelectController extends QuestionController {
      *
      */
     public void Cancel(ActionEvent actionEvent) throws IOException {
+        if(check){
+            SetUpQuestion(unEditedQuestion);
+            AddQuestionToBank(actionEvent);
+        }
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
@@ -189,5 +196,26 @@ public class MultipleSelectController extends QuestionController {
 
         currStage.setScene(nextScene);
         currStage.show();
+    }
+
+    public void SetUpQuestion(QuestionModel questionMod) {
+        unEditedQuestion = questionMod;
+        check = true;
+        questionName.setText(questionMod.getQuestionName());
+        question.setText(questionMod.getQuestion());
+        subjects.setValue(questionMod.getSubject());
+        className.setValue(questionMod.getClassNumber());
+        a.setText(questionMod.getA());
+        b.setText(questionMod.getB());
+        c.setText(questionMod.getC());
+        d.setText(questionMod.getD());
+        points.setText(Integer.toString(questionMod.getPointsPossible()));
+        hint.setText(questionMod.getHint());
+        if(questionMod.getDifficulty() == 1)
+            easy.setSelected(true);
+        else if(questionMod.getDifficulty() == 2)
+            medium.setSelected(true);
+        else if(questionMod.getDifficulty() == 3)
+            hard.setSelected(true);
     }
 }

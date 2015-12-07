@@ -39,11 +39,13 @@ public class GenericQuestionController extends QuestionController {
     public Button addQuestion = new Button();
     public Button clear = new Button();
     public Button cancel = new Button();
+    public boolean check;
 
     private QuestionModel questionModel = new QuestionModel();
     private QuestionModel initialQuestionModel = new QuestionModel();
 
     public GenericQuestionController() {
+        check = false;
     }
 
     public void initializeQuestionModel(QuestionModel qm) {
@@ -111,7 +113,6 @@ public class GenericQuestionController extends QuestionController {
 
     public void cancel() throws IOException {
         System.out.println("\nGetting out of here!");
-
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
@@ -158,5 +159,22 @@ public class GenericQuestionController extends QuestionController {
 
         questionBank.add(qm);
         DBObject.getInstance().setQuestionBank(questionBank);
+    }
+
+    public void SetUpQuestion(QuestionModel questionMod) {
+        check = true;
+        questionName.setText(questionMod.getQuestionName());
+        questionText.setText(questionMod.getQuestion());
+        subjects.setValue(questionMod.getSubject());
+        classes.setValue(questionMod.getClassNumber());
+        points.setText(Integer.toString(questionMod.getPointsPossible()));
+        hint.setText(questionMod.getHint());
+        charLimit.setText(Integer.toString(questionMod.getCharLimit()));
+        if(questionMod.getDifficulty() == 1)
+            easy.setSelected(true);
+        else if(questionMod.getDifficulty() == 2)
+            medium.setSelected(true);
+        else if(questionMod.getDifficulty() == 3)
+            hard.setSelected(true);
     }
 }
