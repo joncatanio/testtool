@@ -111,35 +111,75 @@ public class MultipleSelectQuestion {
     }
 
 
-
+    /**
+     * isaChecked returns true or false based on
+     * what the student has entered
+     *
+     **/
     public boolean isaChecked() {
         return aChecked;
     }
 
+    /**
+     * setbChecked holds true or false depending
+     * on what the student answers
+     *
+     **/
     public void setaChecked(boolean aChecked) {
         this.aChecked = aChecked;
     }
 
+    /**
+     * isbChecked returns true or false based on
+     * what the student has entered
+     *
+     **/
     public boolean isbChecked() {
         return bChecked;
     }
 
+    /**
+     * setbChecked holds true or false depending
+     * on what the student answerst
+     *
+     **/
     public void setbChecked(boolean bChecked) {
         this.bChecked = bChecked;
     }
 
+    /**
+     * iscChecked returns true or false based on
+     * what the student has entered
+     *
+     **/
     public boolean iscChecked() {
         return cChecked;
     }
 
+    /**
+     * setCChecked holds true or false depending
+     * on what the student answers
+     *
+     **/
     public void setcChecked(boolean cChecked) {
         this.cChecked = cChecked;
     }
 
+    /**
+     * isdChecked returns true or false based on
+     * what the student has entered
+     *
+     **/
     public boolean isdChecked() {
         return dChecked;
     }
 
+    /**
+     * setDChecked holds true or false depending
+     * on what the student answers
+     *
+     *
+     **/
     public void setdChecked(boolean dChecked) {
         this.dChecked = dChecked;
     }

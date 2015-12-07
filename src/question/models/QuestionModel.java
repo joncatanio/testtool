@@ -380,15 +380,28 @@ public class QuestionModel{
     public String getAAnswer() {return this.aAnswer;}
 
 
+    /**
+     * getId return the id of the question
+     *
+     **/
     public int getId() {
         return this.id;
     }
 
-
+    /**
+     * getDate returns the date of when the question
+     * was created
+     *
+     **/
     public String getDate() {
         return this.date;
     }
 
+    /**
+     * toString creates a string with all of the questions
+     * variables
+     *
+     **/
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.questionType);
@@ -406,6 +419,11 @@ public class QuestionModel{
         return sb.toString();
     }
 
+    /**
+     * equals checks if the qm questionModel
+     * equals the questionModel
+     *
+     **/
     public boolean equals(QuestionModel qm) {
         return (this.questionType.equals(qm.questionType) &&
                 this.questionName.equals(qm.questionName) &&
@@ -421,7 +439,7 @@ public class QuestionModel{
     }
 
     /**
-     * This function returns an MultipleSelectQuestions
+     * getSelectQuestion returns an MultipleSelectQuestions
      * class which contains all the extra information only
      * multiple select needs
      *
