@@ -51,18 +51,6 @@ public class QuestionModel{
      **/
     protected String questionName;
 
-    /**
-     * answer holds the answer to the question.
-     *
-     **/
-    protected String answer;
-
-    /**
-     * input holds the response to the student puts
-     * for an answer.
-     *
-     **/
-    protected String input;
 
     /**
      * date holds the date the question was created.
@@ -251,22 +239,6 @@ public class QuestionModel{
         this.question = name;
     }
 
-    /**
-     * getAnswer returns the question's answer
-     *
-     **/
-    public String getAnswer() {
-        return this.answer;
-    }
-
-    /**
-     * setAnswer changes the question's answer
-     *
-     **/
-    public void setAnswer(String name) {
-        System.out.println("Answer: " + name);
-        this.answer = name;
-    }
 
     /**
      * getHint returns the question's hint
@@ -343,22 +315,6 @@ public class QuestionModel{
         this.pointsPossible = name;
     }
 
-    /**
-     * getInput returns the student input
-     *
-     **/
-    public String getInput() {
-        return input;
-    }
-
-
-    /**
-     * setInput put the students answer into input
-     *
-     **/
-    public void setInput(String input) {
-        this.input = input;
-    }
 
 
     /**
@@ -391,7 +347,7 @@ public class QuestionModel{
         sb.append("," + this.subject);
         sb.append("," + this.question);
         sb.append("," + this.hint);
-        sb.append("," + this.answer);
+        sb.append("," + this.getQuestionHelper().getAnswer());
         sb.append("," + this.date);
         sb.append("," + this.charLimit);
         sb.append("," + this.difficulty);
@@ -412,7 +368,7 @@ public class QuestionModel{
                 this.subject.equals(qm.subject) &&
                 this.question.equals(qm.question) &&
                 this.hint.equals(qm.hint) &&
-                this.answer.equals(qm.answer) &&
+                this.getQuestionHelper().getAnswer().equals(qm.getQuestionHelper().getAnswer()) &&
                 this.date.equals(qm.date) &&
                 this.charLimit == qm.charLimit &&
                 this.difficulty == qm.difficulty &&

@@ -56,6 +56,19 @@ public class QuestionHelperModel {
      **/
     protected String dAnswer;
 
+    /**
+     * answer holds the answer to the question.
+     *
+     **/
+    protected String answer;
+
+    /**
+     * input holds the response to the student puts
+     * for an answer.
+     *
+     **/
+    protected String input;
+
     public QuestionHelperModel(){}
 
 
@@ -194,4 +207,37 @@ public class QuestionHelperModel {
         this.d = name;
     }
 
+    /**
+     * getInput returns the student input
+     *
+     **/
+    public String getInput() {
+        return input;
+    }
+
+
+    /**
+     * setInput put the students answer into input
+     *
+     **/
+    public void setInput(String input) {
+        this.input = input;
+    }
+
+    /**
+     * getAnswer returns the question's answer
+     *
+     **/
+    public String getAnswer() {
+        return this.answer;
+    }
+
+    /**
+     * setAnswer changes the question's answer
+     *
+     **/
+    public void setAnswer(String name) {
+        System.out.println("Answer: " + name);
+        this.answer = name;
+    }
 }
