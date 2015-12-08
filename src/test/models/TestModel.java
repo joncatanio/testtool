@@ -78,6 +78,11 @@ public class TestModel {
     private int difficulty;
 
     /**
+     * True if the test has been published, false otherwise.
+     */
+    private boolean published;
+
+    /**
      * The collection of questions included on the test.
      */
     private ArrayList<QuestionModel> questions = new ArrayList<>();
@@ -237,6 +242,22 @@ public class TestModel {
      */
     public void setTaken(boolean taken) {
         this.taken = taken;
+    }
+
+    /**
+     * Returns the published boolean.
+     *
+     * @return True if test is published, false otherwise.
+     */
+    public boolean getPublished() { return published; }
+
+    /**
+     * Sets the published boolean.
+     *
+     * @param published the value to update the published boolean with.
+     */
+    public void setPublished(boolean published) {
+        this.published = published;
     }
 
     @Override
