@@ -39,6 +39,14 @@ public class TestHandlerModel {
      * Grades the given test.
      *
      * @param toGrade test to grade.
+     *
+     pre:
+        forall (Question q; toGrade.getQuestions().contains(q); q.getQuestionType().equals("Fill in the Blank") ||
+    q.getQuestionType().equals("Multiple Choice") || q.getQuestionType().equals("Multiple Choice") )
+
+     post:
+        toGrade'.taken = true;
+     *
      */
     public void grade(TestModel toGrade) {
         int points = 0;
@@ -68,6 +76,7 @@ public class TestHandlerModel {
         }
 
         toGrade.setTotalPoints(points);
+        toGrade.setTaken(true);
 
         System.out.println("Test " + toGrade.getId() + " has been graded.");
     }

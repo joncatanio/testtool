@@ -28,6 +28,12 @@ public class ClassBankModel {
      * getClassById is used to pull a class from the bank using a specific id.
      * @param id is a unique int associated with a class.
      * @return is the class associated with the given id.
+     *
+     *
+     pre:
+        exists(ClassModel c; classes.contains(c); c.getId() == id)
+     post:
+
      */
     public ClassModel getClassById(int id) {
         for( int i = 0; i < classes.size(); i++ ) {
@@ -50,6 +56,10 @@ public class ClassBankModel {
     /**
      * removeClass is used to remove a class from the bank.
      * @param id is a unique integer associated with a class in the test bank.
+     *
+     pre:
+        exists(ClassModel c; classes.contains(c); c.getId() == id)
+     post:
      */
     public void removeClass(int id) {
         for( int i = 0; i < classes.size(); i++ ) {

@@ -53,6 +53,7 @@ public class TestBinModel {
     public void setName(String name) {
         this.name = name;
     }
+
     /**
      * Return the TestBinModel's id
      *
@@ -60,7 +61,7 @@ public class TestBinModel {
      pre:
      post:
      //
-     // the returned id describes a test that is in the testbin
+     // the returned id describes an allowable id
      //
      id > 0
      *
@@ -105,7 +106,10 @@ public class TestBinModel {
             test.studentId() != test2.studentId()));
      *
      */
-    public void addSubmission(TestModel testToAdd) {}
+    public void addSubmission(TestModel testToAdd) {
+
+        submissions.add(testToAdd);
+    }
 
     /**
      * Return the average score on the assigned exam
