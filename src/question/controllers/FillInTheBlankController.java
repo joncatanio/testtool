@@ -34,7 +34,6 @@ public class FillInTheBlankController extends QuestionController {
     public ChoiceBox className;
     public TextField answer;
     public TextField points;
-    public TextField image;
     public TextField hint;
     public RadioButton easy;
     public RadioButton medium;
@@ -53,8 +52,8 @@ public class FillInTheBlankController extends QuestionController {
      *
      */
     public void populateChoiceBoxes() {
-        className.setItems(FXCollections.observableArrayList("Select", "computers", "not-computers", "subjects"));
-        subjects.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
+        subjects.setItems(FXCollections.observableArrayList("Select", "computers", "not-computers", "subjects"));
+        className.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
         subjects.getSelectionModel().select(0);
         className.getSelectionModel().select(0);
 
@@ -69,58 +68,44 @@ public class FillInTheBlankController extends QuestionController {
     public void AddQuestionToBank(ActionEvent actionEvent) throws IOException {
         QuestionModel questionModel = new QuestionModel();
         ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
-        if(questionName.getText() != null){
-            if(question.getText() != null){
-                if(subjects.getValue() != null){
-                    if(className.getValue() != null){
-                        if(answer.getText() != null){
-                            if(points.getText() != null) {
-                                if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
-                                    questionModel.setQuestionName(questionName.getText());
-                                    questionModel.setPointsPossible(Integer.parseInt(points.getText()));
-                                    questionModel.setClassNumber(className.getValue().toString());
-                                    questionModel.setSubject(subjects.getValue().toString());
-                                    questionModel.setQuestion(question.getText());
-                                    questionModel.setAnswer(answer.getText());
-                                    if (hint.getText() != null) {
-                                        questionModel.setHint(hint.getText());
-                                    }
-                                    if (image.getText() != null) {
-                                        questionModel.setImageFile(image.getText());
-                                    }
-                                    if(easy.isSelected()){
-                                        questionModel.setDifficulty(1);
-                                    }
-                                    else if(medium.isSelected()){
-                                        questionModel.setDifficulty(2);
-                                    }
-                                    else if(hard.isSelected()){
-                                        questionModel.setDifficulty(3);
-                                    }
-                                    questionModel.setQuestionType("Fill in The Blank");
-                                    questionBank.add(questionModel);
-                                    DBObject.getInstance().setQuestionBank(questionBank);
-
-                                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
-                                    Parent nextSceneParent = parentLoader.load();
-                                    Scene nextScene = new Scene(nextSceneParent);
-
-                                    QuestionController test = parentLoader.getController();
-                                    test.populateInterface(currStage);
-                                    test.setUpTable();
-
-                                    currStage.setScene(nextScene);
-                                    currStage.show();
-                                }
-                            }
-                        }
+        if(questionName.getText() != null && question.getText() != null && subjects.getValue() != null){
+            if(className.getValue() != null && answer.getText() != null && points.getText() != null ){
+                if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
+                    questionModel.setQuestionName(questionName.getText());
+                    questionModel.setPointsPossible(Integer.parseInt(points.getText()));
+                    questionModel.setClassNumber(className.getValue().toString());
+                    questionModel.setSubject(subjects.getValue().toString());
+                    questionModel.setQuestion(question.getText());
+                    questionModel.setAnswer(answer.getText());
+                    questionModel.setHint(hint.getText());
+                    if(easy.isSelected()){
+                        questionModel.setDifficulty(1);
                     }
+                    else if(medium.isSelected()){
+                        questionModel.setDifficulty(2);
+                    }
+                    else if(hard.isSelected()){
+                        questionModel.setDifficulty(3);
+                    }
+                    questionModel.setQuestionType("Fill in The Blank");
+                    questionBank.add(questionModel);
+                    DBObject.getInstance().setQuestionBank(questionBank);
+
+                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
+                    Parent nextSceneParent = parentLoader.load();
+                    Scene nextScene = new Scene(nextSceneParent);
+
+                    QuestionController test = parentLoader.getController();
+                    test.populateInterface(currStage);
+                    test.setUpTable();
+
+                    currStage.setScene(nextScene);
+                    currStage.show();
                 }
             }
-
         }
-
     }
+
 
     /*
      * ClearAllThings clears all of the fields in the fill in the blank GUI.
@@ -133,7 +118,6 @@ public class FillInTheBlankController extends QuestionController {
         className.setValue(0);
         answer.clear();
         points.clear();
-        image.clear();
         hint.clear();
         easy.setSelected(false);
         medium.setSelected(false);

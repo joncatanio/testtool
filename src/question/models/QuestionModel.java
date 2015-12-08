@@ -5,8 +5,12 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-/**
- * Created by kendall, Cameron Burwell (cburwell@calpoly.edu) on 11/3/15.
+
+/****
+ *
+ * The QuestionModel Class is used to store all of the questions information.
+ *
+ * Created by Kendall Gassner (kgassner@calpoly.edu), Cameron Burwell (cburwell@calpoly.edu) on 11/3/15.
  */
 public class QuestionModel{
 
@@ -14,7 +18,6 @@ public class QuestionModel{
     private String classNumber;
     private String subject;
     private String question;
-    private String ImageFile;
     private String hint;
     private String questionName;
     private String answer;
@@ -28,14 +31,7 @@ public class QuestionModel{
     private String bAnswer;
     private String cAnswer;
     private String dAnswer;
-    private boolean aCheck;
-    private boolean bCheck;
-    private boolean cCheck;
-    private boolean dCheck;
-    private boolean aChecked;
-    private boolean bChecked;
-    private boolean cChecked;
-    private boolean dChecked;
+    private MultipleSelectQuestion selectQuestion;
     private int charLimit;
     private int difficulty;
     private int pointsPossible;
@@ -47,7 +43,6 @@ public class QuestionModel{
         this.classNumber = "";
         this.subject = "";
         this.question = "";
-        this.ImageFile = "";
         this.hint = "";
         this.answer = "";
         this.input = "";
@@ -55,14 +50,7 @@ public class QuestionModel{
         this.charLimit = 100;
         this.difficulty = 0;
         this.pointsPossible = 1;
-        this.aCheck = false;
-        this.bCheck = false;
-        this.cCheck = false;
-        this.dCheck = false;
-        this.aChecked = false;
-        this.bChecked = false;
-        this.cChecked = false;
-        this.dChecked = false;
+        this.selectQuestion = new MultipleSelectQuestion();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
@@ -75,7 +63,6 @@ public class QuestionModel{
         this.classNumber = classNum;
         this.subject = sub;
         this.question = ques;
-        this.ImageFile = image;
         this.hint = hin;
         this.answer = ans;
         this.charLimit = charlim;
@@ -187,26 +174,9 @@ public class QuestionModel{
      * setAnswer changes the question's answer
      *
      **/
-    public void setAnswer(String name){
+    public void setAnswer(String name) {
         System.out.println("Answer: " + name);
         this.answer = name;
-    }
-
-    /**
-     * getImageFile returns the questions Image file
-     *
-     **/
-    public String getImageFile() {
-        return this.ImageFile;
-    }
-
-    /**
-     * setImageFile changes the questions Image file
-     *
-     **/
-    public void setImageFile(String name){
-        System.out.println("ImageFile: " + name);
-        this.ImageFile = name;
     }
 
     /**
@@ -333,96 +303,6 @@ public class QuestionModel{
         this.pointsPossible = name;
     }
 
-    public boolean getACheck() {
-        return this.aCheck;
-    }
-
-    /**
-     * setA changes the boolean bCheck
-     * to notify if A is an answer in MultipleSelect
-     *
-     **/
-    public void setACheck(boolean name){
-        System.out.println("A Check: " + name);
-        this.aCheck = name;
-    }
-
-    public boolean getBCheck() {
-        return this.bCheck;
-    }
-
-
-    /**
-     * setB changes the boolean bCheck
-     * to notify if b is an answer in MultipleSelect
-     *
-     **/
-    public void setBCheck(boolean name){
-        System.out.println("B Check: " + name);
-        this.bCheck = name;
-    }
-
-    public boolean getCCheck() {
-        return this.cCheck;
-    }
-
-
-    /**
-     * setC changes the boolean cCheck
-     * to notify if c is an answer in MultipleSelect
-     *
-     **/
-    public void setCCheck(boolean name){
-        System.out.println("C Check: " + name);
-        this.cCheck = name;
-    }
-
-    public boolean getDCheck() {
-        return this.dCheck;
-    }
-
-
-    /**
-     * setd changes the boolean dCheck
-     * to notify if d is an answer in MultipleSelect
-     *
-     **/
-    public void setDCheck(boolean name){
-        System.out.println("D Check: " + name);
-        this.dCheck = name;
-    }
-
-    public boolean isaChecked() {
-        return aChecked;
-    }
-
-    public void setaChecked(boolean aChecked) {
-        this.aChecked = aChecked;
-    }
-
-    public boolean isbChecked() {
-        return bChecked;
-    }
-
-    public void setbChecked(boolean bChecked) {
-        this.bChecked = bChecked;
-    }
-
-    public boolean iscChecked() {
-        return cChecked;
-    }
-
-    public void setcChecked(boolean cChecked) {
-        this.cChecked = cChecked;
-    }
-
-    public boolean isdChecked() {
-        return dChecked;
-    }
-
-    public void setdChecked(boolean dChecked) {
-        this.dChecked = dChecked;
-    }
 
     public String getInput() {
         return input;
@@ -432,42 +312,96 @@ public class QuestionModel{
         this.input = input;
     }
 
+
+    /**
+     * setBAnswer is used in matching to set what
+     * B should be matched too
+     *
+     **/
     public void setBAnswer(String name){
         System.out.println("bAnswer: " + name);
         this.bAnswer = name;
     }
+
+    /**
+     * getBAnswer returns the matching of B
+     *
+     **/
     public String getBAnswer() {
         return this.bAnswer;
     }
 
+
+    /**
+     * setCAnswer is used in matching to set what
+     * C should be matched too
+     *
+     **/
     public void setCAnswer(String name){
         System.out.println("CAnswer: " + name);
         this.cAnswer = name;
     }
+
+    /**
+     * getCAnswer returns the matching of C
+     *
+     **/
     public String getCAnswer() {return this.cAnswer;}
 
+    /**
+     * setDAnswer is used in matching to set what
+     * D should be matched too
+     *
+     **/
     public void setDAnswer(String name){
         System.out.println("DAnswer: " + name);
         this.dAnswer = name;
     }
+    /**
+     * getDAnswer returns the matching of d
+     *
+     **/
     public String getDAnswer() {return this.dAnswer;}
 
+    /**
+     * setAAnswer is used in matching to set what
+     * a should be matched too
+     *
+     **/
     public void setAAnswer(String name){
         System.out.println("aAnswer: " + name);
         this.aAnswer = name;
     }
+
+    /**
+     * getAAnswer returns the matching of A
+     *
+     **/
     public String getAAnswer() {return this.aAnswer;}
 
 
+    /**
+     * getId return the id of the question
+     *
+     **/
     public int getId() {
         return this.id;
     }
 
-
+    /**
+     * getDate returns the date of when the question
+     * was created
+     *
+     **/
     public String getDate() {
         return this.date;
     }
 
+    /**
+     * toString creates a string with all of the questions
+     * variables
+     *
+     **/
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.questionType);
@@ -475,7 +409,6 @@ public class QuestionModel{
         sb.append("," + this.classNumber);
         sb.append("," + this.subject);
         sb.append("," + this.question);
-        sb.append("," + this.ImageFile);
         sb.append("," + this.hint);
         sb.append("," + this.answer);
         sb.append("," + this.date);
@@ -486,13 +419,17 @@ public class QuestionModel{
         return sb.toString();
     }
 
+    /**
+     * equals checks if the qm questionModel
+     * equals the questionModel
+     *
+     **/
     public boolean equals(QuestionModel qm) {
         return (this.questionType.equals(qm.questionType) &&
                 this.questionName.equals(qm.questionName) &&
                 this.classNumber.equals(qm.classNumber) &&
                 this.subject.equals(qm.subject) &&
                 this.question.equals(qm.question) &&
-                this.ImageFile.equals(qm.ImageFile) &&
                 this.hint.equals(qm.hint) &&
                 this.answer.equals(qm.answer) &&
                 this.date.equals(qm.date) &&
@@ -500,4 +437,15 @@ public class QuestionModel{
                 this.difficulty == qm.difficulty &&
                 this.pointsPossible == qm.pointsPossible);
     }
+
+    /**
+     * getSelectQuestion returns an MultipleSelectQuestions
+     * class which contains all the extra information only
+     * multiple select needs
+     *
+     **/
+    public MultipleSelectQuestion getSelectQuestion() {
+        return selectQuestion;
+    }
+
 }

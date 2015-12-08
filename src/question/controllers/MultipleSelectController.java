@@ -43,7 +43,6 @@ public class MultipleSelectController extends QuestionController {
     public CheckBox cCheck;
     public CheckBox dCheck;
     public TextField points;
-    public TextField image;
     public TextField hint;
     public RadioButton easy;
     public RadioButton medium;
@@ -62,8 +61,8 @@ public class MultipleSelectController extends QuestionController {
      *
      */
     public void populateChoiceBoxes() {
-        className.setItems(FXCollections.observableArrayList("Select", "computers", "not-computers", "subjects"));
-        subjects.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
+        subjects.setItems(FXCollections.observableArrayList("Select", "computers", "not-computers", "subjects"));
+        className.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
         subjects.getSelectionModel().select(0);
         className.getSelectionModel().select(0);
 
@@ -79,77 +78,56 @@ public class MultipleSelectController extends QuestionController {
         QuestionModel questionModel = new QuestionModel();
         ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
         if (aCheck.isSelected()){
-            questionModel.setACheck(true);
+            questionModel.getSelectQuestion().setACheck(true);
         }
         if (bCheck.isSelected()){
-            questionModel.setBCheck(true);
+            questionModel.getSelectQuestion().setBCheck(true);
         }
         if (cCheck.isSelected()){
-            questionModel.setCCheck(true);
+            questionModel.getSelectQuestion().setCCheck(true);
         }
         if (dCheck.isSelected()){
-            questionModel.setDCheck(true);
+            questionModel.getSelectQuestion().setDCheck(true);
         }
-        if(questionName.getText() != null){
-            if(question.getText() != null){
-                if(subjects.getValue() != null){
-                    if(className.getValue() != null){
-                        if(a.getText() != null){
-                            if(points.getText() != null) {
-                                if(b.getText() != null) {
-                                    if (c.getText() != null) {
-                                        if (d.getText() != null) {
-                                            if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
-                                                questionModel.setQuestionName(questionName.getText());
-                                                questionModel.setPointsPossible(Integer.parseInt(points.getText()));
-                                                questionModel.setClassNumber(className.getValue().toString());
-                                                questionModel.setSubject(subjects.getValue().toString());
-                                                questionModel.setQuestion(question.getText());
-                                                questionModel.setA(a.getText());
-                                                questionModel.setB(b.getText());
-                                                questionModel.setC(c.getText());
-                                                questionModel.setD(d.getText());
-
-                                                if (hint.getText() != null) {
-                                                    questionModel.setHint(hint.getText());
-                                                }
-                                                if (image.getText() != null) {
-                                                    questionModel.setImageFile(image.getText());
-                                                }
-                                                if (easy.isSelected()) {
-                                                    questionModel.setDifficulty(1);
-                                                } else if (medium.isSelected()) {
-                                                    questionModel.setDifficulty(2);
-                                                } else if (hard.isSelected()) {
-                                                    questionModel.setDifficulty(3);
-                                                }
-                                                questionModel.setQuestionType("Multiple Select");
-                                                questionBank.add(questionModel);
-                                                DBObject.getInstance().setQuestionBank(questionBank);
-
-                                                FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
-                                                Parent nextSceneParent = parentLoader.load();
-                                                Scene nextScene = new Scene(nextSceneParent);
-
-                                                QuestionController test = parentLoader.getController();
-                                                test.populateInterface(currStage);
-                                                test.setUpTable();
-
-                                                currStage.setScene(nextScene);
-                                                currStage.show();
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
+        if(questionName.getText() != null && question.getText() != null && subjects.getValue() != null && className.getValue() != null){
+            if(points.getText() != null){
+                if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
+                    questionModel.setQuestionName(questionName.getText());
+                    questionModel.setPointsPossible(Integer.parseInt(points.getText()));
+                    questionModel.setClassNumber(className.getValue().toString());
+                    questionModel.setSubject(subjects.getValue().toString());
+                    questionModel.setQuestion(question.getText());
+                    questionModel.setA(a.getText());
+                    questionModel.setB(b.getText());
+                    questionModel.setC(c.getText());
+                    questionModel.setD(d.getText());
+                    questionModel.setHint(hint.getText());
+                    if (easy.isSelected()) {
+                        questionModel.setDifficulty(1);
+                    } else if (medium.isSelected()) {
+                        questionModel.setDifficulty(2);
+                    } else if (hard.isSelected()) {
+                        questionModel.setDifficulty(3);
                     }
+                    questionModel.setQuestionType("Multiple Select");
+                    questionBank.add(questionModel);
+                    DBObject.getInstance().setQuestionBank(questionBank);
+
+                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
+                    Parent nextSceneParent = parentLoader.load();
+                    Scene nextScene = new Scene(nextSceneParent);
+
+                    QuestionController test = parentLoader.getController();
+                    test.populateInterface(currStage);
+                    test.setUpTable();
+
+                    currStage.setScene(nextScene);
+                    currStage.show();
                 }
             }
-
         }
-
     }
+
 
     /*
      * ClearAllThings clears all of the fields in the fill in the blank GUI.
@@ -165,7 +143,6 @@ public class MultipleSelectController extends QuestionController {
         c.clear();
         d.clear();
         points.clear();
-        image.clear();
         hint.clear();
         easy.setSelected(false);
         medium.setSelected(false);
@@ -209,6 +186,10 @@ public class MultipleSelectController extends QuestionController {
         b.setText(questionMod.getB());
         c.setText(questionMod.getC());
         d.setText(questionMod.getD());
+        aCheck.setSelected(questionMod.getSelectQuestion().getACheck());
+        bCheck.setSelected(questionMod.getSelectQuestion().getBCheck());
+        cCheck.setSelected(questionMod.getSelectQuestion().getCCheck());
+        dCheck.setSelected(questionMod.getSelectQuestion().getDCheck());
         points.setText(Integer.toString(questionMod.getPointsPossible()));
         hint.setText(questionMod.getHint());
         if(questionMod.getDifficulty() == 1)
