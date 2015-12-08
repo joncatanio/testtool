@@ -167,7 +167,7 @@ public class MultipleChoiceController extends QuestionController {
                     questionModel.setClassNumber(className.getValue().toString());
                     questionModel.setSubject(subjects.getValue().toString());
                     questionModel.setQuestion(question.getText());
-                    questionModel.setAnswer(answer.getText());
+                    questionModel.getQuestionHelper().setAnswer(answer.getText());
                     questionModel.getQuestionHelper().setB(b.getText());
                     questionModel.getQuestionHelper().setC(c.getText());
                     questionModel.getQuestionHelper().setD(d.getText());
@@ -264,7 +264,7 @@ public class MultipleChoiceController extends QuestionController {
         question.setText(questionMod.getQuestion());
         subjects.setValue(questionMod.getSubject());
         className.setValue(questionMod.getClassNumber());
-        answer.setText(questionMod.getAnswer());
+        answer.setText(questionMod.getQuestionHelper().getAnswer());
         b.setText(questionMod.getQuestionHelper().getB());
         c.setText(questionMod.getQuestionHelper().getC());
         d.setText(questionMod.getQuestionHelper().getD());

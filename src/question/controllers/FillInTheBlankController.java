@@ -150,7 +150,7 @@ public class FillInTheBlankController extends QuestionController {
                     questionModel.setClassNumber(className.getValue().toString());
                     questionModel.setSubject(subjects.getValue().toString());
                     questionModel.setQuestion(question.getText());
-                    questionModel.setAnswer(answer.getText());
+                    questionModel.getQuestionHelper().setAnswer(answer.getText());
                     questionModel.setHint(hint.getText());
                     if(easy.isSelected()){
                         questionModel.setDifficulty(1);
@@ -240,7 +240,7 @@ public class FillInTheBlankController extends QuestionController {
         question.setText(questionMod.getQuestion());
         subjects.setValue(questionMod.getSubject());
         className.setValue(questionMod.getClassNumber());
-        answer.setText(questionMod.getAnswer());
+        answer.setText(questionMod.getQuestionHelper().getAnswer());
         points.setText(Integer.toString(questionMod.getPointsPossible()));
         hint.setText(questionMod.getHint());
         if(questionMod.getDifficulty() == 1)

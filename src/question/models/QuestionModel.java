@@ -111,8 +111,8 @@ public class QuestionModel{
         this.subject = "";
         this.question = "";
         this.hint = "";
-        this.answer = "";
-        this.input = "";
+        this.getQuestionHelper().answer = "";
+        this.getQuestionHelper().input = "";
         this.date = "";
         this.charLimit = 100;
         this.difficulty = 0;
@@ -132,18 +132,18 @@ public class QuestionModel{
      *
      **/
     public QuestionModel(String questionTy,String questionNa, String classNum, String sub, String ques,
-                         String image, String  hin, String ans, int charlim, int diff, int pp, int newId) {
+                          String image, String  hin, String answer, int charlim, int diff, int pp, int newId) {
         this.questionType = questionTy;
         this.questionName = questionNa;
         this.classNumber = classNum;
         this.subject = sub;
         this.question = ques;
         this.hint = hin;
-        this.answer = ans;
         this.charLimit = charlim;
         this.difficulty = diff;
         this.pointsPossible = pp;
         this.id = newId;
+        this.getQuestionHelper().setAnswer(answer);
         this.selectQuestion = new MultipleSelectQuestion();
         this.questionHelper = new QuestionHelperModel();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -315,8 +315,6 @@ public class QuestionModel{
         this.pointsPossible = name;
     }
 
-
-
     /**
      * getId return the id of the question
      *
@@ -324,15 +322,7 @@ public class QuestionModel{
     public int getId() {
         return this.id;
     }
-
-    /**
-     * getDate returns the date of when the question
-     * was created
-     *
-     **/
-    public String getDate() {
-        return this.date;
-    }
+    
 
     /**
      * toString creates a string with all of the questions

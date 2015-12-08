@@ -47,12 +47,12 @@ public class TestHandlerModel {
 
             switch(question.getQuestionType()) {
                 case "Fill in the Blank":
-                    if (question.getAnswer().equals( question.getInput() )) {
+                    if (question.getQuestionHelper().getAnswer().equals( question.getQuestionHelper().getInput() )) {
                         points += question.getPointsPossible();
                     }
                     break;
                 case "Multiple Choice":
-                    if (question.getAnswer().equals( question.getInput() )) {
+                    if (question.getQuestionHelper().getAnswer().equals( question.getQuestionHelper().getInput() )) {
                         points += question.getPointsPossible();
                     }
                     break;
