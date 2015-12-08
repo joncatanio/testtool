@@ -182,9 +182,17 @@ public class QuestionBank {
         return new ArrayList<QuestionModel>();
     }
 
+
     /**
      *   getQuestion returns a question that has the same id
      *   as id.
+     *   pre:
+     *
+         post:
+            QuestionModel qm;
+            qm.equals(question') iff
+            qm.getid() == id);
+     *
      **/
     public QuestionModel getQuestion(int id){
 
