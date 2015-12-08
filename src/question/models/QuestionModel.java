@@ -111,8 +111,8 @@ public class QuestionModel{
         this.subject = "";
         this.question = "";
         this.hint = "";
-        this.getQuestionHelper().answer = "";
-        this.getQuestionHelper().input = "";
+        this.getQuestionHelper().setAnswer("");
+        this.getQuestionHelper().setInput("");
         this.date = "";
         this.charLimit = 100;
         this.difficulty = 0;
@@ -322,7 +322,7 @@ public class QuestionModel{
     public int getId() {
         return this.id;
     }
-    
+
 
     /**
      * toString creates a string with all of the questions
