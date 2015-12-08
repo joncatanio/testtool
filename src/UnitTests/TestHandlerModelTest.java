@@ -28,7 +28,7 @@ public class TestHandlerModelTest {
 
         inst.grade(sample);
 
-        if ( sample.getTaken() ) {
+        if ( !sample.getTaken() ) {
             System.out.println("FAILURE, NOT MARKED AS TAKEN");
         }
 
@@ -36,7 +36,7 @@ public class TestHandlerModelTest {
 
         inst.grade(sample);
 
-        if ( sample.getTaken() ) {
+        if ( !sample.getTaken() ) {
             System.out.println("FAILURE, NOT MARKED AS TAKEN");
         }
 

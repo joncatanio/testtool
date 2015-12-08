@@ -111,7 +111,7 @@ public class TestBinModel {
         boolean fail = false;
         for (TestModel test : submissions) {
             if (test.getId() == testToAdd.getId()) {
-                System.out.println("FAIL: DUPLICATE TEST ATTEMPTED");
+                System.out.println("DUPLICATE TEST ATTEMPTED");
                 fail = true;
                 break;
             }
