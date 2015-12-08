@@ -24,9 +24,7 @@ public class ClassViewController extends ClassPackController{
     public Button editClasses = new Button();
     public Button publishTest = new Button();
 
-
     public int highlightedClassId;
-
 
     public void joinClass(ActionEvent event) throws IOException {
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/JoinClassView.fxml"));

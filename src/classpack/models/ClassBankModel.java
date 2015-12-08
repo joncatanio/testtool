@@ -5,7 +5,10 @@ import java.util.*;
 /**
  * Created by alexg on 11/29/15.
  * Updated / Documented by agough on 11/30/15.
+ *
+ * ClassBankModel is a singleton object that holds all of the classes
  */
+
 public class ClassBankModel {
 
     /**
@@ -33,7 +36,6 @@ public class ClassBankModel {
             }
         }
 
-        //TODO: should throw an exception instead
         return new ClassModel();
     }
 

@@ -16,18 +16,42 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * Created by alexg
+ *
+ * AssignedTestViewController handles the view for looking at a given assigned test
+ */
 public class AssignedTestViewController extends ClassTestsViewController{
 
-
+    /**
+     * label to display class average score
+     */
     public ListView testList;
+
+    /**
+     * label to display class average score
+     */
     public Label currentTestLabel;
 
-    //data for interface ///////////
+    /**
+     * holds data on the current class
+     */
+
     private ClassModel currClass;
+
+    /**
+     * label to display class average score
+     */
     private TestBinModel currTest;
+
+    /**
+     * id of the current test/testbin
+     */
     private int testBinId;
 
+    /**
+     * sets up the interface with necessary UI elements and appropriate data
+     */
     public void populateInterface(Stage stage, int classId, int testBinId) {
         super.populateInterface(stage);
 
@@ -47,6 +71,9 @@ public class AssignedTestViewController extends ClassTestsViewController{
         currentClassLabel.setText(currClass.getClassName());
     }
 
+    /**
+     * transfers view to view a list of test submissions for currently viewed assigned test
+     */
     public void viewSubmissions(ActionEvent actionEvent) throws IOException{
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/classpack/views/SubmissionsView.fxml"));
         Parent nextSceneParent = parentLoader.load();

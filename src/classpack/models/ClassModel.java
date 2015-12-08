@@ -3,7 +3,6 @@ package classpack.models;
 import java.util.*;
 
 /****
- * Created by agough on 11/20/15
  *
  * A ClassModel is an object representing a class that a teacher teaches, all of the
  * students in the class, all of the tests that have been assigned to the class, and

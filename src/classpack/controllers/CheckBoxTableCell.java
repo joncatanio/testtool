@@ -10,11 +10,20 @@ import javafx.beans.property.BooleanProperty;
 
 /**
  * Created by alexg on 11/29/15.
+ *
+ * This allows for custom tablview in SubmissionsViewController
  */
 
-//CheckBoxTableCell for creating a CheckBox in a table cell
 public class CheckBoxTableCell<S, T> extends TableCell<S, T> {
+
+    /**
+     * checkbox in the cell
+     */
     private final CheckBox checkBox;
+
+    /**
+     * value in the cell
+     */
     private ObservableValue<T> ov;
 
     public CheckBoxTableCell() {
@@ -22,6 +31,9 @@ public class CheckBoxTableCell<S, T> extends TableCell<S, T> {
         setGraphic(checkBox);
     }
 
+    /**
+     * updates the cell in the table
+     */
     @Override public void updateItem(T item, boolean empty) {
         super.updateItem(item, empty);
         if (empty) {

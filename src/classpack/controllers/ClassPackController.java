@@ -18,14 +18,32 @@ import test.controllers.TestController;
 import test.models.TestModel;
 import user.controllers.UserController;
 
+
+/**
+ * Created by alexg
+ *
+ * ClassPackController is an overarching controller to handle the class portion of the application
+ */
 public class ClassPackController {
 
+    /**
+     * choicebox containing the various sections of the application
+     */
     public ChoiceBox selectSection = new ChoiceBox();
 
+    /**
+     * reference to the current stage
+     */
     protected Stage currStage;
 
+    /**
+     * list displaying all of the classes
+     */
     public ListView classList = new ListView();
 
+    /**
+     * reference to the class bank
+     */
     public ClassBankModel classBank = ClassBankModel.getInstance();
 
     /**
@@ -60,6 +78,9 @@ public class ClassPackController {
         classList.setItems(FXCollections.observableArrayList(classBank.getAllClasses()));
     }
 
+    /**
+     * allow user to change the section of the application they are viewing
+     */
     public void sectionChange(ActionEvent actionEvent) throws IOException{
         if (selectSection.getValue() == "Questions") {
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
