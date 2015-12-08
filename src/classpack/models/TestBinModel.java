@@ -22,18 +22,18 @@ import java.util.*;
 public class TestBinModel {
 
     /** Id of corresponding test */
-    private int id;
+    protected int id;
 
-    private String name;
+    protected String name;
 
     /** Average score of graded test submissions */
-    private double average;
+    protected double average;
 
     /** Average elapased time for student to take the exam */
-    private double averageTimeInMinutes;
+    protected double averageTimeInMinutes;
 
     /** Collection of submitted test objects */
-    private ArrayList<TestModel> submissions;
+    protected ArrayList<TestModel> submissions;
 
     public TestBinModel() {
         id = 123467;
@@ -108,7 +108,19 @@ public class TestBinModel {
      */
     public void addSubmission(TestModel testToAdd) {
 
-        submissions.add(testToAdd);
+        boolean fail = false;
+        for (TestModel test : submissions) {
+            if (test.getId() == testToAdd.getId()) {
+                System.out.println("FAIL: DUPLICATE TEST ATTEMPTED");
+                fail = true;
+                break;
+            }
+        }
+
+        if (!fail) {
+            submissions.add(testToAdd);
+        }
+
     }
 
     /**
