@@ -1,9 +1,13 @@
-import test.models.TestHandlerModel;
+package UnitTests;
 
-public class TestHandlerModelTest extends TestHandlerModel {
+import test.models.*;
+import question.models.*;
+
+public class TestHandlerModelTest {
 
     public void testGradeMethod() {
 
+        TestHandlerModel inst = TestHandlerModel.getInstance();
         QuestionModel q1 = new QuestionModel();
         q1.setQuestionType("Multiple Choice");
 
@@ -16,13 +20,13 @@ public class TestHandlerModelTest extends TestHandlerModel {
         QuestionModel q4 = new QuestionModel();
         q4.setQuestionType("Short Answer");
 
-        TestModel sample = new TestModel();
+        TestModel sample = new TestModel("sampletest");
 
         sample.addQuestion(q1);
         sample.addQuestion(q2);
         sample.addQuestion(q3);
 
-        grade(sample);
+        inst.grade(sample);
 
         if ( sample.getTaken() ) {
             System.out.println("FAILURE, NOT MARKED AS TAKEN");
@@ -30,7 +34,7 @@ public class TestHandlerModelTest extends TestHandlerModel {
 
         sample.addQuestion(q4);
 
-        grade(sample);
+        inst.grade(sample);
 
         if ( sample.getTaken() ) {
             System.out.println("FAILURE, NOT MARKED AS TAKEN");

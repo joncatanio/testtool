@@ -35,14 +35,14 @@ public class ClassBankModel {
      post:
 
      */
-    public ClassModel getClassById(int id) {
+    public ClassModel getClassById(int id) throws NoSuchElementException {
         for( int i = 0; i < classes.size(); i++ ) {
             if( classes.get(i).getClassId() == id) {
                 return classes.get(i);
             }
         }
 
-        return new ClassModel();
+        throw new NoSuchElementException();
     }
 
     /**
