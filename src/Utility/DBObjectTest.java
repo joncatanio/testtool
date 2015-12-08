@@ -55,7 +55,7 @@ public class DBObjectTest {
 
     private void readQuestions() {
         qb.restoreBankFromFile();
-        questions = qb.questions;
+        questions = qb.getQuestions();
     }
 
     private void printAll() {

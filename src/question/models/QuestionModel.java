@@ -10,33 +10,153 @@ import java.util.Calendar;
  *
  * The QuestionModel Class is used to store all of the questions information.
  *
- * Created by Kendall Gassner (kgassner@calpoly.edu), Cameron Burwell (cburwell@calpoly.edu) on 11/3/15.
+ * Created by Kendall Gassner (kgassner@calpoly.edu), Cameron Burwell (cburwell@calpoly.edu) on 11/6/15.
  */
 public class QuestionModel{
 
-    private String questionType;
-    private String classNumber;
-    private String subject;
-    private String question;
-    private String hint;
-    private String questionName;
-    private String answer;
-    private String input;
-    private String date;
-    private String a;
-    private String b;
-    private String c;
-    private String d;
-    private String aAnswer;
-    private String bAnswer;
-    private String cAnswer;
-    private String dAnswer;
-    private MultipleSelectQuestion selectQuestion;
-    private int charLimit;
-    private int difficulty;
-    private int pointsPossible;
-    private int id;
+    /**
+     * questionType holds the type of question.
+     *
+     **/
+    protected String questionType;
 
+    /**
+     * classNumber holds the class id.
+     *
+     **/
+    protected String classNumber;
+
+    /**
+     * subject holds the subject the question comes from.
+     *
+     **/
+    protected String subject;
+
+    /**
+     * question holds the actual question.
+     *
+     **/
+    protected String question;
+
+    /**
+     * hint holds a hint the teacher could give a student about
+     * the question.
+     *
+     **/
+    protected String hint;
+
+    /**
+     * questionName holds the title of the question.
+     *
+     **/
+    protected String questionName;
+
+    /**
+     * answer holds the answer to the question.
+     *
+     **/
+    protected String answer;
+
+    /**
+     * input holds the response to the student puts
+     * for an answer.
+     *
+     **/
+    protected String input;
+
+    /**
+     * date holds the date the question was created.
+     *
+     **/
+    protected String date;
+
+    /**
+     * a holds multiple choice option a.
+     *
+     **/
+    protected String a;
+
+    /**
+     * b holds multiple choice option a.
+     *
+     **/
+    protected String b;
+
+    /**
+     * c holds multiple choice option a.
+     *
+     **/
+    protected String c;
+
+    /**
+     * d holds multiple choice option a.
+     *
+     **/
+    protected String d;
+
+    /**
+     * aAnswer holds the matching to a.
+     *
+     **/
+    protected String aAnswer;
+
+    /**
+     * bAnswer holds the matching to b.
+     *
+     **/
+    protected String bAnswer;
+
+    /**
+     * cAnswer holds the matching to c.
+     *
+     **/
+    protected String cAnswer;
+
+    /**
+     * dAnswer holds the matching to d.
+     *
+     **/
+    protected String dAnswer;
+
+    /**
+     * selectQuestion is used to get more variables needed
+     * only for multiple selects
+     *
+     **/
+    protected MultipleSelectQuestion selectQuestion;
+
+    /**
+     * charLimit hold the value of the limit
+     * the student can type per question.
+     *
+     **/
+    protected int charLimit;
+
+    /**
+     * difficulty hold the level of difficulty
+     * for the question.
+     *
+     **/
+    protected int difficulty;
+
+    /**
+     * pointsPossible holds the value of
+     * the points given to the question.
+     *
+     **/
+    protected int pointsPossible;
+
+    /**
+     * id holds a unique number to each question.
+     *
+     **/
+    protected int id;
+
+    /**
+     * QuestionModel() initializes the question model so that
+     * all strings are empty.
+     *
+     **/
     public QuestionModel() {
         this.questionType = "";
         this.questionName = "";
@@ -57,7 +177,14 @@ public class QuestionModel{
         this.date = dateFormat.format(date);
     }
 
-    public QuestionModel(String questionTy,String questionNa, String classNum, String sub, String ques, String image, String  hin, String ans, int charlim, int diff, int pp, int newId) {
+    /**
+     * QuestionModel(String questionTy,String questionNa, String classNum, String sub, String ques,
+     * String image, String  hin, String ans, int charlim, int diff, int pp, int newId) initializes
+     * the question model so that all strings are filled with specified information.
+     *
+     **/
+    public QuestionModel(String questionTy,String questionNa, String classNum, String sub, String ques,
+                         String image, String  hin, String ans, int charlim, int diff, int pp, int newId) {
         this.questionType = questionTy;
         this.questionName = questionNa;
         this.classNumber = classNum;
