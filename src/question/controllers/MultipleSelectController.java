@@ -10,6 +10,7 @@
 
 package question.controllers;
 
+import question.models.QuestionBank;
 import utility.DBObject;
 import classpack.controllers.ClassPackController;
 import javafx.collections.FXCollections;
@@ -30,32 +31,140 @@ import java.util.ArrayList;
 
 
 public class MultipleSelectController extends QuestionController {
+
+    /**
+     * questionName is a TextField for the title of the question.
+     *
+     **/
     public TextField questionName;
+
+    /**
+     * question is a TextArea for the question.
+     *
+     **/
     public TextArea  question;
+
+    /**
+     * subjects is a ChoiceBox for the subject.
+     *
+     **/
     public ChoiceBox subjects;
+
+    /**
+     * className is a ChoiceBox for the className.
+     *
+     **/
     public ChoiceBox className;
+
+    /**
+     * a is a TextField for the option a.
+     *
+     **/
     public TextField a;
+
+    /**
+     * b is a TextField for the option b.
+     *
+     **/
     public TextField b;
+
+    /**
+     *c is a TextField for the option c.
+     *
+     **/
     public TextField c;
+
+    /**
+     * d is a TextField for the option d.
+     *
+     **/
     public TextField d;
+
+    /**
+     * aCheck is a checkBox for if a is an answer.
+     *
+     **/
     public CheckBox aCheck;
+
+    /**
+     * bCheck is a checkBox for if b is an answer.
+     *
+     **/
     public CheckBox bCheck;
+
+    /**
+     * cCheck is a checkBox for if c is an answer.
+     *
+     **/
     public CheckBox cCheck;
+
+    /**
+     * dCheck is a checkBox for if d is an answer.
+     *
+     **/
     public CheckBox dCheck;
+
+    /**
+     * points is a textField for the amount of points
+     * possible
+     *
+     **/
     public TextField points;
+
+    /**
+     * hint is a textField for the teachers hint
+     *
+     **/
     public TextField hint;
+
+    /**
+     * easy is a radioButton for the difficulty
+     *
+     **/
     public RadioButton easy;
+
+    /**
+     * medium is a radioButton for the difficulty
+     *
+     **/
     public RadioButton medium;
+
+    /**
+     * hard is a radioButton for the difficulty
+     *
+     **/
     public RadioButton hard;
+
+    /**
+     * clear is a Button to clear the fields
+     *
+     **/
     public Button clear;
+
+    /**
+     * check is a boolean to check if we are in edit
+     * mode
+     *
+     **/
     public boolean check;
+
+    /**
+     * unEditedQuestion holds the oldQuestions information based
+     * on if we were in edit  mode.
+     *
+     **/
     public QuestionModel unEditedQuestion;
 
+
+    /**
+     * MultipleSelectController sets check to false.
+     *
+     */
     public MultipleSelectController(){
         check = false;
     }
 
-    /*
+    /**
      * populateChoiceBoxes is used to set the ArrayLists for dropdown menus and it calls getQuestions
      * to get the Data bases stored questions
      *
@@ -68,7 +177,7 @@ public class MultipleSelectController extends QuestionController {
 
     }
 
-    /*
+    /**
      * AddQuestionToBank will add the fill in the blank question only if the user has
      * filled out the following fields: title, question, subject, class, answer
      * points possible and difficulty. Points possible must be an integer.
@@ -109,27 +218,32 @@ public class MultipleSelectController extends QuestionController {
                     } else if (hard.isSelected()) {
                         questionModel.setDifficulty(3);
                     }
-                    questionModel.setQuestionType("Multiple Select");
-                    questionBank.add(questionModel);
-                    DBObject.getInstance().setQuestionBank(questionBank);
-
-                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
-                    Parent nextSceneParent = parentLoader.load();
-                    Scene nextScene = new Scene(nextSceneParent);
-
-                    QuestionController test = parentLoader.getController();
-                    test.populateInterface(currStage);
-                    test.setUpTable();
-
-                    currStage.setScene(nextScene);
-                    currStage.show();
+                    SetUpNewView(questionBank, questionModel);
                 }
             }
         }
     }
 
+    /**
+     * SetUpNewView loads the question bank view with the new Multiple Select question
+     * added to the bank.
+     *
+     */
+    public void SetUpNewView(ArrayList<QuestionModel> questionBank ,QuestionModel questionModel) throws IOException {
+        questionModel.setQuestionType("Multiple Select");
+        questionBank.add(questionModel);
+        DBObject.getInstance().setQuestionBank(questionBank);
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+        QuestionController test = parentLoader.getController();
+        test.populateInterface(currStage);
+        test.setUpTable();
+        currStage.setScene(nextScene);
+        currStage.show();
+    }
 
-    /*
+    /**
      * ClearAllThings clears all of the fields in the fill in the blank GUI.
      *
      */
@@ -153,7 +267,7 @@ public class MultipleSelectController extends QuestionController {
         dCheck.setSelected(false);
     }
 
-    /*
+    /**
      * Cancel takes the user back to the question bank and does not add the question
      * to the database.
      *
@@ -175,6 +289,11 @@ public class MultipleSelectController extends QuestionController {
         currStage.show();
     }
 
+    /**
+     * SetUpQuestion adds information about the question to each field
+     * when the user has clicked edit question.
+     *
+     */
     public void SetUpQuestion(QuestionModel questionMod) {
         unEditedQuestion = questionMod;
         check = true;

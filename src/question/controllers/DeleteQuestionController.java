@@ -26,12 +26,32 @@ import question.models.QuestionModel;
 
 public class DeleteQuestionController {
 
+    /**
+     * selectSection allows users to change to different packages.
+     *
+     */
     public ChoiceBox selectSection = new ChoiceBox();
+
+    /**
+     * selectQuestionType allows users to select a question type when adding
+     * a question.
+     *
+     */
     public ChoiceBox selectQuestionType = new ChoiceBox();
+
+    /**
+     * deleteQuestion holds the question we have clicked on.
+     *
+     */
     public QuestionModel deleteQuestion;
+
+    /**
+     * currStage holds the current view.
+     *
+     */
     protected Stage currStage;
 
-    /*
+    /**
      * populateInterface is used to set the ArrayLists for dropdown menus and it calls getQuestions
      * to get the Data bases stored questions
      *
@@ -48,7 +68,7 @@ public class DeleteQuestionController {
         System.out.println("Selected");
     }
 
-    /*
+    /**
      * DeleteQuestion is a function that is called when a user presses the deleteQuestion button
      * this function removes the question from the DataBase and removes the question from the table
      * in the questionBank.
@@ -76,7 +96,7 @@ public class DeleteQuestionController {
 
     }
 
-    /*
+    /**
      * GoBack is a function that allows a user to go back to the test bank without
      * deleting the question that is selected.
      *
@@ -96,15 +116,23 @@ public class DeleteQuestionController {
         currStage.show();
     }
 
+    /**
+     * EditQuestion is a function that allows a user to go back and edit
+     * a question they have added to the test bank.
+     *
+     */
     public void EditQuestion(ActionEvent actionEvent) throws IOException {
         DeleteQuestion(actionEvent);
         SetQuestionType();
     }
 
-
+    /**
+     * SetQuestionType loads the Edit question view based on
+     * the type of question the user has picked.
+     *
+     */
     public void SetQuestionType() throws IOException {
-        Scene nextScene;
-        QuestionModel questionModel = new QuestionModel();
+        Scene nextScene = null;
         if(deleteQuestion.getQuestionType().equals("Fill in The Blank")){
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/FillInTheBlankQuestion.fxml"));
             Parent nextSceneParent = parentLoader.load();
@@ -114,6 +142,8 @@ public class DeleteQuestionController {
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
             test.SetUpQuestion(deleteQuestion);
+            currStage.setScene(nextScene);
+            currStage.show();
         }
         else if(deleteQuestion.getQuestionType().equals("Multiple Choice")){
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/MultipleChoice.fxml"));
@@ -124,6 +154,8 @@ public class DeleteQuestionController {
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
             test.SetUpQuestion(deleteQuestion);
+            currStage.setScene(nextScene);
+            currStage.show();
         }
         else if(deleteQuestion.getQuestionType().equals("Multiple Select")){
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/MultipleSelect.fxml"));
@@ -134,8 +166,18 @@ public class DeleteQuestionController {
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
             test.SetUpQuestion(deleteQuestion);
+            currStage.setScene(nextScene);
+            currStage.show();
         }
-        else if(deleteQuestion.getQuestionType().equals("Matching")){
+        else {
+            checkOtherQuestionType();
+        }
+    }
+
+    public void checkOtherQuestionType() throws IOException {
+        Scene nextScene;
+        QuestionModel questionModel = new QuestionModel();
+        if(deleteQuestion.getQuestionType().equals("Matching")){
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/Matching.fxml"));
             Parent nextSceneParent = parentLoader.load();
             nextScene = new Scene(nextSceneParent);

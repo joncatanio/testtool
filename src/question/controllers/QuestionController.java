@@ -32,22 +32,86 @@ import user.controllers.UserController;
 
 public class QuestionController {
 
+    /**
+     * testLabel for the test.
+     *
+     */
     public Label testLabel;
+
+    /**
+     * selectSection allows you to move from the question bank to
+     * different packages.
+     *
+     */
     public ChoiceBox selectSection = new ChoiceBox();
+
+    /**
+     * selectQuestionType selects the type of question the user wishes to add.
+     *
+     */
     public ChoiceBox selectQuestionType = new ChoiceBox();
+
+    /**
+     * addQuestionButton allows user to add a question to the bank
+     *
+     */
     public Button addQuestionButton = new Button();
+
+    /**
+     * QuestionBank table.
+     *
+     */
     public TableView<QuestionModel> table;
+
+    /**
+     * title column in bank
+     *
+     */
     public TableColumn<QuestionModel, String> title;
+
+    /**
+     * className column in bank
+     *
+     */
     public TableColumn<QuestionModel, String> classType;
+
+    /**
+     * subject column in bank
+     *
+     */
     public TableColumn<QuestionModel, String> subject;
+
+    /**
+     * type of question column in bank
+     *
+     */
     public TableColumn<QuestionModel, String> type;
+
+    /**
+     * date column in bank
+     *
+     */
     public TableColumn<QuestionModel, String> date;
+
+    /**
+     * difficulty column in bank
+     *
+     */
     public TableColumn<QuestionModel, Integer> difficulty;
+
+    /**
+     * table content in the bank column in bank
+     *
+     */
     public ObservableList<QuestionModel> tableContent;
 
+    /**
+     * currStage holds the current view.
+     *
+     */
     protected Stage currStage;
 
-    /*
+    /**
      * populateInterface is used to set the ArrayLists for dropdown menus and it calls getQuestions
      * to get the Data bases stored questions
      *
@@ -60,7 +124,7 @@ public class QuestionController {
         getQuestions();
     }
 
-    /*
+    /**
      * setUpTable sets the type and object each column will contain in the table
      * and it fills the Question bank table with questions from the data base. A Listener is added
      * to the table. If a question is clicked then the user will be prompted with an option
@@ -101,7 +165,7 @@ public class QuestionController {
         table.setItems(tableContent);
     }
 
-    /*
+    /**
     * SectionChange is a function that loads a new workflow based on the users action
     *
     */
@@ -141,11 +205,15 @@ public class QuestionController {
         }
     }
 
+    /**
+     * selectQuestion prints a message if the question is selected.
+     *
+     */
     public void selectQuestion(ActionEvent actionEvent) {
         System.out.println("Selected");
     }
 
-    /*
+    /**
      * PickNewQuestion loads the a scene where the user will be able to pick the type
      * of question he or she will want to add to the questionBank
      *
@@ -163,7 +231,7 @@ public class QuestionController {
         System.out.println("Select a Question type.");
     }
 
-    /*
+    /**
      * getQuestion returns an observable list of questions stored in
      * the DataBase.
      *
@@ -172,7 +240,7 @@ public class QuestionController {
         tableContent = FXCollections.observableList(DBObject.getInstance().getQuestionBank());
     }
 
-    /*
+    /**
      * FilterByType is a function that filters the questionBank
      * based on the type of question the user requests to filter by
      *
@@ -181,7 +249,7 @@ public class QuestionController {
         filterBy("Type", ((Button)actionEvent.getSource()).getText());
     }
 
-    /*
+    /**
      * FilterByEasy is a function that filters the questionBank
      * if the user selects "easy" in the filtering side bar
      *
@@ -190,7 +258,7 @@ public class QuestionController {
         filterBy("difficulty", "1");
     }
 
-    /*
+    /**
      * FilterByMedium is a function that filters the questionBank
      * if the user selects "medium" in the filtering side bar
      *
@@ -199,7 +267,7 @@ public class QuestionController {
         filterBy("difficulty", "2");
     }
 
-    /*
+    /**
      * FilterByDifficult is a function that filters the questionBank
      * if the user selects "hard" in the filtering side bar
      *
@@ -208,7 +276,7 @@ public class QuestionController {
         filterBy("difficulty", "3");
     }
 
-    /*
+    /**
      * FilterBy is a function that reloads the Question workflow
      * with an updated questionBank containing only the requested filtered
      * questions
@@ -230,7 +298,7 @@ public class QuestionController {
         currStage.show();
     }
 
-    /*
+    /**
      * getFiltered returns an ObservableList of the filtered questions
      *
      */

@@ -4,7 +4,7 @@
  * Here we store all of are questions. This file contains methods to filter
  * the question bank.
  *
- * Kendall Gassner (kendall.gassner@yahoo.com), Cameron Burwell (cburwell@calpoly.edu)
+ * Kendall Gassner (kendall.gassner@yahoo.com), Cameron Burwell (cburwell@calpoly.edu) on 12/4/15.
  *
  */
 package question.models;
@@ -17,10 +17,29 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 
 public class QuestionBank {
-    public ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
-    private static QuestionBank instance = new QuestionBank();
-    private int numberOfQuestions;
-    private DBObject db = DBObject.getInstance();
+    /**
+     * questions contains the list of questions in the QuestionBank
+     *
+     **/
+    protected ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
+
+    /**
+     * dAnswer holds the matching to d.
+     *
+     **/
+    protected static QuestionBank instance = new QuestionBank();
+
+    /**
+     * numberOfQuestions gives the amount of questions per bank.
+     *
+     **/
+    protected int numberOfQuestions;
+
+    /**
+     * db holds our database object.
+     *
+     **/
+    protected DBObject db = DBObject.getInstance();
 
     /**
      *   GetInstace checks to see if there is an instance
@@ -163,6 +182,10 @@ public class QuestionBank {
         return new ArrayList<QuestionModel>();
     }
 
+    /**
+     *   getQuestion returns a question that has the same id
+     *   as id.
+     **/
     public QuestionModel getQuestion(int id){
 
         for (QuestionModel question : questions) {
@@ -172,4 +195,12 @@ public class QuestionBank {
         return null;
 
     }
+
+    /**
+     *   getQuestions returns a list of questions
+     **/
+    public ArrayList<QuestionModel> getQuestions(){
+        return questions;
+    }
+
 }

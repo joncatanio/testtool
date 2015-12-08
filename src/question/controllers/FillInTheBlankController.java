@@ -28,25 +28,98 @@ import java.util.ArrayList;
 
 
 public class FillInTheBlankController extends QuestionController {
+
+    /**
+     * questionName is a TextField for the title of the question.
+     *
+     **/
     public TextField questionName;
+
+    /**
+     * question is a TextArea for the question.
+     *
+     **/
     public TextArea  question;
+
+    /**
+     * subjects is a ChoiceBox for the subject.
+     *
+     **/
     public ChoiceBox subjects;
+
+    /**
+     * className is a ChoiceBox for the className.
+     *
+     **/
     public ChoiceBox className;
+
+    /**
+     * answer is a TextField for the answer.
+     *
+     **/
     public TextField answer;
+
+    /**
+     * points is a textField for the amount of points
+     * possible
+     *
+     **/
     public TextField points;
+
+    /**
+     * hint is a textField for the teachers hint
+     *
+     **/
     public TextField hint;
+
+    /**
+     * easy is a radioButton for the difficulty
+     *
+     **/
     public RadioButton easy;
+
+    /**
+     * medium is a radioButton for the difficulty
+     *
+     **/
     public RadioButton medium;
+
+    /**
+     * hard is a radioButton for the difficulty
+     *
+     **/
     public RadioButton hard;
+
+    /**
+     * clear is a Button to clear the fields
+     *
+     **/
     public Button clear;
+
+    /**
+     * check is a boolean to check if we are in edit
+     * mode
+     *
+     **/
     public boolean check;
+
+    /**
+     * unEditedQuestion holds the oldQuestions information based
+     * on if we were in edit  mode.
+     *
+     **/
     public QuestionModel unEditedQuestion;
 
+
+    /**
+     * FillInTheBlankController sets check to false.
+     *
+     */
     public FillInTheBlankController(){
         check = false;
     }
 
-    /*
+    /**
      * populateChoiceBoxes is used to set the ArrayLists for dropdown menus and it calls getQuestions
      * to get the Data bases stored questions
      *
@@ -59,7 +132,7 @@ public class FillInTheBlankController extends QuestionController {
 
     }
 
-    /*
+    /**
      * AddQuestionToBank will add the fill in the blank question only if the user has
      * filled out the following fields: title, question, subject, class, answer
      * points possible and difficulty. Points possible must be an integer.
@@ -87,25 +160,33 @@ public class FillInTheBlankController extends QuestionController {
                     else if(hard.isSelected()){
                         questionModel.setDifficulty(3);
                     }
-                    questionModel.setQuestionType("Fill in The Blank");
-                    questionBank.add(questionModel);
-                    DBObject.getInstance().setQuestionBank(questionBank);
-
-                    FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
-                    Parent nextSceneParent = parentLoader.load();
-                    Scene nextScene = new Scene(nextSceneParent);
-
-                    QuestionController test = parentLoader.getController();
-                    test.populateInterface(currStage);
-                    test.setUpTable();
-
-                    currStage.setScene(nextScene);
-                    currStage.show();
+                    SetUpNewView(questionBank, questionModel);
                 }
             }
         }
     }
 
+    /**
+     * SetUpNewView loads the question bank view with the new Multiple Select question
+     * added to the bank.
+     *
+     */
+    public void SetUpNewView(ArrayList<QuestionModel> questionBank ,QuestionModel questionModel) throws IOException {
+        questionModel.setQuestionType("Fill in The Blank");
+        questionBank.add(questionModel);
+        DBObject.getInstance().setQuestionBank(questionBank);
+
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
+        Parent nextSceneParent = parentLoader.load();
+        Scene nextScene = new Scene(nextSceneParent);
+
+        QuestionController test = parentLoader.getController();
+        test.populateInterface(currStage);
+        test.setUpTable();
+
+        currStage.setScene(nextScene);
+        currStage.show();
+    }
 
     /*
      * ClearAllThings clears all of the fields in the fill in the blank GUI.
@@ -124,7 +205,7 @@ public class FillInTheBlankController extends QuestionController {
         hard.setSelected(false);
     }
 
-    /*
+    /**
      * Cancel takes the user back to the question bank and does not add the question
      * to the database.
      *
@@ -146,6 +227,11 @@ public class FillInTheBlankController extends QuestionController {
         currStage.show();
     }
 
+    /**
+     * SetUpQuestion adds information about the question to each field
+     * when the user has clicked edit question.
+     *
+     */
     public void SetUpQuestion(QuestionModel questionMod) {
         unEditedQuestion = questionMod;
         check = true;

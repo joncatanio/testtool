@@ -24,18 +24,71 @@ import java.util.ArrayList;
 
 
 public class PickQuestionTypeController extends QuestionController {
+
+    /**
+     * EnterQuestionTypeSelection is the enter
+     * button at the bottom of the screen
+     *
+     */
     public Button EnterQuestionTypeSelection = new Button();
+
+    /**
+     * FillInTheBlankButton is the radio button to select
+     * fill in the blank.
+     *
+     */
     public RadioButton FillInTheBlankButton = new RadioButton();
+
+    /**
+     * MultipleChoiceButton is the radio button to select
+     * Multiple Choice.
+     *
+     */
     public RadioButton MultipleChoiceButton = new RadioButton();
+
+    /**
+     * MultipleSelectButton is the radio button to select
+     * multiple select.
+     *
+     */
     public RadioButton MultipleSelectButton  = new RadioButton();
+
+    /**
+     * FreeResponseButton is the radio button to select
+     * Free Response.
+     *
+     */
     public RadioButton FreeResponseButton  = new RadioButton();
+
+    /**
+     * ShortAnswerButton is the radio button to select
+     * Short answer.
+     *
+     */
     public RadioButton ShortAnswerButton  = new RadioButton();
+
+    /**
+     * CodingButton is the radio button to select
+     * Coding.
+     */
     public RadioButton CodingButton  = new RadioButton();
+
+    /**
+     * UMLButton is the radio button to select
+     * UML.
+     *
+     */
     public RadioButton UMLButton = new RadioButton();
+
+    /**
+     * MatchingButton is the radio button to select
+     * Matching.
+     *
+     */
     public RadioButton MatchingButton = new RadioButton();
 
 
-    /*
+    /**
      * QuestionTypeChosen is called when a user selects a question type and presses
      * enter.
      *
@@ -45,7 +98,7 @@ public class PickQuestionTypeController extends QuestionController {
         SetQuestionType();
     }
 
-    /*
+    /**
      * SetQuestionType loads an editQuestion scene based on
      * what type of question the user has selected/
      *
@@ -79,7 +132,6 @@ public class PickQuestionTypeController extends QuestionController {
             test.populateInterface(currStage);
             test.populateChoiceBoxes();
         }
-
         else if(MatchingButton.isSelected()){
             FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/Matching.fxml"));
             Parent nextSceneParent = parentLoader.load();
@@ -93,11 +145,15 @@ public class PickQuestionTypeController extends QuestionController {
             genericGenerator();
             return;
         }
-
         currStage.setScene(nextScene);
         currStage.show();
     }
 
+    /**
+     * genericGenerator loads an generic question view model
+     * and creates a new question
+     *
+     */
     public void genericGenerator() throws IOException {
         Scene nextScene;
         QuestionModel questionModel = new QuestionModel();

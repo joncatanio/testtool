@@ -7,19 +7,71 @@ import question.controllers.MultipleSelectController;
  * The MultipleSelectQuestions class is used to contain
  * variables and functions needed only for MultipleSelectQuestions
  *
- * Kendall Gassner (kendall.gassner@yahoo.com)
+ * Kendall Gassner (kendall.gassner@yahoo.com) on 12/7/15.
  *
  */
 public class MultipleSelectQuestion {
-    private boolean aCheck;
-    private boolean bCheck;
-    private boolean cCheck;
-    private boolean dCheck;
-    private boolean aChecked;
-    private boolean bChecked;
-    private boolean cChecked;
-    private boolean dChecked;
 
+    /**
+     * aCheck is checked if the a should be checked
+     * in the answer.
+     *
+     **/
+    protected boolean aCheck;
+
+    /**
+     * bCheck is checked if the b should be checked
+     * in the answer.
+     *
+     **/
+    protected boolean bCheck;
+
+    /**
+     * cCheck is checked if the c should be checked
+     * in the answer.
+     *
+     **/
+    protected boolean cCheck;
+
+    /**
+     * dCheck is checked if the d should be checked
+     * in the answer.
+     *
+     **/
+    protected boolean dCheck;
+
+    /**
+     * aChecked is checked if the student selects
+     * a on the test.
+     *
+     **/
+    protected boolean aChecked;
+
+    /**
+     * bChecked is checked if the student selects
+     * b on the test.
+     *
+     **/
+    protected boolean bChecked;
+
+    /**
+     *cChecked is checked if the student selects
+     * c on the test.
+     **/
+    protected boolean cChecked;
+
+    /**
+     * dChecked is checked if the student selects
+     * d on the test.
+     *
+     **/
+    protected boolean dChecked;
+
+    /**
+     * MultipleSelectQuestion() initializes every variable
+     * to false.
+     *
+     **/
     public MultipleSelectQuestion(){
         this.aCheck = false;
         this.bCheck = false;
