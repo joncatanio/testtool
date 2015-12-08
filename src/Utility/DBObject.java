@@ -20,15 +20,15 @@ public class DBObject implements Serializable {
      * The singleton DBObject object. Not lazily instantiated so the
      * object will be instantiated on start up. Memory isn't an issue on this guy.
      */
-    private static DBObject instance = new DBObject();
+    protected static DBObject instance = new DBObject();
     /** The filename for the serial file (database) */
-    private static String filename = "src/utility/db.ser";
+    protected static String filename = "src/utility/db.ser";
     /** The database object that may be written to and read from a flat file */
-    private static DBObject db = null;
+    protected static DBObject db = null;
     /** A collection of TestModels that make up the test bank */
-    private ArrayList<TestModel> testBank;
+    protected ArrayList<TestModel> testBank;
     /** A collection of QuestionModels that make up the question bank */
-    private ArrayList<QuestionModel> questionBank = new ArrayList<QuestionModel>();
+    protected ArrayList<QuestionModel> questionBank = new ArrayList<QuestionModel>();
 
     /** DBObject constructor, private to avoid instantiation */
     protected DBObject() {}
@@ -166,7 +166,7 @@ public class DBObject implements Serializable {
      * and return the questions with the specified "Difficulty"
      *
      pre:
-        difficulty >0 && difficulty  < 4
+        difficulty > 0 && difficulty  < 4
      post:
        forall (QuestionModel qm;
          questions'.contains(qm) iff

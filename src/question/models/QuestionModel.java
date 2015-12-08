@@ -133,6 +133,8 @@ public class QuestionModel{
      **/
     public QuestionModel(String questionTy,String questionNa, String classNum, String sub, String ques,
                           String image, String  hin, String answer, int charlim, int diff, int pp, int newId) {
+        this.selectQuestion = new MultipleSelectQuestion();
+        this.questionHelper = new QuestionHelperModel();
         this.questionType = questionTy;
         this.questionName = questionNa;
         this.classNumber = classNum;
@@ -144,8 +146,7 @@ public class QuestionModel{
         this.pointsPossible = pp;
         this.id = newId;
         this.getQuestionHelper().setAnswer(answer);
-        this.selectQuestion = new MultipleSelectQuestion();
-        this.questionHelper = new QuestionHelperModel();
+
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
