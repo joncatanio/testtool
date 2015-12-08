@@ -137,7 +137,18 @@ public class DBObject implements Serializable {
     /**
      * QuestionByType is used to filter through the database questions
      * and return the questions with the specified "type"
-     */
+
+     pre:
+        type.equals("Fill in The Blank") || type.equals("Multiple Choice") ||
+         type.equals("Matching") || type.equals("Multiple Select") ||  type.equals("Short Answer")
+         ||  type.equals("Free Response") ||  type.equals("Coding") ||
+         type.equals("UML")
+     post:
+         forall (QuestionModel qm;
+            questions'.contains(qm) iff
+            qm.getQuestionType() == type);
+     *
+     **/
     public ArrayList<QuestionModel> QuestionsByType(String type) {
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
         this.questionBank = getQuestionBank();
@@ -153,7 +164,15 @@ public class DBObject implements Serializable {
     /**
      * QuestionByDifficulty is used to filter through the database questions
      * and return the questions with the specified "Difficulty"
-     */
+     *
+     pre:
+        difficulty >0 && difficulty  < 4
+     post:
+       forall (QuestionModel qm;
+         questions'.contains(qm) iff
+         qm.getDifficulty() == difficulty);
+     *
+     **/
     public ArrayList<QuestionModel> QuestionsByDifficulty(int difficulty) {
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
         this.questionBank = getQuestionBank();
