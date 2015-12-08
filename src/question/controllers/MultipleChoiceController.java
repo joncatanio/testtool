@@ -159,7 +159,7 @@ public class MultipleChoiceController extends QuestionController {
         QuestionModel questionModel = new QuestionModel();
         ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
         if(questionName.getText() != null && question.getText() != null && subjects.getValue() != null){
-            if(className.getValue() != null && answer.getText() != null && points.getText() != null){
+            if(className.getValue() != null && answer.getText() != null){
                 if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
                     questionModel.setQuestionName(questionName.getText());
                     questionModel.setPointsPossible(Integer.parseInt(points.getText()));
@@ -167,9 +167,9 @@ public class MultipleChoiceController extends QuestionController {
                     questionModel.setSubject(subjects.getValue().toString());
                     questionModel.setQuestion(question.getText());
                     questionModel.setAnswer(answer.getText());
-                    questionModel.setB(b.getText());
-                    questionModel.setC(c.getText());
-                    questionModel.setD(d.getText());
+                    questionModel.getQuestionHelper().setB(b.getText());
+                    questionModel.getQuestionHelper().setC(c.getText());
+                    questionModel.getQuestionHelper().setD(d.getText());
                     questionModel.setHint(hint.getText());
 
                     if (easy.isSelected()) {
@@ -264,9 +264,9 @@ public class MultipleChoiceController extends QuestionController {
         subjects.setValue(questionMod.getSubject());
         className.setValue(questionMod.getClassNumber());
         answer.setText(questionMod.getAnswer());
-        b.setText(questionMod.getB());
-        c.setText(questionMod.getC());
-        d.setText(questionMod.getD());
+        b.setText(questionMod.getQuestionHelper().getB());
+        c.setText(questionMod.getQuestionHelper().getC());
+        d.setText(questionMod.getQuestionHelper().getD());
         points.setText(Integer.toString(questionMod.getPointsPossible()));
         hint.setText(questionMod.getHint());
         if(questionMod.getDifficulty() == 1)

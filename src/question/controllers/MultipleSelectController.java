@@ -199,17 +199,16 @@ public class MultipleSelectController extends QuestionController {
             questionModel.getSelectQuestion().setDCheck(true);
         }
         if(questionName.getText() != null && question.getText() != null && subjects.getValue() != null && className.getValue() != null){
-            if(points.getText() != null){
                 if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
                     questionModel.setQuestionName(questionName.getText());
                     questionModel.setPointsPossible(Integer.parseInt(points.getText()));
                     questionModel.setClassNumber(className.getValue().toString());
                     questionModel.setSubject(subjects.getValue().toString());
                     questionModel.setQuestion(question.getText());
-                    questionModel.setA(a.getText());
-                    questionModel.setB(b.getText());
-                    questionModel.setC(c.getText());
-                    questionModel.setD(d.getText());
+                    questionModel.getQuestionHelper().setA(a.getText());
+                    questionModel.getQuestionHelper().setB(b.getText());
+                    questionModel.getQuestionHelper().setC(c.getText());
+                    questionModel.getQuestionHelper().setD(d.getText());
                     questionModel.setHint(hint.getText());
                     if (easy.isSelected()) {
                         questionModel.setDifficulty(1);
@@ -222,7 +221,6 @@ public class MultipleSelectController extends QuestionController {
                 }
             }
         }
-    }
 
     /**
      * SetUpNewView loads the question bank view with the new Multiple Select question
@@ -301,10 +299,10 @@ public class MultipleSelectController extends QuestionController {
         question.setText(questionMod.getQuestion());
         subjects.setValue(questionMod.getSubject());
         className.setValue(questionMod.getClassNumber());
-        a.setText(questionMod.getA());
-        b.setText(questionMod.getB());
-        c.setText(questionMod.getC());
-        d.setText(questionMod.getD());
+        a.setText(questionMod.getQuestionHelper().getA());
+        b.setText(questionMod.getQuestionHelper().getB());
+        c.setText(questionMod.getQuestionHelper().getC());
+        d.setText(questionMod.getQuestionHelper().getD());
         aCheck.setSelected(questionMod.getSelectQuestion().getACheck());
         bCheck.setSelected(questionMod.getSelectQuestion().getBCheck());
         cCheck.setSelected(questionMod.getSelectQuestion().getCCheck());

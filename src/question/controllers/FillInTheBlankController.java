@@ -142,7 +142,7 @@ public class FillInTheBlankController extends QuestionController {
         QuestionModel questionModel = new QuestionModel();
         ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
         if(questionName.getText() != null && question.getText() != null && subjects.getValue() != null){
-            if(className.getValue() != null && answer.getText() != null && points.getText() != null ){
+            if(className.getValue() != null && answer.getText() != null){
                 if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
                     questionModel.setQuestionName(questionName.getText());
                     questionModel.setPointsPossible(Integer.parseInt(points.getText()));

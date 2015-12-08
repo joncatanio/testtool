@@ -184,21 +184,21 @@ public class MatchingController extends QuestionController {
         QuestionModel questionModel = new QuestionModel();
         ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
         if(questionName.getText() != null && subjects.getValue() != null){
-            if(className.getValue() != null && points.getText() != null) {
+            if(className.getValue() != null) {
                 if (easy.isSelected() || medium.isSelected() || hard.isSelected()) {
                     questionModel.setQuestionName(questionName.getText());
                     questionModel.setPointsPossible(Integer.parseInt(points.getText()));
                     questionModel.setClassNumber(className.getValue().toString());
                     questionModel.setSubject(subjects.getValue().toString());
                     questionModel.setQuestion(question.getText());
-                    questionModel.setA(a.getText());
-                    questionModel.setB(b.getText());
-                    questionModel.setC(c.getText());
-                    questionModel.setD(d.getText());
-                    questionModel.setAAnswer(aAnswer.getText());
-                    questionModel.setBAnswer(bAnswer.getText());
-                    questionModel.setCAnswer(cAnswer.getText());
-                    questionModel.setDAnswer(dAnswer.getText());
+                    questionModel.getQuestionHelper().setA(a.getText());
+                    questionModel.getQuestionHelper().setB(b.getText());
+                    questionModel.getQuestionHelper().setC(c.getText());
+                    questionModel.getQuestionHelper().setD(d.getText());
+                    questionModel.getQuestionHelper().setAAnswer(aAnswer.getText());
+                    questionModel.getQuestionHelper().setBAnswer(bAnswer.getText());
+                    questionModel.getQuestionHelper().setCAnswer(cAnswer.getText());
+                    questionModel.getQuestionHelper().setDAnswer(dAnswer.getText());
                     questionModel.setHint(hint.getText());
                     if (easy.isSelected()) {
                         questionModel.setDifficulty(1);
@@ -294,14 +294,14 @@ public class MatchingController extends QuestionController {
         question.setText(questionMod.getQuestion());
         subjects.setValue(questionMod.getSubject());
         className.setValue(questionMod.getClassNumber());
-        a.setText(questionMod.getA());
-        b.setText(questionMod.getB());
-        c.setText(questionMod.getC());
-        d.setText(questionMod.getD());
-        aAnswer.setText(questionMod.getAAnswer());
-        bAnswer.setText(questionMod.getBAnswer());
-        cAnswer.setText(questionMod.getCAnswer());
-        dAnswer.setText(questionMod.getDAnswer());
+        a.setText(questionMod.getQuestionHelper().getA());
+        b.setText(questionMod.getQuestionHelper().getB());
+        c.setText(questionMod.getQuestionHelper().getC());
+        d.setText(questionMod.getQuestionHelper().getD());
+        aAnswer.setText(questionMod.getQuestionHelper().getAAnswer());
+        bAnswer.setText(questionMod.getQuestionHelper().getBAnswer());
+        cAnswer.setText(questionMod.getQuestionHelper().getCAnswer());
+        dAnswer.setText(questionMod.getQuestionHelper().getDAnswer());
         points.setText(Integer.toString(questionMod.getPointsPossible()));
         hint.setText(questionMod.getHint());
         if(questionMod.getDifficulty() == 1)
