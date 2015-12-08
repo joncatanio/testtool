@@ -105,6 +105,8 @@ public class QuestionModel{
      *
      **/
     public QuestionModel() {
+        this.selectQuestion = new MultipleSelectQuestion();
+        this.questionHelper = new QuestionHelperModel();
         this.questionType = "";
         this.questionName = "";
         this.classNumber = "";
@@ -117,8 +119,6 @@ public class QuestionModel{
         this.charLimit = 100;
         this.difficulty = 0;
         this.pointsPossible = 1;
-        this.selectQuestion = new MultipleSelectQuestion();
-        this.questionHelper = new QuestionHelperModel();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         //get current date time with Date()
         Date date = new Date();
