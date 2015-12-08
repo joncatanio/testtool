@@ -146,6 +146,7 @@ public class MultipleChoiceController extends QuestionController {
         className.setItems(FXCollections.observableArrayList("Select", "101", "202", "303", "505"));
         subjects.getSelectionModel().select(0);
         className.getSelectionModel().select(0);
+        this.points.setPromptText(Integer.toString(100));
 
     }
 
