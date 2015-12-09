@@ -67,6 +67,7 @@ public class DBObjectUnitTests extends DBObject {
 
         }
 
+        System.out.println("KENDALL: testDBObjectQuestionsByDifficulty Finished");
     }
 
     public void testDBObjectQuestionsByType() {
@@ -143,6 +144,8 @@ public class DBObjectUnitTests extends DBObject {
         if (test9.size() > 0) {
             System.out.println("FAILURE, gives back to many questions");
         }
+
+        System.out.println("KENDALL: testDBObjectQuestionsByType Finished");
     }
 }
 

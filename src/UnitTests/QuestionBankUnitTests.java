@@ -36,7 +36,7 @@ public class QuestionBankUnitTests extends QuestionBank {
                 System.out.println("FAILURE, returns question with the wrong id");
             }
 
-
+            System.out.println("KENDALL: testQuestionBankgetQuestion Finished");
         }
 
 
