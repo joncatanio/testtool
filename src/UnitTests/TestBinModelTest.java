@@ -66,5 +66,7 @@ public class TestBinModelTest extends TestBinModel {
             }
         }
 
+        System.out.println("ALEX: testAddSubmissionMethod Finished");
+
     }
 }

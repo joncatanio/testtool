@@ -37,5 +37,7 @@ public class ClassBankModelTest  {
         catch (NoSuchElementException nsee) {
 
         }
+
+        System.out.println("ALEX: testGetClassByIdMethod Finished");
     }
 }

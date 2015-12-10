@@ -40,6 +40,8 @@ public class TestHandlerModelTest {
             System.out.println("FAILURE, NOT MARKED AS TAKEN");
         }
 
+        System.out.println("ALEX: testGradeMethod Finished");
+
     }
 
 }
