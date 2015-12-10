@@ -39,6 +39,7 @@ public class CustomEditTestController extends TestController {
 
     public void addQuestion() {
         // TODO: Let the user pick a question from the question bank.
+        System.out.println("Add question is deprecated, couldn't get to it.");
         testInstance.addQuestion(new QuestionModel());
     }
 
