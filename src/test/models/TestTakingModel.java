@@ -13,6 +13,7 @@ import java.util.*;
 public class TestTakingModel {
     private TestModel curTest;
     private int curQuestionIdx;
+    private int testIndex;
 
     /**
      * If no name is given for a test, use dummy data (good for debugging).
@@ -20,16 +21,18 @@ public class TestTakingModel {
     public TestTakingModel() {
         this.curTest = new TestModel("CPE 103 - Final");
         this.curQuestionIdx = 0;
+        this.testIndex = 0;
     }
 
     /**
      * Grabs the test from the test database using the name of the test given.
-     * @param testName The name of the test to be used
+     * @param test The test to be used
+     * @param testIndex The index of the test in the test bank
      */
-    public TestTakingModel(String testName) {
-        //TODO: Hook up the constructor to the testdb (name TBD) and have it construct properly.
-        //this.curTest = TestDBModel.getByName(testName);
-        //this.curQuestionIdx = 0;
+    public TestTakingModel(TestModel test, int testIndex) {
+        this.curTest = test;
+        this.curQuestionIdx = 0;
+        this.testIndex = testIndex;
     }
 
     /**
@@ -52,6 +55,10 @@ public class TestTakingModel {
         return curTest;
     }
 
+    public int getTestIndex() {
+        return testIndex;
+    }
+
     /**
      * Gets the currently selected question number.
      * @return An integer representing the index + 1 of the current question in the test question array.
@@ -69,50 +76,12 @@ public class TestTakingModel {
     }
 
     /**
-     * Get the test names for every test that has not been completed by the user.
-     * @return An ArrayList of scheduled test names
-     */
-    public ArrayList<String> getScheduledTest() {
-        ArrayList<String> scheduledTests = new ArrayList<>();
-        scheduledTests.add("CPE 103 - Final");
-        scheduledTests.add("CPE 357 - Midterm 1");
-        scheduledTests.add("CPE 357 - Midterm 2");
-        scheduledTests.add("CPE 357 - Final");
-
-        System.out.println("List of scheduled tests: " + scheduledTests);
-
-        return scheduledTests;
-    }
-
-
-    /**
-     * Get the test names for every test that has been completed by the user.
-     * @return An ArrayList of completed test names
-     */
-    public ArrayList<String> getCompletedTests() {
-        ArrayList<String> completedTests = new ArrayList<>();
-        completedTests.add("CPE 349 - Final");
-        completedTests.add("CSC 101 - Midterm 1");
-        completedTests.add("CSC 445 - Midterm");
-        completedTests.add("CSC 101 - Midterm 2");
-
-        System.out.println("List of completed tests: " + completedTests);
-
-        return completedTests;
-    }
-
-    /**
      * Get the question names for the current test.
      * @return An ArrayList of strings of question names for the current test
      */
-    public ArrayList<String> getQuestionNameList() {
-        ArrayList<String> questionNames = new ArrayList<>();
-        questionNames.add("Question 1");
-        questionNames.add("Question 2");
-        questionNames.add("Question 3");
+    public ArrayList<QuestionModel> getQuestionList() {
+        ArrayList<QuestionModel> questions = curTest.getQuestions();
 
-        System.out.println("Question list for test: " + questionNames.toString());
-
-        return questionNames;
+        return questions;
     }
 }
