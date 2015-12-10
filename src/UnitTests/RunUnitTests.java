@@ -71,5 +71,19 @@ public class RunUnitTests {
 
         /* * * * * * * * * * * * */
 
+        /*
+         * Reed Unit Tests
+         */
+        System.out.println("\n\nReed's tests...\n\n");
+        TestTakingModelTest ttmt = new TestTakingModelTest();
+
+        /* Run tests */
+        ttmt.setQuestionsTest();
+        ttmt.getNextQuestionTest();
+        ttmt.getPrevQuestionTest();
+
+        System.out.println("\n\nEnd Reed's tests.");
+        /* * * * * * * * * * * * */
+
     }
 }
