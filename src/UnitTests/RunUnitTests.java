@@ -1,5 +1,7 @@
 package UnitTests;
 
+import question.models.QuestionModel;
+
 public class RunUnitTests {
 
     public static void main(String[] args) {
@@ -38,13 +40,16 @@ public class RunUnitTests {
          * Cameron Unit Tests
          */
 
-        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        System.out.println("\n^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         System.out.println("CAMERON TESTS BEGIN");
 
-
+        QuestionBankUnitTests qbut = new QuestionBankUnitTests();
+        qbut.testQuestionBankGetByDifficulty();
+        qbut.testQuestionBankGetByType();
+        qbut.testQuestionBankGetByName();
 
         System.out.println("CAMERON TESTS END");
-        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 
         /* * * * * * * * * * * * */
     }
