@@ -10,8 +10,19 @@ import java.util.*;
  * @author Reed Garmsen (rgarmsen@calpoly.edu)
  */
 public class TestTakingModel {
+    /**
+     * The test currently being represented
+     */
     private TestModel curTest;
+
+    /**
+     * The current question index
+     */
     private int curQuestionIdx;
+
+    /**
+     * Index in the test database for the current test
+     */
     private int testIndex;
 
     /**
