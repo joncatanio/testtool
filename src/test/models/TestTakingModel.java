@@ -2,7 +2,6 @@ package test.models;
 
 import question.models.QuestionModel;
 import java.util.*;
-//import utility.EQuestionTypes;
 
 /****
  * Class TestTakingModel is a representation of a test being viewed/taken.
@@ -83,5 +82,80 @@ public class TestTakingModel {
         ArrayList<QuestionModel> questions = curTest.getQuestions();
 
         return questions;
+    }
+
+    /**
+     * Called by the controller to set the ListView QuestionModels to the proper question.
+     * @return An ArrayList of QuestionModels that needs it's question information set correctly
+     *
+      post:
+        //
+        // The passed in list must have it's questions updated to those within the current test
+        //
+        forall (QuestionModel um_other ;
+        (listToSet'.contains(um_other)) iff
+        questions.contains(um_other));
+     */
+    public void setQuestions(ArrayList<QuestionModel> listToSet) {
+        ArrayList<QuestionModel> questions = curTest.getQuestions();
+
+        for (int i = 0; i < questions.size(); i++) {
+            listToSet.add(questions.get(i));
+        }
+    }
+
+    /**
+     * Gets the next Question information from the current test (the controller would handle displaying the information)
+     * @return The QuestionModel of the next question in the list
+        post:
+            (curQuestionIdx' == curTest.getQuestions().size() - 1 iff curQuestionIdx >= curTest.getQuestions().size()) ||
+            (curQuestionIdx' == curQuestionIdx + 1)
+     */
+    public QuestionModel getNextQuestion() {
+        System.out.println("Switch to next question in test");
+
+        curQuestionIdx++;
+
+        if (curQuestionIdx >= curTest.getQuestions().size()) {
+            System.out.println("No next question");
+
+            curQuestionIdx = curTest.getQuestions().size() - 1;
+            return null;
+        }
+
+        return curTest.getQuestion(curQuestionIdx);
+    }
+
+    /**
+     * Gets the previous Question information from the current test (the controller would handle displaying the information)
+     * @return The QuestionModel of the previous question in the list
+        post:
+            (curQuestionIdx' == 0 iff curQuestionIdx == 0) ||
+            (curQuestionIdx' == curQuestionIdx - 1)
+     */
+    public QuestionModel getPrevQuestion() {
+
+        curQuestionIdx--;
+
+        if (curQuestionIdx < 0) {
+            System.out.println("No previous question");
+
+            curQuestionIdx = 0;
+            return null;
+        }
+
+        System.out.println("Switch to previous question in test");
+
+        return curTest.getQuestion(curQuestionIdx);
+    }
+
+    /**
+     * Gets the hint for the current question (not implemented in questions at this time).
+     * @return A string representing a hint for the question (or an empty string if one is not provided)
+     */
+    public String getQuestionHint() {
+        System.out.println("Display current question hint pop-up");
+
+        return "";
     }
 }
