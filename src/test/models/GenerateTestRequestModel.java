@@ -14,7 +14,7 @@ public class GenerateTestRequestModel {
     /**
      * Currently, the max number of questions allowed to be generated.
      */
-    private final int MAX_QUESTION_NUMBER = 500;
+    public final int MAX_QUESTION_NUMBER = 500;
 
     /**
      * Requested name of the test.
@@ -73,8 +73,7 @@ public class GenerateTestRequestModel {
         try {
             int num = Integer.parseInt(number);
 
-            if (num > 0 && num < MAX_QUESTION_NUMBER) {
-                System.out.println("Number of Questions: " + num);
+            if (num > 0 && num <= MAX_QUESTION_NUMBER) {
                 this.numQuestions = num;
             }
         }

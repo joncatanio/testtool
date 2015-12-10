@@ -37,6 +37,15 @@ public class RunUnitTests {
         /* * * * * * * * * * * * */
 
         /*
+         * Jon Unit Tests
+         */
+
+        GenerateTestRequestModelTest gtq = new GenerateTestRequestModelTest();
+        gtq.setNumQuestionsTest();
+
+        /* * * * * * * * * * * * */
+
+        /*
          * Cameron Unit Tests
          */
 
