@@ -19,32 +19,32 @@ public class GenerateTestRequestModel {
     /**
      * Requested name of the test.
      */
-    private String name;
+    private static String name;
 
     /**
      * Requested number of questions for the test.
      */
-    private int numQuestions;
+    private static int numQuestions;
 
     /**
      * The desired difficulty of the test.
      */
-    private int difficulty;
+    private static int difficulty;
 
     /**
      * The collection of desired question types to be included on the test.
      */
-    private ArrayList<EQuestionTypes> selectedQuestionTypes;
+    private static ArrayList<EQuestionTypes> selectedQuestionTypes;
 
     /**
      * The collection of classes to pull questions from to be included on the test.
      */
-    private ArrayList<Integer> selectedClasses;
+    private static ArrayList<Integer> selectedClasses;
 
     /**
      * The collection of class subjects to pull questions from to be included on the test.
      */
-    private ArrayList<Integer> selectedSubjects;
+    private static ArrayList<Integer> selectedSubjects;
 
     /**
      * Constructor for the request model.
@@ -141,10 +141,57 @@ public class GenerateTestRequestModel {
      *
      */
     public void setSelectedQuestionTypes(ListView<String> selectedQuestionTypes) {
-        selectedQuestionTypes.getItems().forEach(System.out::println);
+        for(String type : selectedQuestionTypes.getItems()) {
+            switch(type) {
+                case "Fill in the Blank":
+                    if (!this.selectedQuestionTypes.contains(EQuestionTypes.FILL_IN_THE_BLANK)) {
+                        this.selectedQuestionTypes.add(EQuestionTypes.FILL_IN_THE_BLANK);
+                    }
+                    break;
+                case "Multiple Choice":
+                    if (!this.selectedQuestionTypes.contains(EQuestionTypes.MULTIPLE_CHOICE)) {
+                        this.selectedQuestionTypes.add(EQuestionTypes.MULTIPLE_CHOICE);
+                    }
+                    break;
+                case "Multiple Select":
+                    if (!this.selectedQuestionTypes.contains(EQuestionTypes.MULTIPLE_SELECT)) {
+                        this.selectedQuestionTypes.add(EQuestionTypes.MULTIPLE_SELECT);
+                    }
+                    break;
+                case "Free Response":
+                    if (!this.selectedQuestionTypes.contains(EQuestionTypes.FREE_RESPONSE)) {
+                        this.selectedQuestionTypes.add(EQuestionTypes.FREE_RESPONSE);
+                    }
+                    break;
+                case "Short Answer":
+                    if (!this.selectedQuestionTypes.contains(EQuestionTypes.SHORT_ANSWER)) {
+                        this.selectedQuestionTypes.add(EQuestionTypes.SHORT_ANSWER);
+                    }
+                    break;
+                case "Coding":
+                    if (!this.selectedQuestionTypes.contains(EQuestionTypes.CODING)) {
+                        this.selectedQuestionTypes.add(EQuestionTypes.CODING);
+                    }
+                    break;
+                case "UML":
+                    if (!this.selectedQuestionTypes.contains(EQuestionTypes.UML)) {
+                        this.selectedQuestionTypes.add(EQuestionTypes.UML);
+                    }
+                    break;
+                case "Matching":
+                    if (!this.selectedQuestionTypes.contains(EQuestionTypes.MATCHING)) {
+                        this.selectedQuestionTypes.add(EQuestionTypes.MATCHING);
+                    }
+                    break;
+                default:
+                    System.out.println("Not a valid type.");
+                    break;
+            }
+        }
     }
 
     /**
+     * DEPRECATED
      * Get the desired classes to pull questions from for the test.
      *
      * @return the desired classes to pull questions from for the test.
@@ -152,6 +199,7 @@ public class GenerateTestRequestModel {
     public ArrayList<Integer> getSelectedClasses() { return this.selectedClasses; }
 
     /**
+     * DEPRECATED
      * Set the desired classes to pull questions from for the test.
      *
      * @param selectedClasses requested classes to pull questions from for the test.
@@ -161,6 +209,7 @@ public class GenerateTestRequestModel {
     }
 
     /**
+     * DEPRECATED
      * Get the desired class subjects to pull questions from for the test.
      *
      * @return the desired class subjects to pull questions from for the test.
@@ -168,6 +217,7 @@ public class GenerateTestRequestModel {
     public ArrayList<Integer> getSelectedSubjects() { return this.selectedSubjects; }
 
     /**
+     * DEPRECATED
      * Set the desired class subjects to pull questions from for the test.
      *
      * @param selectedSubjects the requested class subjects to pull questions from for the test.

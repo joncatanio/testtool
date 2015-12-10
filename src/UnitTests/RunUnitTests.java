@@ -1,11 +1,16 @@
 package UnitTests;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import login.controllers.LoginScreenController;
 import question.models.QuestionModel;
 
 public class RunUnitTests {
 
     public static void main(String[] args) {
-        
         //call your unit tests here
 
         /*
@@ -39,10 +44,14 @@ public class RunUnitTests {
         /*
          * Jon Unit Tests
          */
-
+        System.out.println("\n\nJon's tests...\n\n");
         GenerateTestRequestModelTest gtq = new GenerateTestRequestModelTest();
         gtq.setNumQuestionsTest();
 
+        TestModelTest tmt = new TestModelTest();
+        tmt.setDifficultyTest();
+        tmt.setTotalPointsTest();
+        System.out.println("\n\nEnd Jon's tests.");
         /* * * * * * * * * * * * */
 
         /*
@@ -61,5 +70,6 @@ public class RunUnitTests {
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n");
 
         /* * * * * * * * * * * * */
+
     }
 }
