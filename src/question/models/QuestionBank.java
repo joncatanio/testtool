@@ -114,8 +114,15 @@ public class QuestionBank {
                    qm.difficulty == num);
      *
      **/
-    public Collection<QuestionModel> QuestionsByDifficulty(int num){
-        return new ArrayList<QuestionModel>();
+    public ArrayList<QuestionModel> QuestionsByDifficulty(int num){
+        ArrayList<QuestionModel> ret = new ArrayList<QuestionModel>();
+
+        for (QuestionModel qm : questions) {
+            if (qm.getDifficulty() == num)
+                ret.add(qm);
+        }
+
+        return ret;
     }
 
     /**
@@ -129,8 +136,15 @@ public class QuestionBank {
                    qm.type.equals(type));
      *
      **/
-    public Collection<QuestionModel> QuestionsByType(String type){
-        return new ArrayList<QuestionModel>();
+    public ArrayList<QuestionModel> QuestionsByType(String type){
+        ArrayList<QuestionModel> ret = new ArrayList<QuestionModel>();
+
+        for (QuestionModel qm : questions) {
+            if (qm.getQuestionType().equals(type))
+                ret.add(qm);
+        }
+
+        return ret;
     }
 
     /**
@@ -147,14 +161,13 @@ public class QuestionBank {
             ques.getDate().equals(date)) && return == null;
      *
      **/
-    public Collection<QuestionModel> QuestionsByDateAdded(String date){
-        return new ArrayList<QuestionModel>();
-    }
+    public ArrayList<QuestionModel> QuestionsByDateAdded(String date){ return new ArrayList<QuestionModel>(); }
+
     /**
      *   QuestionByNumberOfUses returns a list of questions that have
      *   the same number of uses as specified.
      **/
-    public Collection<QuestionModel> QuestionsByNumberOfUses(int num){
+    public ArrayList<QuestionModel> QuestionsByNumberOfUses(int num){
         return new ArrayList<QuestionModel>();
     }
 
@@ -178,8 +191,13 @@ public class QuestionBank {
 
      *
      */
-    public Collection<QuestionModel> findByQuestionName(String name){
-        return new ArrayList<QuestionModel>();
+    public QuestionModel findByQuestionName(String name) {
+        for (QuestionModel qm : questions) {
+            if (qm.getQuestionName().equals(name))
+                return qm;
+        }
+
+        return null;
     }
 
 
