@@ -34,6 +34,18 @@ public class RunUnitTests {
 
         /* * * * * * * * * * * * */
 
+        /*
+         * Cameron Unit Tests
+         */
 
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        System.out.println("CAMERON TESTS BEGIN");
+
+
+
+        System.out.println("CAMERON TESTS END");
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+
+        /* * * * * * * * * * * * */
     }
 }

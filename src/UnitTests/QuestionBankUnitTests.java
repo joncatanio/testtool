@@ -39,5 +39,15 @@ public class QuestionBankUnitTests extends QuestionBank {
 
         }
 
+        public void testQuestionBankGetByDifficulty() {
+            
+        }
 
+        public void testQuestionBankGetByType() {
+
+        }
+
+        public void testQuestionBankGetByName() {
+
+        }
 }
