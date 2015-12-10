@@ -8,7 +8,6 @@ import question.models.QuestionModel;
 import java.util.*;
 
 public class DBObjectUnitTests extends DBObject {
-
     public void testDBObjectQuestionsByDifficulty() {
         ArrayList<QuestionModel> questions = new ArrayList<QuestionModel>();
         questions.add(new QuestionModel("FillInTheBlank", "52", "334", "CSC", "DOES this work?", "", "", "no", -1, 2, 100, 1));
