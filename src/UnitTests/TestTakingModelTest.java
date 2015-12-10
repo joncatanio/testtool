@@ -35,7 +35,7 @@ public class TestTakingModelTest extends TestTakingModel {
         System.out.println("TestTakingModel.setQuestionsTest success.");
     }
 
-    public void getNextTestQuestionTest() {
+    public void getNextQuestionTest() {
         System.out.println("Testing TestTakingModel.getNextQuestion...");
         TestModel dummyTest = new TestModel("Dummy");
 
@@ -53,12 +53,12 @@ public class TestTakingModelTest extends TestTakingModel {
         assert testModel.getNextQuestion().equals(q3);
 
         /* Out of upper bound */
-        assert testModel.getNextQuestion().equals(null);
+        assert testModel.getNextQuestion() == null;
 
         System.out.println("TestTakingModel.getNextQuestion success.");
     }
 
-    public void getPrevTestQuestionTest() {
+    public void getPrevQuestionTest() {
         System.out.println("Testing TestTakingModel.getPrevQuestion...");
         TestModel dummyTest = new TestModel("Dummy");
 
@@ -72,7 +72,7 @@ public class TestTakingModelTest extends TestTakingModel {
         TestTakingModel testModel = new TestTakingModel(dummyTest, 0);
 
         /* Out of lower bound */
-        assert testModel.getPrevQuestion().equals(null);
+        assert testModel.getPrevQuestion() == null;
 
         testModel.getNextQuestion();
         testModel.getNextQuestion();

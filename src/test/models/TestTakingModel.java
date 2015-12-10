@@ -18,7 +18,7 @@ public class TestTakingModel {
      * If no name is given for a test, use dummy data (good for debugging).
      */
     public TestTakingModel() {
-        this.curTest = new TestModel("CPE 103 - Final");
+        this.curTest = new TestModel("CPE 349 - Final");
         this.curQuestionIdx = 0;
         this.testIndex = 0;
     }
