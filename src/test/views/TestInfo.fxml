@@ -26,9 +26,9 @@
                         <VBox prefHeight="459.0" prefWidth="199.0">
                             <children>
                                 <Label prefHeight="49.0" prefWidth="207.0" text="                 Scheduled" />
-                                <ListView fx:id="scheduledTests" onMouseClicked="#selectTestToView" prefHeight="200.0" prefWidth="200.0" />
+                                <ListView fx:id="scheduledTests" editable="true" onEditStart="#selectTestToView" prefHeight="200.0" prefWidth="200.0" />
                                 <Label layoutX="10.0" layoutY="10.0" prefHeight="49.0" prefWidth="207.0" text="                 Completed" />
-                                <ListView fx:id="completedTests" onMouseClicked="#selectCompletedTestToView" prefHeight="200.0" prefWidth="200.0" />
+                                <ListView fx:id="completedTests" editable="true" onEditStart="#selectCompletedTestToView" prefHeight="200.0" prefWidth="200.0" />
                             </children>
                         </VBox>
                     </children></AnchorPane>
@@ -42,7 +42,7 @@
                         <Label fx:id="testDescriptionLabel" layoutX="10.0" layoutY="225.0" prefHeight="51.0" prefWidth="324.0" text="Description: A cumulative test of your knowledge" />
                         <Label fx:id="testNotesLabel" layoutX="10.0" layoutY="297.0" prefHeight="55.0" prefWidth="324.0" text="Teacher notes: Good luck!" />
                         <Label layoutX="10.0" layoutY="261.0" prefHeight="54.0" prefWidth="324.0" />
-                        <Button mnemonicParsing="false" onAction="#takeTest" prefHeight="35.0" prefWidth="325.0" text="Take Test" />
+                        <Button fx:id="takeTestBtn" mnemonicParsing="false" onAction="#takeTest" prefHeight="35.0" prefWidth="325.0" text="Take Test" />
                      </children>
                   </VBox>
                     </children></AnchorPane>
