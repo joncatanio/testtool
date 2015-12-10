@@ -20,7 +20,7 @@ import user.controllers.UserController;
 
 
 /**
- * Created by alexg
+ * Created by alexg &
  *
  * ClassPackController is an overarching controller to handle the class portion of the application
  */

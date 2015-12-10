@@ -15,6 +15,10 @@ import user.controllers.UserController;
 
 import java.io.IOException;
 
+
+/**
+ * Created by andrewgough94 on 11/7/2015.
+ */
 public class ClassViewController extends ClassPackController{
 
 

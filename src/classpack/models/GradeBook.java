@@ -24,12 +24,10 @@ public abstract class GradeBook {
 
     /**
      *   setClassCode will add a new test to the hash map.
-     *   pre:
-     *    //  The test bank does not currently contain an equivalent test.
-     *      !data.contains(test);
+     *
      *   post:
      *     // The test bank contains an object equivalent to test.
-     *         data.contains(test) == true;
+     *      exists(GradeBook book; book.tests.contains(test) == true);
      **/
     abstract void AddTest(TestModel test);
 
@@ -41,7 +39,9 @@ public abstract class GradeBook {
      *   getTest method will return a given test for a given student
      *   pre:
      *    //  The collection of tests contains both an object with a student with name equivalent to name, and a test object equivalent to test.
-     *      data.contains(name) && data.contains(test);
+     *      tests.contains(name) && tests.contains(test);
+     *      pre:
+                exists(GradeBook b; b.tests.contain(test); c.getName() == name)
      **/
     abstract TestModel getTest(StudentModel name, TestModel test);
 }

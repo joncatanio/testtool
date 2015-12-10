@@ -8,7 +8,7 @@ import java.util.*;
  * students in the class, all of the tests that have been assigned to the class, and
  * other data relevant to the class.
  *
- * created by Alex Greene
+ * created by Alex Greene & Andrew Gough
  *
  ****/
 
@@ -67,12 +67,9 @@ public class ClassModel {
 
     /**
      * setClassCode sets the classes code so students can specify a class to join, these are unique codes.
-     * pre:
-     *    //  The given class code is not used by another class.
-     *      !students.contains(code);
+     *
      *   post:
-     *     //The given class code has length greater than 1.
-     *         code.length() > 1;
+     *         exists(this.classCode.length() > 1);
      * @param classCode is a unique string passed out to students so they can join the class.
      */
     public void setClassCode(String classCode){
@@ -104,6 +101,9 @@ public class ClassModel {
     /**
      * Sets the class's school name.
      * @param name is a string of the school in which the class is taught.
+     *
+     *    post:
+            exists(this.getId() == id)
      */
     public void setSchoolName(String name){ this.schoolName = name;}
 
@@ -125,9 +125,12 @@ public class ClassModel {
     /**
      * publishTest is called to publish a given test to all the students in a class.
      * @param test is the chosen testModel from the testBank to distribute to students.
+     *
      */
     public void publishTest(TestModel test){
         // TODO: Integrate with Reed's test taking abilities
+        System.out.println("Published test: " + test.getName());
+        test.setPublished(true);
     }
 
     /**

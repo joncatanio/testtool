@@ -13,6 +13,16 @@ public class RunUnitTests {
     public static void main(String[] args) {
         //call your unit tests here
 
+        /**
+         * Andrew's Unit Tests
+         */
+        ClassModelTest andrewTests = new ClassModelTest();
+
+        andrewTests.testPublishTest();
+        andrewTests.testSetClassCode();
+        andrewTests.testSetClassId();
+        andrewTests.testSetSchoolName();
+
         /*
          * Kendall Unit Tests
          */
