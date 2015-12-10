@@ -104,7 +104,6 @@ public class TestController {
      */
     public void editTest() throws IOException {
         TestModel editingTest = testBank.getTest(testBankSidebar.getEditingIndex());
-        System.out.println("Editing test: " + editingTest.toString());
 
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/CustomEditTestView.fxml"));
         Parent nextSceneParent = parentLoader.load();

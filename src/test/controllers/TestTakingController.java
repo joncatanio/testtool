@@ -130,20 +130,19 @@ public class TestTakingController {
         currStage.setScene(nextScene);
         currStage.show();
 
-
         System.out.println("Switched to test taking question view");
     }
 
     public void nextQuestion() throws IOException {
-        System.out.println("Switch to next question in test");
+        curTest.getNextQuestion();
     }
 
     public void prevQuestion() throws IOException {
-        System.out.println("Switch to previous question in test");
+        curTest.getPrevQuestion();
     }
 
     public void showHint() throws IOException {
-        System.out.println("Display current question hint pop-up");
+        curTest.getQuestionHint();
     }
 
     public void submitTest() throws IOException {
@@ -156,15 +155,12 @@ public class TestTakingController {
         testView.populateInterface(currStage);
 
         curTest = new TestTakingModel(curTest.getTest(), curTest.getTestIndex());
-        curTest.getTest().setTaken(true);
 
         currStage.setScene(nextScene);
         currStage.show();
 
-        TestBankModel.getInstance().removeTest(curTest.getTest().getId());
+        curTest.getTest().setTaken(true);
         TestHandlerModel.getInstance().grade(curTest.getTest());
-        TestBankModel.getInstance().addTest(curTest.getTest());
-
 
         System.out.println("Submitted test!");
     }
@@ -257,11 +253,7 @@ public class TestTakingController {
             }
         });
 
-        ArrayList<QuestionModel> questionList = curTest.getQuestionList();
-
-        for (int i = 0; i < questionList.size(); i++) {
-            questions.add(questionList.get(i));
-        }
+        curTest.setQuestions(questions);
 
         currentQuestionList.setItems(FXCollections.observableArrayList(questions));
     }

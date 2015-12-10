@@ -3,6 +3,7 @@ package test.models;
 import question.models.QuestionModel;
 import utility.DBObject;
 import utility.EQuestionTypes;
+import utility.UtilityMethods;
 
 import java.util.*;
 
@@ -95,16 +96,28 @@ public class TestHandlerModel {
     }
 
     /**
-     * Generates a random TestModel from a given GenerateTestRequestModel.
+     * Generates a random TestModel from a given GenerateTestRequestModel. Very
+     * basic generate, didn't have as much time as I would have liked to make this a
+     * smarter algorithm. Could not take into account difficulty at this time. All I would
+     * have to do is not pull any questions with a difficulty less than the set value but
+     * that would change my loop.
      */
     public TestModel generate(GenerateTestRequestModel request) {
         TestModel rtn = new TestModel(request.getName());
+        ArrayList<QuestionModel> questions = null;
+        int numberOfTypes = request.getSelectedQuestionTypes().size();
 
         rtn.setDifficulty(request.getDifficulty());
         rtn.setId(1);
 
         for (EQuestionTypes type : request.getSelectedQuestionTypes()) {
-            //rtn.addQuestion(dbInstance.QuestionsByType(type));
+            questions = dbInstance.QuestionsByType(UtilityMethods.convertEnumToString(type));
+
+            for (int i = 0; (i < (request.getNumQuestions() / numberOfTypes)) && questions != null &&
+                    i < questions.size(); i++) {
+                rtn.addQuestion(questions.get(i));
+                System.out.println(questions.get(i).getQuestionName());
+            }
         }
 
         return rtn;
