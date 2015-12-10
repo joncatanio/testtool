@@ -22,6 +22,9 @@ import java.util.ArrayList;
  */
 public class GenericQuestionController extends QuestionController {
 
+    /**
+     * All public variables refer to their corresponding UI element fields
+     */
     public Label questionType;
     public TextField questionName = new TextField();
     public ChoiceBox<String> subjects = new ChoiceBox<String>();
@@ -40,13 +43,28 @@ public class GenericQuestionController extends QuestionController {
     public Button cancel = new Button();
     public boolean check;
 
+    /**
+     * The current version of the QuestionModel passed in to the controller
+     */
     private QuestionModel questionModel = new QuestionModel();
+    /**
+     * The original version of the QuestionModel that was passed in to the controller
+     */
     private QuestionModel initialQuestionModel = new QuestionModel();
+    /**
+     * Get the current QuestionBank
+     */
+    private QuestionBank questionBank = QuestionBank.getInstance();
 
     public GenericQuestionController() {
         check = false;
     }
 
+    /**
+     * Prepopulate the view with relevant informaiton
+     *
+     * @param qm QuestionModel that represents the current question being added
+     */
     public void initializeQuestionModel(QuestionModel qm) {
         this.questionType = new Label(qm.getQuestionType());
 
@@ -59,44 +77,51 @@ public class GenericQuestionController extends QuestionController {
         this.charLimit.setPromptText(Integer.toString(qm.getCharLimit()));
         this.points.setPromptText(Integer.toString(qm.getPointsPossible()));
 
-        System.out.println(this.charLimit.getText() + " : " + this.points.getText());
-
         updateFields(this.initialQuestionModel);
         updateFields(this.questionModel);
     }
 
+    /**
+     * Update the current QuestionModel and save it to the database, then return to the QuestionBank screen
+     *
+     * @throws IOException
+     */
     public void addQuestion() throws IOException {
         // This will take all the fields and instantiate and object and pass it along to be created.
-        System.out.println("\nAdding question!");
+        ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
 
         // Make sure the question is up-to-date
         updateFields(this.questionModel);
-        // Ship it off to QuestionBank
-        QuestionBank.getInstance().addQuestion(this.questionModel);
+        questionBank.add(questionModel);
 
-        // return to Add Question scene
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/PickQuestionType.fxml"));
+        // Ship it off to QuestionBank
+        DBObject.getInstance().setQuestionBank(questionBank);
+
+        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
-        QuestionController q = parentLoader.getController();
-        q.populateInterface(currStage);
+        QuestionController test = parentLoader.getController();
+        test.populateInterface(currStage);
+        test.setUpTable();
 
         currStage.setScene(nextScene);
         currStage.show();
     }
 
+    /**
+     * Clears all fields of the form if the user presses the Clear button
+     *
+     * @throws IOException
+     */
     public void clearForm() throws IOException {
         // Set all the fields to their inputs
         updateFields(this.questionModel);
 
         if ((this.initialQuestionModel == null && this.questionModel == null) ||
                 this.initialQuestionModel.equals(this.questionModel)) {
-            System.out.println("\nThey're the same, silly");
             return;
         }
-
-        System.out.println("\nClearing form!");
 
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/GenericQuestionView.fxml"));
         Parent nextSceneParent = parentLoader.load();
@@ -110,8 +135,12 @@ public class GenericQuestionController extends QuestionController {
         this.currStage.show();
     }
 
+    /**
+     * Returns the user to the QuestionBank if they hit the Cancel button
+     *
+     * @throws IOException
+     */
     public void cancel() throws IOException {
-        System.out.println("\nGetting out of here!");
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/question/views/first.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
@@ -123,12 +152,19 @@ public class GenericQuestionController extends QuestionController {
         currStage.show();
     }
 
+    /**
+     * OnActionEvent that updates the QuestionModel fields as the user enters information in the GUI
+     */
     public void updateFieldHandler() {
         updateFields(this.questionModel);
     }
 
+    /**
+     * Updates the QuestionModel to the most current GUI information
+     *
+     * @param qm QuestionModel that represents the current question
+     */
     private void updateFields(QuestionModel qm) {
-        ArrayList<QuestionModel> questionBank  = DBObject.getInstance().getQuestionBank();
         qm.setQuestionType(questionType.getText() == null ? "None" : questionType.getText());
         qm.setQuestionName(questionName.getText() == null ? "" : questionName.getText());
         qm.setSubject(subjects.getValue() == null ? "None" : subjects.getValue());
@@ -147,19 +183,19 @@ public class GenericQuestionController extends QuestionController {
             qm.setDifficulty(0);
         }
 
-        // TODO: CharLimit and PointsPossible not working properly
         qm.setCharLimit(charLimit.getText() == null || charLimit.getText().equals("") ? 0 : Integer.parseInt(charLimit.getText()));
         qm.setPointsPossible(points.getText().equals("") ? 0 : Integer.parseInt(points.getText()));
 
-        // TODO: Add logic for selecting image
-
         qm.setHint(hint.getText() == null ? "" : hint.getText());
         qm.setQuestion(questionText.getText() == null ? "" : questionText.getText());
-
-        questionBank.add(qm);
-        DBObject.getInstance().setQuestionBank(questionBank);
     }
 
+    /**
+     * SetUpQuestion adds information about the question to each field
+     * when the user has clicked edit question.
+     *
+     * @param questionMod QuestionModel representing the question
+     */
     public void SetUpQuestion(QuestionModel questionMod) {
         check = true;
         questionName.setText(questionMod.getQuestionName());
