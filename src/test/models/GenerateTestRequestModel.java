@@ -50,10 +50,11 @@ public class GenerateTestRequestModel {
      * Constructor for the request model.
      */
     public GenerateTestRequestModel() {
+        this.name = "";
         this.numQuestions = 0;
         this.difficulty = 0;
+        this.selectedQuestionTypes = new ArrayList<EQuestionTypes>();
     }
-
 
     /**
      * Gets the number of questions desired for the generated test.
@@ -66,6 +67,13 @@ public class GenerateTestRequestModel {
 
     /**
      * Set the desired number of questions for the test.
+     *
+     * pre:
+     *  A valid integer between 0 and the max question number
+     *
+     * post:
+     *  A valid integer between 0 and the max question number
+     *  Make sure the string is properly converted.
      *
      * @param number the requested number of questions
      */

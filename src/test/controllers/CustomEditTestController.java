@@ -18,14 +18,23 @@ import java.util.ArrayList;
  * Created by JonCatanio on 11/29/15.
  */
 public class CustomEditTestController extends TestController {
-    private TestModel testInstance;
+    public TestModel testInstance;
+    public int testIndex;
+
     public ListView questionList = new ListView();
 
     public TextField testNameField = new TextField();
     public Label totalPoints = new Label();
 
+    public QuestionModel selectedQuestion = null;
 
     public CustomEditTestController() {
+
+    }
+
+    public CustomEditTestController(TestModel testInstance, QuestionModel selectedQuestion) {
+        this.testInstance = testInstance;
+        this.selectedQuestion = selectedQuestion;
     }
 
     public void addQuestion() {
@@ -73,14 +82,16 @@ public class CustomEditTestController extends TestController {
      * @throws IOException
      */
     public void editQuestion() throws IOException {
-        QuestionModel editingQuestion = testInstance.getQuestion(questionList.getEditingIndex());
-        System.out.println("Editing question: " + editingQuestion.getQuestionName());
+        selectedQuestion = testInstance.getQuestion(questionList.getEditingIndex());
 
         FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/EditRemoveQuestionFromTestView.fxml"));
         Parent nextSceneParent = parentLoader.load();
         Scene nextScene = new Scene(nextSceneParent);
 
         CustomEditTestController cetc = parentLoader.getController();
+        cetc.testInstance = testInstance;
+        cetc.selectedQuestion = selectedQuestion;
+        cetc.testIndex = questionList.getEditingIndex();
         cetc.populateInterface(currStage);
 
         currStage.setScene(nextScene);
@@ -101,7 +112,6 @@ public class CustomEditTestController extends TestController {
      * the test.
      */
     public void removeQuestion() {
-        // TODO: Remove the question from the test and redirect them back to the test.
-        System.out.println("Remove the question from test.");
+        testInstance.removeQuestion(selectedQuestion);
     }
 }

@@ -144,6 +144,11 @@ public class TestModel {
 
     /**
      * Sets the total points of the test. Defaults to 100 on bad input.
+     *
+     * pre:
+     *  A number between 0 and 10000 not inclusive.
+     * post:
+     *  A number between 0 and 10000 or 100 as the default.
      */
     public void setTotalPoints(int totalPoints) {
         if (totalPoints > 0 && totalPoints < 10000) {
@@ -178,6 +183,10 @@ public class TestModel {
 
     /**
      * Set the difficulty of the test.
+     * pre:
+     *  a difficulty between 0 and 2
+     * post:
+     *  a difficulty between 0 and 2
      */
     public void setDifficulty(int difficulty) {
         if (difficulty >= 0 && difficulty <= 2) {
@@ -222,6 +231,15 @@ public class TestModel {
      */
     public void removeQuestion(int index) {
         questions.remove(index);
+    }
+
+    /**
+     * Remove the question from the question list.
+     *
+     * @param question The question to be removed.
+     */
+    public void removeQuestion(QuestionModel question) {
+        questions.remove(question);
     }
 
     /**
