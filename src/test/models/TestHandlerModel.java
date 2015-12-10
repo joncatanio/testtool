@@ -1,6 +1,8 @@
 package test.models;
 
 import question.models.QuestionModel;
+import utility.DBObject;
+import utility.EQuestionTypes;
 
 import java.util.*;
 
@@ -20,6 +22,8 @@ public class TestHandlerModel {
      * object will be instantiated on start up. Memory isn't an issue on this guy.
      */
     private static TestHandlerModel singleton = new TestHandlerModel();
+
+    private static DBObject dbInstance = DBObject.getInstance();
 
     /**
      * TestHandlerModel constructor, private to avoid instantiation.
@@ -98,7 +102,10 @@ public class TestHandlerModel {
 
         rtn.setDifficulty(request.getDifficulty());
         rtn.setId(1);
-        // TODO: Set the proper id and actual difficulty from pulled questions. This is gonna be a big method.
+
+        for (EQuestionTypes type : request.getSelectedQuestionTypes()) {
+            //rtn.addQuestion(dbInstance.QuestionsByType(type));
+        }
 
         return rtn;
     }

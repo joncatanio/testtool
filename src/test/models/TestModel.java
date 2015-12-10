@@ -83,6 +83,11 @@ public class TestModel {
     private boolean published;
 
     /**
+     * Constructor
+     */
+    public TestModel() {}
+
+    /**
      * The collection of questions included on the test.
      */
     private ArrayList<QuestionModel> questions = new ArrayList<>();
@@ -138,11 +143,15 @@ public class TestModel {
     }
 
     /**
-     * Sets the total points of the test.
+     * Sets the total points of the test. Defaults to 100 on bad input.
      */
     public void setTotalPoints(int totalPoints) {
-        //TODO: Add validation
-        this.totalPoints = totalPoints;
+        if (totalPoints > 0 && totalPoints < 10000) {
+            this.totalPoints = totalPoints;
+        }
+        else {
+            this.totalPoints = 100;
+        }
     }
 
     /**
@@ -196,7 +205,6 @@ public class TestModel {
             (!questions'.contains(q)));
      */
     public void addQuestion(QuestionModel question) {
-        System.out.println("Add Question");
         questions.add(question);
     }
 

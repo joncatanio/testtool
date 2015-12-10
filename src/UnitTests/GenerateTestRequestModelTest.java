@@ -1,5 +1,8 @@
 package UnitTests;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.*;
 import test.models.GenerateTestRequestModel;
 
 /**
@@ -25,6 +28,7 @@ public class GenerateTestRequestModelTest extends GenerateTestRequestModel {
         number = "100";
         testModel.setNumQuestions(number);
         assert testModel.getNumQuestions() == 100;
-        System.out.println("GenerateTestRequestModel.setNumQuestions success.");
+        System.out.println("GenerateTestRequestModel.setNumQuestions successful.");
     }
+
 }
