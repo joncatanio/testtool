@@ -6,12 +6,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
+import java.util.*;
 
+import question.models.QuestionModel;
 import test.models.*;
 
 public class TestTakingController {
@@ -29,6 +33,7 @@ public class TestTakingController {
     public Label dueDateLabel = new Label();
     public Label testDescriptionLabel = new Label();
     public Label testNotesLabel = new Label();
+    public Button takeTestBtn = new Button();
 
     /* Test Taking */
     public ListView currentQuestionList = new ListView();
@@ -42,9 +47,12 @@ public class TestTakingController {
         getScheduledTests();
         getCompletedTests();
 
-        currentQuestionName.setText("Question " + curTest.getQuestionNum());
-        currentQuestionInfo.setText("Submit the test for full credit!");
-        getQuestionList();
+        if (curTest != null) {
+            updateTestInfo();
+            currentQuestionName.setText("Question " + curTest.getQuestionNum());
+            currentQuestionInfo.setText("Submit the test for full credit!");
+            getQuestionList();
+        }
     }
 
     public void sectionChange(ActionEvent actionEvent) throws IOException {
@@ -64,37 +72,47 @@ public class TestTakingController {
     }
 
     public void selectTestToView() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/TestInfo.fxml"));
-        Parent nextSceneParent = parentLoader.load();
-        Scene nextScene = new Scene(nextSceneParent);
+        if (scheduledTests.getEditingIndex() >= 0) {
+            TestModel test = TestBankModel.getInstance().getTest(scheduledTests.getEditingIndex());
+            System.out.println("Selected test: " + test.getName());
 
-        TestTakingController testView = parentLoader.getController();
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/TestInfo.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            Scene nextScene = new Scene(nextSceneParent);
 
-        curTest = new TestTakingModel();
-        updateTestInfo();
-        testView.populateInterface(currStage);
+            TestTakingController testView = parentLoader.getController();
 
-        currStage.setScene(nextScene);
-        currStage.show();
+            curTest = new TestTakingModel(test, scheduledTests.getEditingIndex());
+            updateTestInfo();
+            testView.populateInterface(currStage);
 
-        System.out.println("Switched to viewing a test");
+            currStage.setScene(nextScene);
+            currStage.show();
+
+            System.out.println("Switched to viewing a test");
+        }
     }
 
     public void selectCompletedTestToView() throws IOException {
-        FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/TestCompleteInfo.fxml"));
-        Parent nextSceneParent = parentLoader.load();
-        Scene nextScene = new Scene(nextSceneParent);
+        if (completedTests.getEditingIndex() >= 0) {
+            TestModel test = TestBankModel.getInstance().getTest(completedTests.getEditingIndex());
+            System.out.println("Selected test: " + test.getName());
 
-        TestTakingController testView = parentLoader.getController();
+            FXMLLoader parentLoader = new FXMLLoader(getClass().getResource("/test/views/TestInfo.fxml"));
+            Parent nextSceneParent = parentLoader.load();
+            Scene nextScene = new Scene(nextSceneParent);
 
-        curTest = new TestTakingModel();
-        updateTestInfo();
-        testView.populateInterface(currStage);
+            TestTakingController testView = parentLoader.getController();
 
-        currStage.setScene(nextScene);
-        currStage.show();
+            curTest = new TestTakingModel(test, completedTests.getEditingIndex());
+            updateTestInfo();
+            testView.populateInterface(currStage);
 
-        System.out.println("Switched to viewing a test");
+            currStage.setScene(nextScene);
+            currStage.show();
+
+            System.out.println("Switched to viewing a test");
+        }
     }
 
     public void takeTest() throws IOException {
@@ -137,15 +155,21 @@ public class TestTakingController {
         updateTestInfo();
         testView.populateInterface(currStage);
 
-        curTest = new TestTakingModel();
+        curTest = new TestTakingModel(curTest.getTest(), curTest.getTestIndex());
+        curTest.getTest().setTaken(true);
 
         currStage.setScene(nextScene);
         currStage.show();
 
+        TestBankModel.getInstance().removeTest(curTest.getTest().getId());
         TestHandlerModel.getInstance().grade(curTest.getTest());
+        TestBankModel.getInstance().addTest(curTest.getTest());
+
+
         System.out.println("Submitted test!");
     }
 
+    /* Hardcoded info here was never provided by TestModel class so was unable to implement properly */
     public void updateTestInfo() {
         testName.setText(curTest.getTestName());
         timeLabel.setText("Time Limit: 60 Minutes");
@@ -159,16 +183,86 @@ public class TestTakingController {
     }
 
     public void getScheduledTests() {
-        // Will eventually be pulled from test db
-        scheduledTests.setItems(FXCollections.observableArrayList(curTest.getScheduledTest()));
+        ArrayList<TestModel> testsScheduled = new ArrayList<>();
+
+        /* Create a new cell factory to pull the name of the question for the ListView */
+        scheduledTests.setCellFactory(lv -> new ListCell<TestModel>() {
+            @Override
+            public void updateItem(TestModel item, boolean empty) {
+                if (!item.getTaken()) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        String text = item.getName();
+                        setText(text);
+                    }
+                }
+            }
+        });
+
+        ArrayList<TestModel> tests = TestBankModel.getInstance().getAllTests();
+
+        for (int i = 0; i < tests.size(); i++) {
+            if (!tests.get(i).getTaken()) {
+                testsScheduled.add(tests.get(i));
+            }
+        }
+
+        scheduledTests.setItems(FXCollections.observableArrayList(testsScheduled));
     }
 
     public void getCompletedTests() {
-        // Will eventually be pulled from test db
-        completedTests.setItems(FXCollections.observableArrayList(curTest.getCompletedTests()));
+        ArrayList<TestModel> testsCompleted = new ArrayList<>();
+
+        /* Create a new cell factory to pull the name of the question for the ListView */
+        scheduledTests.setCellFactory(lv -> new ListCell<TestModel>() {
+            @Override
+            public void updateItem(TestModel item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    String text = item.getName();
+                    setText(text);
+                }
+            }
+        });
+
+        ArrayList<TestModel> tests = TestBankModel.getInstance().getAllTests();
+
+        for (int i = 0; i < tests.size(); i++) {
+            if (tests.get(i).getTaken()) {
+                testsCompleted.add(tests.get(i));
+            }
+        }
+
+        completedTests.setItems(FXCollections.observableArrayList(testsCompleted));
     }
 
     public void getQuestionList() {
-        currentQuestionList.setItems(FXCollections.observableArrayList(curTest.getQuestionNameList()));
+        ArrayList<QuestionModel> questions = new ArrayList<>();
+
+        /* Create a new cell factory to pull the name of the question for the ListView */
+        currentQuestionList.setCellFactory(lv -> new ListCell<QuestionModel>() {
+            @Override
+            public void updateItem(QuestionModel item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    String text = item.getQuestionName();
+                    setText(text);
+                }
+            }
+        });
+
+        ArrayList<QuestionModel> questionList = curTest.getQuestionList();
+
+        for (int i = 0; i < questionList.size(); i++) {
+            questions.add(questionList.get(i));
+        }
+
+        currentQuestionList.setItems(FXCollections.observableArrayList(questions));
     }
 }
